@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="pagina">
+		<h:form id="colaboradores">
+
+			<p:panelGrid id="pesquisaColaborador" columns="3" >
+				<p:outputLabel value="Nome: " />
+				<p:inputText
+					value="#{consultaColaboradorWebBean.colaboradorDTO.nome}" />
+				<p:commandButton icon="fa fa-fw fa-search" id="selecionarColaborador"
+								 styleClass="btn-block btn-info btn-flat"
+					process="pesquisaColaborador" update="listaColaboradores"
+					action="#{consultaColaboradorWebBean.listar()}"
+					title="Selecionar">
+				</p:commandButton>
+			</p:panelGrid>
+
+			<p:dataTable id="listaColaboradores" emptyMessage="Nenhum colaborador encontrado." rows="10"
+						 styleClass="box-solid box-primary"
+						 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						 rowsPerPageTemplate="5,10,15"
+						paginator="true" paginatorAlwaysVisible="false"
+						paginatorPosition="bottom" var="col" reflow="true"
+						value="#{consultaColaboradorWebBean.colaboradores}">
+
+				<f:facet name="header">
+			        Colaboradores
+			    </f:facet>
+
+				<f:facet name="footer">
+			        Foram encontrados #{consultaColaboradorWebBean.colaboradores.size()} registro(s).
+			    </f:facet>
+
+				<p:column headerText="Código" width="40">
+					<h:outputText value="#{col.idColaborador}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{col.pessoa.nome}" />
+				</p:column>
+
+				<p:column headerText="Residencial">
+					<h:outputText value="#{col.pessoa.residencial}" />
+				</p:column>
+
+				<p:column headerText="Profissão">
+					<h:outputText value="#{col.pessoa.profissao}" />
+				</p:column>
+
+				<p:column width="80" headerText="Ações">
+					<p:commandButton icon="ui-icon-check" id="selecionarColaborador"
+						process="@this" update="@none"
+						action="#{consultaColaboradorWebBean.selecionar(col)}"
+						title="Selecionar">
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

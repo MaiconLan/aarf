@@ -1,0 +1,22 @@
+
+<ui:composition template="/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="conteudo">
+		<h:form id="erro" styleClass="redacao">
+			<p:growl id="messages" />
+			<h3>Erro</h3>
+			<p:outputLabel
+				value="Ops, algo muito errado aconteceu. Tente novamente." />
+			<br />
+			<p:link value="Ou seja redirecionado para o Início clicando aqui."
+				outcome="index" />
+			<br />
+			<p:graphicImage url="images/icon-siac.png"/>
+			<br />
+		</h:form>
+	</ui:define>
+</ui:composition>

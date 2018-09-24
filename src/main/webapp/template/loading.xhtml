@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/core">
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage name="loading.gif" library="gifs" />
+	</p:dialog>
+	
+	<p:idleMonitor timeout="300000">
+		<p:growl id="messages" showDetail="true" sticky="true"/>
+        <p:ajax event="idle" listener="#{applicationWebBean.ausente}" update="messages" />
+        <p:ajax event="active" listener="#{applicationWebBean.online}" update="messages" />
+    </p:idleMonitor>
+</ui:composition>

@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui"
+				template="/template/layout.xhtml">
+	<ui:define name="conteudo">
+
+		<h:form id="login" styleClass="cadastro-login">
+			<p:growl id="messages" showDetail="true" autoUpdate="true" />
+
+			<center>
+				<h3>Login</h3>
+			</center>
+
+			<h:panelGrid id="grid" columns="2">
+
+				<p:outputLabel value="Login:" for="usuario" />
+				<p:inputText id="usuario" value="#{identity.login.usuario}" />
+				<p:outputLabel value="Senha:" for="senha"/>
+				<p:password id="senha" value="#{identity.login.senha}" />
+			</h:panelGrid>
+			<br />
+
+			<h:panelGrid id="acoes" columns="2" >
+				<p:commandButton value="Logar" icon="fa fa-fw fa-edit"
+								 styleClass="btn-block btn-success btn-flat"
+								 action="#{identity.logar()}" process="login"
+								 update="login" />
+
+				<p:commandButton value="Limpar" icon="fa fa-fw fa-refresh"
+								 actionListener="#{identity.initialize()}"
+								 styleClass="btn-block btn-warning btn-flat"
+								 update="login" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

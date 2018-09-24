@@ -8,11 +8,21 @@ public class Cancelamento implements Serializable {
 
     private static final long serialVersionUID = 5484318972885335435L;
 
+    private Long idCancelamento;
+
     private LocalDateTime cancelamento;
 
     private String motivo;
 
     private Matricula matricula;
+
+    public Long getIdCancelamento() {
+        return idCancelamento;
+    }
+
+    public void setIdCancelamento(Long idCancelamento) {
+        this.idCancelamento = idCancelamento;
+    }
 
     public LocalDateTime getCancelamento() {
         return cancelamento;
@@ -43,11 +53,11 @@ public class Cancelamento implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cancelamento that = (Cancelamento) o;
-        return Objects.equals(matricula, that.matricula);
+        return Objects.equals(idCancelamento, that.idCancelamento);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(matricula);
+        return Objects.hash(idCancelamento);
     }
 }

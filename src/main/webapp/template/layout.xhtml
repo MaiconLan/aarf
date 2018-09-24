@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Mariana Gomes Estética</title>
+	<h:outputStylesheet library="css" name="estilos.css" />
+	<h:outputStylesheet library="awesome" name="font-awesome-jsf.css" />
+	<link rel="icon" href="resources/images/icon-mg.png"  />
+	<link rel="icon" href="../resources/images/icon-mg.png"  />
+	<h:outputScript library="js" name="calendario.js" />
+</h:head>
+<h:body>
+
+	<div id="pagina">
+		<p:messages id="messages" showDetail="true" autoUpdate="true" life="5000" />
+		<ui:insert name="pagina">
+			<div id="cabecalho">
+				<ui:insert name="cabecalho">
+					<ui:include src="cabecalho.xhtml" />
+				</ui:insert>
+			</div>
+			<center>
+				<div id="conteudo">
+					<ui:insert name="conteudo">
+						<ui:include src="conteudo.xhtml" />
+					</ui:insert>
+				</div>
+			</center>
+			<div id="rodape">
+				<ui:insert name="rodape">
+					<ui:include src="rodape.xhtml" />
+				</ui:insert>
+			</div>
+		</ui:insert>
+
+		<ui:insert name="loading">
+			<ui:include src="loading.xhtml" />
+		</ui:insert>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="pagina">
+		<h:form id="pacientes">
+
+			<p:panelGrid id="pesquisaPaciente" columns="3">
+				<p:outputLabel value="Nome: " />
+				<p:inputText value="#{consultaPacienteWebBean.pacienteDTO.nome}" />
+				<p:commandButton icon="fa fa-fw fa-search" id="selecionarPaciente"
+					process="pesquisaPaciente" update="listaPacientes"
+					action="#{consultaPacienteWebBean.listar()}" title="Selecionar">
+				</p:commandButton>
+			</p:panelGrid>
+
+			<p:dataTable id="listaPacientes"
+				emptyMessage="Nenhum paciente encontrado." rows="10"
+				paginator="true" paginatorAlwaysVisible="false" reflow="true"
+				paginatorPosition="bottom" var="pac"
+				value="#{consultaPacienteWebBean.pacientes}">
+
+				<f:facet name="header">
+			        Pacientes
+			    </f:facet>
+
+				<f:facet name="footer">
+			        Foram encontrados #{consultaPacienteWebBean.pacientes.size()} registro(s).
+			    </f:facet>
+
+				<p:column headerText="Código" width="40">
+					<h:outputText value="#{pac.idPaciente}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{pac.pessoa.nome}" />
+				</p:column>
+
+				<p:column headerText="Celular">
+					<h:outputText value="#{pac.pessoa.celular}" />
+				</p:column>
+
+				<p:column headerText="Residencial">
+					<h:outputText value="#{pac.pessoa.residencial}" />
+				</p:column>
+
+				<p:column headerText="Cidade">
+					<h:outputText value="#{pac.pessoa.endereco.cidade}" />
+				</p:column>
+
+				<p:column headerText="Estado">
+					<h:outputText value="#{pac.pessoa.endereco.estado}" />
+				</p:column>
+
+				<p:column width="80" headerText="Ações">
+					<p:commandButton icon="ui-icon-check" id="selecionarPaciente"
+						process="@this" update="@none"
+						action="#{consultaPacienteWebBean.selecionar(pac)}"
+						title="Selecionar">
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

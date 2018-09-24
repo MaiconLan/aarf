@@ -1,0 +1,144 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui"
+				template="/template/layout.xhtml">
+	<ui:define name="conteudo">
+
+		<h:form id="colaborador" styleClass="cadastro-pessoa">
+
+			<div class="ui-g">
+				<div class="ui-g-12 ui-md-2">M</div>
+
+				<div class="ui-g-6 ui-md-3 ui-lg-6">
+					<h:panelGrid id="filtro" columns="2">
+						<p:commandButton icon="fa fa-fw fas fa-search"
+										 styleClass="btn-block btn-info btn-flat"
+										 process="@this"
+										 update="@none">
+							<p:ajax event="dialogReturn"
+									process="@this" update="grid" />
+						</p:commandButton>
+
+						<p:inputText
+								id="idColaborador"
+								placeholder="Código"
+									 readonly="true"/>
+					</h:panelGrid>
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Nome" for="nome" />
+					<p:inputText id="nome"
+								 styleClass="input-field col s6"
+								 placeholder="Nome"
+								 required="true"
+								 requiredMessage="Preenchimento obrigatório" />
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Nome" for="nome" />
+
+					<p:inputText id="nome"
+								 placeholder="Nome"
+								 required="true" requiredMessage="Preenchimento obrigatório" />
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel for="genero" value="Gênero" />
+					<p:selectOneRadio id="genero">
+						<f:selectItem itemLabel="Masculino" itemValue="M" />
+						<f:selectItem itemLabel="Feminino" itemValue="F" />
+					</p:selectOneRadio>
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="CPF" for="cpf" />
+					<p:inputMask id="cpf"
+								 placeholder="CPF"
+								 mask="999.999.999-99"/>
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Data de Nascimento" for="nascimento" />
+					<p:calendar id="nascimento"
+								mask="true"
+								pattern="dd/MM/yyyy"
+								placeholder="Data de Nascimento"
+								showOn="button" />
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Celular" for="celular" />
+					<p:inputMask id="celular"
+								 placeholder="Celular" mask="(99) ?9 9999-9999 "/>
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Telefone" for="residencial" />
+					<p:inputMask id="residencial"
+								 placeholder="Telefone" mask="(99) 9999-9999"/>
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Profissão" for="profissao" />
+					<p:inputText id="profissao"
+								 placeholder="Profissão" />
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Estado Civil" for="estadoCivil" />
+					<p:inputText id="estadoCivil"
+								 placeholder="Estado Civil"/>
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Escolaridade" for="escolaridade" />
+					<p:inputText id="escolaridade"
+								 placeholder="Escolaridade"/>
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="E-mail" for="email" />
+					<p:inputText id="email" styleClass="validate" type="email"
+								 placeholder="E-mail" />
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Login:" for="login"/>
+					<p:inputText id="login"/>
+				</div>
+
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:outputLabel value="Senha:" for="senha"/>
+					<p:password id="senha" />
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+					<p:commandButton value="Alterar Login"
+									 update="colaborador colaborador:grid"
+									 immediate="true"/>
+
+					<p:commandButton value="Salvar" icon="fa fa-fw fa-edit"
+									 styleClass="btn-block btn-success btn-flat"
+									 update="colaborador" />
+					<p:spacer height="10"/>
+					<p:commandButton value="Limpar" icon="fa fa-fw fa-refresh"
+									 styleClass="btn-block btn-warning btn-flat"
+									 update="colaborador"
+									 process="@this" />
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+				</div>
+
+				<div class="ui-g-6 ui-md-6 ui-lg-6">
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

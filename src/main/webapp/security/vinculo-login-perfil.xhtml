@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="permissao" styleClass="cadastro-permissao">
+			<p:growl id="messages" showDetail="true" autoUpdate="true" />
+
+			<center>
+				<h3>Vincular Perfil ao Login</h3>
+			</center>
+
+			<h:panelGrid id="panelBuscaLogin" columns="2">
+				<p:commandButton icon="fa fa-fw fas fa-search"
+								 styleClass="btn-block btn-info btn-flat"
+								 title="Pesquisa"
+								 action="#{regraWebBean.abrirModalLogin}"
+								 process="@this"
+								 update="@none">
+					<p:ajax event="dialogReturn"
+						listener="#{regraWebBean.loginSelecionadoEvent}" process="@this"
+						update="permissao:panelBuscaLogin permissao" />
+				</p:commandButton>
+
+				<p:inputText value="#{regraWebBean.loginSelecionado.idLogin}"
+					id="idLogin" />
+
+				<p:outputLabel value="Login: " for="nomeLogin" />
+				<p:outputLabel value="#{regraWebBean.loginSelecionado.usuario}"
+					id="nomeLogin" />
+
+				<p:outputLabel value="Colaborador: " for="colaborador" />
+				<p:outputLabel id="colaborador"
+					value="#{regraWebBean.loginSelecionado.colaborador.pessoa.nome}" />
+			</h:panelGrid>
+			<br />
+
+			<p:panelGrid id="panelPerfil" columns="1">
+				<p:selectOneMenu filter="true" filterMatchMode="contains"
+					value="#{regraWebBean.perfilSelecionado}" immediate="true"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Selecione" />
+					<f:selectItems value="#{regraWebBean.perfis}" var="perfil"
+						itemLabel="#{perfil.nome}" itemValue="#{perfil}" />
+					<p:ajax process="@this" />
+				</p:selectOneMenu>
+
+				<p:commandButton id="adicionarPerfil"
+								 value="Adicionar"
+								 styleClass="btn-block btn-teal btn-flat"
+								 update="permissao:panelBuscaLogin permissao"
+								 process="@this"
+								 action="#{regraWebBean.novoPerfilSelecionado()}">
+					<p:collector value="#{regraWebBean.perfilSelecionado}"
+						addTo="#{regraWebBean.loginSelecionado.perfis}" unique="true" />
+				</p:commandButton>
+
+				<p:dataTable value="#{regraWebBean.loginSelecionado.perfis}"
+					var="perfil" id="perfis">
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{perfil.nome}" />
+					</p:column>
+
+					<p:column headerText="Descrição">
+						<h:outputText value="#{perfil.descricao}" />
+					</p:column>
+
+					<p:column headerText="Ação" width="80">
+						<p:commandLink value="Remover"
+							update="permissao:panelPerfil permissao"
+							process="permissao:panelPerfil">
+							<p:collector value="#{perfil}"
+								removeFrom="#{regraWebBean.loginSelecionado.perfis}"
+								unique="true" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+			</p:panelGrid>
+			<br />
+
+			<h:panelGrid id="acoes" columns="3"  >
+				<p:commandButton value="Salvar" icon="fa fa-fw fa-edit"
+								 id="salvar"
+								 styleClass="btn-block btn-success btn-flat"
+								 actionListener="#{regraWebBean.salvarLogin()}"
+								 process="permissao"
+								 update="permissao" />
+				<p:spacer height="10"/>
+				<p:commandButton value="Limpar" icon="fa fa-fw fa-refresh"
+								 id="limpar"
+								 styleClass="btn-block btn-warning btn-flat"
+								 actionListener="#{regraWebBean.initialize()}"
+								  update="permissao" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

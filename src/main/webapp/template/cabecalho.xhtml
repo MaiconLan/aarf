@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/core">
+
+	<h:form id="menuBar">
+		<p:menubar>
+			<p:menuitem url="/index.xhtml" value="Inicio" icon="ui-icon-home" />
+			<p:submenu label="Cadastros" icon="fa fa-fw fa-edit"
+				rendered="#{identity.logado}">
+				<p:menuitem
+					url="#{applicationWebBean.securityPath}cadastro-colaborador.xhtml"
+					value="Colaborador"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					icon="fa fa-fw fas fa-user-md" />
+				<p:menuitem
+					url="#{applicationWebBean.securityPath}cadastro-paciente.xhtml"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					value="Paciente" icon="fa fa-fw fa-user-plus" />
+				<p:menuitem
+					url="#{applicationWebBean.securityPath}vinculo-perfil-regra.xhtml"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					value="Regras" icon="fa fa-fw fa-trello" />
+				<p:menuitem
+					url="#{applicationWebBean.securityPath}vinculo-login-perfil.xhtml"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					value="Perfil" icon="fa fa-fw fa-link" />
+				<p:menuitem
+					url="#{applicationWebBean.securityPath}cadastro-avaliacao.xhtml"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					value="Avaliação" icon="fa fa-fw fa-list" />
+			</p:submenu>
+
+			<p:submenu label="Listagem" icon="fa fa-fw fa-list-alt"
+				rendered="#{identity.logado}">
+				<p:menuitem
+					url="#{applicationWebBean.securityPath}lista-colaborador.xhtml"
+					value="Colaboradores"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					icon="fa fa-fw fas fa-user-md" />
+				<p:menuitem
+					url="#{applicationWebBean.securityPath}lista-paciente.xhtml"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					value="Pacientes" icon="fa fa-fw far fa-user" />
+			</p:submenu>
+			<p:menuitem url="#{applicationWebBean.securityPath}consulta.xhtml"
+				icon="fa fa-fw fa-table" value="Consultas"
+				rendered="#{identity.logado}" />
+
+			<p:menuitem url="#{applicationWebBean.securityPath}login.xhtml"
+				icon="fa fa-fw fa-table" value="Login"
+				rendered="#{!identity.logado}" />
+
+			<p:submenu label="Usuário" icon="fa fa-user"
+				rendered="#{identity.logado}">
+				<p:menuitem value="#{identity.login.colaborador.pessoa.nome}"
+					disabled="true" />
+				<p:menuitem value="#{applicationWebBean.nomeBaseDados}"
+					rendered="#{applicationWebBean.acessoMenusAdministrador}"
+					icon="fa fa-database" disabled="true" />
+				<p:menuitem action="#{identity.deslogar}" icon="ui-icon-extlink"
+					value="Deslogar" />
+			</p:submenu>
+
+		</p:menubar>
+	</h:form>
+</ui:composition>
