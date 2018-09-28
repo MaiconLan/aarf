@@ -13,15 +13,9 @@ public class Unit {
 	public static final String NOME_BASE_DADOS_DO = "aarf-oficial";
 	public static final String USUARIO_BASE_DADOS_DO = "postgres";
 	public static final String SENHA_BASE_DADOS_DO = "postgres";
-	
-	// Dados da base azure
-	public static final String IP_BASE_DADOS_AZURE = "";
-	public static final String NOME_BASE_DADOS_AZURE = "aarf-develop";
-	public static final String USUARIO_BASE_DADOS_AZURE = "";
-	public static final String SENHA_BASE_DADOS_AZURE = "";
 	public static final String NOME_UNIDADE = "AARF";
 	public static final String SSL = "false";
-	
+
 	// Dados Sistema
 	public static final String DESCRICAO_VERSAO = "Versão: ";
 	public static final String NUMERO_VERSAO = "1.0";

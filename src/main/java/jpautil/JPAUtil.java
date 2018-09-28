@@ -18,14 +18,6 @@ public class JPAUtil {
 	private static final String IP_DIGITAL_OCEAN = "jdbc:postgresql://" + Unit.IP_BASE_DADOS_DO + ":5432/"
 			+ Unit.NOME_BASE_DADOS_DO;
 
-	private static final String ipAmazon = "jdbc:postgresql://" + Unit.IP_BASE_DADOS_AZURE + ":5432/"
-			+ Unit.NOME_BASE_DADOS_AZURE;
-
-	@SuppressWarnings("unused")
-	private static final String IP_AZURE = "jdbc:postgresql://" + Unit.IP_BASE_DADOS_AZURE + ":5432/"
-			+ Unit.NOME_BASE_DADOS_AZURE + "?user=" + Unit.USUARIO_BASE_DADOS_AZURE + "&password="
-			+ Unit.SENHA_BASE_DADOS_AZURE + "&ssl=" + Unit.SSL;
-
 	private static synchronized void loadInstance(String usuario, String senha, String ssl, String unidade, String ip) {
 		try {
 			Map<String, String> map = new HashMap<String, String>();
@@ -48,11 +40,6 @@ public class JPAUtil {
 		if (factory == null) {
 
 			switch (Unit.HOSPEDAGEM) {
-
-			case Unit.AZURE:
-				loadInstance(Unit.USUARIO_BASE_DADOS_AZURE, Unit.SENHA_BASE_DADOS_AZURE, Unit.SSL, Unit.NOME_UNIDADE,
-						ipAmazon);
-				break;
 
 			case Unit.LOCAL:
 				loadInstance(Unit.USUARIO_BASE_DADOS_LOCAL, Unit.SENHA_BASE_DADOS_LOCAL, Unit.SSL, Unit.NOME_UNIDADE,

@@ -1,11 +1,11 @@
 package controller;
 
 import exception.LoginException;
-import model.Login;
 import model.Regra;
+import model.Usuario;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
-import service.LoginService;
+import service.UsuarioService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -21,21 +21,17 @@ import java.util.List;
 @SessionScoped
 @Named(value = "identity")
 public class Identity implements Serializable {
-
-	private static final String LOGIN_ERRO_MENSAGEM = "Erro ao efetuar login!";
-
-	private static final String LOGIN_ERRO_DETALHES = "Verifique seu Login/Senha! Lembre-se que maiúsculas e minúsculas fazem a diferençaa.";
+	private static final long serialVersionUID = 3570532101723065655L;
 
 	private static final String ERRO_DETALHES = "Ocorreu um erro ao tentar efetuar Login.";
-
 	private static final String AVISO_DESLOGADO = "Você deve estar logado para efetuar esta ação.";
-
-	private static final long serialVersionUID = 1L;
+	private static final String LOGIN_ERRO_DETALHES = "Verifique seu Login/Senha! Lembre-se que maiúsculas e minúsculas fazem a diferençaa.";
+	private static final String LOGIN_ERRO_MENSAGEM = "Erro ao efetuar login!";
 
 	@Inject
-	private LoginService service;
+	private UsuarioService usuarioService;
 
-	private Login login;
+	private Usuario usuario;
 
 	private boolean logado;
 
@@ -50,12 +46,12 @@ public class Identity implements Serializable {
 		String redirect = "";
 		try {
 
-			logado = service.isValido(login);
+			logado = usuarioService.isValido(usuario);
 
 			if (logado) {
-				login = service.logar(login);
-				regras = service.buscarRegras(login);
-				setLoginContext("login", login);
+				usuario = usuarioService.logar(usuario);
+				regras = usuarioService.buscarRegras(usuario);
+				setLoginContext("login", usuario);
 
 				redirect = "index.xhtml";
 			} else {
@@ -120,15 +116,15 @@ public class Identity implements Serializable {
 
 	public void novoLogin() {
 		regras = new ArrayList<>();
-		login = new Login();
+		usuario = new Usuario();
 	}
 
-	public Login getLogin() {
-		return login;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setLogin(Login login) {
-		this.login = login;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public boolean isLogado() {

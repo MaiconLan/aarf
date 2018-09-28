@@ -27,11 +27,6 @@ public class IniciarAplicacaoListener implements ServletContextListener {
 
 			switch (Unit.HOSPEDAGEM) {
 
-			case Unit.AZURE:
-				flyway.setDataSource("jdbc:postgresql://" + Unit.IP_BASE_DADOS_AZURE + "/" + Unit.NOME_BASE_DADOS_AZURE,
-						Unit.USUARIO_BASE_DADOS_AZURE, Unit.SENHA_BASE_DADOS_AZURE);
-				break;
-
 			case Unit.LOCAL:
 				flyway.setDataSource("jdbc:postgresql://" + Unit.IP_BASE_DADOS_LOCAL + "/" + Unit.NOME_BASE_DADOS_LOCAL,
 						Unit.USUARIO_BASE_DADOS_LOCAL, Unit.SENHA_BASE_DADOS_LOCAL);

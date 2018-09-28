@@ -16,25 +16,6 @@
 
 	<div id="pagina">
 		<p:messages id="messages" showDetail="true" autoUpdate="true" life="5000" />
-		<ui:insert name="pagina">
-			<div id="cabecalho">
-				<ui:insert name="cabecalho">
-					<ui:include src="cabecalho.xhtml" />
-				</ui:insert>
-			</div>
-			<center>
-				<div id="conteudo">
-					<ui:insert name="conteudo">
-						<ui:include src="conteudo.xhtml" />
-					</ui:insert>
-				</div>
-			</center>
-			<div id="rodape">
-				<ui:insert name="rodape">
-					<ui:include src="rodape.xhtml" />
-				</ui:insert>
-			</div>
-		</ui:insert>
 
 		<ui:insert name="loading">
 			<ui:include src="loading.xhtml" />
