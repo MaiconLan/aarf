@@ -1,17 +1,37 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "cadastro", name = "usuario")
+@NamedQueries(
+        {
+                @NamedQuery(name = Usuario.BUSCAR_USUARIOS, query = "SELECT u FROM Usuario u"),
+                @NamedQuery(
+                        name = Usuario.POSSUI_USUARIO_BY_LOGIN,
+                        query = "SELECT EXISTS (SELECT 1 FROM Usuario u WHERE u.login = :login); ")
+        }
+)
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 2603077537569479837L;
+    public static final String POSSUI_USUARIO_BY_LOGIN = "POSSUI_USUARIO_BY_LOGIN";
+    public static final String BUSCAR_USUARIOS = "BUSCAR_USUARIOS";
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Long idUsuario;
+
     private String login;
     private String senha;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario", optional = true)
     private Estudante estudante;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario", optional = true)
     private Associado associado;
 
     public Long getIdUsuario() {

@@ -1,12 +1,18 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "cadastro", name = "instituicao")
 public class Instituicao  implements Serializable {
 
     private static final long serialVersionUID = -8049920322251164021L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_instituicao")
     private Long idInstituicao;
 
     private String nome;
@@ -49,4 +55,7 @@ public class Instituicao  implements Serializable {
     public int hashCode() {
         return Objects.hash(idInstituicao);
     }
+
 }
+
+

@@ -44,9 +44,8 @@
                         <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}" completeMethod="#{autoCompleteView.completeText}" style="margin-bottom:10px;"/>
 
                         <p:outputLabel value="Group:" for="group" />
-                        <p:autoComplete id="group" value="#{autoCompleteView.theme4}" completeMethod="#{autoCompleteView.completeThemeContains}"
-                                        var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" converter="theme"
-                                        groupBy="#{autoCompleteView.getThemeGroup(theme)}" scrollHeight="250"/>
+                        <p:autoComplete id="group"
+                                         scrollHeight="250"/>
                     </p:panelGrid>
                 </div>
                 

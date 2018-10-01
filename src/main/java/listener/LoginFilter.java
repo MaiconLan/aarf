@@ -28,6 +28,8 @@ public class LoginFilter implements Filter {
 			
 		} else {
 			chain.doFilter(request, response);
+			String contextPath = ((HttpServletRequest) request).getContextPath();
+			((HttpServletResponse) response).sendRedirect(contextPath + "/dashboard.xhtml");
 		}
 
 	}

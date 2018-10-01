@@ -1,15 +1,25 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "cadastro", name = "pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = -6629545866132877655L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pessoa")
     private Long idPessoa;
+
     private String nome;
+
     private LocalDate nascimento;
     private String cpf;
     private String rg;
@@ -18,10 +28,18 @@ public class Pessoa implements Serializable {
     private String telefone;
     private String celular;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "pessoa", cascade = CascadeType.ALL, optional = true)
     private Endereco endereco;
 
-    private Estudante estudante;
-    private Associado associado;
+    @OneToMany(mappedBy = "pessoa", targetEntity = Estudante.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Estudante> estudantes;
+
+    @OneToMany(mappedBy = "pessoa", targetEntity = Associado.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Associado> associados;
+
+    public Pessoa() {
+        this.endereco = new Endereco();
+    }
 
     public Long getIdPessoa() {
         return idPessoa;
@@ -103,20 +121,20 @@ public class Pessoa implements Serializable {
         this.endereco = endereco;
     }
 
-    public Estudante getEstudante() {
-        return estudante;
+    public List<Estudante> getEstudantes() {
+        return estudantes;
     }
 
-    public void setEstudante(Estudante estudante) {
-        this.estudante = estudante;
+    public void setEstudantes(List<Estudante> estudantes) {
+        this.estudantes = estudantes;
     }
 
-    public Associado getAssociado() {
-        return associado;
+    public List<Associado> getAssociados() {
+        return associados;
     }
 
-    public void setAssociado(Associado associado) {
-        this.associado = associado;
+    public void setAssociados(List<Associado> associados) {
+        this.associados = associados;
     }
 
     @Override

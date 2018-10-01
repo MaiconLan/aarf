@@ -1,16 +1,31 @@
 package model;
 
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "cadastro", name = "assossiado")
 public class Associado implements Serializable {
 
     private static final long serialVersionUID = 5462575499370690865L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_estudante")
     private Long idAssociado;
+
     private String cargo;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, optional = true)
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     public Long getIdAssociado() {

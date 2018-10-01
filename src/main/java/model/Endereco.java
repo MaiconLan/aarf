@@ -1,18 +1,28 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "endereco")
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID = 8250637772356880384L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_endereco")
     private Long idEndereco;
 
     private String cep;
     private String logradouro;
     private String complemento;
     private String bairro;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 
     public Long getIdEndereco() {
         return idEndereco;
@@ -52,6 +62,14 @@ public class Endereco implements Serializable {
 
     public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override

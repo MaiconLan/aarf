@@ -22,7 +22,6 @@ public class Unit {
 	public static final String SNAPSHOT = "-1";
 	
 	public static final String DIGITAL_OCEAN = "Digital Ocean";
-	public static final String AZURE = "Azure";
 	public static final String LOCAL = "localhost";
 
 	public static final String HOSPEDAGEM = LOCAL;

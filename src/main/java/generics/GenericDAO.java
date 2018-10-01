@@ -73,6 +73,11 @@ public class GenericDAO<T> {
 		return t;
 	}
 
+	public void saveOrUpdate(T t) {
+		Session session = (Session) em.getDelegate();
+		session.saveOrUpdate(t);
+	}
+
 	/**
 	 * @property Procurar registros pelo ID
 	 */

@@ -45,7 +45,6 @@ public class IniciarAplicacaoListener implements ServletContextListener {
 			flyway.setLocations("classpath:flyway");
 			flyway.setInstalledBy("sistema");
 			flyway.setTable("versao_base");
-			flyway.repair();
 			flyway.migrate();
 
 		} catch (Exception e) {
