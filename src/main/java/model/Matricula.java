@@ -16,10 +16,8 @@ public class Matricula  implements Serializable {
     @Column(name = "id_matricula")
     private Long idMatricula;
 
-    @Temporal(TemporalType.DATE)
     private LocalDateTime inscricao;
 
-    @Temporal(TemporalType.DATE)
     private LocalDateTime confirmacao;
 
     @ManyToOne

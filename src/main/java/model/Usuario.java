@@ -8,10 +8,7 @@ import java.util.Objects;
 @Table(schema = "cadastro", name = "usuario")
 @NamedQueries(
         {
-                @NamedQuery(name = Usuario.BUSCAR_USUARIOS, query = "SELECT u FROM Usuario u"),
-                @NamedQuery(
-                        name = Usuario.POSSUI_USUARIO_BY_LOGIN,
-                        query = "SELECT EXISTS (SELECT 1 FROM Usuario u WHERE u.login = :login); ")
+                @NamedQuery(name = Usuario.BUSCAR_USUARIOS, query = "SELECT u FROM Usuario u")
         }
 )
 public class Usuario implements Serializable {
