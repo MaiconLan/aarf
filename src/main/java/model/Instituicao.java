@@ -6,20 +6,30 @@ import java.util.Objects;
 
 @Entity
 @Table(schema = "cadastro", name = "instituicao")
-public class Instituicao  implements Serializable {
+public class Instituicao implements Serializable {
 
-    private static final long serialVersionUID = -8049920322251164021L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_instituicao")
     private Long idInstituicao;
 
     private String nome;
+    
+    private String cidade;
 
     private String tipo;
 
-    public Long getIdInstituicao() {
+    public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public Long getIdInstituicao() {
         return idInstituicao;
     }
 

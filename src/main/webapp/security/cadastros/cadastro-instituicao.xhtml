@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+		<div class="ui-g">
+			<div class="ui-g-12">
+				<div class="card">
+					<h1 class="lightBlack centerText">Cadastro de Estudante</h1>
+
+					<h:form id="formEstudante" styleClass="ui-panelgrid-blank">
+
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:inputText id="nome" 
+									placeholder="Nome"
+									value="#{instituicaoMB.instituicao.nome}" />
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:inputText id="cidade" 
+									placeholder="Cidade"
+									value="#{instituicaoMB.instituicao.cidade}" />
+							</div>
+							<div class="ui-g">
+								<div class="ui-g-12 ui-md-6 ui-lg-2">
+	                                <p:commandButton id="salvarInstituicao"
+	                                                 icon="fa fa-check"
+	                                                 value="Salvar"
+	                                                 process="@form"
+	                                                 update="@form"
+	                                                 action="#{instituicaoMB.salvarInstituicao()}"/>
+	                            </div>
+	                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+	                                <p:commandButton id="limparInstituicao"
+	                                                 icon="fa fa-check"
+	                                                 value="Limpar"
+	                                                 update="@form"
+	                                                 action="#{instituicaoMB.limparCampos()}"/>
+	                            </div>
+                            </div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
