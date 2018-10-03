@@ -1,5 +1,7 @@
 package model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -29,12 +31,13 @@ public class Pessoa implements Serializable {
     private String celular;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "pessoa", cascade = CascadeType.ALL, optional = true)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "pessoa", targetEntity = Estudante.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pessoa", targetEntity = Estudante.class, fetch = FetchType.LAZY)
     private List<Estudante> estudantes;
 
-    @OneToMany(mappedBy = "pessoa", targetEntity = Associado.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pessoa", targetEntity = Associado.class, fetch = FetchType.LAZY)
     private List<Associado> associados;
 
     public Pessoa() {

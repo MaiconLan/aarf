@@ -1,6 +1,7 @@
 package service;
 
 import dto.UsuarioDTO;
+import exception.LoginException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface UsuarioService {
 
-    Usuario salvarUsuario(Usuario usuario) throws NullPointerException, PersistenceException, Exception;
+    Usuario salvarUsuario(Usuario usuario) throws LoginException;
 
     void removerUsuario(Usuario usuario) throws NullPointerException, Exception;
 

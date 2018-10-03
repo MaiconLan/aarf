@@ -12,7 +12,7 @@
 -- CREATE DATABASE aarf
 -- ;
 -- -- ddl-end --
---
+-- 
 
 -- object: cadastro | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS cadastro CASCADE;
@@ -141,6 +141,7 @@ CREATE TABLE cadastro.instituicao(
 	id_instituicao serial NOT NULL,
 	nome character varying NOT NULL,
 	tipo character varying NOT NULL,
+	cidade character varying,
 	CONSTRAINT id_instituicao PRIMARY KEY (id_instituicao),
 	CONSTRAINT ck_tipo CHECK (tipo IN ('Educacao', 'Financeira'))
 

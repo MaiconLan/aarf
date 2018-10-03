@@ -2,6 +2,7 @@ package service;
 
 import business.EstudanteBusiness;
 import exception.EstudanteBusinessException;
+import exception.LoginException;
 import model.Estudante;
 
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ public class EstudanteServiceImpl implements EstudanteService {
     private EstudanteBusiness estudanteBusiness;
 
     @Override
-    public void salvarEstudante(Estudante estudante) throws EstudanteBusinessException {
+    public void salvarEstudante(Estudante estudante) throws EstudanteBusinessException, LoginException {
         estudanteBusiness.salvarEstudante(estudante);
     }
 

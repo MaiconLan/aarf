@@ -1,6 +1,7 @@
 package controller;
 
 import exception.EstudanteBusinessException;
+import exception.LoginException;
 import model.Estudante;
 import model.Instituicao;
 import org.omnifaces.util.Messages;
@@ -38,19 +39,13 @@ public class EstudanteMB implements Serializable {
             estudanteService.salvarEstudante(estudante);
             Messages.addInfo(null, "Estudante salvo com sucesso");
 
-        } catch (EstudanteBusinessException e) {
+        } catch (EstudanteBusinessException | LoginException e) {
             Messages.addError(null, e.getMessage());
         }
     }
 
     public void excluirEstudante(){
-        try {
-            estudanteService.salvarEstudante(estudante);
-            Messages.addWarn(null, "Estudante excluído com sucesso");
-
-        } catch (EstudanteBusinessException e) {
-            Messages.addWarn(null, e.getMessage());
-        }
+        Messages.addWarn(null, "Estudante excluído com sucesso");
     }
 
     private void novoEstudante(){

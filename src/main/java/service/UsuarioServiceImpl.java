@@ -2,6 +2,7 @@ package service;
 
 import business.UsuarioBusiness;
 import dto.UsuarioDTO;
+import exception.LoginException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
@@ -20,8 +21,8 @@ public class UsuarioServiceImpl implements UsuarioService, Serializable {
     private UsuarioBusiness usuarioBusiness;
 
     @Override
-    public Usuario salvarUsuario(Usuario usuario) throws NullPointerException, PersistenceException, Exception {
-        return null;
+    public Usuario salvarUsuario(Usuario usuario) throws LoginException {
+        return usuarioBusiness.salvar(usuario);
     }
 
     @Override

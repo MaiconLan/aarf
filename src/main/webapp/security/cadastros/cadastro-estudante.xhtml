@@ -6,95 +6,104 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <div class="ui-g">
-            <div class="ui-g-12 ">
+        <div class="ui-fluid">
+            <div class="ui-g">
                 <div class="card">
                     <h1 class="lightBlack centerText">Cadastro de Estudante</h1>
 
-                    <h:form id="formEstudante" styleClass="ui-panelgrid-blank">
+                    <h3 class="lightBlack">Dados Cadastrais</h3>
 
-                        <div class="ui-g" >
+                    <h:form id="formEstudante">
+                        <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <p:inputText id="nome"
                                              placeholder="Nome"
                                              value="#{estudanteMB.estudante.pessoa.nome}" />
                             </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:calendar id="nascimento"
                                             value="#{estudanteMB.estudante.pessoa.nascimento}"
                                             mask="true"
                                             pattern="dd/MM/yyyy"
-                                            placeholder="Data de Nascimento"
+                                            placeholder="Nascimento"
+                                            converter="localDateConverter"
                                             showOn="button"/>
                             </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:inputMask id="cpf"
-                                             mask="999.999.999-99"
-                                             placeholder="CPF"
-                                             value="#{estudanteMB.estudante.pessoa.cpf}" />
-                            </div>
-
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:inputMask id="rg"
-                                             mask="999.999.999-99"
-                                             placeholder="RG"
-                                             value="#{estudanteMB.estudante.pessoa.cpf}" />
-                            </div>
-
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:selectOneRadio id="genero"
                                                   value="#{estudanteMB.estudante.pessoa.genero}">
                                     <f:selectItem itemLabel="Masculino" itemValue="M" />
                                     <f:selectItem itemLabel="Feminino" itemValue="F" />
                                 </p:selectOneRadio>
                             </div>
+                        </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:inputText id="email"
-                                             placeholder="E-mail"
-                                             value="#{estudanteMB.estudante.pessoa.email}" />
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="cpf"
+                                             mask="999.999.999-99"
+                                             placeholder="CPF"
+                                             value="#{estudanteMB.estudante.pessoa.cpf}" />
                             </div>
-
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="rg"
+                                             mask="9.999.999"
+                                             placeholder="RG"
+                                             value="#{estudanteMB.estudante.pessoa.rg}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputMask id="telefone"
                                              mask="(99) 9999-9999"
                                              placeholder="Telefone (Fixo)"
                                              value="#{estudanteMB.estudante.pessoa.telefone}" />
                             </div>
-
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputMask id="celular"
                                              mask="(99) 9 9999-9999"
                                              placeholder="Celular"
                                              value="#{estudanteMB.estudante.pessoa.celular}" />
                             </div>
+                        </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:inputText id="cep"
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputText id="email"
+                                             placeholder="E-mail"
+                                             value="#{estudanteMB.estudante.pessoa.email}" />
+                            </div>
+                        </div>
+
+                        <h3 class="lightBlack">Endereço</h3>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="cep"
                                              placeholder="CEP"
+                                             mask="99 999-999"
                                              value="#{estudanteMB.estudante.pessoa.endereco.cep}" />
                             </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
                                 <p:inputText id="logradouro"
                                              placeholder="Rua"
                                              value="#{estudanteMB.estudante.pessoa.endereco.logradouro}" />
                             </div>
-
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
                                 <p:inputText id="complemento"
                                              placeholder="Complemento"
                                              value="#{estudanteMB.estudante.pessoa.endereco.complemento}" />
                             </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputText id="bairro"
                                              placeholder="Bairro"
                                              value="#{estudanteMB.estudante.pessoa.endereco.bairro}" />
                             </div>
+                        </div>
 
+                        <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <p:selectOneMenu id="instituicao"
                                                  value="#{estudanteMB.estudante.instituicao}"
@@ -108,19 +117,24 @@
                                                    value="#{estudanteMB.instituicoes}"/>
                                 </p:selectOneMenu>
                             </div>
+                        </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <h3 class="lightBlack">Dados Cadastrais</h3>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputText id="usuario"
                                              placeholder="Login"
                                              value="#{estudanteMB.estudante.usuario.login}" />
                             </div>
-
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:password id="senha"
-                                             placeholder="Senha"
-                                             value="#{estudanteMB.estudante.usuario.senha}" />
+                                            placeholder="Senha"
+                                            value="#{estudanteMB.estudante.usuario.senha}" />
                             </div>
+                        </div>
 
+                        <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:commandButton id="salvarEstudante"
                                                  icon="fa fa-check"
@@ -129,7 +143,6 @@
                                                  update="@form"
                                                  action="#{estudanteMB.salvarEstudante()}"/>
                             </div>
-
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:commandButton id="excluirEstudante"
                                                  icon="fa fa-remove"
@@ -144,8 +157,6 @@
                 </div>
             </div>
         </div>
-
-
     </ui:define>
 
 </ui:composition>

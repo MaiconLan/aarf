@@ -1,11 +1,13 @@
 package model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "endereco")
+@Table(schema = "cadastro", name = "endereco")
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID = 8250637772356880384L;
@@ -21,6 +23,7 @@ public class Endereco implements Serializable {
     private String bairro;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
 

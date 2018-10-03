@@ -21,7 +21,7 @@ public class UsuarioBusiness {
     @Inject
     private UsuarioDAO usuarioDAO;
 
-    public Usuario salvar(Usuario usuario) throws PersistenceException, LoginException {
+    public Usuario salvar(Usuario usuario) throws LoginException {
         validarLogin(usuario);
         if (usuario.getIdUsuario() == null) {
             usuarioDAO.save(usuario);
