@@ -16,15 +16,17 @@
                     <h:form id="formEstudante">
                         <div class="ui-g">
                             <div class="ui-g-4 ui-md-3 ui-lg-1">
-                                <p:commandButton icon="fa fa-fw fas fa-search" title="Pesquisa"
-                                                 action="#{consultaPacienteWebBean.abrirDialogo}" process="@this"
+                                <p:commandButton icon="fa fa-search"
+                                                 title="Pesquisa"
+                                                 action="#{estudanteMB.modalConsultaEstudante()}"
+                                                 process="@this"
                                                  update="@none">
                                     <p:ajax event="dialogReturn"
                                             listener="#{pacienteWebBean.pacienteSelecionado}" process="@this"
                                             update="@this" />
                                 </p:commandButton>
                             </div>
-                            <div class="ui-g-8 ui-md-3 ui-lg-1">
+                            <div class="ui-g-8 ui-md-3 ui-lg-3">
                                 <p:inputText id="idEstudante"
                                              placeholder="Código"
                                              value="#{estudanteMB.estudante.idEstudante}" />
@@ -92,33 +94,46 @@
                             </div>
                         </div>
 
-                        <h3 class="lightBlack">Endereço</h3>
+                        <h:panelGroup id="panelEndereco">
+                            <h3 class="lightBlack">Endereço</h3>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-2 ui-lg-1">
+                                    <p:commandButton id="consultarEndereco"
+                                                     icon="fa fa-search"
+                                                     styleClass="navy-button"
+                                                     process="panelEndereco"
+                                                     update="panelEndereco"
+                                                     action="#{estudanteMB.consultarCep()}"/>
 
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:inputMask id="cep"
-                                             placeholder="CEP"
-                                             mask="99 999-999"
-                                             value="#{estudanteMB.estudante.pessoa.endereco.cep}" />
-                            </div>
+                                </div>
+                                <div class="ui-g-12 ui-md-4 ui-lg-3">
+                                    <p:inputMask id="cep"
+                                                 placeholder="CEP"
+                                                 mask="99 999-999"
+                                                 value="#{estudanteMB.estudante.pessoa.endereco.cep}" />
+                                </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                <p:inputText id="logradouro"
-                                             placeholder="Rua"
-                                             value="#{estudanteMB.estudante.pessoa.endereco.logradouro}" />
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                <p:inputText id="complemento"
-                                             placeholder="Complemento"
-                                             value="#{estudanteMB.estudante.pessoa.endereco.complemento}" />
-                            </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                    <p:inputText id="logradouro"
+                                                 placeholder="Rua"
+                                                 value="#{estudanteMB.estudante.pessoa.endereco.logradouro}" />
+                                </div>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:inputText id="bairro"
-                                             placeholder="Bairro"
-                                             value="#{estudanteMB.estudante.pessoa.endereco.bairro}" />
                             </div>
-                        </div>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <p:inputText id="complemento"
+                                                 placeholder="Complemento"
+                                                 value="#{estudanteMB.estudante.pessoa.endereco.complemento}" />
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:inputText id="bairro"
+                                                 placeholder="Bairro"
+                                                 value="#{estudanteMB.estudante.pessoa.endereco.bairro}" />
+                                </div>
+                            </div>
+                        </h:panelGroup>
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
@@ -136,7 +151,7 @@
                             </div>
                         </div>
 
-                        <h3 class="lightBlack">Dados Cadastrais</h3>
+                        <h3 class="lightBlack">Usuário</h3>
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -164,7 +179,7 @@
                                 <p:commandButton id="excluirEstudante"
                                                  icon="fa fa-remove"
                                                  value="Excluir"
-                                                 process="@form"
+                                                 process="@this"
                                                  update="@form"
                                                  styleClass="red-button"
                                                  action="#{estudanteMB.excluirEstudante()}"/>
@@ -174,6 +189,8 @@
                 </div>
             </div>
         </div>
+
+        <ui:include src="modal-consulta-estudante.xhtml"/>
     </ui:define>
 
 </ui:composition>

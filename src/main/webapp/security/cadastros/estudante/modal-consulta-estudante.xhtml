@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalConsultaEstudante"
+              header="Consulta de Estudantes"
+              widgetVar="modalConsultaEstudante"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closeOnEscape="true">
+        <p:outputPanel id="panelBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <p:inputText id="nome"
+                                             placeholder="Nome"
+                                             />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </p:outputPanel>
+    </p:dialog>
+</ui:composition>

@@ -2,9 +2,13 @@ package controller;
 
 import exception.EstudanteBusinessException;
 import exception.LoginException;
+import model.Endereco;
 import model.Estudante;
 import model.Instituicao;
 import org.omnifaces.util.Messages;
+import org.primefaces.context.PrimeFacesContext;
+import org.primefaces.context.RequestContext;
+import service.CepService;
 import service.EstudanteService;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +17,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ViewScoped
 @Named("estudanteMB")
@@ -28,10 +34,17 @@ public class EstudanteMB implements Serializable {
     @Inject
     private EstudanteService estudanteService;
 
+    @Inject
+    private CepService cepService;
+
     @PostConstruct
     public void init(){
         novoEstudante();
         instituicoes = new ArrayList<>();
+    }
+
+    public void modalConsultaEstudante() {
+        RequestContext.getCurrentInstance().execute("PF('modalConsultaEstudante').show();");
     }
 
     public void salvarEstudante(){
@@ -46,6 +59,17 @@ public class EstudanteMB implements Serializable {
 
     public void excluirEstudante(){
         Messages.addWarn(null, "Estudante excluído com sucesso");
+    }
+
+    public void consultarCep(){
+        String cep = estudante.getPessoa().getEndereco().getCep();
+        Long idEndereco = estudante.getPessoa().getEndereco().getIdEndereco();
+        if(cep != null && !cep.isEmpty()){
+            Endereco endereco = cepService.getEnderecoCompleto(cep);
+            endereco.setIdEndereco(idEndereco);
+            endereco.setPessoa(estudante.getPessoa());
+            estudante.getPessoa().setEndereco(endereco);
+        }
     }
 
     private void novoEstudante(){

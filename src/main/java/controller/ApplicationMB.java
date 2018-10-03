@@ -34,13 +34,12 @@ public class ApplicationMB implements Serializable {
     }
 
     public void ausente() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Ausente",
-                "Você ficou muito tempo ausente. Se esta mensagem permanecer atualize a página!"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Você ficou muito tempo ausente. Se esta mensagem permanecer atualize a página!", null));
     }
 
     public void online() {
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo de volta!", "Sentimos saudades ;)"));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo de volta!", null));
     }
 
     public void refresh() {
