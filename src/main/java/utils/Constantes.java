@@ -1,6 +1,6 @@
 package utils;
 
-public class Constante {
+public class Constantes {
 
 	public static final Integer ZERO = Integer.valueOf(0);
 	public static final int UM_INT = 1;
@@ -14,9 +14,6 @@ public class Constante {
 	public static final String MASCULINO = "M";
 	public static final String FEMININO = "F";
 	
-	public static final String COLABORADOR = "Colaborador";
-	public static final String PACIENTE = "Paciente";
-
 	public static final String DIREITOS = "Associação Acadêmica de Rio Fortuna© 2018 Copyright. Todos os direitos reservados.";
 	
 }

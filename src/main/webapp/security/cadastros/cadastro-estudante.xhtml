@@ -15,6 +15,23 @@
 
                     <h:form id="formEstudante">
                         <div class="ui-g">
+                            <div class="ui-g-4 ui-md-3 ui-lg-1">
+                                <p:commandButton icon="fa fa-fw fas fa-search" title="Pesquisa"
+                                                 action="#{consultaPacienteWebBean.abrirDialogo}" process="@this"
+                                                 update="@none">
+                                    <p:ajax event="dialogReturn"
+                                            listener="#{pacienteWebBean.pacienteSelecionado}" process="@this"
+                                            update="@this" />
+                                </p:commandButton>
+                            </div>
+                            <div class="ui-g-8 ui-md-3 ui-lg-1">
+                                <p:inputText id="idEstudante"
+                                             placeholder="Código"
+                                             value="#{estudanteMB.estudante.idEstudante}" />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <p:inputText id="nome"
                                              placeholder="Nome"

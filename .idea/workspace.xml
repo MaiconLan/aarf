@@ -7,24 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9be7d68-7d27-4128-99f5-46b7046a22b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/LocalDateConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/LocalDateTimeConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/business/ApplicationBusiness.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ApplicationMB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/ApplicationDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ApplicationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ApplicationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aarf.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aarf.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/business/UsuarioBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/business/UsuarioBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Endereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/EstudanteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EstudanteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/EstudanteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/EstudanteServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UsuarioServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UsuarioServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Constante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Constantes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/footer.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/footer.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-estudante.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-estudante.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -59,10 +49,10 @@
         <counts>
           <entry key="AARF" value="28" />
           <entry key="css" value="2" />
-          <entry key="dummy" value="81" />
-          <entry key="java" value="6885" />
+          <entry key="dummy" value="84" />
+          <entry key="java" value="6951" />
           <entry key="txt" value="206" />
-          <entry key="xhtml" value="2577" />
+          <entry key="xhtml" value="2666" />
           <entry key="xml" value="275" />
         </counts>
       </usages-collector>
@@ -70,9 +60,9 @@
         <counts>
           <entry key="CSS" value="2" />
           <entry key="Hibernate QL" value="28" />
-          <entry key="JAVA" value="6885" />
-          <entry key="PLAIN_TEXT" value="287" />
-          <entry key="XHTML" value="2577" />
+          <entry key="JAVA" value="6951" />
+          <entry key="PLAIN_TEXT" value="290" />
+          <entry key="XHTML" value="2666" />
           <entry key="XML" value="275" />
         </counts>
       </usages-collector>
@@ -82,14 +72,14 @@
           <entry key="css" value="9" />
           <entry key="gif" value="2" />
           <entry key="html" value="2" />
-          <entry key="java" value="163" />
+          <entry key="java" value="170" />
           <entry key="jpeg" value="1" />
           <entry key="jpg" value="1" />
           <entry key="js" value="1" />
           <entry key="pom" value="1" />
           <entry key="scss" value="3" />
           <entry key="sql" value="1" />
-          <entry key="xhtml" value="65" />
+          <entry key="xhtml" value="66" />
           <entry key="xml" value="23" />
         </counts>
       </usages-collector>
@@ -98,12 +88,12 @@
           <entry key="CSS" value="9" />
           <entry key="HTML" value="2" />
           <entry key="Image" value="4" />
-          <entry key="JAVA" value="163" />
+          <entry key="JAVA" value="170" />
           <entry key="JavaScript" value="1" />
           <entry key="SCSS" value="3" />
           <entry key="SQL" value="1" />
           <entry key="UML" value="1" />
-          <entry key="XHTML" value="65" />
+          <entry key="XHTML" value="66" />
           <entry key="XML" value="24" />
         </counts>
       </usages-collector>
@@ -114,11 +104,109 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-estudante.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2585">
-              <caret line="159" column="16" lean-forward="true" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
+            <state relative-caret-position="425">
+              <caret line="34" column="65" lean-forward="true" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/footer.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/ApplicationMB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1258">
+              <caret line="80" selection-start-line="80" selection-end-line="80" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2217#2218#0" expanded="true" />
+                <element signature="e#2239#2240#0" expanded="true" />
+                <element signature="e#2345#2346#0" expanded="true" />
+                <element signature="e#2365#2366#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/Constantes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/ApplicationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/ApplicationServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#272#273#0" expanded="true" />
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#374#375#0" expanded="true" />
+                <element signature="e#437#438#0" expanded="true" />
+                <element signature="e#478#479#0" expanded="true" />
+                <element signature="e#540#541#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/business/ApplicationBusiness.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#204#205#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/ApplicationDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,7 +225,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>id=&quot;top-bar-wrapper&quot;</find>
       <find>profile</find>
       <find>pro</find>
       <find>Log o</find>
@@ -166,6 +253,7 @@
       <find>cep</find>
       <find>guestPreferences</find>
       <find>mascu</find>
+      <find>@state</find>
       <find>nasci</find>
     </findStrings>
     <replaceStrings>
@@ -180,13 +268,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/sass/theme/orange/theme.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/sass/theme/red/theme.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/404.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/access-denied.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/data.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/template/loading.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/footer.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/menu.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/promotion-page.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/topbar.xhtml" />
@@ -231,6 +312,13 @@
         <option value="$PROJECT_DIR$/src/main/webapp/sample.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-estudante.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/service/ApplicationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/business/ApplicationBusiness.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/ApplicationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/ApplicationDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Constante.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/footer.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/ApplicationMB.java" />
       </list>
     </option>
   </component>
@@ -350,6 +438,38 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -406,10 +526,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="empty&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/empty-page.xhtml&#10;Test&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;Pessoa&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Pessoa.java&#10;Unit&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;pom&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;Usuario&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Usuario.java&#10;Matricula&#9;PSI&#9;JAVA://model.Matricula&#10;Un&#9;PSI&#9;JAVA://utils.UnitTest&#10;cadas&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/cadastros/cadastro-estudante.xhtml&#10;persistence.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/META-INF/persistence.xml&#10;persi&#9;ACTION&#9;ActivatePersistenceToolWindow&#10;web.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;web.xml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;pom.xm&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;form&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/forms.xhtml&#10;menu&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/layoutmenu.xhtml&#10;CharacterEncodingFilter&#9;PSI&#9;JAVA://org.omnifaces.filter.CharacterEncodingFilter&#10;we&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;data.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/data.xhtml&#10;sa&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/sample.xhtml&#10;Unt&#9;PSI&#9;JAVA://utils.UnitTest&#10;dashboard.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;theme&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/resources/sass/theme&#10;FaceletViewHandlingStrategy&#9;PSI&#9;JAVA://com.sun.faces.application.view.FaceletViewHandlingStrategy&#10;dashboard.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;web&#9;ACTION&#9;ActivateWebToolWindow&#10;noticia&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Noticia.java&#10;matricula&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/controller/MatriculaMB.java" />
+    <property name="SearchEverywhereHistoryKey" value="footer.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/footer.xhtml&#10;empty&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/empty-page.xhtml&#10;Test&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;Pessoa&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Pessoa.java&#10;Unit&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;pom&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;Usuario&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Usuario.java&#10;Matricula&#9;PSI&#9;JAVA://model.Matricula&#10;Un&#9;PSI&#9;JAVA://utils.UnitTest&#10;cadas&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/cadastros/cadastro-estudante.xhtml&#10;persistence.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/META-INF/persistence.xml&#10;persi&#9;ACTION&#9;ActivatePersistenceToolWindow&#10;web.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;web.xml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;pom.xm&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;form&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/forms.xhtml&#10;menu&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/layoutmenu.xhtml&#10;CharacterEncodingFilter&#9;PSI&#9;JAVA://org.omnifaces.filter.CharacterEncodingFilter&#10;we&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;data.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/data.xhtml&#10;sa&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/sample.xhtml&#10;Unt&#9;PSI&#9;JAVA://utils.UnitTest&#10;dashboard.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;theme&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/resources/sass/theme&#10;FaceletViewHandlingStrategy&#9;PSI&#9;JAVA://com.sun.faces.application.view.FaceletViewHandlingStrategy&#10;dashboard.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;web&#9;ACTION&#9;ActivateWebToolWindow&#10;noticia&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Noticia.java&#10;matricula&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/controller/MatriculaMB.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538538843302" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538540697975" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/service" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -611,7 +731,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93408000" />
+    <option name="totallyTimeSpent" value="94594000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -626,7 +746,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49532712" visible="true" weight="0.12526652" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49532712" visible="true" weight="0.12526652" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" sideWeight="0.5046729" side_tool="true" weight="0.18656716" />
       <window_info id="Designer" order="3" />
@@ -638,7 +758,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3531961" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.40086675" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.10400867" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -735,67 +855,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/exception/EstudanteBusinessException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-          <folding>
-            <element signature="e#516#517#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#610#611#0" expanded="true" />
-            <element signature="e#640#641#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#796#797#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
-            <element signature="e#914#915#0" expanded="true" />
-            <element signature="e#952#953#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/sass/theme/_theme.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="3161" column="6" selection-start-line="3161" selection-start-column="6" selection-end-line="3161" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/primefaces/primefaces/6.1/primefaces-6.1.jar!/META-INF/primefaces-p.taglib.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="16070" column="8" selection-start-line="16070" selection-start-column="8" selection-end-line="16070" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/forms.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="38" column="75" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/EstudanteDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/TipoInstituicao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/EmailUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/listener/LoginFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -939,34 +998,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="e#724#740#0" expanded="true" />
-            <element signature="e#1853#1854#0" expanded="true" />
-            <element signature="e#1921#1922#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FacesConverterLocalDateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FacesConverterLocalDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FacesConverterLocalDateTime.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FacesConverterLocalDate.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1003,9 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,9 +1046,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1159,16 +1189,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/sample.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1190,10 +1210,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ApplicationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ApplicationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/ApplicationBusiness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#204#205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ApplicationDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Constantes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-estudante.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2585">
-          <caret line="159" column="16" lean-forward="true" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
+        <state relative-caret-position="425">
+          <caret line="34" column="65" lean-forward="true" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/footer.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ApplicationMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2217#2218#0" expanded="true" />
+            <element signature="e#2239#2240#0" expanded="true" />
+            <element signature="e#2345#2346#0" expanded="true" />
+            <element signature="e#2365#2366#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
