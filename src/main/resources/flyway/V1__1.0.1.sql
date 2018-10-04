@@ -343,6 +343,7 @@ ALTER TABLE cadastro.anexo OWNER TO postgres;
 CREATE TABLE financeiro.boleto(
 	id_boleto serial NOT NULL,
 	id_parcela integer,
+	id_conta integer,
 	vencimento date NOT NULL,
 	pagamento timestamp,
 	CONSTRAINT id_boleto_pk PRIMARY KEY (id_boleto)
@@ -461,6 +462,39 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE cadastro.matriculas_anexos ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula_matricula)
 REFERENCES matricula.matricula (id_matricula) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: cadastro.conta | type: TABLE --
+-- DROP TABLE IF EXISTS cadastro.conta CASCADE;
+CREATE TABLE cadastro.conta(
+	id_conta serial NOT NULL,
+	conta integer NOT NULL,
+	digito integer NOT NULL,
+	banco character varying NOT NULL,
+	titular character varying NOT NULL,
+	aceite boolean,
+	convenio integer NOT NULL,
+	cedente integer NOT NULL,
+	local_pagamento character varying NOT NULL,
+	especie_documento character varying NOT NULL,
+	especie character varying NOT NULL,
+	carteira integer NOT NULL,
+	modalidade integer NOT NULL,
+	instrucoes character varying,
+	tipo_dias_protesto character varying NOT NULL,
+	dias_protesto integer NOT NULL,
+	CONSTRAINT id_conta_pk PRIMARY KEY (id_conta)
+
+);
+-- ddl-end --
+ALTER TABLE cadastro.conta OWNER TO postgres;
+-- ddl-end --
+
+-- object: conta_fk | type: CONSTRAINT --
+-- ALTER TABLE financeiro.boleto DROP CONSTRAINT IF EXISTS conta_fk CASCADE;
+ALTER TABLE financeiro.boleto ADD CONSTRAINT conta_fk FOREIGN KEY (id_conta)
+REFERENCES cadastro.conta (id_conta) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 
