@@ -30,6 +30,8 @@ public class Estudante implements Serializable {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
+    private Boolean inativo;
+
     public Estudante() {
         this.pessoa = new Pessoa();
         this.instituicao = new Instituicao();
@@ -66,6 +68,14 @@ public class Estudante implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Boolean getInativo() {
+        return inativo;
+    }
+
+    public void setInativo(Boolean inativo) {
+        this.inativo = inativo;
     }
 
     @Override

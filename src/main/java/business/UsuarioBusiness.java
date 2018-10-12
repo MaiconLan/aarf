@@ -23,10 +23,12 @@ public class UsuarioBusiness {
 
     public Usuario salvar(Usuario usuario) throws LoginException {
         validarLogin(usuario);
-        if (usuario.getIdUsuario() == null) {
-            usuarioDAO.save(usuario);
-        } else {
-            usuarioDAO.update(usuario);
+
+        if (usuario.isAlterarLogin()) {
+            if (usuario.getIdUsuario() == null)
+                usuarioDAO.save(usuario);
+             else
+                usuarioDAO.update(usuario);
         }
 
         return usuario;

@@ -7,14 +7,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(schema = "cadastro", name = "assossiado")
+@Table(schema = "cadastro", name = "associado")
 public class Associado implements Serializable {
 
     private static final long serialVersionUID = 5462575499370690865L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_estudante")
+    @Column(name = "id_associado")
     private Long idAssociado;
 
     private String cargo;

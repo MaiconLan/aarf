@@ -31,6 +31,9 @@ public class Usuario implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario", optional = true)
     private Associado associado;
 
+    @Transient
+    private boolean alterarLogin;
+
     public Long getIdUsuario() {
         return idUsuario;
     }
@@ -69,6 +72,14 @@ public class Usuario implements Serializable {
 
     public void setAssociado(Associado associado) {
         this.associado = associado;
+    }
+
+    public boolean isAlterarLogin() {
+        return alterarLogin;
+    }
+
+    public void setAlterarLogin(boolean alterarLogin) {
+        this.alterarLogin = alterarLogin;
     }
 
     @Override
