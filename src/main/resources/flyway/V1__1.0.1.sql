@@ -114,6 +114,7 @@ CREATE TABLE cadastro.estudante(
 	id_pessoa integer,
 	id_instituicao integer,
 	id_usuario integer,
+	inativo boolean,
 	CONSTRAINT id_estudante PRIMARY KEY (id_estudante)
 
 );

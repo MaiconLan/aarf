@@ -11,6 +11,8 @@ public class EstudanteDTO implements Serializable {
     private String telefone;
     private String celular;
     private String bairro;
+    private String cpf;
+    private String rg;
 
     public Long getIdEstudante() {
         return idEstudante;
@@ -50,5 +52,21 @@ public class EstudanteDTO implements Serializable {
 
     public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 }
