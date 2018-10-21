@@ -1,5 +1,7 @@
 package controller;
 
+import org.omnifaces.util.Faces;
+import org.omnifaces.util.Messages;
 import service.ApplicationServiceImpl;
 import utils.Constantes;
 
@@ -34,12 +36,11 @@ public class ApplicationMB implements Serializable {
     }
 
     public void ausente() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Você ficou muito tempo ausente. Se esta mensagem permanecer atualize a página!", null));
+        Messages.addWarn(null, "Você ficou muito tempo ausente. Se esta mensagem permanecer atualize a página!");
     }
 
     public void online() {
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo de volta!", null));
+        Messages.addWarn(null, "Bem vindo de volta!");
     }
 
     public void refresh() {

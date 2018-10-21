@@ -25,7 +25,7 @@ public class EstudanteServiceImpl implements EstudanteService, Serializable {
 
     @Override
     public Estudante obterEstudante(Long idEstudante) {
-        return null;
+        return estudanteBusiness.obterEstudante(idEstudante);
     }
 
     @Override

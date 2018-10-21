@@ -3,19 +3,16 @@ package controller;
 import dto.EstudanteDTO;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
-import model.Endereco;
-import model.Estudante;
-import model.Instituicao;
-import model.Usuario;
+import model.*;
+import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
-import org.primefaces.context.PrimeFacesContext;
 import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
 import service.CepService;
 import service.EstudanteService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -45,10 +42,35 @@ public class EstudanteMB implements Serializable {
     @Inject
     private CepService cepService;
 
+    @Inject
+    private Identity identity;
+
+    @Inject @Param
+    private Long idEstudante;
+
+    private boolean isAcessarPerfil;
+
     @PostConstruct
     public void init(){
-        novoEstudante();
+        carregarEstudante();
+        isAcessarPerfil = Boolean.valueOf(Faces.getExternalContext().getRequestParameterMap().get("isAcessarPerfil"));
         instituicoes = new ArrayList<>();
+    }
+
+    private void carregarEstudante(){
+        Estudante estudante = identity.getUsuario().getEstudante();
+
+        if(idEstudante != null) {
+            if(identity.isUsuarioEstudante() && estudante.getIdEstudante().equals(idEstudante) || identity.isUsuarioAssociado())
+                selecionarEstudante(estudanteService.obterEstudante(idEstudante));
+
+        } else {
+            novoEstudante();
+        }
+    }
+
+    public boolean renderizarCamposAcessarPerfil(){
+        return !isAcessarPerfil;
     }
 
     public void modalConsultaEstudante() {
@@ -56,7 +78,6 @@ public class EstudanteMB implements Serializable {
     }
 
     public void selecionarEstudante(Estudante estudante) {
-        novoEstudante();
         setEstudante(estudante);
         if (estudante.getUsuario() == null) {
             estudante.setUsuario(new Usuario());
@@ -77,7 +98,9 @@ public class EstudanteMB implements Serializable {
             estudante.getUsuario().setAlterarLogin(alterarLogin);
             estudanteService.salvarEstudante(estudante);
             Messages.addInfo(null, "Estudante salvo com sucesso");
-            novoEstudante();
+
+            if(!isAcessarPerfil)
+                novoEstudante();
         } catch (EstudanteBusinessException | LoginException e) {
             Messages.addError(null, e.getMessage());
         }
@@ -160,4 +183,5 @@ public class EstudanteMB implements Serializable {
     public void setAlterarLogin(boolean alterarLogin) {
         this.alterarLogin = alterarLogin;
     }
+
 }

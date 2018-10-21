@@ -499,3 +499,11 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 
+INSERT INTO cadastro.usuario (login, senha) VALUES
+  ('admin', 'E1B49B68D634F4FD9A25FC880E24B4EDDCE34000E74D2A3135FDFE24770C2799');
+
+INSERT INTO cadastro.pessoa (nome, nascimento, cpf, rg, email, genero, telefone, celular)
+  VALUES ('Administrador', current_date, '00000000000', 0000000, 'developer.icarus@gmail.com', 'M', '0000000000', '00000000000');
+
+INSERT INTO cadastro.associado (cargo, id_pessoa, id_usuario)
+  VALUES ('Administrador', currval('cadastro.pessoa_id_pessoa_seq'), currval('cadastro.usuario_id_usuario_seq'));

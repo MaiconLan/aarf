@@ -70,17 +70,14 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
         return null;
     }
 
-    public Usuario dadosUsuario(Usuario usuario) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        /*
+    public Usuario dadosUsuario(Usuario usuario) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String hql = "FROM Usuario u WHERE login = :login AND senha = :senha ";
 
         Query query = em.createQuery(hql);
         query.setParameter("login", usuario.getLogin());
-        query.setParameter("senha", criptofragar(usuario.getSenha()));
+        query.setParameter("senha", Criptografia.criptofragar(usuario.getSenha()));
 
         return (Usuario) query.getSingleResult();
-        */
-        return null;
     }
 
     @SuppressWarnings("unchecked")

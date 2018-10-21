@@ -16,15 +16,20 @@
                     <h:form id="formEstudante">
                         <div class="ui-g">
                             <div class="ui-g-4 ui-md-3 ui-lg-1">
-                                <p:commandButton icon="fa fa-search"
+                                <p:commandButton id="pesquisar"
+                                                 icon="fa fa-search"
+                                                 update="@none"
+                                                 process="@this"
                                                  title="Pesquisa"
                                                  action="#{estudanteMB.modalConsultaEstudante()}"
-                                                 process="@this"
-                                                 update="@none" />
+                                                 rendered="#{estudanteMB.renderizarCamposAcessarPerfil()}"
+                                />
                             </div>
                             <div class="ui-g-8 ui-md-3 ui-lg-3">
                                 <p:inputText id="idEstudante"
+                                             disabled="true"
                                              placeholder="Código"
+                                             rendered="#{estudanteMB.renderizarCamposAcessarPerfil()}"
                                              value="#{estudanteMB.estudante.idEstudante}" />
                             </div>
                         </div>
@@ -42,10 +47,10 @@
                                             value="#{estudanteMB.estudante.pessoa.nascimento}"
                                             mask="true"
                                             required="true"
+                                            showOn="button"
                                             pattern="dd/MM/yyyy"
                                             placeholder="Nascimento"
-                                            converter="localDateConverter"
-                                            showOn="button"/>
+                                            converter="localDateConverter" />
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-lg-2">

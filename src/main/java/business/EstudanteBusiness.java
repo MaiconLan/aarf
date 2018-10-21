@@ -102,4 +102,8 @@ public class EstudanteBusiness {
         removerCaracteres(estudante.getPessoa());
         estudanteDAO.update(estudante);
     }
+
+    public Estudante obterEstudante(Long idEstudante) {
+        return estudanteDAO.findById(idEstudante);
+    }
 }

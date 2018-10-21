@@ -14,6 +14,6 @@ public class Constantes {
 	public static final String MASCULINO = "M";
 	public static final String FEMININO = "F";
 	
-	public static final String DIREITOS = "Associação Acadêmica de Rio Fortuna© 2018 Copyright. Todos os direitos reservados.";
+	public static final String DIREITOS = "Associação Acadêmica de Rio Fortuna© 2018 Copyright.";
 	
 }
