@@ -1,8 +1,7 @@
 package business;
 
-import dao.EdiatlDAO;
+import dao.EditalDAO;
 import model.Edital;
-import service.EditalService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,18 +10,17 @@ import javax.inject.Inject;
 public class EditalBusiness {
 
     @Inject
-    private EdiatlDAO ediatlDAO;
+    private EditalDAO editalDAO;
 
-
-    private EditalService editalService;
-
-    public void cadastrarEdital(Edital edital) {
-
-        editalService.cadastrarEdital(edital);
-
+    public void salvarEdital(Edital edital) {
         if(edital.getIdEdital() == null)
-            ediatlDAO.save(edital);
+            editalDAO.save(edital);
         else
-            ediatlDAO.update(edital);
+            editalDAO.update(edital);
+    }
+
+    public void finalizarPeriodo(Edital edital) {
+        edital.setFinalizado(Boolean.TRUE);
+        salvarEdital(edital);
     }
 }

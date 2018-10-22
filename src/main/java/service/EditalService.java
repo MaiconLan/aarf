@@ -5,6 +5,7 @@ import model.Edital;
 
 public interface EditalService extends Serializable {
 
-    void cadastrarEdital(Edital edital);
+    void salvarEdital(Edital edital);
 
+    void finalizarPeriodo(Edital edital);
 }

@@ -16,7 +16,15 @@
                     <h:form id="formEdital">
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:outputLabel value="Finalizado" rendered="#{editalMB.isFinalizado()}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <p:inputText id="titulo"
+                                             required="true"
+                                             requiredMessage="Campo obrigatório"
                                              placeholder="Título"
                                              value="#{editalMB.edital.titulo}" />
                             </div>
@@ -25,20 +33,28 @@
                                 <p:calendar id="inicio"
                                             value="#{editalMB.edital.inicio}"
                                             mask="true"
+                                            showOn="button"
+                                            required="true"
                                             pattern="dd/MM/yyyy"
                                             placeholder="Inicio"
-                                            converter="localDateConverter"
-                                            showOn="button"/>
+                                            requiredMessage="Campo obrigatório"
+                                            converter="localDateConverter">
+                                    <p:ajax event="dateSelect" update="@form"/>
+                                    <p:ajax event="change" update="@form"/>
+                                </p:calendar>
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:calendar id="termino"
                                             value="#{editalMB.edital.termino}"
+                                            mindate="#{editalMB.edital.inicio}"
                                             mask="true"
+                                            showOn="button"
+                                            required="true"
                                             pattern="dd/MM/yyyy"
                                             placeholder="Termino"
-                                            converter="localDateConverter"
-                                            showOn="button"/>
+                                            requiredMessage="Campo obrigatório"
+                                            converter="localDateConverter" />
                             </div>
                         </div>
                         <div class="ui-g">
@@ -48,7 +64,18 @@
                                                  value="Salvar"
                                                  process="@form"
                                                  update="@form"
-                                                 action="#{editalMB.cadastrarEdital()}"/>
+                                                 disabled="#{editalMB.isFinalizado()}"
+                                                 action="#{editalMB.salvarEdital()}"/>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="finalizarEdital"
+                                                 icon="fa fa-lock"
+                                                 value="Finalizar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 styleClass="green-button"
+                                                 rendered="#{editalMB.renderizarBotaoFinalizar()}"
+                                                 action="#{editalMB.finalizarPeriodo()}"/>
                             </div>
                         </div>
                     </h:form>

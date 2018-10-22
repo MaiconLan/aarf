@@ -3,5 +3,5 @@ package dao;
 import generics.GenericDAO;
 import model.Edital;
 
-public class EdiatlDAO extends GenericDAO<Edital> {
+public class EditalDAO extends GenericDAO<Edital> {
 }

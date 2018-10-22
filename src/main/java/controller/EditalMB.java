@@ -32,14 +32,26 @@ public class EditalMB implements Serializable {
         edital = new Edital();
     }
 
-    public void cadastrarEdital(){
+    public void salvarEdital(){
         try {
-            editalService.cadastrarEdital(edital);
+            editalService.salvarEdital(edital);
             Messages.addInfo(null, "Edital cadastrado com sucesso");
 
         } catch (Exception e) {
             Messages.addError(null, e.getMessage());
         }
+    }
+
+    public void finalizarPeriodo(){
+        editalService.finalizarPeriodo(edital);
+    }
+
+    public boolean isFinalizado(){
+        return edital != null && edital.getFinalizado() != null && edital.getFinalizado();
+    }
+
+    public boolean renderizarBotaoFinalizar(){
+        return edital.getIdEdital() != null && (edital.getFinalizado() == null || !edital.getFinalizado());
     }
 
     public Edital getEdital() {
