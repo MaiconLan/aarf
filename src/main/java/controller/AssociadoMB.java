@@ -4,10 +4,14 @@ import exception.AssociadoBusinessException;
 import exception.LoginException;
 import model.Associado;
 import model.Endereco;
+import model.Instituicao;
+import model.Usuario;
 
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 
+import dto.AssociadoDTO;
+import enumered.CargoEnum;
 import service.AssociadoService;
 import service.CepService;
 
@@ -16,6 +20,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 @ViewScoped
 @Named("associadoMB")
@@ -25,27 +30,69 @@ public class AssociadoMB implements Serializable {
 
     private Associado associado;
 
-    @Inject
-    private AssociadoService service;
-    
+    private List<Associado> listaAssociado;
+
+    private AssociadoDTO associadoDTO = new AssociadoDTO();
+
+    private boolean alterarLogin;
+
     @Inject
     private CepService cepService;
+    
+    @Inject
+    private AssociadoService service;
 
     @PostConstruct
     public void init(){
-    	associado = new Associado();
+        novoAssociado();
+    }
+
+    public void modalConsultaAssociado() {
+        RequestContext.getCurrentInstance().execute("PF('modalConsultaAssociado').show();");
+    }
+
+    public void selecionarAssociado(Associado associado) {
+        novoAssociado();
+        setAssociado(associado);
+        if (associado.getUsuario() == null) {
+        	associado.setUsuario(new Usuario());
+        }
+        if(associado.getPessoa().getEndereco() == null){
+        	associado.getPessoa().setEndereco(new Endereco());
+        }
+
+        setAlterarLogin(!service.isLoginPreenchido(associado.getUsuario()));
+
+        RequestContext.getCurrentInstance().execute("PF('modalConsultaAssociado').hide();");
+        RequestContext.getCurrentInstance().update("form");
+        RequestContext.getCurrentInstance().update("panelUsuario");
     }
 
     public void salvarAssociado(){
         try {
-        	service.salvarAssociado(associado);
-            Messages.addInfo(null, "Estudante salvo com sucesso");
-
+            associado.getUsuario().setAlterarLogin(alterarLogin);
+            service.salvarAssociado(associado);
+            Messages.addInfo(null, "Associado salvo com sucesso");
+            novoAssociado();
         } catch (AssociadoBusinessException | LoginException e) {
-            Messages.addError(null, e.getMessage());
+            Messages.addError(null, "Erro no Cadastro");
         }
     }
-    
+
+    public void removerAssociado(){
+        service.removerAssociado(associado);
+        Messages.addInfo(null, "Assocaido removido com sucesso");
+        novoAssociado();
+    }
+
+    public void consultarAssociado(){
+        listaAssociado = service.consultarAssociados(associadoDTO);
+    }
+
+    public boolean isDesabilitarAlteracaoLogin(){
+        return (associado.getUsuario().getIdUsuario() != null && !alterarLogin);
+    }
+
     public void consultarCep(){
         String cep = associado.getPessoa().getEndereco().getCep();
         Long idEndereco = associado.getPessoa().getEndereco().getIdEndereco();
@@ -57,19 +104,53 @@ public class AssociadoMB implements Serializable {
         }
     }
     
-    public void modalConsultaAssociado() {
-        RequestContext.getCurrentInstance().execute("PF('modalConsultaAssociado').show();");
+    public  CargoEnum[] getCargos(){
+		return CargoEnum.values();
+		
+	}
+
+    public void toggleAlterarLogin(){
+        setAlterarLogin(!alterarLogin);
     }
 
-    public void excluirAssociado(){
-        Messages.addWarn(null, "Estudante excluido com sucesso");
+    public boolean renderizaAlterarLogin(){
+        return associado.getIdAssociado() != null;
     }
 
-	public Associado getAssociado() {
+    private void novoAssociado(){
+        associado = new Associado();
+        setAlterarLogin(true);
+    }
+
+    public Associado getAssociado() {
 		return associado;
 	}
 
 	public void setAssociado(Associado associado) {
 		this.associado = associado;
 	}
+
+	public List<Associado> getListaAssociado() {
+		return listaAssociado;
+	}
+
+	public void setListaAssociado(List<Associado> listaAssociado) {
+		this.listaAssociado = listaAssociado;
+	}
+
+	public boolean isAlterarLogin() {
+        return alterarLogin;
+    }
+
+	public AssociadoDTO getAssociadoDTO() {
+		return associadoDTO;
+	}
+
+	public void setAssociadoDTO(AssociadoDTO associadoDTO) {
+		this.associadoDTO = associadoDTO;
+	}
+
+	public void setAlterarLogin(boolean alterarLogin) {
+        this.alterarLogin = alterarLogin;
+    }
 }
