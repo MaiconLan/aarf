@@ -12,7 +12,7 @@
 -- CREATE DATABASE aarf
 -- ;
 -- -- ddl-end --
---
+-- 
 
 -- object: cadastro | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS cadastro CASCADE;
@@ -114,6 +114,7 @@ CREATE TABLE cadastro.estudante(
 	id_pessoa integer,
 	id_instituicao integer,
 	id_usuario integer,
+	inativo boolean,
 	CONSTRAINT id_estudante PRIMARY KEY (id_estudante)
 
 );
@@ -141,8 +142,9 @@ CREATE TABLE cadastro.instituicao(
 	id_instituicao serial NOT NULL,
 	nome character varying NOT NULL,
 	tipo character varying NOT NULL,
+	cidade character varying,
 	CONSTRAINT id_instituicao PRIMARY KEY (id_instituicao),
-	CONSTRAINT ck_tipo CHECK (tipo IN ('Educacao', 'Financeira'))
+	CONSTRAINT ck_tipo CHECK (tipo IN ('Educação', 'Financeira'))
 
 );
 -- ddl-end --
@@ -342,6 +344,7 @@ ALTER TABLE cadastro.anexo OWNER TO postgres;
 CREATE TABLE financeiro.boleto(
 	id_boleto serial NOT NULL,
 	id_parcela integer,
+	id_conta integer,
 	vencimento date NOT NULL,
 	pagamento timestamp,
 	CONSTRAINT id_boleto_pk PRIMARY KEY (id_boleto)
@@ -462,4 +465,45 @@ REFERENCES matricula.matricula (id_matricula) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
+-- object: cadastro.conta | type: TABLE --
+-- DROP TABLE IF EXISTS cadastro.conta CASCADE;
+CREATE TABLE cadastro.conta(
+	id_conta serial NOT NULL,
+	conta integer NOT NULL,
+	digito integer NOT NULL,
+	banco character varying NOT NULL,
+	titular character varying NOT NULL,
+	aceite boolean,
+	convenio integer NOT NULL,
+	cedente integer NOT NULL,
+	local_pagamento character varying NOT NULL,
+	especie_documento character varying NOT NULL,
+	especie character varying NOT NULL,
+	carteira integer NOT NULL,
+	modalidade integer NOT NULL,
+	instrucoes character varying,
+	tipo_dias_protesto character varying NOT NULL,
+	dias_protesto integer NOT NULL,
+	CONSTRAINT id_conta_pk PRIMARY KEY (id_conta)
 
+);
+-- ddl-end --
+ALTER TABLE cadastro.conta OWNER TO postgres;
+-- ddl-end --
+
+-- object: conta_fk | type: CONSTRAINT --
+-- ALTER TABLE financeiro.boleto DROP CONSTRAINT IF EXISTS conta_fk CASCADE;
+ALTER TABLE financeiro.boleto ADD CONSTRAINT conta_fk FOREIGN KEY (id_conta)
+REFERENCES cadastro.conta (id_conta) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+
+INSERT INTO cadastro.usuario (login, senha) VALUES
+  ('admin', 'E1B49B68D634F4FD9A25FC880E24B4EDDCE34000E74D2A3135FDFE24770C2799');
+
+INSERT INTO cadastro.pessoa (nome, nascimento, cpf, rg, email, genero, telefone, celular)
+  VALUES ('Administrador', current_date, '00000000000', 0000000, 'developer.icarus@gmail.com', 'M', '0000000000', '00000000000');
+
+INSERT INTO cadastro.associado (cargo, id_pessoa, id_usuario)
+  VALUES ('Administrador', currval('cadastro.pessoa_id_pessoa_seq'), currval('cadastro.usuario_id_usuario_seq'));

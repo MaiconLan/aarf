@@ -10,17 +10,17 @@
     <h:form id="menuform">
 
         <pi:menu widgetVar="IcarusMenu">
-            <p:menuitem id="home" value="Página Inicial" icon="fa fa-home" outcome="/dashboard"/>
+            <p:menuitem id="home" value="Página Inicial" icon="fa fa-home" outcome="/security/dashboard"/>
             <p:submenu id="cadastros" label="Cadastros" icon="fa fa-plus-circle">
-                <p:menuitem id="estudante" value="Estudante" icon="fa fa-users" outcome="/security/cadastros/cadastro-estudante" ajax="false" />
-                <p:menuitem id="associado" value="Associado" icon="fa fa-user-md" actionListener="#{guestPreferences.setTheme('green')}" ajax="false" />
-                <p:menuitem id="cadastroEdital" value="Edital" icon="fa fa-newspaper-o" actionListener="#{guestPreferences.setTheme('blue')}" ajax="false" />
-                <p:menuitem id="cadastroInstituicao" value="Instituição" icon="fa fa-newspaper-o" outcome="/security/cadastros/cadastro-instituicao" ajax="false" />
+                <p:menuitem id="estudante" value="Estudante" icon="fa fa-users" outcome="/security/cadastros/estudante/cadastro-estudante" ajax="false" />
+                <p:menuitem id="associado" value="Associado" icon="fa fa-user-md" ajax="false" />
+                <p:menuitem id="cadastroEdital" value="Edital" icon="fa fa-newspaper-o" outcome="/security/cadastros/edital/cadastro-edital" ajax="false" />
+                <p:menuitem id="cadastroInstituicao" value="Instituição" icon="fa fa-newspaper-o" outcome="/security/cadastros/instituicao/cadastro-instituicao" ajax="false" />
             </p:submenu>
             <p:menuitem id="noticias" value="Noticias" icon="fa fa-newspaper-o" outcome="/promotion-page"/>
             <p:submenu id="im_components" label="Acompanhamento" icon="fa fa-sitemap">
-                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" actionListener="#{guestPreferences.setTheme('blue')}" ajax="false" />
-                <p:menuitem id="acompanhamentoEdital" value="Edital" icon="fa fa-newspaper-o" actionListener="#{guestPreferences.setTheme('blue')}" ajax="false" />
+                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" ajax="false" />
+                <p:menuitem id="acompanhamentoEdital" value="Edital" icon="fa fa-newspaper-o" ajax="false" />
             </p:submenu>
             <p:submenu id="financeiro" label="Financeiro" icon="fa fa-money">
                 <p:menuitem id="contaBancaria" value="Conta Bancária" icon="fa fa-bank" outcome="/empty-page" />
@@ -32,8 +32,6 @@
                 <p:menuitem id="relatorioMatricula" value="Matrícula" icon="fa fa-bank" outcome="/empty-page" />
                 <p:menuitem id="relatorioEstudante" value="Estudante" icon="fa fa-bank" outcome="/empty-page" />
             </p:submenu>
-
-            <p:menuitem id="sair" value="Sair" icon="fa fa-sign-out" outcome="/docs"/>
         </pi:menu>
         
     </h:form>

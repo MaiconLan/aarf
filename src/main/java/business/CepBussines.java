@@ -2,6 +2,7 @@ package business;
 
 import dto.EnderecoDTO;
 import model.Endereco;
+import utils.StringUtils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -19,9 +20,10 @@ public class CepBussines {
 
     public Endereco getEnderecoCompleto(String cep) {
         EnderecoDTO enderecoDTO = null;
+        String cepFormatado = StringUtils.removerCaracteres(cep);
 
         try {
-            URL url = new URL(URL_API_POSTMON + cep + FORMATO_XML);
+            URL url = new URL(URL_API_POSTMON + cepFormatado + FORMATO_XML);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/xml");
@@ -41,43 +43,21 @@ public class CepBussines {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-        return null;
-        //return converterEndereco(enderecoDTO);
+        return converterEndereco(enderecoDTO);
     }
 
-    public void teste(String cep){
-
-    }
-/*
     public Endereco converterEndereco(EnderecoDTO enderecoDTO){
         Endereco endereco = new Endereco();
         try {
             endereco.setCep(enderecoDTO.getCep());
             endereco.setBairro(enderecoDTO.getBairro());
             endereco.setLogradouro(enderecoDTO.getLogradouro());
-            endereco.setCidade(enderecoDTO.getCidade());
-            endereco.setEstado(enderecoDTO.getEstado());
+
         } catch (NullPointerException e) {
             return new Endereco();
         }
 
         return endereco;
     }
-
-    public EnderecoDTO converterEndereco(Endereco endereco){
-        EnderecoDTO enderecoDTO = new EnderecoDTO();
-        try {
-            enderecoDTO.setCep(endereco.getCep());
-            enderecoDTO.setBairro(endereco.getBairro());
-            enderecoDTO.setLogradouro(endereco.getLogradouro());
-            enderecoDTO.setCidade(endereco.getCidade());
-            enderecoDTO.setEstado(endereco.getEstado());
-        } catch (NullPointerException e) {
-            return new EnderecoDTO();
-        }
-
-        return enderecoDTO;
-    }
-    */
 
 }

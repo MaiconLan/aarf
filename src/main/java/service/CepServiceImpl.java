@@ -17,17 +17,4 @@ public class CepServiceImpl implements CepService {
         return cepBussines.getEnderecoCompleto(cep);
     }
 
-    @Override
-    public Endereco converterEndereco(EnderecoDTO enderecoDTO) {
-        return null;
-        // return cepBussines.converterEndereco(enderecoDTO);
-    }
-
-    @Override
-    public EnderecoDTO converterEndereco(Endereco endereco) {
-        return null;
-        // return cepBussines.converterEndereco(endereco);
-    }
-
-
 }

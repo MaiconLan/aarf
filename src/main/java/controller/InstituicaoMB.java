@@ -2,6 +2,7 @@ package controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -18,6 +19,14 @@ public class InstituicaoMB implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private Instituicao instituicao;
+	
+	public List<String> getTipos(){
+		List<String> tipos = new ArrayList();
+		tipos.add("Financeira");
+		tipos.add("Educação");
+		return tipos;
+	}
+	
 	@Inject
 	private InstituicaoService instituicaoService;
 	

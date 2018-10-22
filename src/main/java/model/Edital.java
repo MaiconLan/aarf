@@ -1,13 +1,20 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "matricula", name = "edital")
 public class Edital implements Serializable {
 
     private static final long serialVersionUID = -5197187050289800713L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_edital")
     private Long idEdital;
 
     private String titulo;
@@ -17,6 +24,17 @@ public class Edital implements Serializable {
     private LocalDate termino;
 
     private Boolean finalizado;
+
+    @OneToMany(mappedBy = "edital", targetEntity = Matricula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Matricula> matriculas;
+
+    public List<Matricula> getMatriculas() {
+        return matriculas;
+    }
+
+    public void setMatriculas(List<Matricula> matriculas) {
+        this.matriculas = matriculas;
+    }
 
     public Long getIdEdital() {
         return idEdital;
