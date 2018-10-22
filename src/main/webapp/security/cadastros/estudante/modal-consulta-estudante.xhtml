@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalConsultaEstudante"
+              header="Consulta de Estudantes"
+              widgetVar="modalConsultaEstudante"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closeOnEscape="true">
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                <p:inputText id="nome"
+                                             placeholder="Nome"
+                                             value="#{estudanteMB.estudanteDTO.nome}"
+                                />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="cpf"
+                                             mask="999.999.999-99"
+                                             placeholder="CPF"
+                                             value="#{estudanteMB.estudanteDTO.cpf}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="rg"
+                                             mask="9.999.999"
+                                             placeholder="RG"
+                                             value="#{estudanteMB.estudanteDTO.rg}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="telefone"
+                                             mask="(99) 9999-9999"
+                                             placeholder="Telefone (Fixo)"
+                                             value="#{estudanteMB.estudanteDTO.telefone}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="celular"
+                                             mask="(99) 9 9999-9999"
+                                             placeholder="Celular"
+                                             value="#{estudanteMB.estudanteDTO.celular}" />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="salvarEstudante"
+                                                 icon="fa fa-search"
+                                                 value="Buscar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{estudanteMB.consultarEstudante()}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <p:dataTable var="estudante" value="#{estudanteMB.listaEstudantes}" rows="10" paginator="true" reflow="true">
+                                    <f:facet name="header">Estudantes</f:facet>
+
+                                    <p:column headerText="Ações" width="6%">
+                                        <p:commandButton icon="ui-icon-check" id="selecionarEstudante"
+                                                         process="@this" update="@none"
+                                                         action="#{estudanteMB.selecionarEstudante(estudante)}"
+                                                         title="Selecionar">
+                                        </p:commandButton>
+                                    </p:column>
+
+                                    <p:column headerText="Código" width="6%">
+                                        <h:outputText value="#{estudante.idEstudante}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nome" width="10%">
+                                        <h:outputText value="#{estudante.pessoa.nome}" />
+                                    </p:column>
+
+                                    <p:column headerText="Logradouro" width="10%">
+                                        <h:outputText value="#{estudante.pessoa.endereco.logradouro}" />
+                                    </p:column>
+
+                                    <p:column headerText="Bairro" width="10%">
+                                        <h:outputText value="#{estudante.pessoa.endereco.bairro}" />
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        Foram encontrados #{estudanteMB.listaEstudantes.size()} registro(s).
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>

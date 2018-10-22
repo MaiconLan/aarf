@@ -10,9 +10,9 @@
     <h:form id="menuform">
 
         <pi:menu widgetVar="IcarusMenu">
-            <p:menuitem id="home" value="Página Inicial" icon="fa fa-home" outcome="/dashboard"/>
+            <p:menuitem id="home" value="Página Inicial" icon="fa fa-home" outcome="/security/dashboard"/>
             <p:submenu id="cadastros" label="Cadastros" icon="fa fa-plus-circle">
-                <p:menuitem id="estudante" value="Estudante" icon="fa fa-users" outcome="/security/cadastros/cadastro-estudante" ajax="false" />
+                <p:menuitem id="estudante" value="Estudante" icon="fa fa-users" outcome="/security/cadastros/estudante/cadastro-estudante" ajax="false" />
                 <p:menuitem id="associado" value="Associado" icon="fa fa-user-md" ajax="false" />
                 <p:menuitem id="cadastroEdital" value="Edital" icon="fa fa-newspaper-o" ajax="false" />
             </p:submenu>
@@ -31,8 +31,6 @@
                 <p:menuitem id="relatorioMatricula" value="Matrícula" icon="fa fa-bank" outcome="/empty-page" />
                 <p:menuitem id="relatorioEstudante" value="Estudante" icon="fa fa-bank" outcome="/empty-page" />
             </p:submenu>
-
-            <p:menuitem id="sair" value="Sair" icon="fa fa-sign-out" outcome="/docs"/>
         </pi:menu>
         
     </h:form>

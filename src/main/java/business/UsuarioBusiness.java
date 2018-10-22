@@ -6,6 +6,7 @@ import exception.LoginException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
+import org.omnifaces.util.Messages;
 import utils.Criptografia;
 
 import javax.inject.Inject;
@@ -23,10 +24,12 @@ public class UsuarioBusiness {
 
     public Usuario salvar(Usuario usuario) throws LoginException {
         validarLogin(usuario);
-        if (usuario.getIdUsuario() == null) {
-            usuarioDAO.save(usuario);
-        } else {
-            usuarioDAO.update(usuario);
+
+        if (usuario.isAlterarLogin()) {
+            if (usuario.getIdUsuario() == null)
+                usuarioDAO.save(usuario);
+             else
+                usuarioDAO.update(usuario);
         }
 
         return usuario;
@@ -56,8 +59,17 @@ public class UsuarioBusiness {
         usuarioDAO.remove(usuario.getIdUsuario());
     }
 
-    public boolean isValido(Usuario usuario) throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        Usuario resultado = usuarioDAO.dadosUsuario(usuario);
+    public boolean isValido(Usuario usuario) throws UnsupportedEncodingException, NoSuchAlgorithmException, LoginException {
+        Usuario resultado = null;
+
+        try {
+            resultado = usuarioDAO.dadosUsuario(usuario);
+        } catch (PersistenceException e) {
+            throw new LoginException();
+        }
+
+        if(resultado == null)
+            return false;
 
         return usuario.getLogin().equals(resultado.getLogin())
                 && Criptografia.criptofragar(usuario.getSenha()).equals(resultado.getSenha());
