@@ -10,9 +10,14 @@
 				<div class="card">
 					<h1 class="lightBlack centerText">Cadastro de Instituição</h1>
 
-					<h:form id="formEstudante" styleClass="ui-panelgrid-blank">
+					<h:form id="formInstituicao" styleClass="ui-panelgrid-blank">
 
 						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-1">
+								<p:commandButton id="pesquisar" icon="fa fa-search"
+									update="@none" process="@this" title="Pesquisa"
+									action="#{instituicaoMB.modalConsultaInstituicao()}" />
+							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-4">
 								<p:inputText id="nome" placeholder="Nome"
 									value="#{instituicaoMB.instituicao.nome}" />
@@ -45,7 +50,6 @@
 				</div>
 			</div>
 		</div>
-
+		<ui:include src="modal-consulta-instituicao.xhtml" />
 	</ui:define>
-
 </ui:composition>

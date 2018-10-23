@@ -1,10 +1,12 @@
 package service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import business.InstituicaoBusiness;
+import dto.InstituicaoDTO;
 import model.Instituicao;
 
 public class InstituicaoServiceImpl implements InstituicaoService, Serializable {
@@ -21,6 +23,11 @@ public class InstituicaoServiceImpl implements InstituicaoService, Serializable 
 	@Override
 	public void salvar(Instituicao instituicao) {
 		instituicaoBusiness.salvar(instituicao);
+	}
+
+	@Override
+	public List<Instituicao> consultaInstituicao(InstituicaoDTO instituicaoDTO) {
+		return instituicaoBusiness.consultarInstituicoes(instituicaoDTO);
 	}
 
 	
