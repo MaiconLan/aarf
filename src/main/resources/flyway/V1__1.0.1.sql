@@ -145,7 +145,7 @@ CREATE TABLE cadastro.instituicao(
 	tipo character varying NOT NULL,
 	cidade character varying,
 	CONSTRAINT id_instituicao PRIMARY KEY (id_instituicao),
-	CONSTRAINT ck_tipo CHECK (tipo IN ('Educacao', 'Financeira'))
+	CONSTRAINT ck_tipo CHECK (tipo IN ('Educação', 'Financeira'))
 
 );
 -- ddl-end --
