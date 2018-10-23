@@ -9,7 +9,7 @@ import javax.servlet.ServletContextListener;
 
 public class IniciarAplicacaoListener implements ServletContextListener {
 
-	Logger logger = Logger.getLogger("br.com.lanzendorf.listener");
+	Logger logger = Logger.getLogger("br.com.aarf.listener");
 
 	public void contextDestroyed(ServletContextEvent arg0) {
 		logger.info("---------------------------------Contexto Destruido---------------------------------");

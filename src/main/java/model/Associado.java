@@ -27,7 +27,15 @@ public class Associado implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, optional = true)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
+    
+    private Boolean inativo;
 
+    
+    public Associado() {
+        this.pessoa = new Pessoa();
+        this.usuario = new Usuario();
+    }
+    
     public Long getIdAssociado() {
         return idAssociado;
     }
@@ -58,6 +66,14 @@ public class Associado implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    
+    public Boolean getInativo() {
+        return inativo;
+    }
+
+    public void setInativo(Boolean inativo) {
+        this.inativo = inativo;
     }
 
     @Override

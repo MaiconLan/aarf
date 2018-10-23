@@ -1,0 +1,215 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="card">
+                    <h1 class="lightBlack centerText">Cadastro de Associado</h1>
+
+                    <h3 class="lightBlack">Dados Cadastrais</h3>
+
+                    <h:form id="form">
+       			         
+       			         <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:selectOneMenu  id="cargo" 
+                             				   title="Cargo"
+                             				   required="true"
+                             				   converter="omnifaces.SelectItemsConverter"
+                                               value="#{associadoMB.associado.cargo}">
+                                 <f:selectItem itemLabel="Selecione Cargo" />
+                                 <f:selectItems value="#{associadoMB.cargos}" var="c"
+							                    itemValue="#{c.descricao}" itemLabel="#{c.descricao}"/>
+                             </p:selectOneMenu>
+                            </div>
+                        </div> 
+                			
+                        <div class="ui-g">
+                            <div class="ui-g-4 ui-md-3 ui-lg-1">
+                                <p:commandButton icon="fa fa-search"
+                                                 title="Pesquisa"
+                                                 action="#{associadoMB.modalConsultaAssociado()}"
+                                                 process="@this"
+                                                 update="@none" />
+                            </div>
+                            <div class="ui-g-8 ui-md-3 ui-lg-3">
+                                <p:inputText id="idAssociado"
+                                             placeholder="Código"
+                                             value="#{associadoMB.associado.idAssociado}" />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:inputText id="nome"
+                                             required="true"
+                                             placeholder="Nome"
+                                             value="#{associadoMB.associado.pessoa.nome}" />
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:calendar id="nascimento"
+                                            value="#{associadoMB.associado.pessoa.nascimento}"
+                                            mask="true"
+                                            required="true"
+                                            pattern="dd/MM/yyyy"
+                                            placeholder="Nascimento"
+                                            converter="localDateConverter"
+                                            showOn="button"/>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:selectOneRadio id="genero"
+                                                  required="true"
+                                                  value="#{associadoMB.associado.pessoa.genero}">
+                                    <f:selectItem itemLabel="Masculino" itemValue="M" />
+                                    <f:selectItem itemLabel="Feminino" itemValue="F" />
+                                </p:selectOneRadio>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="cpf"
+                                             required="true"
+                                             mask="999.999.999-99"
+                                             placeholder="CPF"
+                                             value="#{associadoMB.associado.pessoa.cpf}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="rg"
+                                             required="true"
+                                             mask="9.999.999"
+                                             placeholder="RG"
+                                             value="#{associadoMB.associado.pessoa.rg}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="telefone"
+                                             required="true"
+                                             mask="(99) 9999-9999"
+                                             placeholder="Telefone (Fixo)"
+                                             value="#{associadoMB.associado.pessoa.telefone}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputMask id="celular"
+                                             required="true"
+                                             mask="(99) 9 9999-9999"
+                                             placeholder="Celular"
+                                             value="#{associadoMB.associado.pessoa.celular}" />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputText id="email"
+                                             required="true"
+                                             placeholder="E-mail"
+                                             value="#{associadoMB.associado.pessoa.email}" />
+                            </div>
+                        </div>
+
+                        <h:panelGroup id="panelEndereco">
+                            <h3 class="lightBlack">Endereço</h3>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-2 ui-lg-1">
+                                    <p:commandButton id="consultarEndereco"
+                                                     icon="fa fa-search"
+                                                     styleClass="navy-button"
+                                                     process="panelEndereco"
+                                                     update="panelEndereco"
+                                                     action="#{associadoMB.consultarCep()}"/>
+
+                                </div>
+                                <div class="ui-g-12 ui-md-4 ui-lg-3">
+                                    <p:inputMask id="cep"
+                                                 placeholder="CEP"
+                                                 mask="99 999-999"
+                                                 value="#{associadoMB.associado.pessoa.endereco.cep}" />
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                    <p:inputText id="logradouro"
+                                                 placeholder="Rua"
+                                                 value="#{associadoMB.associado.pessoa.endereco.logradouro}" />
+                                </div>
+
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <p:inputText id="complemento"
+                                                 placeholder="Complemento"
+                                                 value="#{associadoMB.associado.pessoa.endereco.complemento}" />
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:inputText id="bairro"
+                                                 placeholder="Bairro"
+                                                 value="#{associadoMB.associado.pessoa.endereco.bairro}" />
+                                </div>
+                            </div>
+                        </h:panelGroup>
+
+                        <h3 class="lightBlack">Usuário</h3>
+                        <p:outputPanel id="panelUsuario">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:commandButton value="Alterar Login"
+                                                     id="alterarLogin"
+                                                     icon="fa fa-fw fa-user"
+                                                     styleClass="btn-block btn-info btn-flat"
+                                                     rendered="#{associadoMB.renderizaAlterarLogin()}"
+                                                     action="#{associadoMB.toggleAlterarLogin()}"
+                                                     update="@form"
+                                                     immediate="true"/>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:inputText id="usuario"
+                                                 required="true"
+                                                 placeholder="Login"
+                                                 disabled="#{associadoMB.desabilitarAlteracaoLogin}"
+                                                 value="#{associadoMB.associado.usuario.login}" />
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:password id="senha"
+                                                required="true"
+                                                placeholder="Senha"
+                                                disabled="#{associadoMB.desabilitarAlteracaoLogin}"
+                                                value="#{associadoMB.associado.usuario.senha}" />
+                                </div>
+                            </div>
+                        </p:outputPanel>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="salvarAssociado"
+                                                 icon="fa fa-check"
+                                                 value="Salvar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{associadoMB.salvarAssociado()}"/>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="removerAssociado"
+                                                 icon="fa fa-remove"
+                                                 value="Remover"
+                                                 process="@form"
+                                                 update="@form"
+                                                 styleClass="red-button"
+                                                 action="#{associadoMB.removerAssociado()}"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <ui:include src="modal-consulta-associado.xhtml"/>
+    </ui:define>
+
+</ui:composition>

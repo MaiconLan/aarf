@@ -12,7 +12,7 @@
 -- CREATE DATABASE aarf
 -- ;
 -- -- ddl-end --
--- 
+--
 
 -- object: cadastro | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS cadastro CASCADE;
@@ -100,6 +100,7 @@ CREATE TABLE cadastro.associado(
 	id_pessoa integer,
 	id_usuario integer,
 	cargo character varying NOT NULL,
+	inativo boolean,
 	CONSTRAINT id_associado PRIMARY KEY (id_associado)
 
 );
@@ -499,8 +500,10 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 
+
+
 INSERT INTO cadastro.usuario (login, senha) VALUES
-  ('admin', 'E1B49B68D634F4FD9A25FC880E24B4EDDCE34000E74D2A3135FDFE24770C2799');
+  ('admin', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918');
 
 INSERT INTO cadastro.pessoa (nome, nascimento, cpf, rg, email, genero, telefone, celular)
   VALUES ('Administrador', current_date, '00000000000', 0000000, 'developer.icarus@gmail.com', 'M', '0000000000', '00000000000');
