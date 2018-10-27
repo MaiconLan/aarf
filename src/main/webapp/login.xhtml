@@ -17,34 +17,51 @@
 
     <h:body styleClass="containerLogin">
         <div class="logo-container">
-            <h:graphicImage name="images/logo.svg" id="PageLogo" library="icarus-layout"/>
+            <h:graphicImage name="images/logo.png" id="PageLogo" library="icarus-layout"/>
         </div>
-        <div class="ui-g">
-            <p:panel header="Login" styleClass="panel-login">
-                <div class="ui-g-12" style="padding-top:35px;">
-                    <p:inputText placeholder="Your Email" style="width:60%;"/><br/>
+            <div class="ui-g">
+                <p:panel id="panelLogin" header="Login" styleClass="panel-login">
+                    <p:messages id="messages" autoUpdate="true"/>
+                    <ui:include src="/template/loading.xhtml" />
+                    <h:form id="formLogin">
+                        <div class="ui-g-12" style="padding-top:35px;">
+                            <p:inputText id="login"
+                                         value="#{identity.usuario.login}"
+                                         placeholder="Seu Login"
+                                         style="width:60%;"/><br/>
+                        </div>
+                        <div class="ui-g-12" style="padding-top:10px;">
+                            <p:password id="senha"
+                                        value="#{identity.usuario.senha}"
+                                        placeholder="Sua Senha"
+                                        style="width:60%"/>
+                        </div>
+                        <div class="ui-g-2"></div>
+                        <div class="ui-g-8 login-input-container">
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <p:commandLink id="senhaEsquecida"
+                                               action="#{identity.deslogar()}"
+                                               styleClass="link-decoration"
+                                               value="Esqueci minha senha" />
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <p:commandButton id="loginButton"
+                                                 value="Login"
+                                                 process="formLogin"
+                                                 update="formLogin"
+                                                 action="#{identity.logar()}"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </p:panel>
+                <div class="ui-g-12 footer-login">
+                    <span>PrimeFaces Icarus Theme and Layout </span><br/>
+                    <span>All rights reserved.</span>
                 </div>
-                <div class="ui-g-12" style="padding-top:10px;">
-                    <p:inputText placeholder="Your Password" style="width:60%"/>
-                </div>
-                <div class="ui-g-2"></div>
-                <div class="ui-g-8 login-input-container">
-                    <div class="ui-g-12 ui-md-6 ui-lg-6">
-                        <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" style="padding-left:10px;"/>
-                        <h:outputText value="Remember me" style="padding-left:5px;"/>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-6">
-                        <p:commandLink styleClass="link-decoration" value="Forget Password?" />
-                    </div>
-                </div>
-                <div class="ui-g-2"></div>
-                <p:button id="loginButton" value="Login" outcome="dashboard"></p:button>
-            </p:panel>
-            <div class="ui-g-12 footer-login">
-                <span>PrimeFaces Icarus Theme and Layout </span><br/>
-                <span>All rights reserved.</span>
             </div>
-        </div>
+
 
         <style type="text/css">
             html {height: 100%;}

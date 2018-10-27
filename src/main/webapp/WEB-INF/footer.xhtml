@@ -1,17 +1,15 @@
-<ui:composition 
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
 
     <div class="footer">
-        <h:graphicImage id="footer-logo" name="images/logo.svg" library="icarus-layout" style="height:50px"/>
+        <h:graphicImage id="footer-logo" name="images/logo.png" library="icarus-layout" style="height:50px"/>
         <p>AARF</p>
-        
         <div class="copyright">
-            <p>#{applicationMB.direitos}</p>
-            <p>#{applicationMB.versao}</p>
+            <p:outputLabel value="#{applicationMB.direitos}" />
         </div>
     </div>
-    
+
 </ui:composition>

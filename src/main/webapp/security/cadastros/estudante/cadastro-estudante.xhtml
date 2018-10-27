@@ -16,19 +16,20 @@
                     <h:form id="formEstudante">
                         <div class="ui-g">
                             <div class="ui-g-4 ui-md-3 ui-lg-1">
-                                <p:commandButton icon="fa fa-search"
+                                <p:commandButton id="pesquisar"
+                                                 icon="fa fa-search"
+                                                 update="@none"
+                                                 process="@this"
                                                  title="Pesquisa"
                                                  action="#{estudanteMB.modalConsultaEstudante()}"
-                                                 process="@this"
-                                                 update="@none">
-                                    <p:ajax event="dialogReturn"
-                                            listener="#{pacienteWebBean.pacienteSelecionado}" process="@this"
-                                            update="@this" />
-                                </p:commandButton>
+                                                 rendered="#{estudanteMB.renderizarCamposAcessarPerfil()}"
+                                />
                             </div>
                             <div class="ui-g-8 ui-md-3 ui-lg-3">
                                 <p:inputText id="idEstudante"
+                                             disabled="true"
                                              placeholder="Código"
+                                             rendered="#{estudanteMB.renderizarCamposAcessarPerfil()}"
                                              value="#{estudanteMB.estudante.idEstudante}" />
                             </div>
                         </div>
@@ -36,6 +37,7 @@
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <p:inputText id="nome"
+                                             required="true"
                                              placeholder="Nome"
                                              value="#{estudanteMB.estudante.pessoa.nome}" />
                             </div>
@@ -44,14 +46,16 @@
                                 <p:calendar id="nascimento"
                                             value="#{estudanteMB.estudante.pessoa.nascimento}"
                                             mask="true"
+                                            required="true"
+                                            showOn="button"
                                             pattern="dd/MM/yyyy"
                                             placeholder="Nascimento"
-                                            converter="localDateConverter"
-                                            showOn="button"/>
+                                            converter="localDateConverter" />
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:selectOneRadio id="genero"
+                                                  required="true"
                                                   value="#{estudanteMB.estudante.pessoa.genero}">
                                     <f:selectItem itemLabel="Masculino" itemValue="M" />
                                     <f:selectItem itemLabel="Feminino" itemValue="F" />
@@ -62,24 +66,28 @@
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputMask id="cpf"
+                                             required="true"
                                              mask="999.999.999-99"
                                              placeholder="CPF"
                                              value="#{estudanteMB.estudante.pessoa.cpf}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputMask id="rg"
+                                             required="true"
                                              mask="9.999.999"
                                              placeholder="RG"
                                              value="#{estudanteMB.estudante.pessoa.rg}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputMask id="telefone"
+                                             required="true"
                                              mask="(99) 9999-9999"
                                              placeholder="Telefone (Fixo)"
                                              value="#{estudanteMB.estudante.pessoa.telefone}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputMask id="celular"
+                                             required="true"
                                              mask="(99) 9 9999-9999"
                                              placeholder="Celular"
                                              value="#{estudanteMB.estudante.pessoa.celular}" />
@@ -89,6 +97,7 @@
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:inputText id="email"
+                                             required="true"
                                              placeholder="E-mail"
                                              value="#{estudanteMB.estudante.pessoa.email}" />
                             </div>
@@ -152,19 +161,35 @@
                         </div>
 
                         <h3 class="lightBlack">Usuário</h3>
+                        <p:outputPanel id="panelUsuario">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:commandButton value="Alterar Login"
+                                                     id="alterarLogin"
+                                                     icon="fa fa-fw fa-user"
+                                                     styleClass="btn-block btn-info btn-flat"
+                                                     rendered="#{estudanteMB.renderizaAlterarLogin()}"
+                                                     action="#{estudanteMB.toggleAlterarLogin()}"
+                                                     update="@form"
+                                                     immediate="true"/>
+                                </div>
 
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:inputText id="usuario"
-                                             placeholder="Login"
-                                             value="#{estudanteMB.estudante.usuario.login}" />
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:inputText id="usuario"
+                                                 required="true"
+                                                 placeholder="Login"
+                                                 disabled="#{estudanteMB.desabilitarAlteracaoLogin}"
+                                                 value="#{estudanteMB.estudante.usuario.login}" />
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:password id="senha"
+                                                required="true"
+                                                placeholder="Senha"
+                                                disabled="#{estudanteMB.desabilitarAlteracaoLogin}"
+                                                value="#{estudanteMB.estudante.usuario.senha}" />
+                                </div>
                             </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:password id="senha"
-                                            placeholder="Senha"
-                                            value="#{estudanteMB.estudante.usuario.senha}" />
-                            </div>
-                        </div>
+                        </p:outputPanel>
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -176,13 +201,13 @@
                                                  action="#{estudanteMB.salvarEstudante()}"/>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:commandButton id="excluirEstudante"
+                                <p:commandButton id="removerEstudante"
                                                  icon="fa fa-remove"
-                                                 value="Excluir"
-                                                 process="@this"
+                                                 value="Remover"
+                                                 process="@form"
                                                  update="@form"
                                                  styleClass="red-button"
-                                                 action="#{estudanteMB.excluirEstudante()}"/>
+                                                 action="#{estudanteMB.removerEstudante()}"/>
                             </div>
                         </div>
                     </h:form>

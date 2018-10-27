@@ -47,7 +47,7 @@ body {
 
 #sidebar-header {
   height: 100px;
-  background: #5BA5D8;
+  background: #ffffff; /*Fonte do tema #5BA5D8 */
   text-align: center;
   position: relative;
 }

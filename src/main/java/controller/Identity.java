@@ -1,8 +1,7 @@
 package controller;
 
 import exception.LoginException;
-import model.Regra;
-import model.Usuario;
+import model.*;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import service.UsuarioService;
@@ -25,7 +24,7 @@ public class Identity implements Serializable {
 
 	private static final String ERRO_DETALHES = "Ocorreu um erro ao tentar efetuar Login.";
 	private static final String AVISO_DESLOGADO = "Você deve estar logado para efetuar esta ação.";
-	private static final String LOGIN_ERRO_DETALHES = "Verifique seu Login/Senha! Lembre-se que maiúsculas e minúsculas fazem a diferençaa.";
+	private static final String LOGIN_ERRO_DETALHES = "Verifique seu Login/Senha! Lembre-se que maiúsculas e minúsculas fazem a diferença.";
 	private static final String LOGIN_ERRO_MENSAGEM = "Erro ao efetuar login!";
 
 	@Inject
@@ -51,9 +50,9 @@ public class Identity implements Serializable {
 			if (logado) {
 				usuario = usuarioService.logar(usuario);
 				regras = usuarioService.buscarRegras(usuario);
-				setLoginContext("login", usuario);
+				adicionarParametroSessao("usuario", usuario);
 
-				redirect = "index.xhtml";
+				redirect = "security/dashboard.xhtml";
 			} else {
 				Messages.addWarn(LOGIN_ERRO_MENSAGEM, LOGIN_ERRO_DETALHES);
 			}
@@ -63,12 +62,7 @@ public class Identity implements Serializable {
 			e.printStackTrace();
 			redirect = "";
 
-		} catch (PersistenceException e) {
-			Messages.addFlashError(LOGIN_ERRO_MENSAGEM, ERRO_DETALHES);
-			e.printStackTrace();
-			redirect = "";
-
-		} catch (Exception e) {
+		}  catch (Exception e) {
 			Messages.addError(LOGIN_ERRO_MENSAGEM, "Detalhes: " + e.getStackTrace());
 			e.printStackTrace();
 			redirect = "";
@@ -78,17 +72,67 @@ public class Identity implements Serializable {
 		}
 	}
 
+	public String obterCargo(){
+		Associado associado = usuario.getAssociado();
+
+		if(isUsuarioAssociado())
+			return associado.getCargo();
+		else if(isUsuarioEstudante())
+			return "Estudante";
+
+		return "";
+	}
+
+	public String obterNome(){
+		Associado associado = usuario.getAssociado();
+		Estudante estudante = usuario.getEstudante();
+		Pessoa pessoa = null;
+
+		if(isUsuarioAssociado())
+			pessoa = associado.getPessoa();
+		else if(isUsuarioEstudante())
+			pessoa = estudante.getPessoa();
+
+		return pessoa.getNome();
+	}
+
 	public void deslogar() {
 		novoLogin();
 		logado = false;
 
 		try {
 			Faces.invalidateSession();
-			Faces.redirect("index.xhtml");
+			Faces.redirect("/aarf");
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void acessarPerfil() {
+		Associado associado = usuario.getAssociado();
+		Estudante estudante = usuario.getEstudante();
+		try {
+			String url = "";
+
+			if(isUsuarioAssociado())
+				url = "security/cadastros/associado/cadastro-associado.xhtml?idAssociado=" + associado.getIdAssociado() + "&isAcessarPerfil=true";
+			else if (isUsuarioEstudante())
+				url = "security/cadastros/estudante/cadastro-estudante.xhtml?idEstudante=" + estudante.getIdEstudante() + "&isAcessarPerfil=true";
+
+			Faces.redirect(url);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean isUsuarioAssociado(){
+		return usuario.getAssociado() != null;
+	}
+
+	public boolean isUsuarioEstudante(){
+		return usuario.getEstudante() != null;
 	}
 
 	public boolean hasPermission(String permissao) {
@@ -100,7 +144,7 @@ public class Identity implements Serializable {
 		return false;
 	}
 
-	private void setLoginContext(String parametro, Object object) {
+	private void adicionarParametroSessao(String parametro, Object object) {
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(parametro, object);
 	}
 

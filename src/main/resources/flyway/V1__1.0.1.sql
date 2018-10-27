@@ -12,7 +12,7 @@
 -- CREATE DATABASE aarf
 -- ;
 -- -- ddl-end --
--- 
+--
 
 -- object: cadastro | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS cadastro CASCADE;
@@ -100,6 +100,7 @@ CREATE TABLE cadastro.associado(
 	id_pessoa integer,
 	id_usuario integer,
 	cargo character varying NOT NULL,
+	inativo boolean,
 	CONSTRAINT id_associado PRIMARY KEY (id_associado)
 
 );
@@ -114,6 +115,7 @@ CREATE TABLE cadastro.estudante(
 	id_pessoa integer,
 	id_instituicao integer,
 	id_usuario integer,
+	inativo boolean,
 	CONSTRAINT id_estudante PRIMARY KEY (id_estudante)
 
 );
@@ -143,7 +145,7 @@ CREATE TABLE cadastro.instituicao(
 	tipo character varying NOT NULL,
 	cidade character varying,
 	CONSTRAINT id_instituicao PRIMARY KEY (id_instituicao),
-	CONSTRAINT ck_tipo CHECK (tipo IN ('Educacao', 'Financeira'))
+	CONSTRAINT ck_tipo CHECK (tipo IN ('Educação', 'Financeira'))
 
 );
 -- ddl-end --
@@ -498,3 +500,13 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 
+
+
+INSERT INTO cadastro.usuario (login, senha) VALUES
+  ('admin', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918');
+
+INSERT INTO cadastro.pessoa (nome, nascimento, cpf, rg, email, genero, telefone, celular)
+  VALUES ('Administrador', current_date, '00000000000', 0000000, 'developer.icarus@gmail.com', 'M', '0000000000', '00000000000');
+
+INSERT INTO cadastro.associado (cargo, id_pessoa, id_usuario)
+  VALUES ('Administrador', currval('cadastro.pessoa_id_pessoa_seq'), currval('cadastro.usuario_id_usuario_seq'));
