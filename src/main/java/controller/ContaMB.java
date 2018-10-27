@@ -24,16 +24,14 @@ public class ContaMB implements Serializable {
 
     private static final long serialVersionUID = 8382542571692876048L;
 
-    private Conta conta;
+    @Inject
     private ContaService contaService;
+
+    private Conta conta;
 
     @PostConstruct
     public void init(){
         novaConta();
-    }
-
-    public void modalConsultaEstudante() {
-        RequestContext.getCurrentInstance().execute("PF('modalConsultaEstudante').show();");
     }
 
     public void salvarConta(){
@@ -42,12 +40,18 @@ public class ContaMB implements Serializable {
             Messages.addInfo(null, "Conta salva com sucesso");
 
         } catch (ContaBusinessException e) {
-            Messages.addError(null, e.getMessage());
+            e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
         }
     }
 
-    public void excluirConta(){
-        Messages.addWarn(null, "Conta excluída com sucesso");
+    public void inativarConta(){
+        try {
+            contaService.inativarConta(conta);
+            Messages.addWarn(null, "Conta inativada com sucesso");
+        } catch (ContaBusinessException e) {
+            Messages.addWarn(null, e.getMessage());
+        }
+
     }
 
     private void novaConta(){

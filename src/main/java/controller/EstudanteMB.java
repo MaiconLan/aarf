@@ -53,7 +53,7 @@ public class EstudanteMB implements Serializable {
             Messages.addInfo(null, "Estudante salvo com sucesso");
 
         } catch (EstudanteBusinessException | LoginException e) {
-            Messages.addError(null, e.getMessage());
+            e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
         }
     }
 

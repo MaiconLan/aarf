@@ -11,7 +11,6 @@
                 <div class="card">
                     <h1 class="lightBlack centerText">Cadastro de Conta</h1>
 
-
                     <h:form id="formEstudante">
                         <h3 class="lightBlack">Dados Cadastrais</h3>
                         <div class="ui-g">
@@ -23,17 +22,17 @@
                         <div class="ui-g">
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
                                 <p:inputText id="codigoConta"
-                                             placeholder="Conta" value="#{contaMB.conta.numero_conta}"/>
+                                             placeholder="Conta" value="#{contaMB.conta.numeroConta}"/>
                             </div>
                             <div class="ui-g-3 ui-md-3 ui-lg-1">
                                 <p:inputText id="digitoConta"
-                                             placeholder="Díg" value="#{contaMB.conta.digito}" />
+                                             placeholder="Dígito" value="#{contaMB.conta.digito}" />
                             </div>
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
-                                <p:selectOneMenu id="nomeBanco" default="Banco">
-                                    <f:selectItem itemLabel="Banco"></f:selectItem>
+                                <p:selectOneMenu id="selectBanco" value="#{contaMB.conta.banco}">
+                                    <f:selectItem itemLabel="Banco" />
                                 </p:selectOneMenu>
                             </div>
                         </div>
@@ -49,9 +48,9 @@
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
                                 <p:outputLabel>Aceite</p:outputLabel>
                             </div>
-                            <p:selectOneRadio id="aceite">
-                                <f:selectItem id="sim" itemValue="true" itemLabel="Sim"></f:selectItem>
-                                <f:selectItem id="nao" itemValue="false" itemLabel="Não"></f:selectItem>
+                            <p:selectOneRadio id="aceite" value="#{contaMB.conta.aceite}">
+                                <f:selectItem id="sim" itemValue="#{true}" itemLabel="Sim" />
+                                <f:selectItem id="nao" itemValue="#{false}" itemLabel="Não" />
                             </p:selectOneRadio>
                         </div>
                         <div class="ui-g">
@@ -67,13 +66,13 @@
                         <div class="ui-g">
                             <div class="ui-g-9 ui-md-9 ui-lg-3">
                                 <p:inputText id="localPagto"
-                                             placeholder="Local Pagamento" value="#{contaMB.conta.local_pagamento}"/>
+                                             placeholder="Local Pagamento" value="#{contaMB.conta.localPagamento}"/>
                             </div>
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-6 ui-md-6 ui-lg-2">
                                 <p:inputText id="especieDoc"
-                                             placeholder="Espécie Documento" value="#{contaMB.conta.especie_documento}"/>
+                                             placeholder="Espécie Documento" value="#{contaMB.conta.especieDocumento}"/>
                             </div>
                             <div class="ui-g-6 ui-md-6 ui-lg-2">
                                 <p:inputText id="especie"
@@ -115,7 +114,7 @@
                             </div>
                             <div class="ui-g-3 ui-md-3 ui-lg-1">
                                 <p:inputText id="numDias"
-                                             placeholder="N° Dias" value="#{contaMB.conta.dias_protesto}"/>
+                                             placeholder="N° Dias" value="#{contaMB.conta.diasProtesto}"/>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -128,17 +127,28 @@
                                                  action="#{contaMB.salvarConta()}"/>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:commandButton id="excluirConta"
+                                <p:commandButton id="inativarConta"
                                                  icon="fa fa-remove"
-                                                 value="Excluir"
+                                                 value="Inativar"
                                                  process="@this"
                                                  update="@form"
                                                  styleClass="red-button"
-                                                 action="#{contaMB.excluirConta()}"/>
+                                                 action="#{contaMB.inativarConta()}">
+                                    <p:confirm header="Inativar Conta" message="Tem certeza que deseja inativar a conta?" icon="ui-icon-alert" />
+                                </p:commandButton>
                             </div>
                         </div>
-
                     </h:form>
+
+                    <p:confirmDialog id="modalConfirmacao"
+                                     global="true"
+                                     showEffect="fade"
+                                     hideEffect="fade"
+                                     responsive="true"
+                                     closable="false">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
                 </div>
             </div>
         </div>

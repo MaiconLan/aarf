@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(schema = "cadastro", name = "conta")
+@Table(schema = "financeiro", name = "conta")
 public class Conta implements Serializable {
 
     private static final long serialVersionUID = 1260353098758642380L;
@@ -17,25 +17,30 @@ public class Conta implements Serializable {
     @Column(name = "id_conta")
     private Long idConta;
 
-    private Integer numero_conta;
+    @Column(name = "numero_conta")
+    private Integer numeroConta;
 
     private Integer agencia;
 
     private Integer digito;
 
-    private String banco;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_banco")
+    private Banco banco;
 
     private String titular;
 
-    private boolean aceite;
+    private Boolean aceite;
 
     private Integer convenio;
 
     private Integer cedente;
 
-    private String local_pagamento;
+    @Column(name = "local_pagamento")
+    private String localPagamento;
 
-    private String especie_documento;
+    @Column(name = "especie_documento")
+    private String especieDocumento;
 
     private String especie;
 
@@ -45,20 +50,28 @@ public class Conta implements Serializable {
 
     private String instrucoes;
 
-    private String tipo_dias_protestto;
+    @Column(name = "tipo_dias_protesto")
+    private String tipoDiasProtesto;
 
-    private Integer dias_protesto;
+    @Column(name = "dias_protesto")
+    private Integer diasProtesto;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    private Boolean inativo;
+
+    public Long getIdConta() {
+        return idConta;
     }
 
-    public Integer getNumero_conta() {
-        return numero_conta;
+    public void setIdConta(Long idConta) {
+        this.idConta = idConta;
     }
 
-    public void setNumero_conta(Integer numero_conta) {
-        this.numero_conta = numero_conta;
+    public Integer getNumeroConta() {
+        return numeroConta;
+    }
+
+    public void setNumeroConta(Integer numeroConta) {
+        this.numeroConta = numeroConta;
     }
 
     public Integer getAgencia() {
@@ -77,11 +90,11 @@ public class Conta implements Serializable {
         this.digito = digito;
     }
 
-    public String getBanco() {
+    public Banco getBanco() {
         return banco;
     }
 
-    public void setBanco(String banco) {
+    public void setBanco(Banco banco) {
         this.banco = banco;
     }
 
@@ -93,11 +106,11 @@ public class Conta implements Serializable {
         this.titular = titular;
     }
 
-    public boolean isAceite() {
+    public Boolean getAceite() {
         return aceite;
     }
 
-    public void setAceite(boolean aceite) {
+    public void setAceite(Boolean aceite) {
         this.aceite = aceite;
     }
 
@@ -117,20 +130,20 @@ public class Conta implements Serializable {
         this.cedente = cedente;
     }
 
-    public String getLocal_pagamento() {
-        return local_pagamento;
+    public String getLocalPagamento() {
+        return localPagamento;
     }
 
-    public void setLocal_pagamento(String local_pagamento) {
-        this.local_pagamento = local_pagamento;
+    public void setLocalPagamento(String localPagamento) {
+        this.localPagamento = localPagamento;
     }
 
-    public String getEspecie_documento() {
-        return especie_documento;
+    public String getEspecieDocumento() {
+        return especieDocumento;
     }
 
-    public void setEspecie_documento(String especie_documento) {
-        this.especie_documento = especie_documento;
+    public void setEspecieDocumento(String especieDocumento) {
+        this.especieDocumento = especieDocumento;
     }
 
     public String getEspecie() {
@@ -165,50 +178,45 @@ public class Conta implements Serializable {
         this.instrucoes = instrucoes;
     }
 
-    public String getTipo_dias_protestto() {
-        return tipo_dias_protestto;
+    public String getTipoDiasProtesto() {
+        return tipoDiasProtesto;
     }
 
-    public void setTipo_dias_protestto(String tipo_dias_protestto) {
-        this.tipo_dias_protestto = tipo_dias_protestto;
+    public void setTipoDiasProtesto(String tipoDiasProtesto) {
+        this.tipoDiasProtesto = tipoDiasProtesto;
     }
 
-    public Integer getDias_protesto() {
-        return dias_protesto;
+    public Integer getDiasProtesto() {
+        return diasProtesto;
     }
 
-    public void setDias_protesto(Integer dias_protesto) {
-        this.dias_protesto = dias_protesto;
+    public void setDiasProtesto(Integer diasProtesto) {
+        this.diasProtesto = diasProtesto;
     }
 
-    public Conta() {
-
+    public Boolean getInativo() {
+        return inativo;
     }
 
-    public Long getIdConta() {
-        return idConta;
-    }
-
-    public void setIdConta(Long idConta) {
-        this.idConta = idConta;
+    public void setInativo(Boolean inativo) {
+        this.inativo = inativo;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Conta conta = (Conta) o;
-        return Objects.equals(idConta, conta.idConta);
+
+        if (idConta != null ? !idConta.equals(conta.idConta) : conta.idConta != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idConta);
+        return idConta != null ? idConta.hashCode() : 0;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Conta: " + idConta.toString();
-//    }
 
 }

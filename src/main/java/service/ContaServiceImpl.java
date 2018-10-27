@@ -23,5 +23,10 @@ public class ContaServiceImpl implements ContaService {
         return null;
     }
 
+    @Override
+    public void inativarConta(Conta conta) throws ContaBusinessException {
+        contaBusiness.inativarConta(conta);
+    }
+
 
 }
