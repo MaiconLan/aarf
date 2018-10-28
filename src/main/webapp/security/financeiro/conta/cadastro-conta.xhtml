@@ -11,8 +11,26 @@
                 <div class="card">
                     <h1 class="lightBlack centerText">Cadastro de Conta</h1>
 
-                    <h:form id="formEstudante">
+                    <h:form id="formConta">
                         <h3 class="lightBlack">Dados Cadastrais</h3>
+
+                        <div class="ui-g">
+                            <div class="ui-g-4 ui-md-3 ui-lg-1">
+                                <p:commandButton id="pesquisar"
+                                                 icon="fa fa-search"
+                                                 update="@none"
+                                                 process="@this"
+                                                 title="Pesquisa"
+                                                 action="#{contaMB.modalConsultaConta()}" />
+                            </div>
+                            <div class="ui-g-8 ui-md-3 ui-lg-3">
+                                <p:inputText id="idConta"
+                                             disabled="true"
+                                             placeholder="Código"
+                                             value="#{contaMB.conta.idConta}" />
+                            </div>
+                        </div>
+
                         <div class="ui-g">
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
                                 <p:inputText id="agencia"
@@ -99,17 +117,17 @@
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
                                 <p:selectOneMenu id="layout" >
                                     <f:selectItem itemLabel="Layout"></f:selectItem>
-                                    <f:selectItem itemLabel="CNAB 240" itemValue="cnab240"></f:selectItem>
-                                    <f:selectItem itemLabel="CNAB 400" itemValue="cnab400"></f:selectItem>
+                                    <f:selectItem itemLabel="CNAB 240" itemValue="CNAB-240"></f:selectItem>
+                                    <f:selectItem itemLabel="CNAB 400" itemValue="CNAB-400"></f:selectItem>
                                 </p:selectOneMenu>
                             </div>
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
-                                <p:selectOneMenu id="diasProtesto">
+                                <p:selectOneMenu id="diasProtesto" value="#{contaMB.conta.tipoDiasProtesto}">
                                     <f:selectItem itemLabel="Dias para Protesto"></f:selectItem>
-                                    <f:selectItem itemLabel="Dias corridos" itemValue="diascorridos"></f:selectItem>
-                                    <f:selectItem itemLabel="Dias Úteis" itemValue="diasuteis"></f:selectItem>
+                                    <f:selectItem itemLabel="Dias corridos" itemValue="Dias Corridos"></f:selectItem>
+                                    <f:selectItem itemLabel="Dias Úteis" itemValue="Dias Úteis"></f:selectItem>
                                 </p:selectOneMenu>
                             </div>
                             <div class="ui-g-3 ui-md-3 ui-lg-1">
@@ -133,24 +151,18 @@
                                                  process="@this"
                                                  update="@form"
                                                  styleClass="red-button"
+                                                 rendered="#{contaMB.conta.idConta != null}"
                                                  action="#{contaMB.inativarConta()}">
                                     <p:confirm header="Inativar Conta" message="Tem certeza que deseja inativar a conta?" icon="ui-icon-alert" />
                                 </p:commandButton>
                             </div>
                         </div>
                     </h:form>
-
-                    <p:confirmDialog id="modalConfirmacao"
-                                     global="true"
-                                     showEffect="fade"
-                                     hideEffect="fade"
-                                     responsive="true"
-                                     closable="false">
-                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                    </p:confirmDialog>
                 </div>
             </div>
         </div>
+
+        <ui:include src="modal-consulta-conta.xhtml"/>
+        <ui:include src="/template/confirm.xhtml"/>
     </ui:define>
 </ui:composition>

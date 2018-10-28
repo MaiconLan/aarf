@@ -1,5 +1,6 @@
 package controller;
 
+import dto.ContaDTO;
 import exception.ContaBusinessException;
 import exception.LoginException;
 import model.Conta;
@@ -29,6 +30,10 @@ public class ContaMB implements Serializable {
 
     private Conta conta;
 
+    private ContaDTO contaDTO = new ContaDTO();
+
+    private List<Conta> listaContas = new ArrayList<>();
+
     @PostConstruct
     public void init(){
         novaConta();
@@ -54,6 +59,24 @@ public class ContaMB implements Serializable {
 
     }
 
+    public void consultarConta(){
+        listaContas = contaService.consultarConta(contaDTO);
+
+        if(listaContas.isEmpty())
+            Messages.addWarn(null, "Não foram encontrados resultados.");
+    }
+
+    public void selecionarConta(Conta conta) {
+        setConta(conta);
+
+        RequestContext.getCurrentInstance().execute("PF('modalConsultaConta').hide();");
+        RequestContext.getCurrentInstance().update("formConta");
+    }
+
+    public void modalConsultaConta() {
+        RequestContext.getCurrentInstance().execute("PF('modalConsultaConta').show();");
+    }
+
     private void novaConta(){
         conta = new Conta();
     }
@@ -66,4 +89,19 @@ public class ContaMB implements Serializable {
         this.conta = conta;
     }
 
+    public ContaDTO getContaDTO() {
+        return contaDTO;
+    }
+
+    public void setContaDTO(ContaDTO contaDTO) {
+        this.contaDTO = contaDTO;
+    }
+
+    public List<Conta> getListaContas() {
+        return listaContas;
+    }
+
+    public void setListaContas(List<Conta> listaContas) {
+        this.listaContas = listaContas;
+    }
 }

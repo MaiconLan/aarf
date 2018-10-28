@@ -1,6 +1,7 @@
 package controller;
 
 import dto.EstudanteDTO;
+import exception.CepBussinesException;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
 import model.*;
@@ -124,10 +125,15 @@ public class EstudanteMB implements Serializable {
         String cep = estudante.getPessoa().getEndereco().getCep();
         Long idEndereco = estudante.getPessoa().getEndereco().getIdEndereco();
         if(cep != null && !cep.isEmpty()){
-            Endereco endereco = cepService.getEnderecoCompleto(cep);
-            endereco.setIdEndereco(idEndereco);
-            endereco.setPessoa(estudante.getPessoa());
-            estudante.getPessoa().setEndereco(endereco);
+            try {
+                Endereco endereco = cepService.getEnderecoCompleto(cep);
+                endereco.setIdEndereco(idEndereco);
+                endereco.setPessoa(estudante.getPessoa());
+                estudante.getPessoa().setEndereco(endereco);
+            } catch (CepBussinesException e) {
+                Messages.addWarn(null, e.getMessage());
+            }
+
         }
     }
 

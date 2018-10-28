@@ -1,6 +1,7 @@
 package business;
 
 import dao.ContaDAO;
+import dto.ContaDTO;
 import exception.ContaBusinessException;
 import model.Conta;
 
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Stateless
 public class ContaBusiness {
@@ -38,5 +40,9 @@ public class ContaBusiness {
     public void inativarConta(Conta conta) throws ContaBusinessException {
         conta.setInativo(Boolean.TRUE);
         salvarConta(conta);
+    }
+
+    public List<Conta> consultarConta(ContaDTO contaDTO) {
+        return contaDAO.consultarConta(contaDTO);
     }
 }

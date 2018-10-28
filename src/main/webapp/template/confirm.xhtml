@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:confirmDialog id="modalConfirmacao"
+                     global="true"
+                     showEffect="fade"
+                     hideEffect="fade"
+                     responsive="true"
+                     closable="false">
+        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes green-button" icon="ui-icon-check" />
+        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no red-button" icon="ui-icon-close" />
+    </p:confirmDialog>
+</ui:composition>

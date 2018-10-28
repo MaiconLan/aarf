@@ -75,13 +75,17 @@
                                                  update="@form"
                                                  styleClass="green-button"
                                                  rendered="#{editalMB.renderizarBotaoFinalizar()}"
-                                                 action="#{editalMB.finalizarPeriodo()}"/>
+                                                 action="#{editalMB.finalizarPeriodo()}">
+                                    <p:confirm header="Finalizar Período" message="Tem certeza que deseja finaliaar o periodo?" icon="ui-icon-alert" />
+                                </p:commandButton>
                             </div>
                         </div>
                     </h:form>
                 </div>
             </div>
         </div>
+
+        <ui:include src="/template/confirm.xhtml"/>
     </ui:define>
 
 </ui:composition>

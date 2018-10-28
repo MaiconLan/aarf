@@ -1,10 +1,12 @@
 package service;
 
 import business.ContaBusiness;
+import dto.ContaDTO;
 import exception.ContaBusinessException;
 import model.Conta;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class ContaServiceImpl implements ContaService {
 
@@ -26,6 +28,11 @@ public class ContaServiceImpl implements ContaService {
     @Override
     public void inativarConta(Conta conta) throws ContaBusinessException {
         contaBusiness.inativarConta(conta);
+    }
+
+    @Override
+    public List<Conta> consultarConta(ContaDTO contaDTO) {
+        return contaBusiness.consultarConta(contaDTO);
     }
 
 

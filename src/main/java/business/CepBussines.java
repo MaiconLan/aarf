@@ -1,6 +1,7 @@
 package business;
 
 import dto.EnderecoDTO;
+import exception.CepBussinesException;
 import model.Endereco;
 import utils.StringUtils;
 
@@ -8,17 +9,14 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
+import java.net.*;
 
 public class CepBussines {
 
     public String URL_API_POSTMON = "https://api.postmon.com.br/v1/cep/";
     public String FORMATO_XML = "?format=xml";
 
-    public Endereco getEnderecoCompleto(String cep) {
+    public Endereco getEnderecoCompleto(String cep) throws CepBussinesException {
         EnderecoDTO enderecoDTO = null;
         String cepFormatado = StringUtils.removerCaracteres(cep);
 
@@ -38,6 +36,8 @@ public class CepBussines {
             e.printStackTrace();
         } catch (ProtocolException e) {
             e.printStackTrace();
+        } catch (UnknownHostException e ) {
+            throw new CepBussinesException("Consulta de CEP indisponível no momento, tente novamente mais tarde!");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JAXBException e) {
