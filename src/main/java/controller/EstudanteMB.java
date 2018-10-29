@@ -11,6 +11,7 @@ import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 import service.CepService;
 import service.EstudanteService;
+import service.InstituicaoService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -46,6 +47,9 @@ public class EstudanteMB implements Serializable {
     @Inject
     private Identity identity;
 
+    @Inject
+    private InstituicaoService instituicaoService;
+
     @Inject @Param
     private Long idEstudante;
 
@@ -55,7 +59,11 @@ public class EstudanteMB implements Serializable {
     public void init(){
         carregarEstudante();
         isAcessarPerfil = Boolean.valueOf(Faces.getExternalContext().getRequestParameterMap().get("isAcessarPerfil"));
-        instituicoes = new ArrayList<>();
+        carregarInstituicoes();
+    }
+
+    private void carregarInstituicoes(){
+        instituicoes = instituicaoService.obterInstituicoes();
     }
 
     private void carregarEstudante(){

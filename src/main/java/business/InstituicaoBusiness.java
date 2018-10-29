@@ -27,5 +27,8 @@ public class InstituicaoBusiness {
 	 public List<Instituicao> consultarInstituicoes(InstituicaoDTO instituicaoDTO) {
 	        return instituicaoDAO.consultarInstituicoes(instituicaoDTO);
 	 }
-	
+
+    public List<Instituicao> obterInstituicoes() {
+		return instituicaoDAO.obterInstituicoes();
+    }
 }
