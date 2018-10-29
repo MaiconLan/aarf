@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalConsultaInstituicao"
+              header="Consulta de Instituicoes"
+              widgetVar="modalConsultaInstituicao"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closeOnEscape="true">
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                <p:inputText id="nome"
+                                             placeholder="Nome"
+                                             value="#{instituicaoMB.instituicaoDTO.nome}"
+                                />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputText id="cidade"
+                                             placeholder="Cidade"
+                                             value="#{instituicaoMB.instituicaoDTO.cidade}" />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+								<p:selectOneMenu id="selectTipos"
+									value="#{instituicaoMB.instituicaoDTO.tipo}">
+									<f:selectItem itemLabel="Selecione Tipo" itemValue="" />
+									<f:selectItems value="#{instituicaoMB.tipos}" />
+								</p:selectOneMenu>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="consultarInstituicao"
+                                                 icon="fa fa-search"
+                                                 value="Buscar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{instituicaoMB.consultarInstituicao()}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <p:dataTable var="instituicao" value="#{instituicaoMB.instituicoes}" rows="10" paginator="true" reflow="true">
+                                    <f:facet name="header">Instituições</f:facet>
+
+                                    <p:column headerText="Ações" width="6%">
+                                        <p:commandButton icon="ui-icon-check" id="selecionarInstuicao"
+                                                         process="@this" update="@none"
+                                                         action="#{instituicaoMB.selecionarInstituicao(instituicao)}"
+                                                         title="Selecionar">
+                                        </p:commandButton>
+                                    </p:column>
+
+                                    <p:column headerText="Código" width="6%">
+                                        <h:outputText value="#{instituicao.idInstituicao}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nome" width="10%">
+                                        <h:outputText value="#{instituicao.nome}" />
+                                    </p:column>
+
+                                    <p:column headerText="Cidade" width="10%">
+                                        <h:outputText value="#{instituicao.cidade}" />
+                                    </p:column>
+
+                                    <p:column headerText="Tipo" width="10%">
+                                        <h:outputText value="#{instituicao.tipo}" />
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        Foram encontrados #{instituicaoMB.instituicoes.size()} registro(s).
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>
