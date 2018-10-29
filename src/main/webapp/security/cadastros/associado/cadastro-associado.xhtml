@@ -201,7 +201,10 @@
                                                  process="@form"
                                                  update="@form"
                                                  styleClass="red-button"
-                                                 action="#{associadoMB.removerAssociado()}"/>
+                                                 rendered="#{associadoMB.associado.idAssociado != null}"
+                                                 action="#{associadoMB.removerAssociado()}">
+                                    <p:confirm header="Inativar Associado" message="Tem certeza que deseja inativar o associado?" icon="ui-icon-alert" />
+                                </p:commandButton>
                             </div>
                         </div>
                     </h:form>
@@ -210,6 +213,6 @@
         </div>
 
         <ui:include src="modal-consulta-associado.xhtml"/>
+        <ui:include src="/template/confirm.xhtml"/>
     </ui:define>
-
 </ui:composition>

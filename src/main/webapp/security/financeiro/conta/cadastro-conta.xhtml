@@ -1,0 +1,168 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="card">
+                    <h1 class="lightBlack centerText">Cadastro de Conta</h1>
+
+                    <h:form id="formConta">
+                        <h3 class="lightBlack">Dados Cadastrais</h3>
+
+                        <div class="ui-g">
+                            <div class="ui-g-4 ui-md-3 ui-lg-1">
+                                <p:commandButton id="pesquisar"
+                                                 icon="fa fa-search"
+                                                 update="@none"
+                                                 process="@this"
+                                                 title="Pesquisa"
+                                                 action="#{contaMB.modalConsultaConta()}" />
+                            </div>
+                            <div class="ui-g-8 ui-md-3 ui-lg-3">
+                                <p:inputText id="idConta"
+                                             disabled="true"
+                                             placeholder="Código"
+                                             value="#{contaMB.conta.idConta}" />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-2">
+                                <p:inputText id="agencia"
+                                             placeholder="Agência" value="#{contaMB.conta.agencia}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-2">
+                                <p:inputText id="codigoConta"
+                                             placeholder="Conta" value="#{contaMB.conta.numeroConta}"/>
+                            </div>
+                            <div class="ui-g-3 ui-md-3 ui-lg-1">
+                                <p:inputText id="digitoConta"
+                                             placeholder="Dígito" value="#{contaMB.conta.digito}" />
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-2">
+                                <p:selectOneMenu id="selectBanco" value="#{contaMB.conta.banco}">
+                                    <f:selectItem itemLabel="Banco" />
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-2">
+                                <p:inputText id="nomeTitular"
+                                             placeholder="Titular da Conta" value="#{contaMB.conta.titular}" />
+                            </div>
+
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-2">
+                                <p:outputLabel>Aceite</p:outputLabel>
+                            </div>
+                            <p:selectOneRadio id="aceite" value="#{contaMB.conta.aceite}">
+                                <f:selectItem id="sim" itemValue="#{true}" itemLabel="Sim" />
+                                <f:selectItem id="nao" itemValue="#{false}" itemLabel="Não" />
+                            </p:selectOneRadio>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
+                                <p:inputText id="codConvenio"
+                                             placeholder="Código Convênio" value="#{contaMB.conta.convenio}"/>
+                            </div>
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
+                                <p:inputText id="codCedente"
+                                             placeholder="Código Cedente" value="#{contaMB.conta.cedente}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-3">
+                                <p:inputText id="localPagto"
+                                             placeholder="Local Pagamento" value="#{contaMB.conta.localPagamento}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
+                                <p:inputText id="especieDoc"
+                                             placeholder="Espécie Documento" value="#{contaMB.conta.especieDocumento}"/>
+                            </div>
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
+                                <p:inputText id="especie"
+                                             placeholder="Espécie" value="#{contaMB.conta.especie}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
+                                <p:inputText id="carteira"
+                                             placeholder="Carteira" value="#{contaMB.conta.carteira}"/>
+                            </div>
+                            <div class="ui-g-6 ui-md-6 ui-lg-2">
+                                <p:inputText id="modalidade"
+                                             placeholder="Modalidade" value="#{contaMB.conta.modalidade}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-3">
+                                <p:inputTextarea id="instrucoes" autoResize="true"
+                                             placeholder="Instruções" value="#{contaMB.conta.instrucoes}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-2">
+                                <p:selectOneMenu id="layout" >
+                                    <f:selectItem itemLabel="Layout"></f:selectItem>
+                                    <f:selectItem itemLabel="CNAB 240" itemValue="CNAB-240"></f:selectItem>
+                                    <f:selectItem itemLabel="CNAB 400" itemValue="CNAB-400"></f:selectItem>
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-9 ui-md-9 ui-lg-2">
+                                <p:selectOneMenu id="diasProtesto" value="#{contaMB.conta.tipoDiasProtesto}">
+                                    <f:selectItem itemLabel="Dias para Protesto"></f:selectItem>
+                                    <f:selectItem itemLabel="Dias corridos" itemValue="Dias Corridos"></f:selectItem>
+                                    <f:selectItem itemLabel="Dias Úteis" itemValue="Dias Úteis"></f:selectItem>
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="ui-g-3 ui-md-3 ui-lg-1">
+                                <p:inputText id="numDias"
+                                             placeholder="N° Dias" value="#{contaMB.conta.diasProtesto}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="salvarConta"
+                                                 icon="fa fa-check"
+                                                 value="Salvar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{contaMB.salvarConta()}"/>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="inativarConta"
+                                                 icon="fa fa-remove"
+                                                 value="Inativar"
+                                                 process="@this"
+                                                 update="@form"
+                                                 styleClass="red-button"
+                                                 rendered="#{contaMB.conta.idConta != null}"
+                                                 action="#{contaMB.inativarConta()}">
+                                    <p:confirm header="Inativar Conta" message="Tem certeza que deseja inativar a conta?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <ui:include src="modal-consulta-conta.xhtml"/>
+        <ui:include src="/template/confirm.xhtml"/>
+    </ui:define>
+</ui:composition>

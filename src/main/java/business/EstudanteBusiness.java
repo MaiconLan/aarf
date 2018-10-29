@@ -13,6 +13,7 @@ import utils.StringUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -42,7 +43,7 @@ public class EstudanteBusiness {
     }
 
     private void validarSalvarEstudante(Estudante estudante) throws EstudanteBusinessException {
-        Collection<String> detalhes = Collections.EMPTY_LIST;
+        Collection<String> detalhes = new ArrayList<>();
 
         validarEstudante(estudante, detalhes);
         validarEndereco(estudante.getPessoa().getEndereco(), detalhes);

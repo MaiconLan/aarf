@@ -22,8 +22,7 @@
                                                  process="@this"
                                                  title="Pesquisa"
                                                  action="#{estudanteMB.modalConsultaEstudante()}"
-                                                 rendered="#{estudanteMB.renderizarCamposAcessarPerfil()}"
-                                />
+                                                 rendered="#{estudanteMB.renderizarCamposAcessarPerfil()}" />
                             </div>
                             <div class="ui-g-8 ui-md-3 ui-lg-3">
                                 <p:inputText id="idEstudante"
@@ -207,7 +206,10 @@
                                                  process="@form"
                                                  update="@form"
                                                  styleClass="red-button"
-                                                 action="#{estudanteMB.removerEstudante()}"/>
+                                                 rendered="#{estudanteMB.estudante.idEstudante != null}"
+                                                 action="#{estudanteMB.removerEstudante()}">
+                                    <p:confirm header="Inativar Estudante" message="Tem certeza que deseja inativar o estudante?" icon="ui-icon-alert" />
+                                </p:commandButton>
                             </div>
                         </div>
                     </h:form>
@@ -216,6 +218,7 @@
         </div>
 
         <ui:include src="modal-consulta-estudante.xhtml"/>
+        <ui:include src="/template/confirm.xhtml"/>
     </ui:define>
 
 </ui:composition>
