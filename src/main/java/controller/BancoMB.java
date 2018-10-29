@@ -10,6 +10,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @ViewScoped
@@ -34,7 +35,8 @@ public class BancoMB implements Serializable{
 	
 	public void selecionarBanco(Banco banco) {
         setBanco(banco);
-
+        RequestContext.getCurrentInstance().execute("PF('modalConsultaBanco').hide();");
+		RequestContext.getCurrentInstance().update("formBanco");
     }
 	
 	public void consultarBanco() {
@@ -42,7 +44,8 @@ public class BancoMB implements Serializable{
 	}
 	
 	public void modalConsultaBanco() {
-		RequestContext.getCurrentInstance().execute("PF('modalConsultaBanco').show();");
+		bancos = new ArrayList<>();
+		RequestContext.getCurrentInstance().update("PF('modalConsultaBanco').show();");
 	}
 	
 	public void salvarBanco() {
@@ -65,5 +68,21 @@ public class BancoMB implements Serializable{
 
 	public void setBanco(Banco banco) {
 		this.banco = banco;
+	}
+
+	public BancoDTO getBancoDTO() {
+		return bancoDTO;
+	}
+
+	public void setBancoDTO(BancoDTO bancoDTO) {
+		this.bancoDTO = bancoDTO;
+	}
+
+	public List<Banco> getBancos() {
+		return bancos;
+	}
+
+	public void setBancos(List<Banco> bancos) {
+		this.bancos = bancos;
 	}
 }

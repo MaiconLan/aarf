@@ -4,9 +4,9 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
 
-    <p:dialog id="modalConsultaInstituicao"
-              header="Consulta de Instituicoes"
-              widgetVar="modalConsultaInstituicao"
+    <p:dialog id="modalConsultaBanco"
+              header="Consulta de Bancos"
+              widgetVar="modalConsultaBanco"
               modal="true"
               showEffect="fade"
               hideEffect="fade"
@@ -25,65 +25,44 @@
                             <div class="ui-g-12 ui-md-6 ui-lg-3">
                                 <p:inputText id="nome"
                                              placeholder="Nome"
-                                             value="#{instituicaoMB.instituicaoDTO.nome}"
-                                />
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:inputText id="cidade"
-                                             placeholder="Cidade"
-                                             value="#{instituicaoMB.instituicaoDTO.cidade}" />
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-								<p:selectOneMenu id="selectTipos"
-									value="#{instituicaoMB.instituicaoDTO.tipo}">
-									<f:selectItem itemLabel="Selecione Tipo" itemValue="" />
-									<f:selectItems value="#{instituicaoMB.tipos}" />
-								</p:selectOneMenu>
+                                             value="#{bancoMB.bancoDTO.nome}" />
                             </div>
                         </div>
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:commandButton id="consultarInstituicao"
+                                <p:commandButton id="consultarBanco"
                                                  icon="fa fa-search"
                                                  value="Buscar"
                                                  process="@form"
                                                  update="@form"
-                                                 action="#{instituicaoMB.consultarInstituicao()}"/>
+                                                 action="#{bancoMB.consultarBanco()}"/>
                             </div>
                         </div>
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <p:dataTable var="instituicao" value="#{instituicaoMB.instituicoes}" rows="10" paginator="true" reflow="true">
-                                    <f:facet name="header">Instituições</f:facet>
+                                <p:dataTable var="banco" value="#{bancoMB.bancos}" rows="10" paginator="true" reflow="true">
+                                    <f:facet name="header">Banco</f:facet>
 
                                     <p:column headerText="Ações" width="6%">
-                                        <p:commandButton icon="ui-icon-check" id="selecionarInstuicao"
+                                        <p:commandButton icon="ui-icon-check" id="selecionarBanco"
                                                          process="@this" update="@none"
-                                                         action="#{instituicaoMB.selecionarInstituicao(instituicao)}"
+                                                         action="#{bancoMB.selecionarBanco(banco)}"
                                                          title="Selecionar">
                                         </p:commandButton>
                                     </p:column>
 
                                     <p:column headerText="Código" width="6%">
-                                        <h:outputText value="#{instituicao.idInstituicao}" />
+                                        <h:outputText value="#{banco.idBanco}" />
                                     </p:column>
 
                                     <p:column headerText="Nome" width="10%">
-                                        <h:outputText value="#{instituicao.nome}" />
-                                    </p:column>
-
-                                    <p:column headerText="Cidade" width="10%">
-                                        <h:outputText value="#{instituicao.cidade}" />
-                                    </p:column>
-
-                                    <p:column headerText="Tipo" width="10%">
-                                        <h:outputText value="#{instituicao.tipo}" />
+                                        <h:outputText value="#{banco.nome}" />
                                     </p:column>
 
                                     <f:facet name="footer">
-                                        Foram encontrados #{instituicaoMB.instituicoes.size()} registro(s).
+                                        Foram encontrados #{bancoMB.bancos.size()} registro(s).
                                     </f:facet>
                                 </p:dataTable>
                             </div>

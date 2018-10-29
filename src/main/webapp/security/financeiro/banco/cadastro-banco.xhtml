@@ -10,7 +10,7 @@
                 <div class="card">
                     <h1 class="lightBlack centerText">Cadastro de Banco</h1>
 
-                    <h:form id="formInstituicao" styleClass="ui-panelgrid-blank">
+                    <h:form id="formBanco" styleClass="ui-panelgrid-blank">
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-1">
@@ -20,7 +20,7 @@
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <p:inputText id="nome" placeholder="Nome"
-                                             value="#{bancoMB.banco.nome}" />
+                                             value="#{bancoMB.banco.nome}" required="true" requiredMessage="Campo nome obrigatório!" />
                             </div>
                         </div>
                         <div class="ui-g">
