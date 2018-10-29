@@ -7,11 +7,14 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import business.EditalBusiness;
+import dao.EditalDAO;
 import exception.EstudanteBusinessException;
 import org.omnifaces.util.Messages;
 import service.EditalService;
 import model.Edital;
-
+import java.util.List;
+import javax.faces.model.SelectItem;
 
 @ViewScoped
 @Named("editalMB")
@@ -19,9 +22,12 @@ public class EditalMB implements Serializable {
 
     private static final long serialVersionUID = 4688373401392205342L;
     private Edital edital;
+    private List<Edital> editais;
 
     @Inject
     private EditalService editalService;
+
+    private EditalBusiness editalBusiness;
 
     @PostConstruct
     public void init(){
@@ -42,6 +48,11 @@ public class EditalMB implements Serializable {
         }
     }
 
+    public void selectEditais(){
+
+    }
+
+
     public void finalizarPeriodo(){
         editalService.finalizarPeriodo(edital);
     }
@@ -50,9 +61,6 @@ public class EditalMB implements Serializable {
         return edital != null && edital.getFinalizado() != null && edital.getFinalizado();
     }
 
-    public boolean renderizarBotaoFinalizar(){
-        return edital.getIdEdital() != null && (edital.getFinalizado() == null || !edital.getFinalizado());
-    }
 
     public Edital getEdital() {
         return edital;
@@ -62,11 +70,6 @@ public class EditalMB implements Serializable {
         this.edital = edital;
     }
 
-    public EditalService getEditalService() {
-        return editalService;
-    }
 
-    public void setEditalService(EditalService editalService) {
-        this.editalService = editalService;
-    }
+
 }

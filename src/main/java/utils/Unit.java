@@ -10,7 +10,7 @@ public class Unit {
 	public static final String IP_BASE_DADOS_LOCAL = "localhost";
 	public static final String NOME_BASE_DADOS_LOCAL = "aarf-develop";
 	public static final String USUARIO_BASE_DADOS_LOCAL = "postgres";
-	public static final String SENHA_BASE_DADOS_LOCAL = "postgres";
+	public static final String SENHA_BASE_DADOS_LOCAL = "root";
 	
 	// Dados da base DigitalOcean
 	public static final String IP_BASE_DADOS_DO = "127.0.0.1";
