@@ -10,5 +10,7 @@ public interface InstituicaoService {
 	void salvar(Instituicao instituicao);
 	
 	List<Instituicao> consultaInstituicao(InstituicaoDTO instituicaoDTO);
-	
+
+	List<Instituicao> obterInstituicoes();
+
 }

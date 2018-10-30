@@ -44,5 +44,8 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
 
         return query.getResultList();
     }
-	
+
+    public List<Instituicao> obterInstituicoes() {
+	    return list();
+    }
 }
