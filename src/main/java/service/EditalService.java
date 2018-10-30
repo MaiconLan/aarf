@@ -8,4 +8,6 @@ public interface EditalService extends Serializable {
     void salvarEdital(Edital edital);
 
     void finalizarPeriodo(Edital edital);
+    
+    Edital listarEdital(Long idEdital);
 }

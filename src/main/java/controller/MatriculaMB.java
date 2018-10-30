@@ -1,11 +1,26 @@
 package controller;
 
+import service.EditalService;
+import service.InstituicaoService;
 import service.MatriculaService;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.omnifaces.cdi.Param;
+
+import dto.InstituicaoDTO;
+import model.Edital;
+import model.Instituicao;
+import model.Matricula;
+
 import java.io.Serializable;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 @ViewScoped
 @Named(value = "matriculaMB")
@@ -14,5 +29,74 @@ public class MatriculaMB  implements Serializable {
 
     @Inject
     private MatriculaService matriculaService;
+    
+    private Matricula matricula;
+    
+    @Inject
+    private EditalService editalService;
+    
+    private Edital edital;
+    
+    @Inject
+    private InstituicaoService instituicaoService;
+    
+    private List<Instituicao> instituicoes = new ArrayList();
+    
+    @Inject @Param
+    private Long idEdital;
+    
+    @PostConstruct
+    public void init(){
+        novaMatricula();
+        carregarEdital();
+        listarInstituicao();
+    }
+    
+    public void novaMatricula() {
+    	matricula = new Matricula();
+    }
 
+    private void carregarEdital() {
+    	if(idEdital!=null) {
+    		edital = editalService.listarEdital(idEdital);
+    	}
+    }
+    
+    public String obterPeriodo() {
+    	if(edital==null) {
+    		return "";
+    	}
+    	String aberto = edital.getFinalizado()==null?" (Aberto)":" (Fechado)"; 
+    	DateTimeFormatter formato  = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    	return "Período de inscrição: "+formato.format(edital.getInicio())+" à "+formato.format(edital.getTermino())+aberto;
+    }
+    
+    public void listarInstituicao() {
+    	instituicoes = instituicaoService.listarInstituicao();
+    }
+
+	public Matricula getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
+
+	public Edital getEdital() {
+		return edital;
+	}
+
+	public void setEdital(Edital edital) {
+		this.edital = edital;
+	}
+
+	public List<Instituicao> getInstituicoes() {
+		return instituicoes;
+	}
+
+	public void setInstituicoes(List<Instituicao> instituicoes) {
+		this.instituicoes = instituicoes;
+	}
+    
 }

@@ -30,6 +30,11 @@ public class InstituicaoServiceImpl implements InstituicaoService, Serializable 
 		return instituicaoBusiness.consultarInstituicoes(instituicaoDTO);
 	}
 
+	@Override
+	public List<Instituicao> listarInstituicao() {
+		return instituicaoBusiness.listarInstituicoes();
+	}
+
 	
 	
 }

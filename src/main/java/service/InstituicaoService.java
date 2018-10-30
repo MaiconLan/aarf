@@ -11,4 +11,6 @@ public interface InstituicaoService {
 	
 	List<Instituicao> consultaInstituicao(InstituicaoDTO instituicaoDTO);
 	
+	List<Instituicao> listarInstituicao();
+	
 }
