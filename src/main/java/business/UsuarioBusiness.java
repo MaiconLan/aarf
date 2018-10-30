@@ -23,9 +23,9 @@ public class UsuarioBusiness {
     private UsuarioDAO usuarioDAO;
 
     public Usuario salvar(Usuario usuario) throws LoginException {
-        validarLogin(usuario);
 
         if (usuario.isAlterarLogin()) {
+            validarLogin(usuario);
             if (usuario.getIdUsuario() == null)
                 usuarioDAO.save(usuario);
              else

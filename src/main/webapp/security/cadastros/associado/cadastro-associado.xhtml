@@ -15,20 +15,6 @@
 
                     <h:form id="form">
        			         
-       			         <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:selectOneMenu  id="cargo" 
-                             				   title="Cargo"
-                             				   required="true"
-                             				   converter="omnifaces.SelectItemsConverter"
-                                               value="#{associadoMB.associado.cargo}">
-                                 <f:selectItem itemLabel="Selecione Cargo" />
-                                 <f:selectItems value="#{associadoMB.cargos}" var="c"
-							                    itemValue="#{c.descricao}" itemLabel="#{c.descricao}"/>
-                             </p:selectOneMenu>
-                            </div>
-                        </div> 
-                			
                         <div class="ui-g">
                             <div class="ui-g-4 ui-md-3 ui-lg-1">
                                 <p:commandButton icon="fa fa-search"
@@ -40,6 +26,7 @@
                             <div class="ui-g-8 ui-md-3 ui-lg-3">
                                 <p:inputText id="idAssociado"
                                              placeholder="Código"
+                                             disabled="true"
                                              value="#{associadoMB.associado.idAssociado}" />
                             </div>
                         </div>
@@ -110,6 +97,18 @@
                                              required="true"
                                              placeholder="E-mail"
                                              value="#{associadoMB.associado.pessoa.email}" />
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:selectOneMenu  id="cargo"
+                                                  title="Cargo"
+                                                  required="true"
+                                                  converter="omnifaces.SelectItemsConverter"
+                                                  value="#{associadoMB.associado.cargo}">
+                                    <f:selectItem itemLabel="Selecione Cargo" />
+                                    <f:selectItems value="#{associadoMB.cargos}" var="c"
+                                                   itemValue="#{c.descricao}" itemLabel="#{c.descricao}"/>
+                                </p:selectOneMenu>
                             </div>
                         </div>
 

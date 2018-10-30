@@ -8,6 +8,7 @@ import model.Endereco;
 import model.Instituicao;
 import model.Usuario;
 
+import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 
@@ -39,13 +40,28 @@ public class AssociadoMB implements Serializable {
 
     @Inject
     private CepService cepService;
+
+    @Inject
+    private Identity identity;
     
     @Inject
     private AssociadoService service;
 
+    @Inject @Param
+    private Long idAssociado;
+
     @PostConstruct
     public void init(){
-        novoAssociado();
+        carregarAssociado();
+    }
+
+    private void carregarAssociado(){
+        if(idAssociado != null ){
+            if(identity.isUsuarioAssociado())
+                selecionarAssociado(service.obterAssociado(idAssociado));
+        } else {
+            novoAssociado();
+        }
     }
 
     public void modalConsultaAssociado() {
