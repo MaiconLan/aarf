@@ -267,12 +267,13 @@ ALTER TABLE cadastro.endereco ADD CONSTRAINT endereco_uq UNIQUE (id_pessoa);
 -- DROP TABLE IF EXISTS publico.noticia CASCADE;
 CREATE TABLE publico.noticia(
 	id_noticia serial NOT NULL,
+	id_instituicao integer,
 	id_associado integer,
 	titulo character varying NOT NULL,
 	publicacao date NOT NULL,
 	severidade character varying,
-	abrangencia character varying NOT NULL,
 	conteudo character varying(280) NOT NULL,
+	geral boolean,
 	CONSTRAINT id_noticia_pk PRIMARY KEY (id_noticia),
 	CONSTRAINT ck_severidade CHECK (severidade IN ('Baixa', 'Alta', 'Urgente')),
 	CONSTRAINT ck_abrangencia CHECK (abrangencia IN ('Local', 'Geral'))
@@ -412,30 +413,6 @@ REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: cadastro.instituicoes_noticias | type: TABLE --
--- DROP TABLE IF EXISTS cadastro.instituicoes_noticias CASCADE;
-CREATE TABLE cadastro.instituicoes_noticias(
-	id_instituicao integer,
-	id_noticia_noticia integer,
-	CONSTRAINT instituicoes_noticias_pk PRIMARY KEY (id_instituicao,id_noticia_noticia)
-
-);
--- ddl-end --
-
--- object: instituicao_fk | type: CONSTRAINT --
--- ALTER TABLE cadastro.instituicoes_noticias DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
-ALTER TABLE cadastro.instituicoes_noticias ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
-REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
-ON DELETE RESTRICT ON UPDATE CASCADE;
--- ddl-end --
-
--- object: noticia_fk | type: CONSTRAINT --
--- ALTER TABLE cadastro.instituicoes_noticias DROP CONSTRAINT IF EXISTS noticia_fk CASCADE;
-ALTER TABLE cadastro.instituicoes_noticias ADD CONSTRAINT noticia_fk FOREIGN KEY (id_noticia_noticia)
-REFERENCES publico.noticia (id_noticia) MATCH FULL
-ON DELETE RESTRICT ON UPDATE CASCADE;
--- ddl-end --
-
 -- object: parcela_fk | type: CONSTRAINT --
 -- ALTER TABLE financeiro.boleto DROP CONSTRAINT IF EXISTS parcela_fk CASCADE;
 ALTER TABLE financeiro.boleto ADD CONSTRAINT parcela_fk FOREIGN KEY (id_parcela)
@@ -488,6 +465,7 @@ CREATE TABLE financeiro.conta(
 	tipo_dias_protesto character varying NOT NULL,
 	dias_protesto integer NOT NULL,
 	inativo boolean,
+	layout character varying NOT NULL,
 	CONSTRAINT id_conta_pk PRIMARY KEY (id_conta)
 
 );
@@ -541,6 +519,12 @@ REFERENCES cadastro.cidade (id_cidade) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
+-- object: instituicao_fk | type: CONSTRAINT --
+-- ALTER TABLE publico.noticia DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
+ALTER TABLE publico.noticia ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
+REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
 
 
 
