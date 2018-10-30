@@ -10,5 +10,6 @@ public interface BancoService {
 	void salvar(Banco banco);
 	
 	List<Banco> consultaBanco(BancoDTO bancoDTO);
-	
+
+    List<Banco> listarBancos();
 }

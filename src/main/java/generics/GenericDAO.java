@@ -89,7 +89,7 @@ public class GenericDAO<T> {
 	 * @property Lista registros
 	 */
 	@SuppressWarnings("unchecked")
-	public List<T> list() throws NullPointerException, Exception {
+	public List<T> list() {
 		Query query = em.createQuery("FROM " + clazz.getSimpleName());
 		return query.setMaxResults(100).getResultList();
 	}
