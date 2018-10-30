@@ -58,6 +58,8 @@ public class Conta implements Serializable {
 
     private Boolean inativo;
 
+    private String layout;
+
     public Long getIdConta() {
         return idConta;
     }
@@ -200,6 +202,14 @@ public class Conta implements Serializable {
 
     public void setInativo(Boolean inativo) {
         this.inativo = inativo;
+    }
+
+    public String getLayout() {
+        return layout;
+    }
+
+    public void setLayout(String layout) {
+        this.layout = layout;
     }
 
     @Override
