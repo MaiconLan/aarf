@@ -275,8 +275,7 @@ CREATE TABLE publico.noticia(
 	conteudo character varying(280) NOT NULL,
 	geral boolean,
 	CONSTRAINT id_noticia_pk PRIMARY KEY (id_noticia),
-	CONSTRAINT ck_severidade CHECK (severidade IN ('Baixa', 'Alta', 'Urgente')),
-	CONSTRAINT ck_abrangencia CHECK (abrangencia IN ('Local', 'Geral'))
+	CONSTRAINT ck_severidade CHECK (severidade IN ('Baixa', 'Alta', 'Urgente'))
 
 );
 -- ddl-end --
