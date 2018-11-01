@@ -26,7 +26,7 @@
                                              required="true"
                                              requiredMessage="Campo obrigatório"
                                              placeholder="Título"
-                                             value="#{editalMB.edital.titulo}" />
+                                             value="#{editalMB.edital.titulo}"/>
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -54,7 +54,7 @@
                                             pattern="dd/MM/yyyy"
                                             placeholder="Termino"
                                             requiredMessage="Campo obrigatório"
-                                            converter="localDateConverter" />
+                                            converter="localDateConverter"/>
                             </div>
                         </div>
                         <div class="ui-g">
@@ -66,6 +66,11 @@
                                                  update="@form"
                                                  disabled="#{editalMB.isFinalizado()}"
                                                  action="#{editalMB.salvarEdital()}"/>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <h:selectOneMenu value="#{editalMB}">
+                                    <f:selectItems value="#{editalMB} itemValue=#{editalMB.edital.idEdital}"/>
+                                </h:selectOneMenu>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:commandButton id="finalizarEdital"

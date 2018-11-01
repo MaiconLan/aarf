@@ -4,7 +4,10 @@ import dao.EditalDAO;
 import model.Edital;
 
 import javax.ejb.Stateless;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class EditalBusiness {
@@ -23,4 +26,7 @@ public class EditalBusiness {
         edital.setFinalizado(Boolean.TRUE);
         salvarEdital(edital);
     }
+
+
+
 }
