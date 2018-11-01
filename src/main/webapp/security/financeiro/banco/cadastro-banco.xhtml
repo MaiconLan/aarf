@@ -14,8 +14,11 @@
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-1">
-                                <p:commandButton id="pesquisar" icon="fa fa-search"
-                                                 update="@none" process="@this" title="Pesquisa"
+                                <p:commandButton id="pesquisar"
+                                                 update="@none"
+                                                 process="@this"
+                                                 title="Pesquisa"
+                                                 icon="fa fa-search"
                                                  action="#{bancoMB.modalConsultaBanco()}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
@@ -39,6 +42,7 @@
                 </div>
             </div>
         </div>
+
         <ui:include src="modal-consulta-banco.xhtml" />
     </ui:define>
 </ui:composition>
