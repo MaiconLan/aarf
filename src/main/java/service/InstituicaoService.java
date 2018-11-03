@@ -13,4 +13,6 @@ public interface InstituicaoService {
 
 	List<Instituicao> obterInstituicoes();
 
+	List<Instituicao> obterInstituicoesEnsino();
+
 }

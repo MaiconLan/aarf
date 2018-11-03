@@ -63,7 +63,7 @@ public class EstudanteMB implements Serializable {
     }
 
     private void carregarInstituicoes(){
-        instituicoes = instituicaoService.obterInstituicoes();
+        instituicoes = instituicaoService.obterInstituicoesEnsino();
     }
 
     private void carregarEstudante(){
@@ -112,6 +112,7 @@ public class EstudanteMB implements Serializable {
                 novoEstudante();
         } catch (EstudanteBusinessException | LoginException e) {
             e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
+            e.printStackTrace();
         }
     }
 
@@ -140,6 +141,7 @@ public class EstudanteMB implements Serializable {
                 estudante.getPessoa().setEndereco(endereco);
             } catch (CepBussinesException e) {
                 Messages.addWarn(null, e.getMessage());
+                e.printStackTrace();
             }
 
         }
