@@ -91,7 +91,7 @@ public class GenericDAO<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> list() {
 		Query query = em.createQuery("FROM " + clazz.getSimpleName());
-		return query.setMaxResults(100).getResultList();
+		return query.getResultList();
 	}
 
 	/**

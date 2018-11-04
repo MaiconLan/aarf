@@ -22,9 +22,21 @@
 								<p:inputText id="nome" placeholder="Nome"
 									value="#{instituicaoMB.instituicao.nome}" />
 							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-4">
-								<p:inputText id="cidade" placeholder="Cidade"
-									value="#{instituicaoMB.instituicao.cidade}" />
+							<div class="ui-g">
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<p:selectOneMenu id="cidade"
+													 value="#{instituicaoMB.instituicao.cidade}"
+													 converter="omnifaces.SelectItemsIndexConverter"
+													 filter="true"
+													 required="true"
+													 placeholder="Cidade">
+										<f:selectItem itemLabel="Selecione uma Cidade" noSelectionOption="true"/>
+										<f:selectItems var="cidade"
+													   itemLabel="#{cidade.nome} - #{cidade.uf}"
+													   itemValue="#{cidade}"
+													   value="#{instituicaoMB.cidades}"/>
+									</p:selectOneMenu>
+								</div>
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<p:selectOneMenu id="selectTipos"

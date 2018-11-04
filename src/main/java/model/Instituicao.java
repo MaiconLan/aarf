@@ -1,7 +1,10 @@
 package model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,19 +20,21 @@ public class Instituicao implements Serializable {
 
     private String nome;
     
-    private String cidade;
-
     private String tipo;
 
-    public String getCidade() {
-		return cidade;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cidade")
+    private Cidade cidade;
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
+    public Cidade getCidade() {
+        return cidade;
+    }
 
-	public Long getIdInstituicao() {
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    public Long getIdInstituicao() {
         return idInstituicao;
     }
 
@@ -65,7 +70,6 @@ public class Instituicao implements Serializable {
     public int hashCode() {
         return Objects.hash(idInstituicao);
     }
-
 }
 
 

@@ -143,7 +143,6 @@ CREATE TABLE cadastro.instituicao(
 	id_instituicao serial NOT NULL,
 	nome character varying NOT NULL,
 	tipo character varying NOT NULL,
-	cidade character varying,
 	id_cidade integer,
 	CONSTRAINT id_instituicao PRIMARY KEY (id_instituicao),
 	CONSTRAINT ck_tipo CHECK (tipo IN ('Educação', 'Financeira'))

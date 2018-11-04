@@ -6,8 +6,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import business.InstituicaoBusiness;
+import dao.CidadeDAO;
 import dao.InstituicaoDAO;
 import dto.InstituicaoDTO;
+import model.Cidade;
 import model.Instituicao;
 
 public class InstituicaoServiceImpl implements InstituicaoService, Serializable {
@@ -19,7 +21,10 @@ public class InstituicaoServiceImpl implements InstituicaoService, Serializable 
 
 	@Inject
 	private InstituicaoDAO instituicaoDAO;
-	
+
+	@Inject
+	private CidadeDAO cidadeDAO;
+
 	@Override
 	public void salvar(Instituicao instituicao) {
 		instituicaoBusiness.salvar(instituicao);
@@ -38,6 +43,11 @@ public class InstituicaoServiceImpl implements InstituicaoService, Serializable 
 	@Override
 	public List<Instituicao> obterInstituicoesEnsino() {
 		return instituicaoDAO.obterInstituicoesEnsino();
+	}
+
+	@Override
+	public List<Cidade> obterCidades() {
+		return cidadeDAO.list();
 	}
 
 
