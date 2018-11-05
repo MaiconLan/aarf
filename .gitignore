@@ -57,4 +57,9 @@ pom.xml.tag
 .idea/workspace.xml
 .idea/workspace.xml
 aarf.iml
+<<<<<<< HEAD
+=======
+src/main/java/utils/Unit.java
+.idea/workspace.xml
+>>>>>>> #6-CadastroEdital
 .idea/workspace.xml
