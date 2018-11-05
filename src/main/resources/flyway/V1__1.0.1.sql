@@ -143,9 +143,9 @@ CREATE TABLE cadastro.instituicao(
 	id_instituicao serial NOT NULL,
 	nome character varying NOT NULL,
 	tipo character varying NOT NULL,
-	cidade character varying,
+	id_cidade integer,
 	CONSTRAINT id_instituicao PRIMARY KEY (id_instituicao),
-	CONSTRAINT ck_tipo CHECK (tipo IN ('Educacao', 'Financeira'))
+	CONSTRAINT ck_tipo CHECK (tipo IN ('Educação', 'Financeira'))
 
 );
 -- ddl-end --
@@ -266,15 +266,15 @@ ALTER TABLE cadastro.endereco ADD CONSTRAINT endereco_uq UNIQUE (id_pessoa);
 -- DROP TABLE IF EXISTS publico.noticia CASCADE;
 CREATE TABLE publico.noticia(
 	id_noticia serial NOT NULL,
+	id_instituicao integer,
 	id_associado integer,
 	titulo character varying NOT NULL,
 	publicacao date NOT NULL,
 	severidade character varying,
-	abrangencia character varying NOT NULL,
 	conteudo character varying(280) NOT NULL,
+	geral boolean,
 	CONSTRAINT id_noticia_pk PRIMARY KEY (id_noticia),
-	CONSTRAINT ck_severidade CHECK (severidade IN ('Baixa', 'Alta', 'Urgente')),
-	CONSTRAINT ck_abrangencia CHECK (abrangencia IN ('Local', 'Geral'))
+	CONSTRAINT ck_severidade CHECK (severidade IN ('Baixa', 'Alta', 'Urgente'))
 
 );
 -- ddl-end --
@@ -411,30 +411,6 @@ REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: cadastro.instituicoes_noticias | type: TABLE --
--- DROP TABLE IF EXISTS cadastro.instituicoes_noticias CASCADE;
-CREATE TABLE cadastro.instituicoes_noticias(
-	id_instituicao integer,
-	id_noticia_noticia integer,
-	CONSTRAINT instituicoes_noticias_pk PRIMARY KEY (id_instituicao,id_noticia_noticia)
-
-);
--- ddl-end --
-
--- object: instituicao_fk | type: CONSTRAINT --
--- ALTER TABLE cadastro.instituicoes_noticias DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
-ALTER TABLE cadastro.instituicoes_noticias ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
-REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
-ON DELETE RESTRICT ON UPDATE CASCADE;
--- ddl-end --
-
--- object: noticia_fk | type: CONSTRAINT --
--- ALTER TABLE cadastro.instituicoes_noticias DROP CONSTRAINT IF EXISTS noticia_fk CASCADE;
-ALTER TABLE cadastro.instituicoes_noticias ADD CONSTRAINT noticia_fk FOREIGN KEY (id_noticia_noticia)
-REFERENCES publico.noticia (id_noticia) MATCH FULL
-ON DELETE RESTRICT ON UPDATE CASCADE;
--- ddl-end --
-
 -- object: parcela_fk | type: CONSTRAINT --
 -- ALTER TABLE financeiro.boleto DROP CONSTRAINT IF EXISTS parcela_fk CASCADE;
 ALTER TABLE financeiro.boleto ADD CONSTRAINT parcela_fk FOREIGN KEY (id_parcela)
@@ -466,13 +442,14 @@ REFERENCES matricula.matricula (id_matricula) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: cadastro.conta | type: TABLE --
--- DROP TABLE IF EXISTS cadastro.conta CASCADE;
-CREATE TABLE cadastro.conta(
+-- object: financeiro.conta | type: TABLE --
+-- DROP TABLE IF EXISTS financeiro.conta CASCADE;
+CREATE TABLE financeiro.conta(
 	id_conta serial NOT NULL,
-	conta integer NOT NULL,
+	id_banco integer,
+	agencia integer NOT NULL,
+	numero_conta integer NOT NULL,
 	digito integer NOT NULL,
-	banco character varying NOT NULL,
 	titular character varying NOT NULL,
 	aceite boolean,
 	convenio integer NOT NULL,
@@ -485,20 +462,67 @@ CREATE TABLE cadastro.conta(
 	instrucoes character varying,
 	tipo_dias_protesto character varying NOT NULL,
 	dias_protesto integer NOT NULL,
+	inativo boolean,
+	layout character varying NOT NULL,
 	CONSTRAINT id_conta_pk PRIMARY KEY (id_conta)
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.conta OWNER TO postgres;
+ALTER TABLE financeiro.conta OWNER TO postgres;
 -- ddl-end --
 
 -- object: conta_fk | type: CONSTRAINT --
 -- ALTER TABLE financeiro.boleto DROP CONSTRAINT IF EXISTS conta_fk CASCADE;
 ALTER TABLE financeiro.boleto ADD CONSTRAINT conta_fk FOREIGN KEY (id_conta)
-REFERENCES cadastro.conta (id_conta) MATCH FULL
+REFERENCES financeiro.conta (id_conta) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
+-- object: financeiro.banco | type: TABLE --
+-- DROP TABLE IF EXISTS financeiro.banco CASCADE;
+CREATE TABLE financeiro.banco(
+	id_banco serial NOT NULL,
+	nome character varying NOT NULL,
+	CONSTRAINT id_banco_pk PRIMARY KEY (id_banco)
+
+);
+-- ddl-end --
+ALTER TABLE financeiro.banco OWNER TO postgres;
+-- ddl-end --
+
+-- object: banco_fk | type: CONSTRAINT --
+-- ALTER TABLE financeiro.conta DROP CONSTRAINT IF EXISTS banco_fk CASCADE;
+ALTER TABLE financeiro.conta ADD CONSTRAINT banco_fk FOREIGN KEY (id_banco)
+REFERENCES financeiro.banco (id_banco) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: cadastro.cidade | type: TABLE --
+-- DROP TABLE IF EXISTS cadastro.cidade CASCADE;
+CREATE TABLE cadastro.cidade(
+	id_cidade serial NOT NULL,
+	nome character varying NOT NULL,
+	uf character varying NOT NULL,
+	CONSTRAINT id_cidade_pk PRIMARY KEY (id_cidade)
+
+);
+-- ddl-end --
+ALTER TABLE cadastro.cidade OWNER TO postgres;
+-- ddl-end --
+
+-- object: cidade_fk | type: CONSTRAINT --
+-- ALTER TABLE cadastro.instituicao DROP CONSTRAINT IF EXISTS cidade_fk CASCADE;
+ALTER TABLE cadastro.instituicao ADD CONSTRAINT cidade_fk FOREIGN KEY (id_cidade)
+REFERENCES cadastro.cidade (id_cidade) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: instituicao_fk | type: CONSTRAINT --
+-- ALTER TABLE publico.noticia DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
+ALTER TABLE publico.noticia ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
+REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
 
 
 

@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalConsultaBanco"
+              header="Consulta de Bancos"
+              widgetVar="modalConsultaBanco"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closeOnEscape="true">
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                <p:inputText id="nome"
+                                             placeholder="Nome"
+                                             value="#{bancoMB.bancoDTO.nome}" />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="consultarBanco"
+                                                 icon="fa fa-search"
+                                                 value="Buscar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{bancoMB.consultarBanco()}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <p:dataTable var="banco" value="#{bancoMB.bancos}" rows="10" paginator="true" reflow="true">
+                                    <f:facet name="header">Banco</f:facet>
+
+                                    <p:column headerText="Ações" width="6%">
+                                        <p:commandButton icon="ui-icon-check" id="selecionarBanco"
+                                                         process="@this" update="@none"
+                                                         action="#{bancoMB.selecionarBanco(banco)}"
+                                                         title="Selecionar">
+                                        </p:commandButton>
+                                    </p:column>
+
+                                    <p:column headerText="Código" width="6%">
+                                        <h:outputText value="#{banco.idBanco}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nome" width="10%">
+                                        <h:outputText value="#{banco.nome}" />
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        Foram encontrados #{bancoMB.bancos.size()} registro(s).
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>

@@ -1,6 +1,7 @@
 package controller;
 
 import dto.EstudanteDTO;
+import exception.CepBussinesException;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
 import model.*;
@@ -10,6 +11,7 @@ import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 import service.CepService;
 import service.EstudanteService;
+import service.InstituicaoService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -45,6 +47,9 @@ public class EstudanteMB implements Serializable {
     @Inject
     private Identity identity;
 
+    @Inject
+    private InstituicaoService instituicaoService;
+
     @Inject @Param
     private Long idEstudante;
 
@@ -54,7 +59,11 @@ public class EstudanteMB implements Serializable {
     public void init(){
         carregarEstudante();
         isAcessarPerfil = Boolean.valueOf(Faces.getExternalContext().getRequestParameterMap().get("isAcessarPerfil"));
-        instituicoes = new ArrayList<>();
+        carregarInstituicoes();
+    }
+
+    private void carregarInstituicoes(){
+        instituicoes = instituicaoService.obterInstituicoesEnsino();
     }
 
     private void carregarEstudante(){
@@ -102,7 +111,8 @@ public class EstudanteMB implements Serializable {
             if(!isAcessarPerfil)
                 novoEstudante();
         } catch (EstudanteBusinessException | LoginException e) {
-            Messages.addError(null, e.getMessage());
+            e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
+            e.printStackTrace();
         }
     }
 
@@ -124,10 +134,16 @@ public class EstudanteMB implements Serializable {
         String cep = estudante.getPessoa().getEndereco().getCep();
         Long idEndereco = estudante.getPessoa().getEndereco().getIdEndereco();
         if(cep != null && !cep.isEmpty()){
-            Endereco endereco = cepService.getEnderecoCompleto(cep);
-            endereco.setIdEndereco(idEndereco);
-            endereco.setPessoa(estudante.getPessoa());
-            estudante.getPessoa().setEndereco(endereco);
+            try {
+                Endereco endereco = cepService.getEnderecoCompleto(cep);
+                endereco.setIdEndereco(idEndereco);
+                endereco.setPessoa(estudante.getPessoa());
+                estudante.getPessoa().setEndereco(endereco);
+            } catch (CepBussinesException e) {
+                Messages.addWarn(null, e.getMessage());
+                e.printStackTrace();
+            }
+
         }
     }
 

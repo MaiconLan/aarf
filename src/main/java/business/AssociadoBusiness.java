@@ -53,7 +53,7 @@ public class AssociadoBusiness {
 
     private void validarAssociado(Associado a, Collection<String> detalhes) {
         if(a.getPessoa().getNome() == null)
-            detalhes.add("Nome � obrigat�rio");
+            detalhes.add("Nome é de preenchimento obrigatório");
     }
 
     private void validarEndereco(Endereco endereco, Collection<String> detalhes){
@@ -65,7 +65,6 @@ public class AssociadoBusiness {
 
         if(endereco.getLogradouro() == null)
             detalhes.add("Logradouro é de preenchimento obrigatório");
-
     }
 
     private void removerCaracteres(Pessoa pessoa){

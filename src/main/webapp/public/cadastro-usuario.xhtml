@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Cadastro de Usuário</title>
+    </h:head>
+
+    <h:body styleClass="containerLogin">
+        <div id="landing-page-wrapper">
+            <div id="landing-top-bar">
+                <div class="landing-container">
+                    <div class="landing-logo">
+                        <h:graphicImage name="images/logo.png" id="logo" library="icarus-layout" />
+                    </div>
+                    <a id="landing-menubar-button" href="#">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+
+                    <div id="landing-nav" class="sidebar-nav">
+                        <ul id="landing-sidebar-container" class="sidebar-nav-container">
+                            <li class="sidebar-menuitem">
+                                <a href="../public/promotion-page.xhtml" class="menuLink">
+                                    <div class="tablet-view">
+                                        <span class="menu-text">Home</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-menuitem">
+                                <a href="promotion-page.xhtml#landing-slogan" class="menuLink">
+                                    <div class="tablet-view">
+                                        <span class="menu-text">Slogan</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-menuitem">
+                                <a href="promotion-page.xhtml#landing-feature" class="menuLink">
+                                    <div class="tablet-view">
+                                        <span class="menu-text">Features</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-menuitem">
+                                <a href="promotion-page.xhtml#landing-promotion" class="menuLink">
+                                    <div class="tablet-view">
+                                        <span class="menu-text">Promotion</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-menuitem">
+                                <a href="promotion-page.xhtml#landing-pricing" class="menuLink">
+                                    <div class="tablet-view">
+                                        <span class="menu-text">Pricing</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-menuitem">
+                                <a href="/login.xhtml" class="menuLink">
+                                    <div class="tablet-view">
+                                        <span class="menu-text">Login</span>
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="sidebar-menuitem">
+                                <div class="tablet-view">
+                                    <p:commandLink id="acessarSistema"
+                                                   styleClass="menuLink"
+                                                   value="Acessar Sistema">
+                                        <i class="fa fa-angle-right" aria-hidden="true"/>
+                                    </p:commandLink>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="landing-nav-bar">
+                        <ul>
+                            <li><a href="promotion-page.xhtml">Home</a></li>
+                            <li><a class="nav" href="promotion-page.xhtml#landing-slogan">Slogan</a></li>
+                            <li><a href="promotion-page.xhtml#landing-feature">Features</a></li>
+                            <li><a href="promotion-page.xhtml#landing-promotion">Promotion</a></li>
+                            <li><a href="promotion-page.xhtml#landing-pricing">Pricing</a></li>
+                            <li><a href="promotion-page.xhtml#landing-video">Video</a></li>
+                            <li>
+                                <p:link id="linkRedirecionarLogin"
+                                        rendered="#{!identity.isLogado()}"
+                                        value="Login"
+                                        outcome="/login"/>
+                            </li>
+                            <li>
+                                <p:link id="linkRedirecionarSistema"
+                                        rendered="#{identity.isLogado()}"
+                                        value="Acessar Sistema"
+                                        outcome="/security/dashboard"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h:form id="cadastroUsuario">
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="card">
+                            <h1 class="lightBlack centerText">Cadastro de Estudante</h1>
+
+                            <h3 class="lightBlack">Dados Cadastrais</h3>
+
+                            <h:form id="formEstudante">
+                                <p:growl id="messages" autoUpdate="true"/>
+                                <ui:include src="/template/loading.xhtml"/>
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                        <p:inputText id="nome"
+                                                     required="true"
+                                                     placeholder="Nome"
+                                                     value="#{usuarioMB.estudante.pessoa.nome}" />
+                                    </div>
+
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:calendar id="nascimento"
+                                                    value="#{usuarioMB.estudante.pessoa.nascimento}"
+                                                    mask="true"
+                                                    required="true"
+                                                    showOn="button"
+                                                    pattern="dd/MM/yyyy"
+                                                    placeholder="Nascimento"
+                                                    converter="localDateConverter" />
+                                    </div>
+
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:selectOneRadio id="genero"
+                                                          required="true"
+                                                          value="#{usuarioMB.estudante.pessoa.genero}">
+                                            <f:selectItem itemLabel="Masculino" itemValue="M" />
+                                            <f:selectItem itemLabel="Feminino" itemValue="F" />
+                                        </p:selectOneRadio>
+                                    </div>
+                                </div>
+
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:inputMask id="cpf"
+                                                     required="true"
+                                                     mask="999.999.999-99"
+                                                     placeholder="CPF"
+                                                     value="#{usuarioMB.estudante.pessoa.cpf}" />
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:inputMask id="rg"
+                                                     required="true"
+                                                     mask="9.999.999"
+                                                     placeholder="RG"
+                                                     value="#{usuarioMB.estudante.pessoa.rg}" />
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:inputMask id="telefone"
+                                                     required="true"
+                                                     mask="(99) 9999-9999"
+                                                     placeholder="Telefone (Fixo)"
+                                                     value="#{usuarioMB.estudante.pessoa.telefone}" />
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:inputMask id="celular"
+                                                     required="true"
+                                                     mask="(99) 9 9999-9999"
+                                                     placeholder="Celular"
+                                                     value="#{usuarioMB.estudante.pessoa.celular}" />
+                                    </div>
+                                </div>
+
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:inputText id="email"
+                                                     required="true"
+                                                     placeholder="E-mail"
+                                                     value="#{usuarioMB.estudante.pessoa.email}" />
+                                    </div>
+                                </div>
+
+                                <h:panelGroup id="panelEndereco">
+                                    <h3 class="lightBlack">Endereço</h3>
+                                    <div class="ui-g">
+                                        <div class="ui-g-12 ui-md-2 ui-lg-1">
+                                            <p:commandButton id="consultarEndereco"
+                                                             icon="fa fa-search"
+                                                             styleClass="navy-button"
+                                                             process="panelEndereco"
+                                                             update="panelEndereco"
+                                                             action="#{usuarioMB.consultarCep()}"/>
+
+                                        </div>
+                                        <div class="ui-g-12 ui-md-4 ui-lg-3">
+                                            <p:inputMask id="cep"
+                                                         placeholder="CEP"
+                                                         mask="99 999-999"
+                                                         value="#{usuarioMB.estudante.pessoa.endereco.cep}" />
+                                        </div>
+
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                            <p:inputText id="logradouro"
+                                                         placeholder="Rua"
+                                                         value="#{usuarioMB.estudante.pessoa.endereco.logradouro}" />
+                                        </div>
+
+                                    </div>
+                                    <div class="ui-g">
+                                        <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                            <p:inputText id="complemento"
+                                                         placeholder="Complemento"
+                                                         value="#{usuarioMB.estudante.pessoa.endereco.complemento}" />
+                                        </div>
+
+                                        <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                            <p:inputText id="bairro"
+                                                         placeholder="Bairro"
+                                                         value="#{usuarioMB.estudante.pessoa.endereco.bairro}" />
+                                        </div>
+                                    </div>
+                                </h:panelGroup>
+
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                        <p:selectOneMenu id="instituicao"
+                                                         value="#{usuarioMB.estudante.instituicao}"
+                                                         converter="omnifaces.SelectItemsConverter"
+                                                         filter="true"
+                                                         required="true"
+                                                         placeholder="Instituição de Ensino">
+                                            <f:selectItem itemLabel="Selecione uma Instituição" noSelectionOption="true"/>
+                                            <f:selectItems var="instituicao"
+                                                           itemLabel="#{instituicao.nome}"
+                                                           itemValue="#{instituicao}"
+                                                           value="#{usuarioMB.instituicoes}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <h3 class="lightBlack">Usuário</h3>
+                                <p:outputPanel id="panelUsuario">
+                                    <div class="ui-g">
+                                        <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                            <p:inputText id="usuario"
+                                                         required="true"
+                                                         placeholder="Login"
+                                                         value="#{usuarioMB.estudante.usuario.login}" />
+                                        </div>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                            <p:password id="senha"
+                                                        required="true"
+                                                        placeholder="Senha"
+                                                        value="#{usuarioMB.estudante.usuario.senha}" />
+                                        </div>
+                                    </div>
+                                </p:outputPanel>
+
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                        <p:commandButton id="salvarEstudante"
+                                                         icon="fa fa-check"
+                                                         value="Salvar"
+                                                         process="cadastroUsuario"
+                                                         update="cadastroUsuario"
+                                                         action="#{usuarioMB.salvarEstudante()}"/>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+
+        <style type="text/css">
+            html {height: 100%;}
+            .ui-button-text, .ui-button-text-only .ui-button-text{padding:8px !important; transition:none !important;}
+            .ui-panel .ui-panel-title {font-size: 17px;}
+        </style>
+
+        <h:outputStylesheet name="css/layout.css" library="icarus-layout" />
+        <script>
+            var $this = this;
+            this.landingNav = $('#landing-nav');
+            this.landingMenuButton = $('#landing-menubar-button');
+
+            this.landingMenuButton.on('click', function(e) {
+                $this.toggleMenu();
+                e.preventDefault();
+            });
+
+            /*$('#landing-sidebar-container li.sidebar-menuitem').on('click', function(e) {
+                $this.toggleMenu();// This should close the menu.
+            });*/
+
+            function toggleMenu() {
+                if(this.landingNav.hasClass('landing-mobile-menu')) {
+                    this.landingNav.removeClass('landing-mobile-menu');
+                }
+                else {
+                    $this.landingNav.addClass('landing-mobile-menu');
+                }
+            }
+
+            /* Scroll Animate */
+            $('a[href*="#"]:not([href="#"])').click(function() {
+                $this.toggleMenu(); // When scrolling close the menu.
+                var target = $(this.hash);
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 500);
+                    return false;
+                }
+            });
+        </script>
+        <style type="text/css">
+            body {
+                overflow-x: hidden;
+            }
+        </style>
+    </h:body>
+
+</html>

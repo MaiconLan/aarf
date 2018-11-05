@@ -1,12 +1,14 @@
 package controller;
 
 import exception.AssociadoBusinessException;
+import exception.CepBussinesException;
 import exception.LoginException;
 import model.Associado;
 import model.Endereco;
 import model.Instituicao;
 import model.Usuario;
 
+import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 
@@ -38,13 +40,28 @@ public class AssociadoMB implements Serializable {
 
     @Inject
     private CepService cepService;
+
+    @Inject
+    private Identity identity;
     
     @Inject
     private AssociadoService service;
 
+    @Inject @Param
+    private Long idAssociado;
+
     @PostConstruct
     public void init(){
-        novoAssociado();
+        carregarAssociado();
+    }
+
+    private void carregarAssociado(){
+        if(idAssociado != null ){
+            if(identity.isUsuarioAssociado())
+                selecionarAssociado(service.obterAssociado(idAssociado));
+        } else {
+            novoAssociado();
+        }
     }
 
     public void modalConsultaAssociado() {
@@ -75,13 +92,13 @@ public class AssociadoMB implements Serializable {
             Messages.addInfo(null, "Associado salvo com sucesso");
             novoAssociado();
         } catch (AssociadoBusinessException | LoginException e) {
-            Messages.addError(null, "Erro no Cadastro");
+            Messages.addError(null, e.getMessage());
         }
     }
 
     public void removerAssociado(){
         service.removerAssociado(associado);
-        Messages.addInfo(null, "Assocaido removido com sucesso");
+        Messages.addInfo(null, "Associado removido com sucesso");
         novoAssociado();
     }
 
@@ -97,10 +114,14 @@ public class AssociadoMB implements Serializable {
         String cep = associado.getPessoa().getEndereco().getCep();
         Long idEndereco = associado.getPessoa().getEndereco().getIdEndereco();
         if(cep != null && !cep.isEmpty()){
-            Endereco endereco = cepService.getEnderecoCompleto(cep);
-            endereco.setIdEndereco(idEndereco);
-            endereco.setPessoa(associado.getPessoa());
-            associado.getPessoa().setEndereco(endereco);
+            try {
+                Endereco endereco = cepService.getEnderecoCompleto(cep);
+                endereco.setIdEndereco(idEndereco);
+                endereco.setPessoa(associado.getPessoa());
+                associado.getPessoa().setEndereco(endereco);
+            } catch (CepBussinesException e) {
+                Messages.addWarn(null, e.getMessage());
+            }
         }
     }
     

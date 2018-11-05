@@ -2,6 +2,7 @@ package service;
 
 import business.CepBussines;
 import dto.EnderecoDTO;
+import exception.CepBussinesException;
 import model.Endereco;
 import service.CepService;
 
@@ -13,7 +14,7 @@ public class CepServiceImpl implements CepService {
     private CepBussines cepBussines;
 
     @Override
-    public Endereco getEnderecoCompleto(String cep) {
+    public Endereco getEnderecoCompleto(String cep) throws CepBussinesException {
         return cepBussines.getEnderecoCompleto(cep);
     }
 

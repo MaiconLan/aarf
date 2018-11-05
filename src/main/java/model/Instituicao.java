@@ -1,23 +1,38 @@
 package model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(schema = "cadastro", name = "instituicao")
-public class Instituicao  implements Serializable {
+public class Instituicao implements Serializable {
 
-    private static final long serialVersionUID = -8049920322251164021L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_instituicao")
     private Long idInstituicao;
 
     private String nome;
-
+    
     private String tipo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cidade")
+    private Cidade cidade;
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
 
     public Long getIdInstituicao() {
         return idInstituicao;
@@ -55,7 +70,6 @@ public class Instituicao  implements Serializable {
     public int hashCode() {
         return Objects.hash(idInstituicao);
     }
-
 }
 
 
