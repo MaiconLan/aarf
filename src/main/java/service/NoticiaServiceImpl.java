@@ -5,6 +5,8 @@ import exception.LoginException;
 import exception.NoticiaBusinessException;
 import model.Noticia;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 
@@ -23,6 +25,12 @@ public class NoticiaServiceImpl implements NoticiaService {
 	@Override
 	public void removerNoticia(Noticia n) {
 		noticiaBusiness.removerNoticia(n);
+	}
+
+	@Override
+	public List<Noticia> listarNoticias() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
