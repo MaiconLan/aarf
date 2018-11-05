@@ -40,7 +40,7 @@ public class ApplicationMB implements Serializable {
     }
 
     public void online() {
-        Messages.addWarn(null, "Bem vindo de volta!");
+        Messages.addWarn(null, "Bem-vindo(a) de volta!");
     }
 
     public void refresh() {

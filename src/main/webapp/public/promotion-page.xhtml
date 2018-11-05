@@ -108,7 +108,7 @@
                                 <p:link id="linkRedirecionarSistema"
                                                rendered="#{identity.isLogado()}"
                                                value="Acessar Sistema"
-                                               outcome="security/dashboard"/>
+                                               outcome="/security/dashboard"/>
                             </li>
                         </ul>
                     </div>
@@ -116,13 +116,15 @@
             </div>
             <div id="landing-slogan">
                 <div class="landing-container slogan-container">
-                    <h1>Your Application Slogan Comes Here</h1>
+                    <h1>Bem vindo à Associação Acadêmica de Rio Fortuna</h1>
                     <p>
-                        You can use this page as a promotion page template for your application. <br/>
-                        So your web application and promotion website of application will work in <br/>
-                        complete harmony.
+                        Fique por dentro das novidades da associação. <br/>
+                        Faça seu cadastro e verifique os Editais com os ônibus disponíveis, para que você possa ir para a sua faculdade. <br/>
+                        Tudo pelo nosso portal na internet, sem complicação, sem perda de tempo.<br/>
                     </p>
-                    <p:button id="landingButton" value="SIGN UP NOW"></p:button>
+                    <p:button outcome="/public/cadastro-usuario" id="buttonCadastreSe" value="CADASTRE-SE" />
+                    <p:spacer width="2%"/>
+                    <p:button outcome="/login" id="buttonFacaLogin" value="JÁ POSSUI CADASTRO?" />
                 </div>
             </div>
             <div id="landing-feature">

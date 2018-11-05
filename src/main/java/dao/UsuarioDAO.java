@@ -112,31 +112,26 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
     }
 
     public boolean possuiUsuario(Usuario usuario){
-        /*
-        boolean possuiIdLogin = usuario.getIdLogin() != null;
+        boolean possuiIdUsuario = usuario.getIdUsuario() != null;
 
-        Query query = em.createNativeQuery(sqlVerificarUsuarioJaCadastrado(possuiIdLogin));
-        query.setParameter("usuario", usuario.getUsuario());
+        Query query = em.createNativeQuery(sqlVerificarUsuarioJaCadastrado(possuiIdUsuario));
+        query.setParameter("login", usuario.getLogin());
 
-        if(possuiIdLogin)
-            query.setParameter("idLogin", usuario.getIdLogin());
+        if(possuiIdUsuario)
+            query.setParameter("idUsuario", usuario.getIdUsuario());
 
         return (boolean) query.getSingleResult();
-        */
-        return false;
     }
 
     private String sqlVerificarUsuarioJaCadastrado(boolean possuiIdLogin){
         StringBuilder sql = new StringBuilder();
 
-        sql.append("SELECT COUNT(l) > 0 ");
-        sql.append(" 	FROM Usuario l ");
-        sql.append(" WHERE l.usuario = :usuario ");
+        sql.append("SELECT COUNT(u.id_usuario) > 0 ");
+        sql.append(" 	FROM cadastro.usuario u ");
+        sql.append(" WHERE u.login = :login");
 
         if(possuiIdLogin)
-            sql.append(" 	AND l.id_login <> :idLogin ");
-
-        sql.append(";");
+            sql.append(" 	AND u.id_usuario <> :idUsuario ");
 
         return sql.toString();
     }

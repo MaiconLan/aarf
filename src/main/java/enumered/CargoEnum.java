@@ -2,8 +2,8 @@ package enumered;
 
 public enum CargoEnum {
   	PRESIDENTE("Presidente"),
-    VICE_PRECIDENTE("Vice Precidente"),
-    SECRETARIO("Secret·rio"),
+    VICE_PRECIDENTE("Vice Presidente"),
+    SECRETARIO("Secret√°rio"),
     TESOUREIRO("Tesoureiro");
  
 	private String descricao;
