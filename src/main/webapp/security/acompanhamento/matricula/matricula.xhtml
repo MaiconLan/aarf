@@ -39,24 +39,30 @@
 					</div>
 					<div class="ui-g">
 						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<h:selectOneMenu id="dia" value="#" required="true" label="Text 3">
+							<p:selectOneMenu id="selectDia" value="#" required="true"
+								label="Text 3">
 								<f:selectItem itemLabel="Segunda-feira" itemValue="1" />
 								<f:selectItem itemLabel="Terça-feira" itemValue="2" />
 								<f:selectItem itemLabel="Quarta-feira" itemValue="3" />
 								<f:selectItem itemLabel="Quinta-feira" itemValue="4" />
 								<f:selectItem itemLabel="Sexta-feira" itemValue="5" />
-							</h:selectOneMenu>
+							</p:selectOneMenu>
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:outputLabel id="viagem" value="Viagem" />
-
+							<p:selectManyCheckbox id="selectViagem"
+								value="#{checkboxView.selectedConsoles}">
+								<f:selectItem itemLabel="Ida" itemValue="Ida" />
+								<f:selectItem itemLabel="Volta" itemValue="Volta" />
+							</p:selectManyCheckbox>
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:outputLabel id="instituicao" value="Instituição de insino" />
+							<p:outputLabel id="instituicao2" value="Instituição de ensino" />
 
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:outputLabel id="acoes" value="Ações" />
+							<p:commandButton id="adicionar" icon="fa fa-search"
+									update="@none" process="@this" title="Adicionar"
+									action="#{matriculaMB.salvar()}" />
 						</div>
 					</div>
 					<!--
