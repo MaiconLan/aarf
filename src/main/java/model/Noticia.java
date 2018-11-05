@@ -36,7 +36,7 @@ public class Noticia implements Serializable {
 
     private String severidade;
 
-    private Boolean abrangencia;
+    private boolean abrangencia;
 
     private String conteudo;
 
@@ -86,11 +86,11 @@ public class Noticia implements Serializable {
         this.severidade = severidade;
     }
 
-	public Boolean getAbrangencia() {
+	public boolean isAbrangencia() {
 		return abrangencia;
 	}
 
-	public void setAbrangencia(Boolean abrangencia) {
+	public void setAbrangencia(boolean abrangencia) {
 		this.abrangencia = abrangencia;
 	}
 

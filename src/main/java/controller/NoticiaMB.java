@@ -11,6 +11,7 @@ import org.primefaces.context.RequestContext;
 
 import enumered.CargoEnum;
 import enumered.SerevidadeEnum;
+import service.InstituicaoService;
 import service.NoticiaService;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +31,10 @@ public class NoticiaMB implements Serializable {
 
     private Noticia noticia;
 
-    private List<Instituicao> listaInstituicoes;
+    private List<Instituicao> instituicoes;
+    
+    @Inject
+    private InstituicaoService instituicaoService;
     
     @Inject
     private NoticiaService service;
@@ -38,6 +42,7 @@ public class NoticiaMB implements Serializable {
     @PostConstruct
     public void init(){
         novaNoticia();
+        carregarInstituicoes();
     }
 
     public void selecionarNoticia(Noticia noticia) {
@@ -53,7 +58,7 @@ public class NoticiaMB implements Serializable {
         try {
         	noticia.setPublicacao(LocalDateTime.now());
             service.salvarNoticia(noticia);
-            Messages.addInfo(null, "Notícia salva com sucesso");
+            Messages.addInfo(null, "Notï¿½cia salva com sucesso");
             novaNoticia();
         } catch (NoticiaBusinessException | LoginException e) {
             Messages.addError(null, "Erro no Cadastro");
@@ -66,8 +71,8 @@ public class NoticiaMB implements Serializable {
         novaNoticia();
     }
 
-    public void consultarInstituicao(){
-      //  listaInstituicoes = service.consultarInstituicoes();
+    private void carregarInstituicoes(){
+        instituicoes = instituicaoService.obterInstituicoesEnsino();
     }
     
     public  SerevidadeEnum[] getSerevidades(){
@@ -87,11 +92,11 @@ public class NoticiaMB implements Serializable {
 		this.noticia = noticia;
 	}
 
-	public List<Instituicao> getListaInstituicoes() {
-		return listaInstituicoes;
+	public List<Instituicao> getInstituicoes() {
+		return instituicoes;
 	}
 
-	public void setListaInstituicoes(List<Instituicao> listaInstituicoes) {
-		this.listaInstituicoes = listaInstituicoes;
+	public void setInstituicoes(List<Instituicao> instituicoes) {
+		this.instituicoes = instituicoes;
 	}
 }

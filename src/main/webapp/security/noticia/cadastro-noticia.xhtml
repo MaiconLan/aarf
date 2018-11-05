@@ -35,9 +35,30 @@
 									<f:selectItem itemLabel="Abranger todas instituições"
 										itemValue="true" />
 									<f:selectItem itemLabel="Definir Instituição" itemValue="false" />
+									  <p:ajax update="panelGeral" event="change"/>
 								</p:selectOneRadio>
 							</div>
 						</div>
+						
+						<div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <p:outputPanel id="panelGeral">
+                                <p:selectOneMenu id="instituicao"
+                                				 rendered="#{!noticiaMB.noticia.abrangencia}"
+                                                 value="#{noticiaMB.noticia.instituicao}"
+                                                 converter="omnifaces.SelectItemsConverter"
+                                                 filter="true"
+                                                 required="true"
+                                                 placeholder="Instituição de Ensino">
+                                    <f:selectItem itemLabel="Selecione uma Instituição" noSelectionOption="true"/>
+                                    <f:selectItems var="instituicao"
+                                                   itemLabel="#{instituicao.nome}"
+                                                   itemValue="#{instituicao}"
+                                                   value="#{noticiaMB.instituicoes}"/>
+                                </p:selectOneMenu>
+                            </p:outputPanel>    
+                            </div>
+                        </div>
 
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-12 ui-lg-12">
@@ -50,11 +71,6 @@
 								<p:commandButton id="salvarNoticia" icon="fa fa-check"
 									value="Salvar" process="@form" update="@form"
 									action="#{noticiaMB.salvarNoticia()}" />
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-2">
-								<p:commandButton id="removerNoticia" icon="fa fa-remove"
-									value="Remover" process="@form" update="@form"
-									styleClass="red-button" action="#{noticiaMB.removerNoticia()}" />
 							</div>
 						</div>
 

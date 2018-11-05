@@ -6,7 +6,6 @@ import exception.NoticiaBusinessException;
 
 import model.Noticia;
 
-import utils.StringUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
