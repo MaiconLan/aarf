@@ -6,14 +6,12 @@ import exception.LoginException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
-import org.omnifaces.util.Messages;
 import utils.Criptografia;
 
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class UsuarioBusiness {
@@ -65,7 +63,7 @@ public class UsuarioBusiness {
         try {
             resultado = usuarioDAO.dadosUsuario(usuario);
         } catch (PersistenceException e) {
-            throw new LoginException();
+            throw e;
         }
 
         if(resultado == null)
