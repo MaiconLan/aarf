@@ -6,7 +6,7 @@
 
     <p:dialog id="modalFinalizarEdital"
               header="Consulta de Edital"
-              widgetVar="modalConsultaEdital"
+              widgetVar="modalFinalizarEdital"
               modal="true"
               showEffect="fade"
               hideEffect="fade"
@@ -23,56 +23,56 @@
                     <div class="card">
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                <p:inputText id="nome"
-                                             placeholder="Nome"
-                                             value="#{EditalMB.EditalDTO.titulo}"
+                                <p:inputText id="titulo"
+                                             placeholder="Titulo"
+                                             value="#{editalMB.editalDTO.titulo}"
                                 />
                             </div>
                         </div>
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:commandButton id="salvarEdital"
+                                <p:commandButton id="buscarEdital"
                                                  icon="fa fa-search"
                                                  value="Buscar"
                                                  process="@form"
                                                  update="@form"
-                                                 action="#{EditalMB.consultarEdital()}"/>
+                                                 action="#{editalMB.consultarEdital()}"/>
                             </div>
                         </div>
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <p:dataTable var="Edital" value="#{EditalMB.listaEditals}" rows="10" paginator="true"
+                                <p:dataTable var="edital" value="#{editalMB.editais}" rows="10" paginator="true"
                                              reflow="true">
-                                    <f:facet name="header">Editals</f:facet>
+                                    <f:facet name="header">Editais</f:facet>
 
                                     <p:column headerText="Ações" width="6%">
                                         <p:commandButton icon="ui-icon-check" id="selecionarEdital"
                                                          process="@this" update="@none"
-                                                         action="#{EditalMB.selecionarEdital(Edital)}"
+                                                         action="#{editalMB.selecionarEditais(edital)}"
                                                          title="Selecionar">
                                         </p:commandButton>
                                     </p:column>
 
                                     <p:column headerText="Código" width="6%">
-                                        <h:outputText value="#{Edital.idEdital}"/>
+                                        <h:outputText value="#{edital.idEdital}"/>
                                     </p:column>
 
-                                    <p:column headerText="Nome" width="10%">
-                                        <h:outputText value="#{Edital.titulo}"/>
+                                    <p:column headerText="Titulo" width="10%">
+                                        <h:outputText value="#{edital.titulo}"/>
                                     </p:column>
 
-                                    <p:column headerText="Logradouro" width="10%">
-                                        <h:outputText value="#{Edital.inicio}"/>
+                                    <p:column headerText="Inicio" width="10%">
+                                        <h:outputText value="#{edital.inicio}"/>
                                     </p:column>
 
-                                    <p:column headerText="Bairro" width="10%">
-                                        <h:outputText value="#{Edital.termino}"/>
+                                    <p:column headerText="Termino" width="10%">
+                                        <h:outputText value="#{edital.termino}"/>
                                     </p:column>
 
                                     <f:facet name="footer">
-                                        Foram encontrados #{EditalMB.listaEditals.size()} registro(s).
+                                        Foram encontrados #{editalMB.editais.size()} registro(s).
                                     </f:facet>
                                 </p:dataTable>
                             </div>
