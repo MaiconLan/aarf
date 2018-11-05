@@ -49,8 +49,10 @@
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
-                                <p:selectOneMenu id="selectBanco" value="#{contaMB.conta.banco}">
-                                    <f:selectItem itemLabel="Banco" />
+                                <p:selectOneMenu id="selectBanco" value="#{contaMB.conta.banco}" converter="omnifaces.SelectItemsIndexConverter">
+                                    <f:selectItem itemLabel="Selecione Banco" />
+                                    <f:selectItems value="#{contaMB.listaBancos}" var="banco"
+                                                   itemValue="#{banco}" itemLabel="#{banco.nome}"/>
                                 </p:selectOneMenu>
                             </div>
                         </div>
@@ -115,7 +117,7 @@
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-9 ui-md-9 ui-lg-2">
-                                <p:selectOneMenu id="layout" >
+                                <p:selectOneMenu id="layout" value="#{contaMB.conta.layout}">
                                     <f:selectItem itemLabel="Layout"></f:selectItem>
                                     <f:selectItem itemLabel="CNAB 240" itemValue="CNAB-240"></f:selectItem>
                                     <f:selectItem itemLabel="CNAB 400" itemValue="CNAB-400"></f:selectItem>

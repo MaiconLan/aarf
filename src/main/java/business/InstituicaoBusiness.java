@@ -32,4 +32,8 @@ public class InstituicaoBusiness {
 	        return instituicaoDAO.listarInstituicoes();
 	 }
 	
+
+    public List<Instituicao> obterInstituicoes() {
+		return instituicaoDAO.obterInstituicoes();
+    }
 }

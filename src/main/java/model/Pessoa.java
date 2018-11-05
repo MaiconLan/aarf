@@ -56,6 +56,16 @@ public class Pessoa implements Serializable {
         return nome;
     }
 
+    public String getPrimeiroNome(){
+        int endIndex = 0;
+        if(nome != null && nome.contains(" "))
+            endIndex = nome.indexOf(" ");
+        else
+            endIndex = nome.length();
+
+        return nome.substring(0, endIndex);
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }

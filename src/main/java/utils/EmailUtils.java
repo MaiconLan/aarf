@@ -2,10 +2,7 @@ package utils;
 
 import model.Anexo;
 import model.Pessoa;
-import org.apache.commons.mail.EmailAttachment;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.MultiPartEmail;
-import org.apache.commons.mail.SimpleEmail;
+import org.apache.commons.mail.*;
 
 import javax.validation.constraints.Null;
 import java.io.File;
@@ -13,12 +10,14 @@ import java.io.File;
 public abstract class EmailUtils {
 
     private final static String smtp = "smtp.gmail.com";
+    private final static String emailRemetente = "sistema.aarf@gmail.com";
+    private final static String emailSenha = "#e#j#m#m#r";
     private final static boolean authentication = true;
 
-    public static void enviarEmailSimples(String titulo, String mensagem, String emailDestinatario, String emailRemetente, String senha) throws EmailException {
+    public static void enviarEmailSimples(String titulo, String mensagem, String emailDestinatario) throws EmailException {
         SimpleEmail email = new SimpleEmail();
         email.setHostName(smtp);
-        email.setAuthentication(emailRemetente, senha);
+        email.setAuthentication(emailRemetente, emailSenha);
         email.setSSL(authentication);
         email.addTo(emailDestinatario);
         email.setSmtpPort(587);
@@ -28,7 +27,20 @@ public abstract class EmailUtils {
         email.send();
     }
 
-    public static void enviarEmailAnexo(String titulo, String mensagem, String emailDestinatario, String emailRemetente, String senha, Anexo anexo) throws EmailException {
+    public static void enviarHtmlEmail(String titulo, String mensagem, String emailDestinatario) throws EmailException {
+        HtmlEmail email = new HtmlEmail();
+        email.setHostName(smtp);
+        email.setAuthentication(emailRemetente, emailSenha);
+        email.setSSL(authentication);
+        email.addTo(emailDestinatario);
+        email.setSmtpPort(587);
+        email.setFrom(emailRemetente);
+        email.setSubject(titulo);
+        email.setMsg(mensagem);
+        email.send();
+    }
+
+    public static void enviarEmailAnexo(String titulo, String mensagem, String emailDestinatario, Anexo anexo) throws EmailException {
         File file = new File(anexo.getCaminho());
 
         EmailAttachment attachment = new EmailAttachment();
@@ -40,7 +52,7 @@ public abstract class EmailUtils {
         MultiPartEmail email = new MultiPartEmail();
         email.attach(attachment);
         email.setHostName(smtp);
-        email.setAuthentication(emailRemetente, senha);
+        email.setAuthentication(emailRemetente, emailSenha);
         email.setSSL(authentication);
         email.addTo(emailDestinatario);
         email.setSmtpPort(587);

@@ -1,9 +1,12 @@
 package service;
 
 import business.EditalBusiness;
+import dto.EditalDTO;
 import model.Edital;
+import org.primefaces.util.LimitedSizeHashMap;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class EditalServiceImpl implements EditalService {
 
@@ -26,4 +29,10 @@ public class EditalServiceImpl implements EditalService {
 	public Edital listarEdital(Long idEdital) {
 		return editalBusiness.listarEdital(idEdital);
 	}
+
+    @Override
+    public List<Edital> consultarEdital(EditalDTO editalDTO) {
+        return null;
+    }
+
 }

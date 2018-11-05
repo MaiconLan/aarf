@@ -49,4 +49,19 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
         return list();
     }
 	
+
+    public List<Instituicao> obterInstituicoes() {
+	    return list();
+    }
+
+    public List<Instituicao> obterInstituicoesEnsino() {
+        StringBuilder sql = new StringBuilder();
+
+        sql.append("SELECT i FROM Instituicao i ");
+        sql.append("WHERE i.tipo = :tipo ");
+
+        return em.createQuery(sql.toString())
+                .setParameter("tipo", "Educação")
+                .getResultList();
+    }
 }

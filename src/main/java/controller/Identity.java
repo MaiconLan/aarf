@@ -84,16 +84,20 @@ public class Identity implements Serializable {
 	}
 
 	public String obterNome(){
+		String nome = "";
+
+		if(usuario == null)
+			return nome;
+
 		Associado associado = usuario.getAssociado();
 		Estudante estudante = usuario.getEstudante();
-		Pessoa pessoa = null;
 
 		if(isUsuarioAssociado())
-			pessoa = associado.getPessoa();
+			nome = associado.getPessoa().getPrimeiroNome();
 		else if(isUsuarioEstudante())
-			pessoa = estudante.getPessoa();
+			nome = estudante.getPessoa().getPrimeiroNome();
 
-		return pessoa.getNome();
+		return nome;
 	}
 
 	public void deslogar() {

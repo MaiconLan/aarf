@@ -3,11 +3,13 @@ package controller;
 import dto.ContaDTO;
 import exception.ContaBusinessException;
 import exception.LoginException;
+import model.Banco;
 import model.Conta;
 import model.Estudante;
 import model.Instituicao;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
+import service.BancoService;
 import service.ContaService;
 import service.EstudanteService;
 
@@ -28,22 +30,28 @@ public class ContaMB implements Serializable {
     @Inject
     private ContaService contaService;
 
+    @Inject
+    private BancoService bancoService;
+
     private Conta conta;
 
     private ContaDTO contaDTO = new ContaDTO();
 
     private List<Conta> listaContas = new ArrayList<>();
 
+    private List<Banco> listaBancos = new ArrayList<>();
+
     @PostConstruct
     public void init(){
         novaConta();
+        listarBancos();
     }
 
     public void salvarConta(){
         try {
             contaService.salvarConta(conta);
             Messages.addInfo(null, "Conta salva com sucesso");
-
+            novaConta();
         } catch (ContaBusinessException e) {
             e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
         }
@@ -61,6 +69,13 @@ public class ContaMB implements Serializable {
 
     public void consultarConta(){
         listaContas = contaService.consultarConta(contaDTO);
+
+        if(listaContas.isEmpty())
+            Messages.addWarn(null, "Não foram encontrados resultados.");
+    }
+
+    public void listarBancos(){
+        listaBancos = bancoService.listarBancos();
 
         if(listaContas.isEmpty())
             Messages.addWarn(null, "Não foram encontrados resultados.");
@@ -103,5 +118,13 @@ public class ContaMB implements Serializable {
 
     public void setListaContas(List<Conta> listaContas) {
         this.listaContas = listaContas;
+    }
+
+    public List<Banco> getListaBancos() {
+        return listaBancos;
+    }
+
+    public void setListaBancos(List<Banco> listaBancos) {
+        this.listaBancos = listaBancos;
     }
 }
