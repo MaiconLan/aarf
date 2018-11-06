@@ -20,7 +20,6 @@
             <p:menuitem id="noticias" value="Noticias" icon="fa fa-newspaper-o" outcome="/public/promotion-page"/>
             <p:menuitem id="editais" value="Editais" icon="fa fa-file-text-o" outcome="/public/promotion-page"/>
             <p:submenu id="im_components" label="Acompanhamento" icon="fa fa-sitemap" rendered="#{identity.isUsuarioAssociado()}">
-                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" ajax="false" />
                 <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" outcome="/security/acompanhamento/matricula/matricula" ajax="false" />
                 <p:menuitem id="acompanhamentoEdital" value="Edital" icon="fa fa-file-text-o" ajax="false" />
             </p:submenu>

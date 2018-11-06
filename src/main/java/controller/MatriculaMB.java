@@ -16,9 +16,11 @@ import dto.InstituicaoDTO;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
 import exception.MatriculaBusinessException;
+import model.DiaSemana;
 import model.Edital;
 import model.Instituicao;
 import model.Matricula;
+import model.Viagem;
 
 import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
@@ -41,6 +43,9 @@ public class MatriculaMB implements Serializable {
 
 	private Edital edital;
 
+	private Viagem viagem;
+	private List<Viagem> viagens;
+	
 	@Inject
 	private InstituicaoService instituicaoService;
 
@@ -55,6 +60,11 @@ public class MatriculaMB implements Serializable {
 		novaMatricula();
 		carregarEdital();
 		listarInstituicao();
+		novaViagem();
+	}
+	
+	private void novaViagem() {
+		viagem = new Viagem();
 	}
 
 	public void novaMatricula() {
@@ -82,12 +92,16 @@ public class MatriculaMB implements Serializable {
 		}
 		String aberto = edital.getFinalizado() == null ? " (Aberto)" : " (Fechado)";
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return "Período de inscrição: " + formato.format(edital.getInicio()) + " à "
+		return "Perï¿½odo de inscriï¿½ï¿½o: " + formato.format(edital.getInicio()) + " ï¿½ "
 				+ formato.format(edital.getTermino()) + aberto;
+	}
+	
+	public DiaSemana[] obterDiaSemana() {
+		return DiaSemana.values();
 	}
 
 	public void listarInstituicao() {
-		instituicoes = instituicaoService.listarInstituicao();
+		instituicoes = instituicaoService.obterInstituicoesEnsino();
 	}
 
 	public Matricula getMatricula() {
@@ -112,6 +126,22 @@ public class MatriculaMB implements Serializable {
 
 	public void setInstituicoes(List<Instituicao> instituicoes) {
 		this.instituicoes = instituicoes;
+	}
+
+	public Viagem getViagem() {
+		return viagem;
+	}
+
+	public void setViagem(Viagem viagem) {
+		this.viagem = viagem;
+	}
+
+	public List<Viagem> getViagens() {
+		return viagens;
+	}
+
+	public void setViagens(List<Viagem> viagens) {
+		this.viagens = viagens;
 	}
 
 }

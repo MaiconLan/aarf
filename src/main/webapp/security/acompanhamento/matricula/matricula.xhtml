@@ -26,7 +26,7 @@
 
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:outputLabel id="viagem" value="Viagem" />
+							<p:outputLabel id="sentido" value="Sentido" />
 
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-4">
@@ -39,52 +39,51 @@
 					</div>
 					<div class="ui-g">
 						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:selectOneMenu id="selectDia" value="#" required="true"
-								label="Text 3">
-								<f:selectItem itemLabel="Segunda-feira" itemValue="1" />
-								<f:selectItem itemLabel="Terça-feira" itemValue="2" />
-								<f:selectItem itemLabel="Quarta-feira" itemValue="3" />
-								<f:selectItem itemLabel="Quinta-feira" itemValue="4" />
-								<f:selectItem itemLabel="Sexta-feira" itemValue="5" />
+							<p:selectOneMenu id="selectDia" value="#{matriculaMB.viagem.diaSemana}" required="true" converter="omnifaces.SelectItemsConverter">
+								<f:selectItem itemLabel="Selecione o dia" noSelectionOption="true"/>
+								<f:selectItems value="#{matriculaMB.obterDiaSemana()}" var="diaSemana" itemLabel="#{diaSemana.valor}" itemValue="#{diaSemana.valor}" />
+								
 							</p:selectOneMenu>
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:selectManyCheckbox id="selectViagem"
+							<p:selectManyCheckbox id="selectSentido"
 								value="#{checkboxView.selectedConsoles}">
 								<f:selectItem itemLabel="Ida" itemValue="Ida" />
 								<f:selectItem itemLabel="Volta" itemValue="Volta" />
 							</p:selectManyCheckbox>
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:outputLabel id="instituicao2" value="Instituição de ensino" />
-
+							<p:selectOneMenu id="selectInstituicao" value="#{matriculaMB.viagem.instituicao}" required="true">
+								<f:selectItem  itemLabel="Selecione a instituição" noSelectionOption="true"/>
+								<f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao" itemLabel="#{instituicao.nome}" itemValue="#{instituicao}" />
+							</p:selectOneMenu>
 						</div>
 						<div class="ui-g-12 ui-md-6 ui-lg-2">
 							<p:commandButton id="adicionar" icon="fa fa-search"
 									update="@none" process="@this" title="Adicionar"
-									action="#{matriculaMB.salvar()}" />
+									action="#{matriculaMB.salvarMatricula()}" />
 						</div>
 					</div>
-					<!--
 					<div class="ui-g">
-						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:dataTable id="Períodos" var="instituicao" value="#{matriculaMB.instituicoes}">
+						<div class="ui-g-12 ui-md-6 ui-lg-12">
+							<p:dataTable var="viagem" value="#{matriculaMB.viagens}">
 								<p:column headerText="Ações">
-									<h:outputText value="Aqui" />
+									<p:commandButton id="remover" icon="fa fa-search"
+									update="@none" process="@this" title="Adicionar"
+									 />
 								</p:column>
 								<p:column headerText="Dia da Semana">
-									<h:outputText value="Aqui" />
+									<p:outputLabel value="#{viagem.diaSemana}" />
 								</p:column>
-								<p:column headerText="Viagem">
-									<h:outputText value="Aqui" />
+								<p:column headerText="Sentido">
+									<p:outputLabel value="#{viagem.sentido}" />
 								</p:column>
 								<p:column headerText="Instituição de Ensino">
-									<h:outputText value="Aqui" />
+									<p:outputLabel value="#{viagem.instituicao}" />
 								</p:column>
 							</p:dataTable>
 						</div>
 					</div>
-					 -->
 				</div>
 			</div>
 		</div>
