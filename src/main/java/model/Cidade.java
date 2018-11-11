@@ -56,4 +56,9 @@ public class Cidade implements Serializable {
     public int hashCode() {
         return idCidade.hashCode();
     }
+
+    @Override
+    public String toString(){
+        return nome + " - " + uf;
+    }
 }
