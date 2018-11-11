@@ -1,6 +1,7 @@
 package business;
 
 import dao.EditalDAO;
+import dto.EditalDTO;
 import model.Edital;
 
 import javax.ejb.Stateless;
@@ -14,6 +15,10 @@ public class EditalBusiness {
 
     @Inject
     private EditalDAO editalDAO;
+
+    public List<Edital> consultarEdital(EditalDTO editalDTO){
+        return editalDAO.consultarEdital(editalDTO);
+    }
 
     public void salvarEdital(Edital edital) {
         if(edital.getIdEdital() == null)

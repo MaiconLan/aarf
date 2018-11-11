@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalFinalizarEdital"
+              header="Consulta de Edital"
+              widgetVar="modalFinalizarEdital"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closeOnEscape="true">
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                <p:inputText id="titulo"
+                                             placeholder="Titulo"
+                                             value="#{editalMB.editalDTO.titulo}"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="buscarEdital"
+                                                 icon="fa fa-search"
+                                                 value="Buscar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{editalMB.consultarEdital()}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <p:dataTable var="edital" value="#{editalMB.editais}" rows="10" paginator="true"
+                                             reflow="true">
+                                    <f:facet name="header">Editais</f:facet>
+
+                                    <p:column headerText="Ações" width="6%">
+                                        <p:commandButton icon="ui-icon-check" id="selecionarEdital"
+                                                         process="@this" update="@none"
+                                                         action="#{editalMB.selecionarEditais(edital)}"
+                                                         title="Selecionar">
+                                        </p:commandButton>
+                                    </p:column>
+
+                                    <p:column headerText="Código" width="6%">
+                                        <h:outputText value="#{edital.idEdital}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Titulo" width="10%">
+                                        <h:outputText value="#{edital.titulo}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Inicio" width="10%">
+                                        <h:outputText value="#{edital.inicio}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Termino" width="10%">
+                                        <h:outputText value="#{edital.termino}"/>
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        Foram encontrados #{editalMB.editais.size()} registro(s).
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>
