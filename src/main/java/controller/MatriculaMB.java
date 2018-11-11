@@ -12,11 +12,8 @@ import javax.inject.Named;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 
-import dto.InstituicaoDTO;
-import exception.EstudanteBusinessException;
-import exception.LoginException;
 import exception.MatriculaBusinessException;
-import model.DiaSemana;
+import enumered.DiaSemanaEnum;
 import model.Edital;
 import model.Instituicao;
 import model.Matricula;
@@ -24,7 +21,6 @@ import model.Viagem;
 
 import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,12 +88,12 @@ public class MatriculaMB implements Serializable {
 		}
 		String aberto = edital.getFinalizado() == null ? " (Aberto)" : " (Fechado)";
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return "Per�odo de inscri��o: " + formato.format(edital.getInicio()) + " � "
+		return "Período de inscrição: " + formato.format(edital.getInicio()) + " à "
 				+ formato.format(edital.getTermino()) + aberto;
 	}
 	
-	public DiaSemana[] obterDiaSemana() {
-		return DiaSemana.values();
+	public DiaSemanaEnum[] obterDiaSemana() {
+		return DiaSemanaEnum.values();
 	}
 
 	public void listarInstituicao() {

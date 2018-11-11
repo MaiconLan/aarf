@@ -1,89 +1,104 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"
+				xmlns:o="http://omnifaces.org/ui"
+>
 
 	<ui:define name="content">
 		<div class="ui-fluid">
 			<div class="ui-g">
 				<div class="card">
-					<h1 class="lightBlack centerText">Matrícula
-						#{matriculaMB.edital.titulo}</h1>
-					<div class="ui-g">
-						<div class="ui-g-12 ui-md-6 ui-lg-12">
-							<p class="lightBlack">#{matriculaMB.obterPeriodo()}</p>
+					<h:form id="formMatricula" enctype="multipart/form-data">
+						<h1 class="lightBlack centerText">Matrícula
+							#{matriculaMB.edital.titulo}</h1>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-12">
+								<p class="lightBlack">#{matriculaMB.obterPeriodo()}</p>
+							</div>
 						</div>
-					</div>
-					<div class="ui-g">
-						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:inputText id="semestre" placeholder="Semestre Cursando" />
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:inputText id="semestre" placeholder="Semestre Cursando" />
+							</div>
 						</div>
-					</div>
-					<div class="ui-g">
-						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:outputLabel id="diaSemana" value="Dia da semana" />
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:outputLabel id="diaSemana" value="Dia da semana" />
 
-						</div>
-						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:outputLabel id="sentido" value="Sentido" />
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-2">
+								<p:outputLabel id="sentido" value="Sentido" />
 
-						</div>
-						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:outputLabel id="instituicao" value="Instituição de insino" />
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:outputLabel id="instituicao" value="Instituição de insino" />
 
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-2">
+								<p:outputLabel id="acoes" value="Ações" />
+							</div>
 						</div>
-						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:outputLabel id="acoes" value="Ações" />
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:selectOneMenu id="selectDia" value="#{matriculaMB.viagem.diaSemana}" required="true" converter="omnifaces.SelectItemsConverter">
+									<f:selectItem itemLabel="Selecione o dia" noSelectionOption="true"/>
+									<f:selectItems value="#{matriculaMB.obterDiaSemana()}" var="diaSemana" itemLabel="#{diaSemana.descricao}" itemValue="#{diaSemana.descricao}" />
+
+								</p:selectOneMenu>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-2">
+								<p:selectManyCheckbox id="selectSentido"
+													  value="#{checkboxView.selectedConsoles}">
+									<f:selectItem itemLabel="Ida" itemValue="Ida" />
+									<f:selectItem itemLabel="Volta" itemValue="Volta" />
+								</p:selectManyCheckbox>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:selectOneMenu id="selectInstituicao" value="#{matriculaMB.viagem.instituicao}" required="true">
+									<f:selectItem  itemLabel="Selecione a instituição" noSelectionOption="true"/>
+									<f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao" itemLabel="#{instituicao.nome}" itemValue="#{instituicao}" />
+								</p:selectOneMenu>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-1">
+								<p:commandButton id="adicionar" icon="fa fa-plus"
+												 styleClass="green-button"
+												 update="@none" process="@this" title="Adicionar"
+												 action="#{matriculaMB.salvarMatricula()}" />
+							</div>
 						</div>
-					</div>
-					<div class="ui-g">
-						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:selectOneMenu id="selectDia" value="#{matriculaMB.viagem.diaSemana}" required="true" converter="omnifaces.SelectItemsConverter">
-								<f:selectItem itemLabel="Selecione o dia" noSelectionOption="true"/>
-								<f:selectItems value="#{matriculaMB.obterDiaSemana()}" var="diaSemana" itemLabel="#{diaSemana.valor}" itemValue="#{diaSemana.valor}" />
-								
-							</p:selectOneMenu>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<p:dataTable id="tableViagens" var="viagem" value="#{matriculaMB.viagens}">
+									<p:column headerText="Ações">
+										<p:commandButton id="remover" icon="fa fa-remove"
+														 styleClass="red-button"
+														 update="tableViagens"
+														 process="@this"
+														 title="Adicionar" />
+									</p:column>
+									<p:column headerText="Dia da Semana">
+										<p:outputLabel value="#{viagem.diaSemana}" />
+									</p:column>
+									<p:column headerText="Sentido">
+										<p:outputLabel value="#{viagem.sentido}" />
+									</p:column>
+									<p:column headerText="Instituição de Ensino">
+										<p:outputLabel value="#{viagem.instituicao}" />
+									</p:column>
+								</p:dataTable>
+							</div>
 						</div>
-						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:selectManyCheckbox id="selectSentido"
-								value="#{checkboxView.selectedConsoles}">
-								<f:selectItem itemLabel="Ida" itemValue="Ida" />
-								<f:selectItem itemLabel="Volta" itemValue="Volta" />
-							</p:selectManyCheckbox>
+					</h:form>
+					<h:form id="formAnexo" enctype="multipart/form-data">
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<o:inputFile value="#{matriculaAnexoMB.arquivoEnviado}" />
+								<p:commandButton value="Salvar" action="#{matriculaAnexoMB.salvarArquivo}" process="formAnexo" />
+							</div>
 						</div>
-						<div class="ui-g-12 ui-md-6 ui-lg-4">
-							<p:selectOneMenu id="selectInstituicao" value="#{matriculaMB.viagem.instituicao}" required="true">
-								<f:selectItem  itemLabel="Selecione a instituição" noSelectionOption="true"/>
-								<f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao" itemLabel="#{instituicao.nome}" itemValue="#{instituicao}" />
-							</p:selectOneMenu>
-						</div>
-						<div class="ui-g-12 ui-md-6 ui-lg-2">
-							<p:commandButton id="adicionar" icon="fa fa-search"
-									update="@none" process="@this" title="Adicionar"
-									action="#{matriculaMB.salvarMatricula()}" />
-						</div>
-					</div>
-					<div class="ui-g">
-						<div class="ui-g-12 ui-md-6 ui-lg-12">
-							<p:dataTable var="viagem" value="#{matriculaMB.viagens}">
-								<p:column headerText="Ações">
-									<p:commandButton id="remover" icon="fa fa-search"
-									update="@none" process="@this" title="Adicionar"
-									 />
-								</p:column>
-								<p:column headerText="Dia da Semana">
-									<p:outputLabel value="#{viagem.diaSemana}" />
-								</p:column>
-								<p:column headerText="Sentido">
-									<p:outputLabel value="#{viagem.sentido}" />
-								</p:column>
-								<p:column headerText="Instituição de Ensino">
-									<p:outputLabel value="#{viagem.instituicao}" />
-								</p:column>
-							</p:dataTable>
-						</div>
-					</div>
+					</h:form>
 				</div>
 			</div>
 		</div>

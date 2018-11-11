@@ -19,13 +19,13 @@ public class Viagem {
 	private Long idViagem;
 	
 	private String diaSemana;
-	
+
+	private String sentido;
+
 	@ManyToOne
     @JoinColumn(name = "id_instituicao")
 	private Instituicao instituicao;
-	
-	private String sentido;
-	
+
 	@ManyToOne
     @JoinColumn(name = "id_matricula")
 	private Matricula matricula;

@@ -524,6 +524,37 @@ REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
+-- object: matricula.viagem | type: TABLE --
+-- DROP TABLE IF EXISTS matricula.viagem CASCADE;
+CREATE TABLE matricula.viagem(
+	id_viagem serial NOT NULL,
+	dia_semana character varying NOT NULL,
+	sentido character varying NOT NULL,
+	id_matricula integer,
+	id_instituicao integer,
+	CONSTRAINT id_viagem_pk PRIMARY KEY (id_viagem)
+
+);
+-- ddl-end --
+ALTER TABLE matricula.viagem OWNER TO postgres;
+-- ddl-end --
+
+-- object: matricula_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.viagem DROP CONSTRAINT IF EXISTS matricula_fk CASCADE;
+ALTER TABLE matricula.viagem ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula)
+REFERENCES matricula.matricula (id_matricula) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: instituicao_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.viagem DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
+ALTER TABLE matricula.viagem ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
+REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+
+
 
 
 INSERT INTO cadastro.usuario (login, senha) VALUES
