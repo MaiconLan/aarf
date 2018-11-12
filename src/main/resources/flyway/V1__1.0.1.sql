@@ -268,13 +268,12 @@ CREATE TABLE publico.noticia(
 	id_noticia serial NOT NULL,
 	id_instituicao integer,
 	id_associado integer,
+	abrangencia boolean,
 	titulo character varying NOT NULL,
 	publicacao date NOT NULL,
 	severidade character varying,
 	conteudo character varying(280) NOT NULL,
-	geral boolean,
-	CONSTRAINT id_noticia_pk PRIMARY KEY (id_noticia),
-	CONSTRAINT ck_severidade CHECK (severidade IN ('Baixa', 'Alta', 'Urgente'))
+	CONSTRAINT id_noticia_pk PRIMARY KEY (id_noticia)
 
 );
 -- ddl-end --

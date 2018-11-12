@@ -21,14 +21,22 @@
                         </div>
 
                         <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <div class="ui-g-4 ui-md-3  ui-lg-1">
+                                <p:commandButton id="pesquisar"
+                                                 icon="fa fa-search"
+                                                 update="@none"
+                                                 process="@this"
+                                                 title="Pesquisa"
+                                                 action="#{editalMB.modalEdital()}"
+                                />
+                            </div>
+                            <div class="ui-g-6 ui-md-3  ui-lg-3">
                                 <p:inputText id="titulo"
                                              required="true"
                                              requiredMessage="Campo obrigatório"
                                              placeholder="Título"
-                                             value="#{editalMB.edital.titulo}" />
+                                             value="#{editalMB.edital.titulo}"/>
                             </div>
-
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:calendar id="inicio"
                                             value="#{editalMB.edital.inicio}"
@@ -54,11 +62,12 @@
                                             pattern="dd/MM/yyyy"
                                             placeholder="Termino"
                                             requiredMessage="Campo obrigatório"
-                                            converter="localDateConverter" />
+                                            converter="localDateConverter"/>
                             </div>
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
+
                                 <p:commandButton id="salvarEstudante"
                                                  icon="fa fa-check"
                                                  value="Salvar"
@@ -84,6 +93,7 @@
                 </div>
             </div>
         </div>
+        <ui:include src="modal-busca-finalizar-edital.xhtml"/>
 
         <ui:include src="/template/confirm.xhtml"/>
     </ui:define>

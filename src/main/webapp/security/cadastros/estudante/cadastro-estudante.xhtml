@@ -207,7 +207,7 @@
                                                  process="@form"
                                                  update="@form"
                                                  styleClass="red-button"
-                                                 rendered="#{estudanteMB.estudante.idEstudante != null}"
+                                                 rendered="#{estudanteMB.renderizarCampoRemoverEstudante()}"
                                                  action="#{estudanteMB.removerEstudante()}">
                                     <p:confirm header="Inativar Estudante" message="Tem certeza que deseja inativar o estudante?" icon="ui-icon-alert" />
                                 </p:commandButton>
