@@ -25,6 +25,11 @@ public class EditalServiceImpl implements EditalService {
         editalBusiness.finalizarPeriodo(edital);
     }
 
+	@Override
+	public Edital listarEdital(Long idEdital) {
+		return editalBusiness.listarEdital(idEdital);
+	}
+
     @Override
     public List<Edital> consultarEdital(EditalDTO editalDTO) {
         return null;

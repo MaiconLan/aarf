@@ -3,6 +3,7 @@ package model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +17,9 @@ public class Matricula  implements Serializable {
     @Column(name = "id_matricula")
     private Long idMatricula;
 
+    @OneToMany(mappedBy = "matricula", targetEntity = Viagem.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Viagem> viagens;
+    
     private LocalDateTime inscricao;
 
     private LocalDateTime confirmacao;
@@ -68,7 +72,15 @@ public class Matricula  implements Serializable {
         this.edital = edital;
     }
 
-    public boolean isConfirmada(){
+    public List<Viagem> getViagens() {
+		return viagens;
+	}
+
+	public void setViagens(List<Viagem> viagens) {
+		this.viagens = viagens;
+	}
+
+	public boolean isConfirmada(){
         return confirmacao != null;
     }
 

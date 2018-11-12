@@ -1,6 +1,7 @@
 package service;
 
 import business.MatriculaBusiness;
+import model.Matricula;
 import service.MatriculaService;
 
 import javax.inject.Inject;
@@ -11,4 +12,10 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 
     @Inject
     private MatriculaBusiness matriculaBusiness;
+
+	@Override
+	public void salvar(Matricula matricula) {
+		
+		
+	}
 }

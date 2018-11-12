@@ -8,6 +8,10 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class EditalDAO extends GenericDAO<Edital> {
+	
+	public Edital listarEdital(Long idEdital) {
+		return em.find(Edital.class, idEdital);
+	}
 
     public List consultarEdital(EditalDTO editalDTO) {
         StringBuilder sql = new StringBuilder();
