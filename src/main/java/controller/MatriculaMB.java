@@ -40,7 +40,10 @@ public class MatriculaMB implements Serializable {
 	private Edital edital;
 
 	private Viagem viagem;
-	private List<Viagem> viagens;
+
+	private String[] sentido = new String[2];
+
+	private List<Viagem> viagens = new ArrayList<>();
 	
 	@Inject
 	private InstituicaoService instituicaoService;
@@ -67,8 +70,26 @@ public class MatriculaMB implements Serializable {
 		matricula = new Matricula();
 	}
 
+	public void salvarViagem(){
+
+
+		for(int i = 0; i < sentido.length; i++) {
+			Viagem viagemMatricula = new Viagem();
+			viagemMatricula.setDiaSemana(viagem.getDiaSemana());
+			viagemMatricula.setInstituicao(viagem.getInstituicao());
+			viagemMatricula.setSentido(sentido[i]);
+
+			viagens.add(viagemMatricula);
+		}
+
+		Messages.addInfo(null, "Viagem adicionada com sucesso!");
+		novaViagem();
+		sentido = new String[2];
+	}
+
 	public void salvarMatricula(){
 		try {
+			matricula.setViagens(viagens);
 			matriculaService.salvar(matricula);
 			Messages.addInfo(null, "Matricula salva com sucesso");
 		} catch (MatriculaBusinessException e) {
@@ -140,4 +161,11 @@ public class MatriculaMB implements Serializable {
 		this.viagens = viagens;
 	}
 
+	public String[] getSentido() {
+		return sentido;
+	}
+
+	public void setSentido(String[] sentido) {
+		this.sentido = sentido;
+	}
 }
