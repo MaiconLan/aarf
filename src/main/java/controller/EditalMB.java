@@ -80,6 +80,9 @@ public class EditalMB implements Serializable {
         return edital != null && edital.getFinalizado() != null && edital.getFinalizado();
     }
 
+    public boolean renderizarBotaoFinalizar(){
+        return edital.getIdEdital() != null && (edital.getFinalizado() == null || !edital.getFinalizado());
+    }
 
     public Edital getEdital() {
         return edital;
