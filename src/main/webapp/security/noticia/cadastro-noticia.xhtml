@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+		<div class="ui-fluid">
+			<div class="ui-g">
+				<div class="card">
+					<h1 class="lightBlack centerText">Cadastro de Notícia</h1>
+
+					<h3 class="lightBlack">Dados Cadastrais</h3>
+
+					<h:form id="form">
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:inputText id="titulo" placeholder="Título"
+									value="#{noticiaMB.noticia.titulo}" />
+							</div>
+
+							<div class="ui-g-12 ui-md-6 ui-lg-2">
+								<p:selectOneMenu id="severidade" title="Serevidade"
+									required="true" converter="omnifaces.SelectItemsConverter"
+									value="#{noticiaMB.noticia.severidade}">
+									<f:selectItem itemLabel="Sel. Severidade" />
+									<f:selectItems value="#{noticiaMB.serevidades}" var="s"
+										itemValue="#{s.descricao}" itemLabel="#{s.descricao}" />
+								</p:selectOneMenu>
+							</div>
+
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:selectOneRadio id="abrangencia" required="true"
+									value="#{noticiaMB.noticia.abrangencia}">
+									<f:selectItem itemLabel="Abranger todas instituições"
+										itemValue="true" />
+									<f:selectItem itemLabel="Definir Instituição" itemValue="false" />
+									  <p:ajax update="panelGeral" event="change"/>
+								</p:selectOneRadio>
+							</div>
+						</div>
+						
+						<div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                            <p:outputPanel id="panelGeral">
+                                <p:selectOneMenu id="instituicao"
+                                				 rendered="#{!noticiaMB.noticia.abrangencia}"
+                                                 value="#{noticiaMB.noticia.instituicao}"
+                                                 converter="omnifaces.SelectItemsConverter"
+                                                 filter="true"
+                                                 required="true"
+                                                 placeholder="Instituição de Ensino">
+                                    <f:selectItem itemLabel="Selecione uma Instituição" noSelectionOption="true"/>
+                                    <f:selectItems var="instituicao"
+                                                   itemLabel="#{instituicao.nome}"
+                                                   itemValue="#{instituicao}"
+                                                   value="#{noticiaMB.instituicoes}"/>
+                                </p:selectOneMenu>
+                            </p:outputPanel>    
+                            </div>
+                        </div>
+
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<p:textEditor value="#{noticiaMB.noticia.conteudo}" height="250" />
+							</div>
+						</div>
+
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-2">
+								<p:commandButton id="salvarNoticia" icon="fa fa-check"
+									value="Salvar" process="@form" update="@form"
+									action="#{noticiaMB.salvarNoticia()}" />
+							</div>
+						</div>
+
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>

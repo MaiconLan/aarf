@@ -6,16 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9be7d68-7d27-4128-99f5-46b7046a22b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/enumered/DiaSemanaEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/DiaSemana.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Viagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Viagem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" afterDir="false" />
+    <list default="true" id="e9be7d68-7d27-4128-99f5-46b7046a22b1" name="Default Changelist" comment="Default Changelist">
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/404.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/404.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/access-denied.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/access-denied.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/error.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/error.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -50,23 +45,21 @@
         <counts>
           <entry key="AARF" value="28" />
           <entry key="css" value="2" />
-          <entry key="dummy" value="116" />
-          <entry key="html" value="7" />
-          <entry key="java" value="8859" />
+          <entry key="dummy" value="90" />
+          <entry key="java" value="7500" />
           <entry key="txt" value="206" />
-          <entry key="xhtml" value="3696" />
-          <entry key="xml" value="275" />
+          <entry key="xhtml" value="3332" />
+          <entry key="xml" value="294" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="7" />
           <entry key="Hibernate QL" value="28" />
-          <entry key="JAVA" value="8859" />
-          <entry key="PLAIN_TEXT" value="322" />
-          <entry key="XHTML" value="3696" />
-          <entry key="XML" value="275" />
+          <entry key="JAVA" value="7500" />
+          <entry key="PLAIN_TEXT" value="296" />
+          <entry key="XHTML" value="3332" />
+          <entry key="XML" value="294" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -74,30 +67,30 @@
           <entry key="Persistence/JavaeeElement:/b1d73b60/MariGomes/aarf/jpa/JPA/PersistenceModel" value="1" />
           <entry key="css" value="9" />
           <entry key="gif" value="2" />
-          <entry key="html" value="3" />
-          <entry key="java" value="202" />
+          <entry key="html" value="2" />
+          <entry key="java" value="175" />
           <entry key="jpeg" value="1" />
           <entry key="jpg" value="1" />
           <entry key="js" value="1" />
           <entry key="pom" value="1" />
           <entry key="scss" value="3" />
-          <entry key="sql" value="3" />
-          <entry key="xhtml" value="83" />
-          <entry key="xml" value="23" />
+          <entry key="sql" value="2" />
+          <entry key="xhtml" value="76" />
+          <entry key="xml" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="9" />
-          <entry key="HTML" value="3" />
+          <entry key="HTML" value="2" />
           <entry key="Image" value="4" />
-          <entry key="JAVA" value="202" />
+          <entry key="JAVA" value="175" />
           <entry key="JavaScript" value="1" />
           <entry key="SCSS" value="3" />
-          <entry key="SQL" value="3" />
+          <entry key="SQL" value="2" />
           <entry key="UML" value="1" />
-          <entry key="XHTML" value="83" />
-          <entry key="XML" value="24" />
+          <entry key="XHTML" value="76" />
+          <entry key="XML" value="25" />
         </counts>
       </usages-collector>
     </session>
@@ -107,48 +100,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/instituicao/cadastro-instituicao.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/InstituicaoServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+              <folding>
+                <element signature="e#1001#1002#0" expanded="true" />
+                <element signature="e#1055#1056#0" expanded="true" />
+                <element signature="e#1105#1106#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="524">
+              <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/404.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="97" selection-start-line="28" selection-start-column="75" selection-end-line="28" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/error.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="28" column="97" selection-start-line="28" selection-start-column="97" selection-end-line="28" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/access-denied.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="96" column="81" lean-forward="true" selection-start-line="96" selection-start-column="81" selection-end-line="96" selection-end-column="81" />
+            <state relative-caret-position="85">
+              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/template_email/email_cadastro_usuario.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#187#188#0" expanded="true" />
-                <element signature="e#214#215#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#734#735#0" expanded="true" />
-                <element signature="e#771#772#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/AssociadoMB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="26" selection-start-line="26" selection-end-line="27" selection-end-column="21" />
+            <state relative-caret-position="259">
+              <caret line="136" column="278" selection-start-line="136" selection-start-column="278" selection-end-line="136" selection-end-column="279" />
             </state>
           </provider>
         </entry>
@@ -158,15 +183,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>search-bar</find>
+      <find>searc</find>
+      <find>promo</find>
       <find>Assoss</find>
       <find>theme</find>
       <find>das</find>
@@ -189,14 +217,11 @@
       <find>mascu</find>
       <find>nasci</find>
       <find>salvar</find>
-      <find>estudante</find>
-      <find>dias</find>
-      <find>p:confirm</find>
-      <find>UnknownHostException</find>
-      <find>o de insc</find>
-      <find>remover&quot;</find>
-      <find>getSubmittedFileName</find>
-      <find>remover</find>
+      <find>listaContas</find>
+      <find>selectoneme</find>
+      <find>cnab</find>
+      <find>404</find>
+      <find>home</find>
     </findStrings>
     <replaceStrings>
       <replace>Usuario</replace>
@@ -210,6 +235,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Unit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Matricula.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Edital.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Usuario.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/FacesConverterLocalDateTime.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/FacesConverterLocalDate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/LocalDateTimeConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/LocalDateConverter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/utils/UnitTest.java" />
@@ -221,6 +255,7 @@
         <option value="$PROJECT_DIR$/src/main/java/service/UsuarioServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/EstudanteServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/empty-page.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/sample.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-estudante.xhtml" />
@@ -230,37 +265,27 @@
         <option value="$PROJECT_DIR$/src/main/java/service/EditalService.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/EditalMB.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-edital.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/modal-consulta-estudante.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/dto/ContaDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/ContaService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/ContaServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/business/ContaBusiness.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/ContaDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/modal-consulta-conta.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/ContaMB.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/template/confirm.html" />
-        <option value="$PROJECT_DIR$/src/main/java/exception/CepBussinesException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/CepServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/business/CepBussines.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/AssociadoMB.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/template/confirm.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/cadastro-conta.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/associado/cadastro-associado.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/DiaSemana.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Viagem.java" />
         <option value="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/enumered/DiaSemana.java" />
-        <option value="$PROJECT_DIR$/src/main/java/enumered/DiaSemanaEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/AnexoMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/ArquivoMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/dto/BancoDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Banco.java" />
+        <option value="$PROJECT_DIR$/src/main/java/business/BancoBusiness.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/financeiro/cadastrobanco.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/financeiro/modal-consulta-banco.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/InstituicaoMB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/BancoMB.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/financeiro/banco/cadastro-banco.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/service/BancoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/BancoDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/BancoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/generics/GenericDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/ContaMB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Conta.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/cadastro-conta.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/404.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/error.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/access-denied.xhtml" />
       </list>
     </option>
   </component>
@@ -306,9 +331,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -347,6 +373,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -371,15 +398,15 @@
               <item name="aarf" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
               <item name="aarf" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
@@ -406,16 +433,15 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="cadastro-&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml&#10;v1&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/flyway/V1__1.0.1.sql&#10;matricula&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml&#10;CepB&#9;PSI&#9;JAVA://business.CepBussines&#10;cadastro-es&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml&#10;estudanteda&#9;PSI&#9;JAVA://dao.EstudanteDAO&#10;estudanteDAO&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/controller/EstudanteMB.java&#10;conta&#9;PSI&#9;JAVA://model.Conta&#10;menu&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/layoutmenu.xhtml&#10;empty&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/empty-page.xhtml&#10;Test&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;Pessoa&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Pessoa.java&#10;Unit&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;pom&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;Usuario&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Usuario.java&#10;Matricula&#9;PSI&#9;JAVA://model.Matricula&#10;Un&#9;PSI&#9;JAVA://utils.UnitTest&#10;cadas&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/cadastros/cadastro-estudante.xhtml&#10;persistence.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/META-INF/persistence.xml&#10;persi&#9;ACTION&#9;ActivatePersistenceToolWindow&#10;web.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;web.xml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;pom.xm&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;form&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/forms.xhtml&#10;CharacterEncodingFilter&#9;PSI&#9;JAVA://org.omnifaces.filter.CharacterEncodingFilter&#10;we&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;data.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/data.xhtml&#10;sa&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/sample.xhtml&#10;Unt&#9;PSI&#9;JAVA://utils.UnitTest&#10;dashboard.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;theme&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/resources/sass/theme&#10;FaceletViewHandlingStrategy&#9;PSI&#9;JAVA://com.sun.faces.application.view.FaceletViewHandlingStrategy&#10;dashboard.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;web&#9;ACTION&#9;ActivateWebToolWindow&#10;noticia&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Noticia.java" />
+    <property name="SearchEverywhereHistoryKey" value="web.xml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;cadastro-co&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/financeiro/conta/cadastro-conta.xhtml&#10;banco&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Banco.java&#10;layoutme&#9;FILE&#9;file://C:/Users/teste/workspace-oxygen/aarf/src/main/webapp/WEB-INF/layoutmenu.xhtml&#10;institui&#9;FILE&#9;file://C:/Users/teste/workspace-oxygen/aarf/src/main/java/controller/InstituicaoMB.java&#10;cadastrobanco&#9;FILE&#9;file://C:/Users/teste/workspace-oxygen/aarf/src/main/webapp/security/cadastros/financeiro/cadastrobanco.xhtml&#10;v1&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/flyway/V1__1.0.1.sql&#10;menu&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/layoutmenu.xhtml&#10;empty&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/empty-page.xhtml&#10;Test&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;Pessoa&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Pessoa.java&#10;Unit&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;pom&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;Usuario&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Usuario.java&#10;Matricula&#9;PSI&#9;JAVA://model.Matricula&#10;Un&#9;PSI&#9;JAVA://utils.UnitTest&#10;cadas&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/cadastros/cadastro-estudante.xhtml&#10;persistence.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/META-INF/persistence.xml&#10;persi&#9;ACTION&#9;ActivatePersistenceToolWindow&#10;web.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;pom.xm&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;form&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/forms.xhtml&#10;CharacterEncodingFilter&#9;PSI&#9;JAVA://org.omnifaces.filter.CharacterEncodingFilter&#10;we&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;data.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/data.xhtml&#10;sa&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/sample.xhtml&#10;Unt&#9;PSI&#9;JAVA://utils.UnitTest&#10;dashboard.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;theme&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/resources/sass/theme&#10;FaceletViewHandlingStrategy&#9;PSI&#9;JAVA://com.sun.faces.application.view.FaceletViewHandlingStrategy&#10;dashboard.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;web&#9;ACTION&#9;ActivateWebToolWindow&#10;noticia&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Noticia.java&#10;matricula&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/controller/MatriculaMB.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541908308315" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541373220754" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/service" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -427,29 +453,29 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="exception" />
       <recent name="business" />
       <recent name="dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\workspace\aarf\src\main\webapp\security\financeiro\conta" />
+      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\cadastros\financeiro" />
       <recent name="C:\workspace\aarf\src\main\webapp\security\cadastros" />
       <recent name="C:\workspace\aarf\src\main\webapp\resources\sass\theme" />
       <recent name="C:\workspace\aarf\src\main\webapp\resources" />
       <recent name="C:\workspace\aarf\src\main\webapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="controller" />
-      <recent name="utils" />
-      <recent name="dto" />
+      <recent name="service" />
       <recent name="business" />
-      <recent name="impl" />
+      <recent name="model" />
+      <recent name="dto" />
+      <recent name="dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\financeiro" />
+      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security" />
+      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\cadastros\financeiro\banco" />
       <recent name="C:\workspace\aarf\src\main\webapp\security\cadastros\edital" />
       <recent name="C:\workspace\aarf\src\main\webapp\WEB-INF" />
-      <recent name="C:\workspace\aarf\src\main\webapp\resources" />
-      <recent name="C:\workspace\aarf\src\main\webapp\template" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -620,7 +646,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107035000" />
+    <option name="totallyTimeSpent" value="111083000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -633,9 +659,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4924623" visible="true" weight="0.24626866" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4924623" visible="true" weight="0.23827292" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" sideWeight="0.5046729" side_tool="true" weight="0.18656716" />
       <window_info id="Designer" order="3" />
@@ -647,7 +672,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3531961" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3618635" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3217768" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -722,18 +747,6 @@
       <path value="$PROJECT_DIR$/aarf" />
     </ignored-roots>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java</url>
-          <line>15</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
@@ -744,17 +757,108 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/StringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/utils/UnitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="38" lean-forward="true" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="179" column="21" lean-forward="true" selection-start-line="179" selection-start-column="21" selection-end-line="179" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Endereco.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/EstudanteServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1134">
+          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/UsuarioService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/UsuarioServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/UsuarioBusiness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/sample.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="33" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/empty-page.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Identity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Unit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="49" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/topbar.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/business/EditalBusiness.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/EditalDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -782,216 +886,204 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/cadastro-estudante.xhtml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/EditalMB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-          <folding>
-            <element signature="e#1000#1001#0" expanded="true" />
-            <element signature="e#1028#1029#0" expanded="true" />
-            <element signature="e#1061#1062#0" expanded="true" />
-            <element signature="e#1098#1099#0" expanded="true" />
-            <element signature="e#1640#1641#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1841#1842#0" expanded="true" />
-            <element signature="e#1880#1881#0" expanded="true" />
-            <element signature="e#1934#1935#0" expanded="true" />
-            <element signature="e#1971#1972#0" expanded="true" />
-            <element signature="e#2068#2069#0" expanded="true" />
-            <element signature="e#2102#2103#0" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
-            <element signature="e#2175#2176#0" expanded="true" />
-            <element signature="e#2211#2212#0" expanded="true" />
-            <element signature="e#2250#2251#0" expanded="true" />
-            <element signature="e#2282#2283#0" expanded="true" />
-            <element signature="e#2335#2336#0" expanded="true" />
-            <element signature="e#2377#2378#0" expanded="true" />
-            <element signature="e#2417#2418#0" expanded="true" />
-            <element signature="e#2447#2448#0" expanded="true" />
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2537#2538#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="199">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        <state relative-caret-position="138">
+          <caret line="48" column="57" selection-start-line="48" selection-start-column="57" selection-end-line="48" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/UsuarioBusiness.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Conta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="321">
+          <caret line="505" column="77" selection-start-line="505" selection-start-column="77" selection-end-line="505" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dto/EstudanteDTO.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/instituicao/cadastro-instituicao.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/EditalDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" selection-start-line="5" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/InstituicaoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/InstituicaoBusiness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dto/InstituicaoDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dto/ContaDTO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/InstituicaoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="697">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/EstudanteDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dto/BancoDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="66" column="5" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
+        <state relative-caret-position="166">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ContaDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/BancoBusiness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="57">
+          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/modal-consulta-estudante.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/InstituicaoMB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="75" column="94" lean-forward="true" selection-start-line="75" selection-start-column="94" selection-end-line="75" selection-end-column="94" />
+        <state relative-caret-position="123">
+          <caret line="59" column="44" lean-forward="true" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/BancoMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="46" column="35" lean-forward="true" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="24" column="71" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/banco/cadastro-banco.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="22" column="131" selection-start-line="22" selection-start-column="131" selection-end-line="22" selection-end-column="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/BancoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Banco.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/BancoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/generics/GenericDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="91" column="25" selection-start-line="91" selection-start-column="25" selection-end-line="91" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/banco/modal-consulta-banco.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/BancoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/associado/modal-consulta-associado.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="103" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="32" selection-end-column="103" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/ContaMB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ContaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ContaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/ContaBusiness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/template/menu.xhtml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/template/loading.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/net/AbstractPlainSocketImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
-          <caret line="183" selection-start-line="183" selection-end-line="183" />
+          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exception/GenericException.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Conta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exception/CepBussinesException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Throwable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="375" column="18" selection-start-line="375" selection-start-column="18" selection-end-line="375" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="84" column="42" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
-          <folding>
-            <element signature="e#2171#2172#0" expanded="true" />
-            <element signature="e#2210#2211#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/CepServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/CepBussines.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="39" column="112" selection-start-line="39" selection-start-column="112" selection-end-line="39" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/modal-consulta-conta.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-329">
-          <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/template/confirm.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="96" selection-start-line="10" selection-start-column="96" selection-end-line="10" selection-end-column="96" />
+        <state relative-caret-position="323">
+          <caret line="206" column="31" selection-start-line="206" selection-start-column="31" selection-end-line="206" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/cadastro-conta.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="156" column="50" lean-forward="true" selection-start-line="155" selection-start-column="35" selection-end-line="156" selection-end-column="50" />
+        <state relative-caret-position="162">
+          <caret line="119" column="90" selection-start-line="119" selection-start-column="90" selection-end-line="119" selection-end-column="90" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/associado/cadastro-associado.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template_email/email_cadastro_usuario.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="203" column="95" selection-start-line="203" selection-start-column="95" selection-end-line="203" selection-end-column="95" />
+        <state relative-caret-position="259">
+          <caret line="136" column="278" selection-start-line="136" selection-start-column="278" selection-end-line="136" selection-end-column="279" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="209" column="93" selection-start-line="209" selection-start-column="93" selection-end-line="209" selection-end-column="93" />
+        <state relative-caret-position="425">
+          <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1004,144 +1096,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/error.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        <state relative-caret-position="323">
+          <caret line="28" column="97" selection-start-line="28" selection-start-column="97" selection-end-line="28" selection-end-column="97" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Instituicao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/access-denied.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="72" column="1" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
-          <folding>
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/EstudanteBusiness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Cidade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/overlay.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="71" column="91" selection-start-line="71" selection-start-column="91" selection-end-line="71" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="556" lean-forward="true" selection-start-line="556" selection-end-line="556" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/enumered/DiaSemanaEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding>
-            <element signature="e#225#226#0" expanded="true" />
-            <element signature="e#235#236#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="95" column="15" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="15" />
-          <folding>
-            <element signature="e#2323#2324#0" expanded="true" />
-            <element signature="e#2355#2356#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1-sources.jar!/javax/servlet/http/Part.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-316">
-          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/omnifaces/omnifaces/2.6.8/omnifaces-2.6.8-sources.jar!/org/omnifaces/util/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Viagem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/AssociadoMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="26" selection-start-line="26" selection-end-line="27" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#187#188#0" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="96" column="81" lean-forward="true" selection-start-line="96" selection-start-column="81" selection-end-line="96" selection-end-column="81" />
+        <state relative-caret-position="85">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>

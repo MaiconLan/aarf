@@ -6,14 +6,12 @@ import exception.LoginException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
-import org.omnifaces.util.Messages;
 import utils.Criptografia;
 
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class UsuarioBusiness {
@@ -35,7 +33,7 @@ public class UsuarioBusiness {
         return usuario;
     }
 
-    public Usuario logar(Usuario usuario) throws Exception {
+    public Usuario logar(Usuario usuario) throws LoginException, UnsupportedEncodingException, NoSuchAlgorithmException {
         if (isValido(usuario)) {
             return usuarioDAO.dadosUsuario(usuario);
 

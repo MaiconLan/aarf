@@ -82,6 +82,10 @@ public class EstudanteMB implements Serializable {
         return !isAcessarPerfil;
     }
 
+    public boolean renderizarCampoRemoverEstudante(){
+        return renderizarCamposAcessarPerfil() && estudante.getIdEstudante() != null;
+    }
+
     public void modalConsultaEstudante() {
         RequestContext.getCurrentInstance().execute("PF('modalConsultaEstudante').show();");
     }

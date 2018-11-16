@@ -15,12 +15,14 @@ public class EditalDAO extends GenericDAO<Edital> {
 
     public List consultarEdital(EditalDTO editalDTO) {
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT e FROM edital e ");
-        sql.append("WHERE 1=1");
+        sql.append("SELECT e FROM Edital e ");
+        sql.append("WHERE 1=1 ");
 
         if (editalDTO.getTitulo() != null && !editalDTO.getTitulo().isEmpty()) {
-            sql.append("And e.titulo = :titulo ");
+            sql.append("AND e.titulo = :titulo ");
         }
+
+        sql.append("ORDER BY e.inicio ");
 
         Query query = em.createQuery(sql.toString());
 

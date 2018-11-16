@@ -54,16 +54,16 @@ public class Identity implements Serializable {
 
 				redirect = "security/dashboard.xhtml";
 			} else {
-				Messages.addWarn(LOGIN_ERRO_MENSAGEM, LOGIN_ERRO_DETALHES);
+				Messages.addWarn(null, LOGIN_ERRO_DETALHES);
 			}
 
 		} catch (LoginException e) {
-			Messages.addWarn(LOGIN_ERRO_MENSAGEM, LOGIN_ERRO_DETALHES);
+			Messages.addWarn(null, LOGIN_ERRO_DETALHES);
 			e.printStackTrace();
 			redirect = "";
 
 		}  catch (Exception e) {
-			Messages.addError(LOGIN_ERRO_MENSAGEM, "Detalhes: " + e.getStackTrace());
+			Messages.addError(null, "Detalhes: " + e.getMessage());
 			e.printStackTrace();
 			redirect = "";
 

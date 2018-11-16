@@ -32,7 +32,7 @@ public class EditalServiceImpl implements EditalService {
 
     @Override
     public List<Edital> consultarEdital(EditalDTO editalDTO) {
-        return null;
+        return editalBusiness.consultarEdital(editalDTO);
     }
 
 }
