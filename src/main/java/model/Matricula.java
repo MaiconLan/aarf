@@ -3,6 +3,7 @@ package model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,6 +35,16 @@ public class Matricula  implements Serializable {
 
     @OneToOne(mappedBy = "matricula")
     private Cancelamento cancelamento;
+
+    @ManyToMany
+    @JoinTable(name="matriculas_anexos", joinColumns=
+            {@JoinColumn(name="id_matricula")}, inverseJoinColumns=
+            {@JoinColumn(name="id_anexo")})
+    private List<Anexo> anexos;
+
+    public Matricula() {
+        this.anexos = new ArrayList<>();
+    }
 
     public Long getIdMatricula() {
         return idMatricula;
@@ -93,6 +104,14 @@ public class Matricula  implements Serializable {
 
     public void setCancelamento(Cancelamento cancelamento) {
         this.cancelamento = cancelamento;
+    }
+
+    public List<Anexo> getAnexos() {
+        return anexos;
+    }
+
+    public void setAnexos(List<Anexo> anexos) {
+        this.anexos = anexos;
     }
 
     @Override

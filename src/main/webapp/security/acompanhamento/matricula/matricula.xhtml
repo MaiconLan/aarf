@@ -56,7 +56,10 @@
 								</p:selectManyCheckbox>
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-4">
-								<p:selectOneMenu id="selectInstituicao" value="#{matriculaMB.viagem.instituicao}" required="true">
+								<p:selectOneMenu id="selectInstituicao"
+												 value="#{matriculaMB.viagem.instituicao}"
+												 required="true"
+												 converter="omnifaces.SelectItemsIndexConverter">
 									<f:selectItem  itemLabel="Selecione a instituição" noSelectionOption="true"/>
 									<f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao" itemLabel="#{instituicao.nome}" itemValue="#{instituicao}" />
 								</p:selectOneMenu>
@@ -64,19 +67,20 @@
 							<div class="ui-g-12 ui-md-6 ui-lg-1">
 								<p:commandButton id="adicionar" icon="fa fa-plus"
 												 styleClass="green-button"
-												 update="@form" process="@this" title="Adicionar"
+												 update="@form" process="@form" title="Adicionar"
 												 action="#{matriculaMB.salvarViagem()}" />
 							</div>
 						</div>
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-12 ui-lg-12">
 								<p:dataTable id="tableViagens" var="viagem" value="#{matriculaMB.viagens}">
-									<p:column headerText="Ações">
-										<p:commandButton id="remover" icon="fa fa-remove"
+									<p:column headerText="Ações" width="10%">
+										<p:commandButton id="remover"
+														 icon="fa fa-remove"
 														 styleClass="red-button"
-														 update="tableViagens"
-														 process="@this"
-														 title="Adicionar" />
+														 action="#{matriculaMB.removerViagem(viagem)}"
+														 update="@form"
+														 process="@this"/>
 									</p:column>
 									<p:column headerText="Dia da Semana">
 										<p:outputLabel value="#{viagem.diaSemana}" />
@@ -94,14 +98,23 @@
 					<h:form id="formAnexo" enctype="multipart/form-data">
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-6 ui-lg-4">
-								<o:inputFile value="#{matriculaAnexoMB.arquivoEnviado}" />
-								<p:commandButton value="Salvar" action="#{matriculaAnexoMB.salvarArquivo}" process="formAnexo" />
+								<p:fileUpload fileUploadListener="#{matriculaAnexoMB.enviarArquivo}" multiple="true" sequential="true"
+											  label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
+							</div>
+						</div>
+
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:commandButton value="Salvar" action="#{matriculaMB.salvarMatricula()}" process="formMatricula formAnexo"/>
+
 							</div>
 						</div>
 					</h:form>
 				</div>
 			</div>
 		</div>
+
+		<ui:include src="modal-consulta-editais.xhtml"/>
 	</ui:define>
 
 </ui:composition>

@@ -1,37 +1,43 @@
 package controller;
 
+import org.omnifaces.util.Messages;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
+
 import javax.servlet.http.Part;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 
 public abstract class ArquivoAbstract {
 
-    protected static final String DIRETORIO_GERAL = "\\aarf\\arquivos\\";
+    protected static final String DIRETORIO_GERAL = "c:\\aarf\\arquivos\\";
 
-    protected Part arquivoEnviado;
+    public void enviarArquivo(FileUploadEvent event) {
+            try {
+            UploadedFile arquivoEnviado = event.getFile();
 
-    public void salvarArquivo(){
-        try (InputStream input = arquivoEnviado.getInputStream()) {
-            String fileName = arquivoEnviado.getName();
-            Files.copy(input, new File(obterDiretorioCompleto(), fileName).toPath());
-            System.out.print("Arquivo enviad: " + fileName);
-        }
-        catch (IOException e) {
+            File file = new File(obterDiretorioCompleto());
+            if(!file.exists())
+                file.mkdirs();
+
+            file = new File(obterDiretorioCompleto(), arquivoEnviado.getFileName());
+
+            OutputStream out = new FileOutputStream(file);
+            out.write(arquivoEnviado.getContents());
+            out.close();
+
+            Messages.addInfo(null, "O arquivo " + arquivoEnviado.getFileName() + " foi salvo!");
+        } catch(IOException e) {
+            Messages.addError(null, "Erro ao enviar o arquivo!");
             e.printStackTrace();
         }
+
     }
+
+    protected abstract void salvarAnexos(String caminho, String arquivo);
 
     protected abstract String obterDiretorioModulo();
-
-    public Part getArquivoEnviado() {
-        return arquivoEnviado;
-    }
-
-    public void setArquivoEnviado(Part arquivoEnviado) {
-        this.arquivoEnviado = arquivoEnviado;
-    }
 
     private String obterDiretorioCompleto(){
         return DIRETORIO_GERAL + obterDiretorioModulo();
