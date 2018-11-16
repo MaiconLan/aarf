@@ -13,5 +13,7 @@ public interface NoticiaService extends Serializable {
 
     void removerNoticia(Noticia n);
     
+    List<Noticia> listarNoticias(Noticia n);
+    
     List<Noticia> listarNoticias();
 }

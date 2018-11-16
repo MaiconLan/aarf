@@ -1,6 +1,7 @@
 package service;
 
 import business.NoticiaBusiness;
+import dao.NoticiaDAO;
 import exception.LoginException;
 import exception.NoticiaBusinessException;
 import model.Noticia;
@@ -16,6 +17,9 @@ public class NoticiaServiceImpl implements NoticiaService {
 
     @Inject
     private NoticiaBusiness noticiaBusiness;
+    
+	@Inject
+	private NoticiaDAO dao;
 
 	@Override
 	public void salvarNoticia(Noticia n) throws NoticiaBusinessException, LoginException {
@@ -28,9 +32,14 @@ public class NoticiaServiceImpl implements NoticiaService {
 	}
 
 	@Override
-	public List<Noticia> listarNoticias() {
+	public List<Noticia> listarNoticias(Noticia filtro) {
 		// TODO Auto-generated method stub
-		return null;
+		return noticiaBusiness.consultarNoticias(filtro);
+	}
+	
+	@Override
+	public List<Noticia> listarNoticias(){
+		return dao.list();
 	}
 
 }
