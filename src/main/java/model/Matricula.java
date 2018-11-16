@@ -32,6 +32,9 @@ public class Matricula  implements Serializable {
     @JoinColumn(name = "id_edital")
     private Edital edital;
 
+    @OneToOne(mappedBy = "matricula")
+    private Cancelamento cancelamento;
+
     public Long getIdMatricula() {
         return idMatricula;
     }
@@ -82,6 +85,14 @@ public class Matricula  implements Serializable {
 
 	public boolean isConfirmada(){
         return confirmacao != null;
+    }
+
+    public Cancelamento getCancelamento() {
+        return cancelamento;
+    }
+
+    public void setCancelamento(Cancelamento cancelamento) {
+        this.cancelamento = cancelamento;
     }
 
     @Override

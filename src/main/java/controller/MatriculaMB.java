@@ -40,6 +40,7 @@ public class MatriculaMB implements Serializable {
 	private Edital edital;
 
 	private Viagem viagem;
+
 	private List<Viagem> viagens;
 	
 	@Inject

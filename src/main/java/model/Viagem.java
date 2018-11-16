@@ -1,35 +1,37 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(schema = "matricula", name = "viagem")
-public class Viagem {
+public class Viagem implements Serializable {
+
+	private static final long serialVersionUID = -671949289689195711L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_viagem")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_viagem")
 	private Long idViagem;
-	
+
+	@Column(name = "dia_semana")
 	private String diaSemana;
 
+	@Column(name = "sentido")
 	private String sentido;
 
 	@ManyToOne
-    @JoinColumn(name = "id_instituicao")
+	@JoinColumn(name = "id_instituicao")
 	private Instituicao instituicao;
 
 	@ManyToOne
-    @JoinColumn(name = "id_matricula")
+	@JoinColumn(name = "id_matricula")
 	private Matricula matricula;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "id_configuracao_viagem")
+	private ConfiguracaoViagem configuracaoViagem;
+
 	public Viagem() {
 		this.instituicao = new Instituicao();
 		this.matricula = new Matricula();
@@ -64,6 +66,15 @@ public class Viagem {
 	public void setMatricula(Matricula matricula) {
 		this.matricula = matricula;
 	}
+
+	public ConfiguracaoViagem getConfiguracaoViagem() {
+		return configuracaoViagem;
+	}
+
+	public void setConfiguracaoViagem(ConfiguracaoViagem configuracaoViagem) {
+		this.configuracaoViagem = configuracaoViagem;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,5 +98,6 @@ public class Viagem {
 			return false;
 		return true;
 	}
-	
+
+
 }

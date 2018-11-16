@@ -527,10 +527,11 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS matricula.viagem CASCADE;
 CREATE TABLE matricula.viagem(
 	id_viagem serial NOT NULL,
-	dia_semana character varying NOT NULL,
-	sentido character varying NOT NULL,
 	id_matricula integer,
 	id_instituicao integer,
+	id_configuracao_viagem integer,
+	dia_semana character varying NOT NULL,
+	sentido character varying NOT NULL,
 	CONSTRAINT id_viagem_pk PRIMARY KEY (id_viagem)
 
 );
@@ -551,6 +552,46 @@ ALTER TABLE matricula.viagem ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_insti
 REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
+
+-- object: matricula.configuracao_viagem | type: TABLE --
+-- DROP TABLE IF EXISTS matricula.configuracao_viagem CASCADE;
+CREATE TABLE matricula.configuracao_viagem(
+	id_configuracao_viagem serial NOT NULL,
+	id_edital integer,
+	id_instituicao integer,
+	valor numeric NOT NULL,
+	dia_semana character varying[] NOT NULL,
+	sentido character varying[] NOT NULL,
+	CONSTRAINT id_configuracao_viagem_pk PRIMARY KEY (id_configuracao_viagem)
+
+);
+-- ddl-end --
+ALTER TABLE matricula.configuracao_viagem OWNER TO postgres;
+-- ddl-end --
+
+-- object: instituicao_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.configuracao_viagem DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
+ALTER TABLE matricula.configuracao_viagem ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
+REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: configuracao_viagem_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.viagem DROP CONSTRAINT IF EXISTS configuracao_viagem_fk CASCADE;
+ALTER TABLE matricula.viagem ADD CONSTRAINT configuracao_viagem_fk FOREIGN KEY (id_configuracao_viagem)
+REFERENCES matricula.configuracao_viagem (id_configuracao_viagem) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: edital_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.configuracao_viagem DROP CONSTRAINT IF EXISTS edital_fk CASCADE;
+ALTER TABLE matricula.configuracao_viagem ADD CONSTRAINT edital_fk FOREIGN KEY (id_edital)
+REFERENCES matricula.edital (id_edital) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+
+
 
 
 
