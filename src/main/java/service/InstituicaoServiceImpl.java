@@ -36,6 +36,11 @@ public class InstituicaoServiceImpl implements InstituicaoService, Serializable 
 	}
 
 	@Override
+	public List<Instituicao> obterInstuicoesFinanceiras() {
+		return instituicaoDAO.obterInstituicoesFinanceiras();
+	}
+
+	@Override
 	public List<Instituicao> obterInstituicoes() {
 		return instituicaoDAO.obterInstituicoes();
 	}
