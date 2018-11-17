@@ -3,6 +3,8 @@ package model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +18,9 @@ public class Matricula  implements Serializable {
     @Column(name = "id_matricula")
     private Long idMatricula;
 
+    @OneToMany(mappedBy = "matricula", targetEntity = Viagem.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Viagem> viagens;
+    
     private LocalDateTime inscricao;
 
     private LocalDateTime confirmacao;
@@ -27,6 +32,19 @@ public class Matricula  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_edital")
     private Edital edital;
+
+    @OneToOne(mappedBy = "matricula")
+    private Cancelamento cancelamento;
+
+    @ManyToMany
+    @JoinTable(name="matriculas_anexos", joinColumns=
+            {@JoinColumn(name="id_matricula")}, inverseJoinColumns=
+            {@JoinColumn(name="id_anexo")})
+    private List<Anexo> anexos;
+
+    public Matricula() {
+        this.anexos = new ArrayList<>();
+    }
 
     public Long getIdMatricula() {
         return idMatricula;
@@ -68,8 +86,32 @@ public class Matricula  implements Serializable {
         this.edital = edital;
     }
 
-    public boolean isConfirmada(){
+    public List<Viagem> getViagens() {
+		return viagens;
+	}
+
+	public void setViagens(List<Viagem> viagens) {
+		this.viagens = viagens;
+	}
+
+	public boolean isConfirmada(){
         return confirmacao != null;
+    }
+
+    public Cancelamento getCancelamento() {
+        return cancelamento;
+    }
+
+    public void setCancelamento(Cancelamento cancelamento) {
+        this.cancelamento = cancelamento;
+    }
+
+    public List<Anexo> getAnexos() {
+        return anexos;
+    }
+
+    public void setAnexos(List<Anexo> anexos) {
+        this.anexos = anexos;
     }
 
     @Override

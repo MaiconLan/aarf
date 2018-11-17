@@ -21,9 +21,9 @@
             <p:menuitem id="noticias" value="Noticias" icon="fa fa-newspaper-o" outcome="/security/noticia/cadastro-noticia"/>
             <p:menuitem id="editais" value="Editais" icon="fa fa-file-text-o" outcome="/public/promotion-page"/>
             <p:submenu id="im_components" label="Acompanhamento" icon="fa fa-sitemap" rendered="#{identity.isUsuarioAssociado()}">
-
-                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" ajax="false" />
+                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" outcome="/security/acompanhamento/matricula/matricula" ajax="false" />
                 <p:menuitem id="acompanhamentoEdital" value="Edital" icon="fa fa-file-text-o" ajax="false" />
+                <p:menuitem id="acompanhamentoViagem" value="Viagem" icon="fa fa-bus" outcome="/security/acompanhamento/viagem/viagem" ajax="false" />
             </p:submenu>
             <p:submenu id="financeiro" label="Financeiro" icon="fa fa-money" rendered="#{identity.isUsuarioAssociado()}">
                 <p:menuitem id="contaBancaria" value="Conta Bancária" icon="fa fa-bank" outcome="/security/financeiro/conta/cadastro-conta" ajax="false"  />

@@ -1,10 +1,7 @@
 package model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -69,6 +66,11 @@ public class Instituicao implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(idInstituicao);
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + cidade;
     }
 }
 

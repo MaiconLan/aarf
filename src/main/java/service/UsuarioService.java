@@ -7,6 +7,8 @@ import model.Regra;
 import model.Usuario;
 
 import javax.persistence.PersistenceException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public interface UsuarioService {
@@ -15,7 +17,7 @@ public interface UsuarioService {
 
     void removerUsuario(Usuario usuario) throws NullPointerException, Exception;
 
-    Usuario logar(Usuario usuario) throws NullPointerException, PersistenceException, Exception;
+    Usuario logar(Usuario usuario) throws LoginException, UnsupportedEncodingException, NoSuchAlgorithmException;
 
     boolean isValido(Usuario usuario) throws NullPointerException, PersistenceException, Exception;
 

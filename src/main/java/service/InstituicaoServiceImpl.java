@@ -56,4 +56,11 @@ public class InstituicaoServiceImpl implements InstituicaoService, Serializable 
 	}
 
 
+	@Override
+	public List<Instituicao> listarInstituicao() {
+		return instituicaoBusiness.listarInstituicoes();
+	}
+
+	
+	
 }

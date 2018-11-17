@@ -5,4 +5,6 @@ import model.Matricula;
 
 public class MatriculaDAO extends GenericDAO<Matricula> {
 
+
+
 }

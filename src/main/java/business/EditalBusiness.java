@@ -26,6 +26,10 @@ public class EditalBusiness {
         else
             editalDAO.update(edital);
     }
+    
+    public Edital listarEdital(Long idEdital) {
+    	return editalDAO.listarEdital(idEdital);
+    }
 
     public void finalizarPeriodo(Edital edital) {
         edital.setFinalizado(Boolean.TRUE);

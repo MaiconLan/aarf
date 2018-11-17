@@ -1,19 +1,27 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "matricula",name = "cancelamento")
 public class Cancelamento implements Serializable {
 
     private static final long serialVersionUID = 5484318972885335435L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cancelamento")
     private Long idCancelamento;
 
     private LocalDateTime cancelamento;
 
     private String motivo;
 
+    @OneToOne
+    @JoinColumn(name = "id_matricula")
     private Matricula matricula;
 
     public Long getIdCancelamento() {
@@ -47,6 +55,7 @@ public class Cancelamento implements Serializable {
     public void setMatricula(Matricula matricula) {
         this.matricula = matricula;
     }
+
 
     @Override
     public boolean equals(Object o) {

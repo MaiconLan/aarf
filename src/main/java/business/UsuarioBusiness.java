@@ -33,7 +33,7 @@ public class UsuarioBusiness {
         return usuario;
     }
 
-    public Usuario logar(Usuario usuario) throws Exception {
+    public Usuario logar(Usuario usuario) throws LoginException, UnsupportedEncodingException, NoSuchAlgorithmException {
         if (isValido(usuario)) {
             return usuarioDAO.dadosUsuario(usuario);
 
@@ -63,7 +63,7 @@ public class UsuarioBusiness {
         try {
             resultado = usuarioDAO.dadosUsuario(usuario);
         } catch (PersistenceException e) {
-            throw e;
+            throw new LoginException();
         }
 
         if(resultado == null)

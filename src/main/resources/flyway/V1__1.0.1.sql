@@ -421,8 +421,8 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS cadastro.matriculas_anexos CASCADE;
 CREATE TABLE cadastro.matriculas_anexos(
 	id_anexo integer,
-	id_matricula_matricula integer,
-	CONSTRAINT matriculas_anexos_pk PRIMARY KEY (id_anexo,id_matricula_matricula)
+	id_matricula integer,
+	CONSTRAINT matriculas_anexos_pk PRIMARY KEY (id_anexo,id_matricula)
 
 );
 -- ddl-end --
@@ -436,7 +436,7 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- object: matricula_fk | type: CONSTRAINT --
 -- ALTER TABLE cadastro.matriculas_anexos DROP CONSTRAINT IF EXISTS matricula_fk CASCADE;
-ALTER TABLE cadastro.matriculas_anexos ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula_matricula)
+ALTER TABLE cadastro.matriculas_anexos ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula)
 REFERENCES matricula.matricula (id_matricula) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
@@ -522,6 +522,78 @@ ALTER TABLE publico.noticia ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instit
 REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
+
+-- object: matricula.viagem | type: TABLE --
+-- DROP TABLE IF EXISTS matricula.viagem CASCADE;
+CREATE TABLE matricula.viagem(
+	id_viagem serial NOT NULL,
+	id_matricula integer,
+	id_instituicao integer,
+	id_configuracao_viagem integer,
+	dia_semana character varying NOT NULL,
+	sentido character varying NOT NULL,
+	CONSTRAINT id_viagem_pk PRIMARY KEY (id_viagem)
+
+);
+-- ddl-end --
+ALTER TABLE matricula.viagem OWNER TO postgres;
+-- ddl-end --
+
+-- object: matricula_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.viagem DROP CONSTRAINT IF EXISTS matricula_fk CASCADE;
+ALTER TABLE matricula.viagem ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula)
+REFERENCES matricula.matricula (id_matricula) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: instituicao_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.viagem DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
+ALTER TABLE matricula.viagem ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
+REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: matricula.configuracao_viagem | type: TABLE --
+-- DROP TABLE IF EXISTS matricula.configuracao_viagem CASCADE;
+CREATE TABLE matricula.configuracao_viagem(
+	id_configuracao_viagem serial NOT NULL,
+	id_edital integer,
+	id_instituicao integer,
+	valor numeric NOT NULL,
+	dia_semana character varying[] NOT NULL,
+	sentido character varying[] NOT NULL,
+	CONSTRAINT id_configuracao_viagem_pk PRIMARY KEY (id_configuracao_viagem)
+
+);
+-- ddl-end --
+ALTER TABLE matricula.configuracao_viagem OWNER TO postgres;
+-- ddl-end --
+
+-- object: instituicao_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.configuracao_viagem DROP CONSTRAINT IF EXISTS instituicao_fk CASCADE;
+ALTER TABLE matricula.configuracao_viagem ADD CONSTRAINT instituicao_fk FOREIGN KEY (id_instituicao)
+REFERENCES cadastro.instituicao (id_instituicao) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: configuracao_viagem_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.viagem DROP CONSTRAINT IF EXISTS configuracao_viagem_fk CASCADE;
+ALTER TABLE matricula.viagem ADD CONSTRAINT configuracao_viagem_fk FOREIGN KEY (id_configuracao_viagem)
+REFERENCES matricula.configuracao_viagem (id_configuracao_viagem) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: edital_fk | type: CONSTRAINT --
+-- ALTER TABLE matricula.configuracao_viagem DROP CONSTRAINT IF EXISTS edital_fk CASCADE;
+ALTER TABLE matricula.configuracao_viagem ADD CONSTRAINT edital_fk FOREIGN KEY (id_edital)
+REFERENCES matricula.edital (id_edital) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+
+
+
+
 
 
 
