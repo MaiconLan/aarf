@@ -62,7 +62,7 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
 
     public List<Instituicao> obterInstituicoesFinanceiras(){
 	    StringBuilder sql  = new StringBuilder();
-	    sql.append("SELECT i FROM Instituicao i");
+	    sql.append("SELECT i FROM Instituicao i ");
 	    sql.append("WHERE i.tipo = :tipo");
 
 	    return em.createQuery(sql.toString())

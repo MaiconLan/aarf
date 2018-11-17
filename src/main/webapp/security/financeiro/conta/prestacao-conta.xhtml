@@ -52,14 +52,12 @@
                                             pattern="dd/MM/yyyy"
                                             placeholder="Data"
                                             requiredMessage="Campo obrigatório"
-                                            converter="localDateConverter">
+                                            >
                                     <p:ajax event="dateSelect" update="@form"/>
                                     <p:ajax event="change" update="@form"/>
                                 </p:calendar>
                             </div>
-
                         </div>
-
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-20">
                                 <p:inputText id="observacao"

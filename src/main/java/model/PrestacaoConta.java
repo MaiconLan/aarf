@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(schema = "financeiro", name = "prestacaoConta")
+@Table(schema = "financeiro", name = "prestacao_conta")
 public class PrestacaoConta implements Serializable {
     private static final long serialVersionUID = -2956805342959922492L;
 
