@@ -28,4 +28,14 @@ public class NoticiaDAO extends GenericDAO<Noticia> {
 	        
 	        return query.getResultList();
 	    }
+	 
+	 public List<Noticia> consultaNoticia() {
+	        StringBuilder sql = new StringBuilder();
+	        sql.append("SELECT n FROM Noticia n "); 
+	        
+	        Query query = em.createQuery(sql.toString());
+	        
+	        
+	        return query.getResultList();
+	    }
 }

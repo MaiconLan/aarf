@@ -34,7 +34,7 @@ public class HomeMB  implements Serializable {
     }
     
     private void carregarNoticias() {
-    	noticias = noticiaService.listarNoticias();
+    	noticias = noticiaService.listarNoticias(this.noticia);
     }
 
 	public List<Noticia> getNoticias() {

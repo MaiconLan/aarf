@@ -869,20 +869,37 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background: -moz-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* ff3.6+ */
+  
+  background: #ff8000;
+  
+  
+  /*
+  
+  
+  
+  
+    background: -moz-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
+   ff3.6+ 
   background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #f6bb4e), color-stop(100%, #fbdf86));
-  /* safari4+,chrome */
+   safari4+,chrome 
   background: -webkit-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* safari5.1+,chrome10+ */
+  safari5.1+,chrome10+ 
   background: -o-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* opera 11.10+ */
+  opera 11.10+ 
   background: -ms-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* ie10+ */
+  ie10+ 
   background: linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* w3c */
+   w3c 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f6bb4e", endColorstr="#fbdf86",GradientType=1 );
-  /* ie6-9 */
+   ie6-9 
+  
+  
+  
+  
+  
+  
+  */
+
 }
 
 .containerError {

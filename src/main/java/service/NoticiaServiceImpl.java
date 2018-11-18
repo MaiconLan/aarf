@@ -39,7 +39,7 @@ public class NoticiaServiceImpl implements NoticiaService {
 	
 	@Override
 	public List<Noticia> listarNoticias(){
-		return dao.list();
+		return dao.consultaNoticia();
 	}
 
 }

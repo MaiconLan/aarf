@@ -97,8 +97,8 @@
 	                    <div class="landing-nav-bar">
 	                        <ul>
 	                            <li><a href="">Home</a></li>
-	                            <li><a class="nav" href="promotion-page.xhtml#landing-slogan">Notícia</a></li>
-	                            <li><a href="promotion-page.xhtml#landing-feature">Prestação de Contas</a></li>
+	                            <li><a class="nav" href="promotion-page.xhtml#landing-feature">Notícia</a></li>
+	                            <li><a href="promotion-page.xhtml#landing-slogan">Prestação de Contas</a></li>
 	                            <li><a href="promotion-page.xhtml#landing-promotion">Contato</a></li>
 
 	                            <li>
@@ -119,7 +119,7 @@
 	            </div>
 	            <div id="landing-slogan">
 	                <div class="landing-container slogan-container">
-	                    <h1>Bem vindo à Associação Acadêmica de Rio Fortuna</h1>
+	                    <h1>Bem-Vindo à Associação Acadêmica de Rio Fortuna</h1>
 	                    <p>
 	                        Fique por dentro das novidades da associação. <br/>
 	                        Faça seu cadastro e verifique os Editais com os ônibus disponíveis, para que você possa ir para a sua faculdade. <br/>
@@ -132,27 +132,15 @@
 	            </div>
 	            <div id="landing-feature">
 	                <div class="landing-container">
-	                	<p:inputText value="#{homeMB.noticia.titulo}"/>
-	                    <p:carousel value="#{homeBM.noticias}" headerText="Responsive" var="item" itemStyle="text-align:center" responsive="true">
-					        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-					            <f:facet name="header">
-					                <!-- 
-					                   <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
-					                 -->
-					            </f:facet>
-					 
-					            <h:outputText value="Titulo" />
-					            <h:outputText value="#{item.titulo}" />
-					 
-					            <h:outputText value="Texto:" />
-					            <h:outputText value="#{item.texto}"/>
+	                	 <p:carousel value="#{homeMB.noticias}" footerText="#{item.publicacao}"  scrollable="true" scrollHeight="150"
+	                	             numVisible="1" headerText="Notícia #{item.publicacao}" var="item" responsive="true">
+					        <p:panelGrid columns="1" role="true"   columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+					            <h:outputText value="#{item.publicacaoFormatada}" style="font-weight: bold"/>
+					             <h:outputText value="#{item.titulo}" style="font-weight: bold"/>
+					            <h:outputText value="#{item.conteudo}" escape="false"/>
 					        </p:panelGrid>
-					 
-					        <f:facet name="footer">
-					                Nenhuma noticia
-					        </f:facet>
 					    </p:carousel>
-	                </div>
+	                </div> 
 	            </div>
 	            <div id="landing-promotion">
 	                <div class="landing-container promotion-container">
@@ -166,7 +154,6 @@
 	                            e outra parte pelos academicos que utilizam o transporte.<br/>
 	                            
 	                        </p>
-	                        <p:button id="promotionButton" value="Learn More"></p:button>
 	                    </div>
 	                </div>
 	                <h:graphicImage name="images/icarus-trasporte.fw.png" id="screen" library="icarus-layout" />
