@@ -20,6 +20,7 @@ public class MatriculaBusiness {
     private ViagemDAO viagemDAO;
 
     public void salvar(Matricula matricula) {
+        matricula.setInscricao(LocalDateTime.now());
         if(matricula.getIdMatricula() == null)
             matriculaDAO.save(matricula);
         else

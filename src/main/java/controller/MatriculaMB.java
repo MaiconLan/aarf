@@ -49,6 +49,9 @@ public class MatriculaMB implements Serializable {
 	@Inject
     private Identity identity;
 
+	@Inject
+    private Identity identity;
+
 	private Edital edital;
 
 	private Viagem viagem;
@@ -99,6 +102,11 @@ public class MatriculaMB implements Serializable {
 
 	public void novaMatricula() {
 		matricula = new Matricula();
+		if(identity.isUsuarioEstudante()){
+		    matricula.setEstudante(identity.getUsuario().getEstudante());
+        } else {
+		    Messages.addError(null, "Apenas estudantes podem realizar a matrícula!");
+        }
 	}
 
 	public void removerViagem(Viagem viagem) {
