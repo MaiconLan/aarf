@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(schema = "financeiro", name = "prestacao_conta")
@@ -17,9 +18,8 @@ public class PrestacaoConta implements Serializable {
     @Column(name = "id_prestacaoConta")
     private Long id_prestacaoConta;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    @JoinColumn(name = "id_instiituicao")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_insituicao")
     private Instituicao instituicao;
 
     private Long    valor;
@@ -28,7 +28,13 @@ public class PrestacaoConta implements Serializable {
     private String  nome_gasto;
     private Long    valor_gasto;
     private String  observacao_gasto;
-    private Anexo   anexo;
+    private Long    id_instituicao;
+
+    @ManyToMany
+    @JoinTable(name="prestacao_conta_anexo", joinColumns=
+            {@JoinColumn(name="id_prestacaoConta")}, inverseJoinColumns=
+            {@JoinColumn(name="id_anexo")})
+    private List<Anexo> anexos;
 
     public Long getId_prestacaoConta() {
         return id_prestacaoConta;
@@ -94,11 +100,11 @@ public class PrestacaoConta implements Serializable {
         this.observacao_gasto = observacao_gasto;
     }
 
-    public Anexo getAnexo() {
-        return anexo;
+    public List<Anexo> getAnexos() {
+        return anexos;
     }
 
-    public void setAnexo(Anexo anexo) {
-        this.anexo = anexo;
+    public void setAnexos(List<Anexo> anexos) {
+        this.anexos = anexos;
     }
 }

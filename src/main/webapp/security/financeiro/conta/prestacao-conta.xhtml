@@ -19,7 +19,7 @@
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
                                 <div class="ui-g-12 ui-md-6 ui-lg-4">
                                     <p:selectOneMenu id="Instituicao"
-                                                     value="#{prestacaoContaMB.instituicao}"
+                                                     value="#{prestacaoContaMB.prestacaoConta.instituicao}"
                                                      converter="omnifaces.SelectItemsIndexConverter"
                                                      filter="true"
                                                      required="true"
@@ -36,8 +36,12 @@
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:inputText id="valor"
+                                <p:inputNumber id="valor"
                                              required="true"
+                                             symbol="R$"
+                                             symbolPosition="s"
+                                             decimalSeparator=","
+                                             thousandSeparator="."
                                              requiredMessage="Campo obrigatório"
                                              placeholder="Valor"
                                              value="#{prestacaoContaMB.prestacaoConta.valor}"/>
@@ -53,8 +57,8 @@
                                             placeholder="Data"
                                             requiredMessage="Campo obrigatório"
                                             >
-                                    <p:ajax event="dateSelect" update="@form"/>
-                                    <p:ajax event="change" update="@form"/>
+                                    <!--<p:ajax event="dateSelect" update="@form"/>-->
+                                    <!--<p:ajax event="change" update="@form"/>-->
                                 </p:calendar>
                             </div>
                         </div>
@@ -76,8 +80,14 @@
                                              value="#{prestacaoContaMB.prestacaoConta.nome_gasto}"/>
                             </div>
                             <div class="ui-g-2 ui-md-6 ui-lg-2">
-                                <p:inputText id="vlGasto"
+                                <p:inputNumber id="vlGasto"
                                              placeholder="Valor gasto"
+                                             required="true"
+                                             symbol="R$"
+                                             symbolPosition="s"
+                                             decimalSeparator=","
+                                             thousandSeparator="."
+                                             requiredMessage="Campo obrigatório"
                                              value="#{prestacaoContaMB.prestacaoConta.valor_gasto}"/>
                             </div>
                             <div class="ui-g-2 ui-md-6 ui-lg-2">
@@ -88,15 +98,15 @@
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-2 ui-md-6 ui-lg-6">
-                                <label for="anexo">anexo</label>
-                                <p:fileUpload id="anexo"
-                                            value="#{prestacaoContaMB.prestacaoConta.anexo}"/>
+                                <p:fileUpload fileUploadListener="#{prestacaoContaAnexoMB.enviarArquivo}" multiple="true" sequential="true"
+                                              label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
 
                                 <div class="ui-g-2 ui-md-6 ui-lg-2">
                                     <p:commandButton id="add"
                                                      value="Add"
                                                      process="@form"
-                                                     update="@form"/>
+                                                     update="@form"
+                                                     action="#{prestacaoContaMB.salvar()}"/>
                                 </div>
                             </div>
                         </div>
@@ -106,20 +116,20 @@
                                              paginator="true" reflow="true">
                                     <f:facet name="header">Prestações de Contas</f:facet>
 
-                                    <p:column headerText="ID" width="6%">
-                                        <h:outputText value="#{prestacao.id_prestacaoConta}"/>
+                                    <p:column headerText="Nome" width="6%">
+                                        <h:outputText value="#{prestacao.nome_gasto}"/>
                                     </p:column>
 
                                     <p:column headerText="Valor" width="10%">
-                                        <h:outputText value="#{prestacao.valor}"/>
+                                        <h:outputText value=" R$ #{prestacao.valor}" />
                                     </p:column>
 
                                     <p:column headerText="Observacao" width="10%">
-                                        <h:outputText value="#{prestacao.observacao}"/>
+                                        <h:outputText value="#{prestacao.observacao_gasto}" />
                                     </p:column>
 
                                     <f:facet name="footer">
-                                        <!--Foram encontrados #{associadoMB.listaAssociado.size()} registro(s).-->
+                                        Foram encontrados #{prestacaoContaMB.prestacoes.size()} registro(s).
                                     </f:facet>
                                 </p:dataTable>
                             </div>

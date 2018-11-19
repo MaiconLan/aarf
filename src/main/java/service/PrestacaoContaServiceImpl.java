@@ -1,6 +1,7 @@
 package service;
 
 import business.PrestacaoContaBusiness;
+import dao.PrestacaoContaDAO;
 import dto.PrestacaoContaDTO;
 import model.Estudante;
 import model.PrestacaoConta;
@@ -14,6 +15,8 @@ public class PrestacaoContaServiceImpl implements PrestacaoContaService, Seriali
     private static final long serialVersionUID = -8498620217593646159L;
 
     @Inject
+    private PrestacaoContaDAO prestacaoContaDAO = new PrestacaoContaDAO();
+    @Inject
     PrestacaoContaBusiness prestacaoContaBusiness;
 
     @Override
@@ -23,8 +26,8 @@ public class PrestacaoContaServiceImpl implements PrestacaoContaService, Seriali
 
 
     @Override
-    public PrestacaoConta obterPrestacao(Long id_prestacaoConta) {
-        return null;
+    public List<PrestacaoConta> obterPrestacao() {
+       return prestacaoContaDAO.obterPrestacoes();
     }
 
     @Override
