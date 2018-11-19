@@ -12,6 +12,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.*;
+import java.util.List;
 
 @ViewScoped
 @Named("matriculaAnexoMB")
@@ -38,6 +39,11 @@ public class MatriculaAnexoMB extends ArquivoAbstract implements Serializable {
         anexoService.salvarAnexo(anexo);
     }
 
+    
+    protected List<Anexo> anexosAdicioandos(){
+    	return  matricula.getAnexos();
+    }
+    
     @Override
     protected String obterDiretorioModulo() {
         return DIRETORIO_MODULO;

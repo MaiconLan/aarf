@@ -7,6 +7,7 @@ import service.MatriculaService;
 
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
 
 public class MatriculaServiceImpl implements MatriculaService, Serializable {
 
@@ -24,4 +25,20 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
     public void salvarViagem(Viagem viagem) {
         matriculaBusiness.salvarViagem(viagem);
     }
+
+	@Override
+	public List<Matricula> listarMatriculas(Matricula m) {
+		// TODO Auto-generated method stub
+		return matriculaBusiness.listarMatricula(m);
+	}
+
+	@Override
+	public void aprovarMatricula(Matricula m) {
+		matriculaBusiness.autorizaMatricula(m);
+	}
+
+	@Override
+	public void recusarMatricula(Matricula m) {
+		matriculaBusiness.recuarMatricula(m);
+	}
 }

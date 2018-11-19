@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalDetalhesEstudante"
+              header="Consulta de Estudantes"
+              widgetVar="modalDetalhesEstudante"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="80%"
+              height="700"
+              minHeight="700"
+              closeOnEscape="true">
+
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                   		 <div class="ui-g">
+                   		 	 <h:panelGrid columns="10">
+                   		 	 	 <h3>Nome:<p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.nome}" /></h3>
+				         	     <h3>Data Nascimento:<p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.nascimento}" /></h3>
+                   		 	     <h3>Telefone:<p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.telefone} " /></h3>
+                   		 	     <h3>Email:<p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.email} " /></h3>
+                   		 	     <h3>Instituição: <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.instituicao.nome}" /></h3>
+                   		 	     <h3>Endereço: <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.endereco.enderecoFormatado}" /></h3>
+                   		 	     
+                   		 	 </h:panelGrid>                   		 	
+				         </div>
+                    </div>
+                </div>
+                
+				<!-- 
+				<div class="ui-g">
+					<div class="ui-g-12 ui-md-12 ui-lg-12">
+						<p:dataTable id="tableViagens" var="viagem" value="#{matriculaAprovacaoMB.matriculaSelecionada.viagens}">
+							<p:column headerText="Dia da Semana">
+								<p:outputLabel value="#{viagem.diaSemana}" />
+							</p:column>
+							<p:column headerText="Sentido">
+								<p:outputLabel value="#{viagem.sentido}" />
+							</p:column>
+							<p:column headerText="Instituição de Ensino">
+								<p:outputLabel value="#{viagem.instituicao.nome}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+								
+				 -->
+				
+				 <div class="ui-g">
+					<div class="ui-g-12 ui-md-12 ui-lg-12">
+						<p:dataTable id="tabAnexos" var="anexo" value="#{matriculaAprovacaoMB.matriculaSelecionada.anexos}">
+							<p:column headerText="Anexo" width="100%" >
+								<p:outputLabel value="#{anexo.nome}" />
+					
+								<object data="data:application/pdf;base64,#{anexo.caminho}" type="application/pdf" 
+								        style="width:100%; height: 100%; display: 'none'};" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+				
+            </div>
+            
+               
+        </h:form>
+    </p:dialog>
+</ui:composition>

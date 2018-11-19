@@ -1,11 +1,11 @@
 package controller;
 
-import dto.EditalDTO;
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.FileUploadEvent;
-import service.EditalService;
-import service.InstituicaoService;
-import service.MatriculaService;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -14,18 +14,21 @@ import javax.inject.Named;
 
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.FileUploadEvent;
 
-import exception.MatriculaBusinessException;
+import dto.EditalDTO;
 import enumered.DiaSemanaEnum;
+import exception.MatriculaBusinessException;
 import model.Edital;
 import model.Instituicao;
 import model.Matricula;
 import model.Viagem;
-
-import java.io.Serializable;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import service.AnexoService;
+import service.EditalService;
+import service.InstituicaoService;
+import service.MatriculaService;
+import com.sun.*;
 
 @ViewScoped
 @Named(value = "matriculaMB")
@@ -39,6 +42,12 @@ public class MatriculaMB implements Serializable {
 
 	@Inject
 	private EditalService editalService;
+	
+	@Inject
+	private AnexoService anexoService;
+	
+	@Inject
+    private Identity identity;
 
 	private Edital edital;
 
@@ -103,7 +112,7 @@ public class MatriculaMB implements Serializable {
 			viagemMatricula.setDiaSemana(viagem.getDiaSemana());
 			viagemMatricula.setInstituicao(viagem.getInstituicao());
 			viagemMatricula.setSentido(sentido[i]);
-
+			viagemMatricula.setMatricula(matricula);
 			viagens.add(viagemMatricula);
 		}
 
@@ -114,6 +123,10 @@ public class MatriculaMB implements Serializable {
 
 	public void salvarMatricula(){
 		try {
+			matricula.setInscricao(LocalDateTime.now());
+			matricula.setAnexos(matriculaAnexoMB.anexosAdicioandos());
+			matricula.setEstudante(identity.getUsuario().getEstudante());
+			matricula.setEdital(this.edital);
 			matricula.setViagens(viagens);
 			matriculaService.salvar(matricula);
 			Messages.addInfo(null, "Matricula salva com sucesso");
@@ -127,6 +140,12 @@ public class MatriculaMB implements Serializable {
 	        matriculaAnexoMB.setMatricula(matricula);
 
 	    matriculaAnexoMB.enviarArquivo(event);
+	    
+	    
+	    byte foto[] = event.getFile().getContents();
+	    String encoded = Base64.getEncoder().encodeToString(foto);
+	    matriculaAnexoMB.salvarAnexos(encoded, event.getFile().getFileName());
+	    
     }
 
 	private void carregarEdital() {

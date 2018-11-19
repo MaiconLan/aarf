@@ -272,7 +272,7 @@ CREATE TABLE publico.noticia(
 	titulo character varying NOT NULL,
 	publicacao date NOT NULL,
 	severidade character varying,
-	conteudo character varying(280) NOT NULL,
+	conteudo character varying NOT NULL,
 	CONSTRAINT id_noticia_pk PRIMARY KEY (id_noticia)
 
 );

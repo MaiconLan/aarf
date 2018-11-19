@@ -5,6 +5,7 @@ import model.Anexo;
 
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
 
 public class AnexoServiceImpl implements AnexoService, Serializable {
 

@@ -18,7 +18,7 @@ public class Matricula  implements Serializable {
     @Column(name = "id_matricula")
     private Long idMatricula;
 
-    @OneToMany(mappedBy = "matricula", targetEntity = Viagem.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "matricula", targetEntity = Viagem.class, fetch = FetchType.LAZY)
     private List<Viagem> viagens;
     
     private LocalDateTime inscricao;
@@ -37,7 +37,7 @@ public class Matricula  implements Serializable {
     private Cancelamento cancelamento;
 
     @ManyToMany
-    @JoinTable(name="matriculas_anexos", joinColumns=
+    @JoinTable(name="cadastro.matriculas_anexos", joinColumns=
             {@JoinColumn(name="id_matricula")}, inverseJoinColumns=
             {@JoinColumn(name="id_anexo")})
     private List<Anexo> anexos;
