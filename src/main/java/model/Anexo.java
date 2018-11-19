@@ -1,12 +1,18 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "cadastro", name = "anexo")
 public class Anexo implements Serializable {
 
     private static final long serialVersionUID = -5565107213468597015L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_anexo")
     private Long idAnexo;
 
     private String nome;

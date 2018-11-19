@@ -3,8 +3,7 @@
 				xmlns:f="http://java.sun.com/jsf/core"
 				xmlns:ui="http://java.sun.com/jsf/facelets"
 				xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"
-				xmlns:o="http://omnifaces.org/ui"
->
+				xmlns:o="http://omnifaces.org/ui">
 
 	<ui:define name="content">
 		<div class="ui-fluid">
@@ -50,13 +49,16 @@
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-2">
 								<p:selectManyCheckbox id="selectSentido"
-													  value="#{checkboxView.selectedConsoles}">
+													  value="#{matriculaMB.sentido}">
 									<f:selectItem itemLabel="Ida" itemValue="Ida" />
 									<f:selectItem itemLabel="Volta" itemValue="Volta" />
 								</p:selectManyCheckbox>
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-4">
-								<p:selectOneMenu id="selectInstituicao" value="#{matriculaMB.viagem.instituicao}" required="true">
+								<p:selectOneMenu id="selectInstituicao"
+												 value="#{matriculaMB.viagem.instituicao}"
+												 required="true"
+												 converter="omnifaces.SelectItemsIndexConverter">
 									<f:selectItem  itemLabel="Selecione a instituição" noSelectionOption="true"/>
 									<f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao" itemLabel="#{instituicao.nome}" itemValue="#{instituicao}" />
 								</p:selectOneMenu>
@@ -64,19 +66,20 @@
 							<div class="ui-g-12 ui-md-6 ui-lg-1">
 								<p:commandButton id="adicionar" icon="fa fa-plus"
 												 styleClass="green-button"
-												 update="@none" process="@this" title="Adicionar"
-												 action="#{matriculaMB.salvarMatricula()}" />
+												 update="@form" process="@form" title="Adicionar"
+												 action="#{matriculaMB.salvarViagem()}" />
 							</div>
 						</div>
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-12 ui-lg-12">
 								<p:dataTable id="tableViagens" var="viagem" value="#{matriculaMB.viagens}">
-									<p:column headerText="Ações">
-										<p:commandButton id="remover" icon="fa fa-remove"
+									<p:column headerText="Ações" width="10%">
+										<p:commandButton id="remover"
+														 icon="fa fa-remove"
 														 styleClass="red-button"
-														 update="tableViagens"
-														 process="@this"
-														 title="Adicionar" />
+														 action="#{matriculaMB.removerViagem(viagem)}"
+														 update="@form"
+														 process="@this"/>
 									</p:column>
 									<p:column headerText="Dia da Semana">
 										<p:outputLabel value="#{viagem.diaSemana}" />
@@ -85,7 +88,7 @@
 										<p:outputLabel value="#{viagem.sentido}" />
 									</p:column>
 									<p:column headerText="Instituição de Ensino">
-										<p:outputLabel value="#{viagem.instituicao}" />
+										<p:outputLabel value="#{viagem.instituicao.nome}" />
 									</p:column>
 								</p:dataTable>
 							</div>
@@ -94,14 +97,33 @@
 					<h:form id="formAnexo" enctype="multipart/form-data">
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-6 ui-lg-4">
-								<o:inputFile value="#{matriculaAnexoMB.arquivoEnviado}" />
-								<p:commandButton value="Salvar" action="#{matriculaAnexoMB.salvarArquivo}" process="formAnexo" />
+								<p:fileUpload fileUploadListener="#{matriculaMB.enviarArquivo}" multiple="true" sequential="true"
+											  label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
 							</div>
 						</div>
+
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<p:commandButton value="Salvar" action="#{matriculaMB.salvarMatricula()}" process="formMatricula formAnexo"/>
+
+							</div>
+						</div>
+						
+						
+					<p:media value="/resources/demo/media/guide.pdf" width="100%" height="300px">
+					    Your browser can't display pdf, <h:outputLink value="/resources/demo/media/guide.pdf">click</h:outputLink> to download pdf instead.
+					</p:media>
+					
+						
+						
 					</h:form>
+					
+					
 				</div>
 			</div>
 		</div>
+
+		<ui:include src="modal-consulta-editais.xhtml"/>
 	</ui:define>
 
 </ui:composition>

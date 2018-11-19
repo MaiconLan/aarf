@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalConsultaEditais"
+              header="Consulta de Editais"
+              widgetVar="modalConsultaEditais"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closable="false"
+              closeOnEscape="false">
+      
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <h1 class="lightBlack centerText">Selecione o Edital</h1>
+                        <div class="ui-g">
+                            <ui:repeat var="edital" value="#{matriculaMB.listaEditais}">
+
+                                <div id="main-wrapper-content">
+                                    <div class="ui-g">
+                                        <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                            <p:link outcome="/security/acompanhamento/matricula/matricula" style="text-decoration: none" disabled="#{edital.finalizado}">
+                                                <f:param value="#{edital.idEdital}" name="idEdital"/>
+                                                <div class="box #{edital.finalizado ? 'redBack' : 'greenBack'}">
+                                                    <i class="fa #{edital.finalizado ? 'fa-remove' : 'fa-check'}" aria-hidden="true"></i>
+                                                    <h2>#{edital.titulo}</h2>
+                                                    <p>#{matriculaMB.obterPeriodo(edital)}
+                                                    </p>
+                                                </div>
+                                            </p:link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>

@@ -58,7 +58,7 @@ public class NoticiaMB implements Serializable {
         try {
         	noticia.setPublicacao(LocalDateTime.now());
             service.salvarNoticia(noticia);
-            Messages.addInfo(null, "Not�cia salva com sucesso");
+            Messages.addInfo(null, "Notícia salva com sucesso");
             novaNoticia();
         } catch (NoticiaBusinessException | LoginException e) {
             Messages.addError(null, "Erro no Cadastro");

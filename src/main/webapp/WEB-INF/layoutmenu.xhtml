@@ -18,12 +18,13 @@
                 <p:menuitem id="cadastroInstituicao" value="Instituição" icon="fa fa-newspaper-o" outcome="/security/cadastros/instituicao/cadastro-instituicao" ajax="false" />
             </p:submenu>
 			
-            <p:menuitem id="noticias" value="Noticias" icon="fa fa-newspaper-o" outcome="/security/noticia/cadastro-noticia"/>
-            <p:menuitem id="editais" value="Editais" icon="fa fa-file-text-o" outcome="/public/promotion-page"/>
-            <p:submenu id="im_components" label="Acompanhamento" icon="fa fa-sitemap" rendered="#{identity.isUsuarioAssociado()}">
-                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" outcome="/security/acompanhamento/matricula/matricula" ajax="false" />
-                <p:menuitem id="acompanhamentoEdital" value="Edital" icon="fa fa-file-text-o" ajax="false" />
-                <p:menuitem id="acompanhamentoViagem" value="Viagem" icon="fa fa-bus" outcome="/security/acompanhamento/viagem/viagem" ajax="false" />
+            <p:menuitem id="noticias" value="Noticias" icon="fa fa-newspaper-o" outcome="/security/noticia/cadastro-noticia" rendered="#{identity.isUsuarioAssociado()}"/>
+            <p:menuitem id="editais" value="Editais" icon="fa fa-file-text-o" outcome="/public/promotion-page" rendered="#{identity.isUsuarioAssociado()}"/>
+            <p:submenu id="im_components" label="Acompanhamento" icon="fa fa-sitemap">
+                <p:menuitem id="acompanhamentoMatriculaAprovacao" value="Aprovar Matrículas" icon="fa fa-user" rendered="#{identity.isUsuarioAssociado()}" outcome="/security/acompanhamento/matricula/matricula-aprovacao" ajax="false" />
+                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" outcome="/security/acompanhamento/matricula/matricula" ajax="false" rendered="#{!identity.isUsuarioAssociado()}"/>
+                <p:menuitem id="acompanhamentoEdital" value="Edital" icon="fa fa-file-text-o" ajax="false" rendered="#{identity.isUsuarioAssociado()}"/>
+                <p:menuitem id="acompanhamentoViagem" value="Viagem" icon="fa fa-bus" outcome="/security/acompanhamento/viagem/viagem" ajax="false" rendered="#{identity.isUsuarioAssociado()}"/>
             </p:submenu>
             <p:submenu id="financeiro" label="Financeiro" icon="fa fa-money" rendered="#{identity.isUsuarioAssociado()}">
                 <p:menuitem id="contaBancaria" value="Conta Bancária" icon="fa fa-bank" outcome="/security/financeiro/conta/cadastro-conta" ajax="false"  />

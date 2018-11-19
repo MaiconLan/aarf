@@ -15,6 +15,7 @@ public class FiltroViagemDTO implements Serializable {
     private Instituicao instituicao;
 
     private Long idEdital;
+    private Long idMatricula;
 
     public String[] getDiaSemana() {
         return diaSemana;
@@ -47,4 +48,14 @@ public class FiltroViagemDTO implements Serializable {
     public void setIdEdital(Long idEdital) {
         this.idEdital = idEdital;
     }
+
+	public Long getIdMatricula() {
+		return idMatricula;
+	}
+
+	public void setIdMatricula(Long idMatricula) {
+		this.idMatricula = idMatricula;
+	}
+    
+    
 }

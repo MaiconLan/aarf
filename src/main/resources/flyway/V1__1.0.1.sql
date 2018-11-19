@@ -272,7 +272,7 @@ CREATE TABLE publico.noticia(
 	titulo character varying NOT NULL,
 	publicacao date NOT NULL,
 	severidade character varying,
-	conteudo character varying(280) NOT NULL,
+	conteudo character varying NOT NULL,
 	CONSTRAINT id_noticia_pk PRIMARY KEY (id_noticia)
 
 );
@@ -421,8 +421,8 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS cadastro.matriculas_anexos CASCADE;
 CREATE TABLE cadastro.matriculas_anexos(
 	id_anexo integer,
-	id_matricula_matricula integer,
-	CONSTRAINT matriculas_anexos_pk PRIMARY KEY (id_anexo,id_matricula_matricula)
+	id_matricula integer,
+	CONSTRAINT matriculas_anexos_pk PRIMARY KEY (id_anexo,id_matricula)
 
 );
 -- ddl-end --
@@ -436,7 +436,7 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- object: matricula_fk | type: CONSTRAINT --
 -- ALTER TABLE cadastro.matriculas_anexos DROP CONSTRAINT IF EXISTS matricula_fk CASCADE;
-ALTER TABLE cadastro.matriculas_anexos ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula_matricula)
+ALTER TABLE cadastro.matriculas_anexos ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula)
 REFERENCES matricula.matricula (id_matricula) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
