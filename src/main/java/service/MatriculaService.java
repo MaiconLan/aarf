@@ -18,4 +18,6 @@ public interface MatriculaService {
 	void recusarMatricula(Matricula m);
 	
 	List<Matricula> listarMatriculas(Matricula m);
+
+    Matricula obterMatricula(Long idEstudante);
 }

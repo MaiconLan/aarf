@@ -22,4 +22,17 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         return query.getResultList();
     }
 
+    public Matricula obterMatricula(Long idEstudante) {
+        StringBuilder sql = new StringBuilder();
+
+        sql.append("SELECT m FROM Matricula m ");
+        sql.append("JOIN m.estudante e ");
+
+        sql.append("WHERE e.idEstudante = :idEstudante ");
+        Query query = em.createQuery(sql.toString());
+
+        return (Matricula) query.setMaxResults(1)
+                .setParameter("idEstudante", idEstudante)
+                .getSingleResult();
+    }
 }

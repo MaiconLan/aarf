@@ -28,8 +28,12 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 
 	@Override
 	public List<Matricula> listarMatriculas(Matricula m) {
-		// TODO Auto-generated method stub
 		return matriculaBusiness.listarMatricula(m);
+	}
+
+	@Override
+	public Matricula obterMatricula(Long idEstudante) {
+		return matriculaBusiness.obterMatricula(idEstudante);
 	}
 
 	@Override

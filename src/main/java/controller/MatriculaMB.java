@@ -1,22 +1,5 @@
 package controller;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.omnifaces.cdi.Param;
-import org.omnifaces.util.Messages;
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.FileUploadEvent;
-
 import dto.EditalDTO;
 import enumered.DiaSemanaEnum;
 import exception.MatriculaBusinessException;
@@ -24,11 +7,25 @@ import model.Edital;
 import model.Instituicao;
 import model.Matricula;
 import model.Viagem;
+import org.omnifaces.cdi.Param;
+import org.omnifaces.util.Messages;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.FileUploadEvent;
 import service.AnexoService;
 import service.EditalService;
 import service.InstituicaoService;
 import service.MatriculaService;
-import com.sun.*;
+
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 
 @ViewScoped
 @Named(value = "matriculaMB")
@@ -46,9 +43,6 @@ public class MatriculaMB implements Serializable {
 	@Inject
 	private AnexoService anexoService;
 	
-	@Inject
-    private Identity identity;
-
 	@Inject
     private Identity identity;
 
@@ -76,16 +70,8 @@ public class MatriculaMB implements Serializable {
 
 	@PostConstruct
 	public void init() {
-        if(idEdital == null) {
-            carregarListaEditais();
-            abrirModalEditais();
+		carregarMatricula();
 
-        } else {
-            novaMatricula();
-            carregarEdital();
-            listarInstituicao();
-            novaViagem();
-        }
 	}
 
     private void carregarListaEditais() {
@@ -100,10 +86,16 @@ public class MatriculaMB implements Serializable {
 		viagem = new Viagem();
 	}
 
-	public void novaMatricula() {
-		matricula = new Matricula();
+	public void carregarMatricula() {
 		if(identity.isUsuarioEstudante()){
-		    matricula.setEstudante(identity.getUsuario().getEstudante());
+			matricula = matriculaService.obterMatricula(identity.getUsuario().getEstudante().getIdEstudante());
+
+			if(matricula == null) {
+				matricula = new Matricula();
+				matricula.setEstudante(identity.getUsuario().getEstudante());
+			} else {
+				viagens = matricula.getViagens();
+			}
         } else {
 		    Messages.addError(null, "Apenas estudantes podem realizar a matrícula!");
         }

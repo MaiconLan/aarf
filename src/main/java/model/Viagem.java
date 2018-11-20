@@ -1,5 +1,7 @@
 package model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -24,7 +26,8 @@ public class Viagem implements Serializable {
 	@JoinColumn(name = "id_instituicao")
 	private Instituicao instituicao;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+	@Cascade(value = {org.hibernate.annotations.CascadeType.MERGE, org.hibernate.annotations.CascadeType.PERSIST})
 	@JoinColumn(name = "id_matricula")
 	private Matricula matricula;
 

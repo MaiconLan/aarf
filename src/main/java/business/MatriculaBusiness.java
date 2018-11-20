@@ -44,4 +44,8 @@ public class MatriculaBusiness {
     public List<Matricula> listarMatricula(Matricula m) {
        return matriculaDAO.buscarMatriculas(m);
     }
+
+    public Matricula obterMatricula(Long idEstudante) {
+        return matriculaDAO.obterMatricula(idEstudante);
+    }
 }
