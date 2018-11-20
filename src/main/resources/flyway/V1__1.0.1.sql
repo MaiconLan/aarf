@@ -186,6 +186,7 @@ CREATE TABLE matricula.matricula(
 	id_matricula serial NOT NULL,
 	id_edital integer,
 	id_estudante integer,
+	semestre character varying,
 	inscricao timestamp NOT NULL,
 	confirmacao timestamp,
 	CONSTRAINT id_matricula_pk PRIMARY KEY (id_matricula)

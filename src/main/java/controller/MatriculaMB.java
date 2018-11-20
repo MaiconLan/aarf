@@ -3,6 +3,7 @@ package controller;
 import dto.EditalDTO;
 import enumered.DiaSemanaEnum;
 import exception.MatriculaBusinessException;
+import model.Anexo;
 import model.Edital;
 import model.Instituicao;
 import model.Matricula;
@@ -35,16 +36,19 @@ public class MatriculaMB implements Serializable {
 	@Inject
 	private MatriculaService matriculaService;
 
-	private Matricula matricula;
-
 	@Inject
 	private EditalService editalService;
-	
-	@Inject
-	private AnexoService anexoService;
-	
+
 	@Inject
     private Identity identity;
+
+	@Inject
+	private InstituicaoService instituicaoService;
+
+	@Inject
+    private MatriculaAnexoMB matriculaAnexoMB;
+
+	private Matricula matricula;
 
 	private Edital edital;
 
@@ -55,12 +59,6 @@ public class MatriculaMB implements Serializable {
 	private List<Viagem> viagens = new ArrayList<>();
 
     private List<Edital> listaEditais = new ArrayList();
-	
-	@Inject
-	private InstituicaoService instituicaoService;
-
-	@Inject
-    private MatriculaAnexoMB matriculaAnexoMB;
 
 	private List<Instituicao> instituicoes = new ArrayList();
 
@@ -71,7 +69,7 @@ public class MatriculaMB implements Serializable {
 	@PostConstruct
 	public void init() {
 		carregarMatricula();
-
+       carregarEdital();
 	}
 
     private void carregarListaEditais() {
@@ -95,6 +93,7 @@ public class MatriculaMB implements Serializable {
 				matricula.setEstudante(identity.getUsuario().getEstudante());
 			} else {
 				viagens = matricula.getViagens();
+				idEdital = matricula.getEdital().getIdEdital();
 			}
         } else {
 		    Messages.addError(null, "Apenas estudantes podem realizar a matrícula!");
@@ -130,6 +129,7 @@ public class MatriculaMB implements Serializable {
 			matricula.setViagens(viagens);
 			matriculaService.salvar(matricula);
 			Messages.addInfo(null, "Matricula salva com sucesso");
+
 		} catch (MatriculaBusinessException e) {
 			e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
 		}
@@ -140,18 +140,19 @@ public class MatriculaMB implements Serializable {
 	        matriculaAnexoMB.setMatricula(matricula);
 
 	    matriculaAnexoMB.enviarArquivo(event);
-	    
-	    
-	    byte foto[] = event.getFile().getContents();
-	    String encoded = Base64.getEncoder().encodeToString(foto);
-	    matriculaAnexoMB.salvarAnexos(encoded, event.getFile().getFileName());
-	    
     }
 
 	private void carregarEdital() {
+		if(idEdital == null) {
+			carregarListaEditais();
+			abrirModalEditais();
+
+		}
 		if (idEdital != null) {
 			edital = editalService.listarEdital(idEdital);
 		}
+		listarInstituicao();
+		novaViagem();
 	}
 
 	public String obterPeriodo() {

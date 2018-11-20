@@ -33,6 +33,8 @@ public class Matricula  implements Serializable {
     @Column(name = "id_matricula")
     private Long idMatricula;
 
+    private String semestre;
+
     @OneToMany(mappedBy = "matricula", targetEntity = Viagem.class, fetch = FetchType.LAZY, cascade = {javax.persistence.CascadeType.ALL})
     @Cascade(value = CascadeType.ALL)
     private List<Viagem> viagens;
@@ -128,6 +130,14 @@ public class Matricula  implements Serializable {
 
     public void setAnexos(List<Anexo> anexos) {
         this.anexos = anexos;
+    }
+
+    public String getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
     }
 
     @Override

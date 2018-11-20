@@ -27,6 +27,7 @@ public abstract class ArquivoAbstract {
             out.write(arquivoEnviado.getContents());
             out.close();
 
+            salvarAnexos(obterDiretorioCompleto(), arquivoEnviado.getFileName());
             Messages.addInfo(null, "O arquivo " + arquivoEnviado.getFileName() + " foi salvo!");
         } catch(IOException e) {
             Messages.addError(null, "Erro ao enviar o arquivo!");

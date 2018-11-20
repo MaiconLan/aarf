@@ -19,7 +19,7 @@
 						</div>
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-6 ui-lg-4">
-								<p:inputText id="semestre" placeholder="Semestre Cursando" />
+								<p:inputText id="semestre" placeholder="Semestre Cursando" value="#{matriculaMB.matricula.semestre}" />
 							</div>
 						</div>
 						<div class="ui-g">
@@ -96,7 +96,7 @@
 					</h:form>
 					<h:form id="formAnexo" enctype="multipart/form-data">
 						<div class="ui-g">
-							<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="ui-g-12 ui-md-6 ui-lg-8">
 								<p:fileUpload fileUploadListener="#{matriculaMB.enviarArquivo}" multiple="true" sequential="true"
 											  label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
 							</div>
@@ -104,21 +104,18 @@
 
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-6 ui-lg-4">
-								<p:commandButton value="Salvar" action="#{matriculaMB.salvarMatricula()}" process="formMatricula formAnexo"/>
+								<p:commandButton value="Salvar" action="#{matriculaMB.salvarMatricula()}" process="formMatricula formAnexo" update="formMatricula formAnexo"/>
 
 							</div>
 						</div>
-						
-						
-					<p:media value="/resources/demo/media/guide.pdf" width="100%" height="300px">
-					    Your browser can't display pdf, <h:outputLink value="/resources/demo/media/guide.pdf">click</h:outputLink> to download pdf instead.
-					</p:media>
-					
-						
-						
+						<p:dataList value="#{matriculaMB.matricula.anexos}" var="anexo">
+
+							<p:commna value="#{anexo.nome}">
+								<p:fileDownload value="#{matriculaAnexoMB.download(anexo)}" />
+							</p:link>
+						</p:dataList>
+
 					</h:form>
-					
-					
 				</div>
 			</div>
 		</div>
