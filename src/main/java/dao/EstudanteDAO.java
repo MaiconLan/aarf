@@ -2,7 +2,9 @@ package dao;
 
 import dto.EstudanteDTO;
 import generics.GenericDAO;
+import model.Associado;
 import model.Estudante;
+import utils.StringUtils;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -64,5 +66,44 @@ public class EstudanteDAO extends GenericDAO<Estudante> {
             query.setParameter("rg", estudanteDTO.getRg());
 
         return query.getResultList();
+    }
+
+    public boolean isCpfCadastrado(Estudante estudante){
+        String cpf = StringUtils.removerCaracteres(estudante.getPessoa().getCpf());
+        Long idEstudante = estudante.getIdEstudante();
+
+        String sql = "SELECT EXISTS ( ";
+        sql += "SELECT 1 FROM cadastro.estudante e ";
+        sql += "JOIN cadastro.pessoa p ON e.id_pessoa = p.id_pessoa ";
+        sql += "WHERE p.cpf = :cpf ";
+
+        if(idEstudante != null)
+            sql += "AND e.id_estudante <> :idEstudante ";
+
+        sql += ") ";
+
+        return (boolean) em.createNativeQuery(sql)
+                .setParameter("cpf", cpf)
+                .setParameter("idEstudante", idEstudante)
+                .getSingleResult();
+    }
+
+    public boolean isRgCadastrado(Estudante estudante){
+        String rg  = StringUtils.removerCaracteres(estudante.getPessoa().getRg());
+        Long idEstudante = estudante.getIdEstudante();
+
+        String sql = "SELECT EXISTS ( ";
+        sql += "SELECT 1 FROM cadastro.estudante e ";
+        sql += "JOIN cadastro.pessoa p ON e.id_pessoa = p.id_pessoa ";
+        sql += "WHERE p.rg = :rg ";
+
+        if(idEstudante != null)
+            sql += "AND e.id_estudante <> :idEstudante ";
+
+        sql += ")";
+
+        return (boolean) em.createNativeQuery(sql)
+                .setParameter("rg", rg)
+                .getSingleResult();
     }
 }

@@ -92,7 +92,8 @@ public class AssociadoMB implements Serializable {
             Messages.addInfo(null, "Associado salvo com sucesso");
             novoAssociado();
         } catch (AssociadoBusinessException | LoginException e) {
-            Messages.addError(null, e.getMessage());
+            e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
+            e.printStackTrace();
         }
     }
 

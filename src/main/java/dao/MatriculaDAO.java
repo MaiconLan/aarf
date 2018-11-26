@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import generics.GenericDAO;
@@ -31,8 +32,12 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         sql.append("WHERE e.idEstudante = :idEstudante ");
         Query query = em.createQuery(sql.toString());
 
-        return (Matricula) query.setMaxResults(1)
-                .setParameter("idEstudante", idEstudante)
-                .getSingleResult();
+        try {
+            return (Matricula) query.setMaxResults(1)
+                    .setParameter("idEstudante", idEstudante)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }

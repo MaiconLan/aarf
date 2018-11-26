@@ -68,8 +68,8 @@ public class MatriculaMB implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		carregarMatricula();
-       carregarEdital();
+	    carregarMatricula();
+        carregarEdital();
 	}
 
     private void carregarListaEditais() {
@@ -98,6 +98,8 @@ public class MatriculaMB implements Serializable {
         } else {
 		    Messages.addError(null, "Apenas estudantes podem realizar a matrícula!");
         }
+
+        matriculaAnexoMB.setMatricula(matricula);
 	}
 
 	public void removerViagem(Viagem viagem) {
@@ -130,6 +132,7 @@ public class MatriculaMB implements Serializable {
 			matriculaService.salvar(matricula);
 			Messages.addInfo(null, "Matricula salva com sucesso");
 
+			matriculaAnexoMB.salvarArquivosTemporarios();
 		} catch (MatriculaBusinessException e) {
 			e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
 		}
@@ -139,7 +142,7 @@ public class MatriculaMB implements Serializable {
 	    if(matriculaAnexoMB.getMatricula() == null)
 	        matriculaAnexoMB.setMatricula(matricula);
 
-	    matriculaAnexoMB.enviarArquivo(event);
+	    matriculaAnexoMB.enviarArquivoTemporario(event);
     }
 
 	private void carregarEdital() {
