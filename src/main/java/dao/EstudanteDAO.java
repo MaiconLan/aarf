@@ -80,12 +80,16 @@ public class EstudanteDAO extends GenericDAO<Estudante> {
         if(idEstudante != null)
             sql += "AND e.id_estudante <> :idEstudante ";
 
-        sql += ") ";
+        sql += "AND (e.inativo IS NULL ";
+        sql += "OR e.inativo <> 't'))";
 
-        return (boolean) em.createNativeQuery(sql)
-                .setParameter("cpf", cpf)
-                .setParameter("idEstudante", idEstudante)
-                .getSingleResult();
+        Query query = em.createNativeQuery(sql);
+        query.setParameter("cpf", cpf);
+
+        if(idEstudante != null)
+            query.setParameter("idEstudante", idEstudante);
+
+        return (boolean) query.getSingleResult();
     }
 
     public boolean isRgCadastrado(Estudante estudante){
@@ -100,10 +104,15 @@ public class EstudanteDAO extends GenericDAO<Estudante> {
         if(idEstudante != null)
             sql += "AND e.id_estudante <> :idEstudante ";
 
-        sql += ")";
+        sql += "AND (e.inativo IS NULL ";
+        sql += "OR e.inativo <> 't')) ";
 
-        return (boolean) em.createNativeQuery(sql)
-                .setParameter("rg", rg)
-                .getSingleResult();
+        Query query = em.createNativeQuery(sql);
+        query.setParameter("rg", rg);
+
+        if(idEstudante != null)
+        query.setParameter("idEstudante", idEstudante);
+
+        return (boolean) query.getSingleResult();
     }
 }

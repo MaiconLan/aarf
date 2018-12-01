@@ -8,6 +8,8 @@ import model.Edital;
 import model.Instituicao;
 import model.Matricula;
 import model.Viagem;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.mail.EmailException;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
@@ -16,11 +18,13 @@ import service.AnexoService;
 import service.EditalService;
 import service.InstituicaoService;
 import service.MatriculaService;
+import utils.EmailUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -124,6 +128,7 @@ public class MatriculaMB implements Serializable {
 
 	public void salvarMatricula(){
 		try {
+			Long idMatricula = matricula.getIdMatricula();
 			matricula.setInscricao(LocalDateTime.now());
 			matricula.setAnexos(matriculaAnexoMB.anexosAdicioandos());
 			matricula.setEstudante(identity.getUsuario().getEstudante());
@@ -133,8 +138,36 @@ public class MatriculaMB implements Serializable {
 			Messages.addInfo(null, "Matricula salva com sucesso");
 
 			matriculaAnexoMB.salvarArquivosTemporarios();
+
+			if(idMatricula == null)
+				enviarEmail();
 		} catch (MatriculaBusinessException e) {
 			e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
+		}
+	}
+
+	private void enviarEmail(){
+		try {
+			ClassLoader classLoader = getClass().getClassLoader();
+			String mensagem = IOUtils.toString(classLoader.getResource("template_email/email_matricula_realizada.html"), "UTF-8");
+			String emailDestinatario = matricula.getEstudante().getPessoa().getEmail();
+			String genero =  matricula.getEstudante().getPessoa().getGenero();
+			String recepcao = genero.equals("M") ? "Bem-Vindo": genero.equals("F") ? "Bem-Vinda" : "Bem-Vindo(a)";
+
+			mensagem = mensagem.replaceAll(":recepcao:", recepcao);
+			mensagem = mensagem.replaceAll(":nomeEstudante:", matricula.getEstudante().getPessoa().getPrimeiroNome());
+			mensagem = mensagem.replaceAll(":edital:", edital.getTitulo());
+			mensagem = mensagem.replaceAll(":endereco:", "Endereço");
+			mensagem = mensagem.replaceAll(":numero:", "Número");
+			mensagem = mensagem.replaceAll(":telefone:", "Telefone");
+
+			EmailUtils.enviarHtmlEmail("AARF", mensagem, emailDestinatario);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (EmailException e) {
+			Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
+			e.printStackTrace();
 		}
 	}
 

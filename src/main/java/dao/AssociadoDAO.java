@@ -86,11 +86,16 @@ public class AssociadoDAO extends GenericDAO<Associado> {
         if(idAssociado != null)
             sql += "AND a.id_associado <> :idAssociado ";
 
-        sql += ")";
+        sql += "AND (a.inativo IS NULL ";
+        sql += "OR a.inativo <> 't')) ";
 
-        return (boolean) em.createNativeQuery(sql)
-                .setParameter("cpf", cpf)
-                .getSingleResult();
+        Query query = em.createNativeQuery(sql);
+        query.setParameter("cpf", cpf);
+
+        if(idAssociado != null)
+            query.setParameter("idAssociado", idAssociado);
+
+        return (boolean) query.getSingleResult();
     }
 
     public boolean isRgCadastrado(Associado associado) {
@@ -105,11 +110,15 @@ public class AssociadoDAO extends GenericDAO<Associado> {
         if(idAssociado != null)
             sql += "AND a.id_associado <> :idAssociado ";
 
-        sql += ")";
+        sql += "AND (a.inativo IS NULL ";
+        sql += "OR a.inativo <> 't')) ";
 
-        return (boolean) em.createNativeQuery(sql)
-                .setParameter("rg", rg)
-                .setParameter("idAssociado", idAssociado)
-                .getSingleResult();
+        Query query = em.createNativeQuery(sql);
+        query.setParameter("rg", rg);
+
+        if(idAssociado != null)
+            query.setParameter("idAssociado", idAssociado);
+
+        return (boolean) query.getSingleResult();
     }
 }

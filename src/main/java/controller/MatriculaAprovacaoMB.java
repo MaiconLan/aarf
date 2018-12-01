@@ -1,6 +1,8 @@
 package controller;
 
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.mail.EmailException;
 import service.InstituicaoService;
 import service.MatriculaService;
 import service.ViagemService;
@@ -16,8 +18,10 @@ import org.primefaces.context.RequestContext;
 import dto.FiltroViagemDTO;
 import model.Instituicao;
 import model.Matricula;
+import utils.EmailUtils;
 
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,18 +59,71 @@ public class MatriculaAprovacaoMB implements Serializable {
 		buscarMatricula();
 	}
 	
-	public void reprovarMatricula(Matricula m) {
-		matriculaService.recusarMatricula(m);
+	public void reprovarMatricula(Matricula m, String motivo) {
+		matriculaService.recusarMatricula(m, motivo);
 		Messages.addInfo(null, "Matricula aprovada com sucesso!");
 		buscarMatricula();
 	}
 	
 	public void aprovarMatricula(Matricula m) {
 		matriculaService.aprovarMatricula(m);
+		enviarEmail(m);
 		Messages.addInfo(null, "Matricula recusada com sucesso!");
 		buscarMatricula();
 	}
-	
+
+	private void enviarEmail(Matricula matricula){
+		if(matricula.getConfirmacao() != null && matricula.getCancelamento() == null)
+			enviarEmailAprovada(matricula);
+		else if(matricula.getConfirmacao() != null && matricula.getCancelamento() != null)
+			enviarEmailReprovada(matricula);
+	}
+
+	private void enviarEmailReprovada(Matricula matricula) {
+		try {
+			ClassLoader classLoader = getClass().getClassLoader();
+			String mensagem = IOUtils.toString(classLoader.getResource("template_email/email_matricula_reprovada.html"), "UTF-8");
+			String emailDestinatario = matricula.getEstudante().getPessoa().getEmail();
+
+			mensagem = mensagem.replaceAll(":nomeEstudante:", matricula.getEstudante().getPessoa().getPrimeiroNome());
+			mensagem = mensagem.replaceAll(":edital:", matricula.getEdital().getTitulo());
+			mensagem = mensagem.replaceAll(":motivo:", matricula.getCancelamento().getMotivo());
+			mensagem = mensagem.replaceAll(":endereco:", "Endereço");
+			mensagem = mensagem.replaceAll(":numero:", "Número");
+			mensagem = mensagem.replaceAll(":telefone:", "Telefone");
+
+			EmailUtils.enviarHtmlEmail("AARF", mensagem, emailDestinatario);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (EmailException e) {
+			Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
+			e.printStackTrace();
+		}
+	}
+
+	private void enviarEmailAprovada(Matricula matricula){
+		try {
+			ClassLoader classLoader = getClass().getClassLoader();
+			String mensagem = IOUtils.toString(classLoader.getResource("template_email/email_matricula_aprovada.html"), "UTF-8");
+			String emailDestinatario = matricula.getEstudante().getPessoa().getEmail();
+
+			mensagem = mensagem.replaceAll(":nomeEstudante:", matricula.getEstudante().getPessoa().getPrimeiroNome());
+			mensagem = mensagem.replaceAll(":edital:", matricula.getEdital().getTitulo());
+			mensagem = mensagem.replaceAll(":endereco:", "Endereço");
+			mensagem = mensagem.replaceAll(":numero:", "Número");
+			mensagem = mensagem.replaceAll(":telefone:", "Telefone");
+
+			EmailUtils.enviarHtmlEmail("AARF", mensagem, emailDestinatario);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (EmailException e) {
+			Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
+			e.printStackTrace();
+		}
+	}
+
 	private void carregarInstituicoes(){
         instituicoes = instituicaoService.obterInstituicoesEnsino();
         buscarMatricula();

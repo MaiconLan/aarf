@@ -46,6 +46,7 @@ public class AssociadoBusiness {
         Collection<String> detalhes = new ArrayList<>();
 
         validarCpf(a, detalhes);
+        validarRg(a, detalhes);
         validarAssociado(a, detalhes);
         validarEndereco(a.getPessoa().getEndereco(), detalhes);
 

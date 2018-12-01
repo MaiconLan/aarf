@@ -2,6 +2,7 @@ package business;
 
 import dao.MatriculaDAO;
 import dao.ViagemDAO;
+import model.Cancelamento;
 import model.Edital;
 import model.Matricula;
 import model.Viagem;
@@ -36,8 +37,11 @@ public class MatriculaBusiness {
     	matriculaDAO.update(m);
     }
     
-    public void recuarMatricula(Matricula m) {
-    	m.setConfirmacao(LocalDateTime.now());
+    public void recusarMatricula(Matricula m, String motivo) {
+        Cancelamento cancelamento = new Cancelamento();
+        cancelamento.setMotivo(motivo);
+        cancelamento.setCancelamento(LocalDateTime.now());
+        m.setCancelamento(cancelamento);
     	matriculaDAO.update(m);
     }
  

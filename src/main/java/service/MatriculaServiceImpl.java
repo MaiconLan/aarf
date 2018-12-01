@@ -42,7 +42,7 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 	}
 
 	@Override
-	public void recusarMatricula(Matricula m) {
-		matriculaBusiness.recuarMatricula(m);
+	public void recusarMatricula(Matricula m, String motivo) {
+		matriculaBusiness.recusarMatricula(m, motivo);
 	}
 }

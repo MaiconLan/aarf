@@ -96,7 +96,7 @@
 					</h:form>
 					<h:form id="formAnexo" enctype="multipart/form-data">
 						<div class="ui-g">
-							<div class="ui-g-12 ui-md-6 ui-lg-8">
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
 								<p:fileUpload fileUploadListener="#{matriculaMB.enviarArquivo}" multiple="true" sequential="true"
 											  label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
 							</div>
@@ -108,13 +108,30 @@
 
 							</div>
 						</div>
-						<p:dataList value="#{matriculaMB.matricula.anexos}" var="anexo">
 
-							<p:commna value="#{anexo.nome}">
-								<p:fileDownload value="#{matriculaAnexoMB.download(anexo)}" />
-							</p:link>
-						</p:dataList>
+                        <p:panel header="Anexos">
+                            <p:repeat value="#{matriculaMB.matricula.anexos}" var="anexo">
 
+                                <div class="ui-g">
+                                    <div class="ui-g-6 ui-md-6 ui-lg-4">
+                                        <p:link value="#{anexo.nome}"/>
+                                    </div>
+
+                                    <div class="ui-g-6 ui-md-2 ui-lg-1">
+                                        <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="fa fa-long-arrow-down">
+                                            <p:fileDownload value="#{matriculaAnexoMB.download(anexo)}" />
+                                        </p:commandButton>
+                                    </div>
+
+                                    <p:spacer width="10%"/>
+                                    <div class="ui-g-6 ui-md-2 ui-lg-1">
+                                        <p:commandButton value="Remover" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" styleClass="red-button" icon="fa fa-remove">
+                                            <p:fileDownload value="#{matriculaAnexoMB.download(anexo)}" />
+                                        </p:commandButton>
+                                    </div>
+                                </div>
+                            </p:repeat>
+                        </p:panel>
 					</h:form>
 				</div>
 			</div>

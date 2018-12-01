@@ -43,6 +43,7 @@ public class EstudanteBusiness {
         Collection<String> detalhes = new ArrayList<>();
 
         validarCpf(estudante, detalhes);
+        validarRg(estudante, detalhes);
         validarEstudante(estudante, detalhes);
         validarEndereco(estudante.getPessoa().getEndereco(), detalhes);
 

@@ -1,23 +1,18 @@
 package controller;
 
+import enumered.TipoAnexoEnum;
 import model.Anexo;
 import model.Matricula;
-import org.omnifaces.util.Messages;
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-import org.primefaces.model.UploadedFile;
 import service.AnexoService;
-import service.MatriculaService;
-import utils.DateUtils;
 
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
 
 @ViewScoped
@@ -25,10 +20,7 @@ import java.util.List;
 public class MatriculaAnexoMB extends ArquivoAbstract implements Serializable {
 
     private static final long serialVersionUID = 8963237834826726202L;
-    private static final String DIRETORIO_MODULO = "matricula\\";
-
-    @Inject
-    private MatriculaService matriculaService;
+    private static final String DIRETORIO_MODULO = "\\matricula\\";
 
     @Inject
     private AnexoService anexoService;
@@ -38,15 +30,16 @@ public class MatriculaAnexoMB extends ArquivoAbstract implements Serializable {
     protected void salvarAnexos(String caminho, String arquivo) {
         Anexo anexo = new Anexo();
         anexo.setCaminho(caminho);
-        anexo.setNome(matricula.getIdMatricula().toString() + "_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern(DateUtils.FORMATO_DIA_MES_ANO)));
-        anexo.setTipo("Comprovante Matrícula");
+        anexo.setNome(arquivo);
+        anexo.setTipo(TipoAnexoEnum.COMPROVANTE_MATRICULA.getDescricao());
         matricula.getAnexos().add(anexo);
         anexoService.salvarAnexo(anexo);
     }
 
     public StreamedContent download(Anexo anexo){
-        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(anexo.getCaminho() + anexo.getNome());
-        return new DefaultStreamedContent(stream, "pdf", "downloaded_" + anexo.getNome());
+        String path = anexo.getCaminho() + anexo.getNome();
+        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream(path);
+        return new DefaultStreamedContent(stream, "pdf", anexo.getNome());
     }
     
     protected List<Anexo> anexosAdicioandos(){
@@ -57,8 +50,6 @@ public class MatriculaAnexoMB extends ArquivoAbstract implements Serializable {
     protected String obterDiretorioModulo() {
         return DIRETORIO_MODULO;
     }
-
-
 
     public Matricula getMatricula() {
         return matricula;

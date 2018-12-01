@@ -591,12 +591,25 @@ REFERENCES matricula.edital (id_edital) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
-
-
-
-
-
-
+CREATE TABLE financeiro.prestacao_conta
+(
+	id_prestacaoconta bigserial NOT NULL,
+	data timestamp without time zone,
+	id_instituicao bigint,
+	nome_gasto character varying(255),
+	observacao character varying(255),
+	observacao_gasto character varying(255),
+	valor bigint,
+	valor_gasto bigint,
+	id_insituicao bigint,
+	CONSTRAINT prestacao_conta_pkey PRIMARY KEY (id_prestacaoconta),
+	CONSTRAINT prestacoes_instituicao FOREIGN KEY (id_insituicao)
+		REFERENCES cadastro.instituicao (id_instituicao) MATCH SIMPLE
+		ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+	WITH (
+	OIDS=FALSE
+			 );
 
 INSERT INTO cadastro.usuario (login, senha) VALUES
   ('admin', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918');

@@ -32,12 +32,13 @@ public class PrestacaoContaMB implements Serializable {
     private PrestacaoContaService prestacaoContaService;
     @Inject
     private InstituicaoDTO instituicaoDTO;
-    private  InstituicaoDAO instituicaoDAO;
+
     private Instituicao instituicao;
     private PrestacaoContaBusiness prestacaoContaBusiness;
     private List<PrestacaoConta> prestacoes;
     private List<Instituicao> instituicoes;
     private PrestacaoContaAnexoMB prestacaoContaAnexoMB;
+
     @PostConstruct
     public void init(){
         newPrestacaoConta();
@@ -62,7 +63,7 @@ public class PrestacaoContaMB implements Serializable {
         if(prestacaoContaAnexoMB.getPrestacaoConta() == null)
             prestacaoContaAnexoMB.setPrestacaoConta(prestacaoConta);
 
-        prestacaoContaAnexoMB.enviarArquivo(event);
+        prestacaoContaAnexoMB.enviarArquivoTemporario(event);
 
 
         byte foto[] = event.getFile().getContents();
@@ -70,6 +71,7 @@ public class PrestacaoContaMB implements Serializable {
         prestacaoContaAnexoMB.salvarAnexos(encoded, event.getFile().getFileName());
 
     }
+
     private void carregarPrestacoes(){
         prestacoes = prestacaoContaService.obterPrestacao();
     }

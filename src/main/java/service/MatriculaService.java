@@ -15,7 +15,7 @@ public interface MatriculaService {
 	
 	void aprovarMatricula(Matricula m);
 	
-	void recusarMatricula(Matricula m);
+	void recusarMatricula(Matricula m, String motivo);
 	
 	List<Matricula> listarMatriculas(Matricula m);
 
