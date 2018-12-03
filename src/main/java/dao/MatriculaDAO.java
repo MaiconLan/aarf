@@ -18,6 +18,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         sql.append("JOIN m.edital ed ");
     
         sql.append("WHERE m.confirmacao is null ");
+        sql.append("AND m.cancelamento.idCancelamento IS NULL ");
         Query query = em.createQuery(sql.toString());
 
         return query.getResultList();
@@ -30,6 +31,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         sql.append("JOIN m.estudante e ");
 
         sql.append("WHERE e.idEstudante = :idEstudante ");
+        sql.append("AND m.cancelamento.idCancelamento IS NULL ");
         Query query = em.createQuery(sql.toString());
 
         try {

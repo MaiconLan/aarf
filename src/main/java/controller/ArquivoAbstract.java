@@ -18,40 +18,34 @@ import static org.omnifaces.util.Faces.getServletContext;
 public abstract class ArquivoAbstract {
 
     protected static final String DIRETORIO_GERAL = getServletContext().getInitParameter("upload.location");
-    protected static final File TEMP = FileUtils.getTempDirectory();
+    protected static final File TEMP;
     private List<File> arquivosTemporarios = new ArrayList<>();
 
+    static {
+        TEMP = FileUtils.getTempDirectory();
+        if(!TEMP.exists())
+            TEMP.mkdir();
+    }
+
     public void enviarArquivoTemporario(FileUploadEvent event) {
-            try {
-            UploadedFile arquivoEnviado = event.getFile();
+        UploadedFile arquivoEnviado = event.getFile();
 
-            File file = new File(obterDiretorioCompleto(), arquivoEnviado.getFileName());
-            file.createTempFile(file.getName(), ".tmp", TEMP);
-            arquivosTemporarios.add(file);
-            Messages.addInfo(null, "O arquivo " + arquivoEnviado.getFileName() + " foi adicionado!");
-
-        } catch(IOException e) {
-            Messages.addError(null, "Erro ao enviar o arquivo!");
-            e.printStackTrace();
-        }
-
+        File file = new File(obterDiretorioCompleto(), arquivoEnviado.getFileName());
+        arquivosTemporarios.add(file);
+        Messages.addInfo(null, "O arquivo " + arquivoEnviado.getFileName() + " foi adicionado!");
     }
 
     public void salvarArquivosTemporarios(){
         for (File file : arquivosTemporarios) {
-            FileUtils.getFile(TEMP, file.getName());
-
             try {
-                Files.copy(TEMP.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                if(!file.exists())
+                    file.getParentFile().mkdirs();
+                file.createNewFile();
 
+                salvarAnexos(obterDiretorioCompleto(), file.getName());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            if(!file.exists())
-                file.mkdirs();
-
-            salvarAnexos(obterDiretorioCompleto(), file.getName());
         }
     }
 

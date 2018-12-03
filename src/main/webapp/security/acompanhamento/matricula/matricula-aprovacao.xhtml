@@ -1,110 +1,106 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui"
+				template="/WEB-INF/template.xhtml">
 
-    <ui:define name="content">
-        <div class="ui-fluid">
-            <div class="ui-g">
-                <div class="card">
-                    <h1 class="lightBlack centerText">Aprovação de Matricula</h1>
+	<ui:define name="content">
+		<div class="ui-fluid">
+			<div class="ui-g">
+				<div class="card">
+					<h1 class="lightBlack centerText">Aprovação de Matricula</h1>
 
-                    <h:form id="form">
-                         <div class="ui-fluid">
-			                <div class="ui-g">
-			                    <div class="card">
-			                        <div class="ui-g">
-			                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-			                            <p:outputPanel id="panelGeral">
-			                       				<h:panelGrid columns="2" >     
-				                            	   <p:selectOneMenu id="instituicao"
-				                                                 value="#{matriculaAprovacaoMB.filtro.estudante.instituicao}"
-				                                                 converter="omnifaces.SelectItemsConverter"
-				                                                 filter="true"
-				                                                 placeholder="Instituição de Ensino">
-				                                    <f:selectItem itemLabel="Selecione uma Instituição" noSelectionOption="true"/>
-				                                    <f:selectItems var="instituicao"
-				                                                   itemLabel="#{instituicao.nome}"
-				                                                   itemValue="#{instituicao}"
-				                                                   value="#{matriculaAprovacaoMB.instituicoes}"/>
-				                                	</p:selectOneMenu>
-				                            	
-				                            	
-					                                <p:commandButton id="buscarMatricula"
-					                                                 icon="fa fa-search"
-					                                                 value="Buscar"
-					                                                 process="@form"
-					                                                 update="@form"
-					                                                 action="#{matriculaAprovacaoMB.buscarMatricula()}"/>
-				                   
-											</h:panelGrid>			                             
-			                            </p:outputPanel>    
-			                            </div>
-			                            
-			                          
-			                            
-			                        </div>
-			
-			                        <div class="ui-g">
-			                            <div class="ui-g-12 ui-md-12 ui-lg-12">
-			                                <p:dataTable var="m" value="#{matriculaAprovacaoMB.listMatricula}" id="lista" rows="10" paginator="true"
-			                                             reflow="true">
-			                                    <f:facet name="header">Matriculas</f:facet>
-			
-			                                    <p:column headerText="Código" width="6%">
-			                                        <h:outputText value="#{m.idMatricula}"/>
-			                                    </p:column>
-			                                    <p:column headerText="Estudante" width="6%">
-			                                        <p:commandButton id="detalhesEstudante" 
-			                                        value="#{m.estudante.pessoa.nome}"
-                                                     icon="fa fa-search"
-                                                     styleClass="navy-button"
-                                                     immediate="true"
-                                                     action="#{matriculaAprovacaoMB.consultarDetalhes(m)}"/>
-			                                        
-			                                    </p:column>
-			                                    
-			                                    <p:column headerText="Edital" width="6%">
-			                                        <h:outputText value="#{m.edital.titulo}"/>
-			                                    </p:column>
-			                                    
-			                                    <p:column headerText="Instituição" width="6%">
-			                                        <h:outputText value="#{m.estudante.instituicao.nome}"/>
-			                                    </p:column>
-			                                    
-			                                    <p:column headerText="Ações" width="6%">
-						                                <p:commandButton id="aprovar"
-						                                                 icon="fa fa-check"
-						                                                 action="#{matriculaAprovacaoMB.aprovarMatricula(m)}"
-						                                                 immediate="true"
-						                                                 update="lista"/>
-						                                <p:commandButton id="reprovar"
-						                                                 icon="fa fa-remove"
-						                                                 immediate="true"
-						                                                 update="lista"
-						                                                 action="#{matriculaAprovacaoMB.reprovarMatricula(m)}"
-						                                                 styleClass="red-button">
-						                                </p:commandButton>
-			                                    </p:column>
+					<h:form id="form">
+						<div class="ui-fluid">
+							<div class="ui-g">
+								<div class="card">
+									<div class="ui-g">
+										<div class="ui-g-12 ui-md-6 ui-lg-4">
+											<p:outputPanel id="panelGeral">
+												<h:panelGrid columns="2" >
+													<p:selectOneMenu id="instituicao"
+																	 value="#{matriculaAprovacaoMB.filtro.estudante.instituicao}"
+																	 converter="omnifaces.SelectItemsConverter"
+																	 filter="true"
+																	 placeholder="Instituição de Ensino">
+														<f:selectItem itemLabel="Selecione uma Instituição" noSelectionOption="true"/>
+														<f:selectItems var="instituicao"
+																	   itemLabel="#{instituicao.nome}"
+																	   itemValue="#{instituicao}"
+																	   value="#{matriculaAprovacaoMB.instituicoes}"/>
+													</p:selectOneMenu>
 
-			                                    <f:facet name="footer">
-			                                        Foram encontrados #{matriculaAprovacaoMB.listMatricula.size()} registro(s).
-			                                    </f:facet>
-			                                </p:dataTable>
-			                            </div>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-                    </h:form>
-                </div>
-            </div>
-        </div>
-        
-          <ui:include src="modal-detalhes-estudante.xhtml"/>
-        
-    </ui:define>
+													<p:commandButton id="buscarMatricula"
+																	 icon="fa fa-search"
+																	 value="Buscar"
+																	 process="@form"
+																	 update="@form"
+																	 action="#{matriculaAprovacaoMB.buscarMatricula()}"/>
+
+												</h:panelGrid>
+											</p:outputPanel>
+										</div>
+									</div>
+
+									<div class="ui-g">
+										<div class="ui-g-12 ui-md-12 ui-lg-12">
+											<p:dataTable var="m" value="#{matriculaAprovacaoMB.listMatricula}" id="lista" rows="10" paginator="true"
+														 reflow="true">
+												<f:facet name="header">Matriculas</f:facet>
+
+												<p:column headerText="Código" width="6%">
+													<h:outputText value="#{m.idMatricula}"/>
+												</p:column>
+												<p:column headerText="Estudante" width="6%">
+													<p:commandButton id="detalhesEstudante"
+																	 value="#{m.estudante.pessoa.nome}"
+																	 icon="fa fa-search"
+																	 styleClass="navy-button"
+																	 immediate="true"
+																	 action="#{matriculaAprovacaoMB.consultarDetalhes(m)}"/>
+
+												</p:column>
+
+												<p:column headerText="Edital" width="6%">
+													<h:outputText value="#{m.edital.titulo}"/>
+												</p:column>
+
+												<p:column headerText="Instituição" width="6%">
+													<h:outputText value="#{m.estudante.instituicao.nome}"/>
+												</p:column>
+
+												<p:column headerText="Ações" width="6%">
+													<p:commandButton id="aprovar"
+																	 icon="fa fa-check"
+																	 action="#{matriculaAprovacaoMB.aprovarMatricula(m)}"
+																	 immediate="true"
+																	 update="lista"/>
+													<p:commandButton id="reprovar"
+																	 icon="fa fa-remove"
+																	 update="lista"
+																	 process="@this"
+																	 action="#{matriculaAprovacaoMB.abrirModalReprovarMatricula(m)}"
+																	 styleClass="red-button">
+													</p:commandButton>
+												</p:column>
+
+												<f:facet name="footer">
+													Foram encontrados #{matriculaAprovacaoMB.listMatricula.size()} registro(s).
+												</f:facet>
+											</p:dataTable>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+
+		<ui:include src="modal-detalhes-estudante.xhtml"/>
+		<ui:include src="modal-reprovar-matricula.xhtml"/>
+	</ui:define>
 
 </ui:composition>

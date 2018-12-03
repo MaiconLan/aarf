@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalReprovarMatricula"
+              header="Reprovar Matrícula"
+              widgetVar="modalReprovarMatricula"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closeOnEscape="true">
+
+        <h:form id="formReprovarMatricula" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+
+                            <div class="ui-g-6 ui-md-6 ui-lg-4">
+                                <h3 class="lightBlack centerText">Estudante </h3>
+                            </div>
+
+                            <div class="ui-g-6 ui-md-6 ui-lg-4">
+                                <h3 class="lightBlack centerText">Edital </h3>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-6 ui-md-6 ui-lg-4">
+                                <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.nome}"/>
+                            </div>
+
+                            <div class="ui-g-6 ui-md-6 ui-lg-4">
+                                <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.edital.titulo}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-8">
+                                <p:inputTextarea value="#{matriculaAprovacaoMB.motivoCancelamento}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:commandButton id="confirmarReprovacao"
+                                                 icon="fa fa-check"
+                                                 styleClass="green-button"
+                                                 value="Confirmar Reprovação"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{matriculaAprovacaoMB.reprovarMatricula()}"/>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:commandButton id="cancelarReprovacao"
+                                                 icon="fa fa-remove"
+                                                 styleClass="red-button"
+                                                 value="Cancelar Reprovação"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{matriculaAprovacaoMB.fecharModalReprovarMatricula()}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+
+
+    </p:dialog>
+</ui:composition>

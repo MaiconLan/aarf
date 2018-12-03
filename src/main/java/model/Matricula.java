@@ -51,7 +51,8 @@ public class Matricula  implements Serializable {
     @JoinColumn(name = "id_edital")
     private Edital edital;
 
-    @OneToOne(mappedBy = "matricula")
+    @OneToOne(mappedBy = "matricula", cascade = {javax.persistence.CascadeType.ALL})
+    @Cascade(value = CascadeType.ALL)
     private Cancelamento cancelamento;
 
     @ManyToMany

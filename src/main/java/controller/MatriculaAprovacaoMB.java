@@ -1,6 +1,7 @@
 package controller;
 
 
+import model.Cancelamento;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.mail.EmailException;
 import service.InstituicaoService;
@@ -44,11 +45,11 @@ public class MatriculaAprovacaoMB implements Serializable {
 	private List<Matricula> listMatricula;
 	private Matricula filtro;
 	private Matricula matriculaSelecionada;
+	private String motivoCancelamento;
 	
 	@PostConstruct
 	public void init() {
 		limpar();
-		
 	}
 	
 	public void limpar() {
@@ -59,23 +60,38 @@ public class MatriculaAprovacaoMB implements Serializable {
 		buscarMatricula();
 	}
 	
-	public void reprovarMatricula(Matricula m, String motivo) {
-		matriculaService.recusarMatricula(m, motivo);
+	public void reprovarMatricula() {
+		matriculaService.recusarMatricula(matriculaSelecionada, motivoCancelamento);
+		enviarEmail(matriculaSelecionada);
+		Messages.addInfo(null, "Matricula reprovada com sucesso!");
+		buscarMatricula();
+		fecharModalReprovarMatricula();
+	}
+
+	public void abrirModalReprovarMatricula(Matricula matricula){
+		matriculaSelecionada = matricula;
+		RequestContext.getCurrentInstance().execute("PF('modalReprovarMatricula').show();");
+		RequestContext.getCurrentInstance().update("modalReprovarMatricula");
+	}
+
+	public void fecharModalReprovarMatricula(){
+		limpar();
+		RequestContext.getCurrentInstance().execute("PF('modalReprovarMatricula').hide();");
+		RequestContext.getCurrentInstance().update("modalReprovarMatricula");
+	}
+
+	public void aprovarMatricula(Matricula matricula) {
+		matriculaService.aprovarMatricula(matricula);
+		enviarEmail(matricula);
 		Messages.addInfo(null, "Matricula aprovada com sucesso!");
 		buscarMatricula();
-	}
-	
-	public void aprovarMatricula(Matricula m) {
-		matriculaService.aprovarMatricula(m);
-		enviarEmail(m);
-		Messages.addInfo(null, "Matricula recusada com sucesso!");
-		buscarMatricula();
+		fecharModalReprovarMatricula();
 	}
 
 	private void enviarEmail(Matricula matricula){
 		if(matricula.getConfirmacao() != null && matricula.getCancelamento() == null)
 			enviarEmailAprovada(matricula);
-		else if(matricula.getConfirmacao() != null && matricula.getCancelamento() != null)
+		else if(matricula.getCancelamento() != null)
 			enviarEmailReprovada(matricula);
 	}
 
@@ -177,5 +193,11 @@ public class MatriculaAprovacaoMB implements Serializable {
 		this.matriculaSelecionada = matriculaSelecionada;
 	}
 
-	
+	public String getMotivoCancelamento() {
+		return motivoCancelamento;
+	}
+
+	public void setMotivoCancelamento(String motivoCancelamento) {
+		this.motivoCancelamento = motivoCancelamento;
+	}
 }

@@ -42,6 +42,7 @@ public class MatriculaBusiness {
         cancelamento.setMotivo(motivo);
         cancelamento.setCancelamento(LocalDateTime.now());
         m.setCancelamento(cancelamento);
+        cancelamento.setMatricula(m);
     	matriculaDAO.update(m);
     }
  
