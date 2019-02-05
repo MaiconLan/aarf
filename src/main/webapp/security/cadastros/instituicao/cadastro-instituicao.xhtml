@@ -13,17 +13,17 @@
 					<h:form id="formInstituicao" styleClass="ui-panelgrid-blank">
 
 						<div class="ui-g">
-							<div class="ui-g-12 ui-md-6 ui-lg-1">
+							<div class="ui-g-12 ui-md-2 ui-lg-1">
 								<p:commandButton id="pesquisar" icon="fa fa-search"
-									update="@none" process="@this" title="Pesquisa"
+									update="@form" process="@this" title="Pesquisa"
 									action="#{instituicaoMB.modalConsultaInstituicao()}" />
 							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="ui-g-12 ui-md-4 ui-lg-4">
 								<p:inputText id="nome" placeholder="Nome"
 									value="#{instituicaoMB.instituicao.nome}" />
 							</div>
 							<div class="ui-g">
-								<div class="ui-g-12 ui-md-6 ui-lg-4">
+								<div class="ui-g-12 ui-md-4 ui-lg-4">
 									<p:selectOneMenu id="cidade"
 													 value="#{instituicaoMB.instituicao.cidade}"
 													 converter="omnifaces.SelectItemsIndexConverter"
@@ -51,11 +51,6 @@
 								<p:commandButton id="salvarInstituicao" icon="fa fa-check"
 									value="Salvar" process="@form" update="@form"
 									action="#{instituicaoMB.salvarInstituicao()}" />
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-2">
-								<p:commandButton id="limparInstituicao" icon="fa fa-check"
-									value="Limpar" update="@form"
-									action="#{instituicaoMB.limparCampos()}" />
 							</div>
 						</div>
 					</h:form>

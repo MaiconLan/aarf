@@ -1,27 +1,22 @@
 package controller;
 
 
-import model.Cancelamento;
+import dto.FiltroViagemDTO;
+import model.Instituicao;
+import model.Matricula;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.mail.EmailException;
+import org.omnifaces.util.Messages;
+import org.primefaces.context.RequestContext;
 import service.InstituicaoService;
 import service.MatriculaService;
 import service.ViagemService;
+import utils.EmailUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.omnifaces.util.Messages;
-import org.primefaces.context.RequestContext;
-
-import dto.FiltroViagemDTO;
-import model.Instituicao;
-import model.Matricula;
-import utils.EmailUtils;
-
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -61,7 +56,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 	}
 	
 	public void reprovarMatricula() {
-		matriculaService.recusarMatricula(matriculaSelecionada, motivoCancelamento);
+		matriculaService.cancelarMatricula(matriculaSelecionada, motivoCancelamento);
 		enviarEmail(matriculaSelecionada);
 		Messages.addInfo(null, "Matricula reprovada com sucesso!");
 		buscarMatricula();
@@ -89,9 +84,9 @@ public class MatriculaAprovacaoMB implements Serializable {
 	}
 
 	private void enviarEmail(Matricula matricula){
-		if(matricula.getConfirmacao() != null && matricula.getCancelamento() == null)
+		if(matricula.isMatriculado() && matricula.getCancelamento() == null)
 			enviarEmailAprovada(matricula);
-		else if(matricula.getCancelamento() != null)
+		else if(matricula.isCancelada() && matricula.getCancelamento() != null)
 			enviarEmailReprovada(matricula);
 	}
 

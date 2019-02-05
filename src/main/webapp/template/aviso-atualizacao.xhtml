@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog widgetVar="avisoAtualizacao" modal="true" draggable="false"
+			  closable="false" resizable="false" showHeader="true" header="ATUALIZAÇÃO" responsive="true" visible="#{avisoAtualizacaoMB.possuiAtualizacaoPendente}">
+
+		<h:form id="formAtualizacao" style="text-align:center;">
+
+			<div class="ui-fluid">
+				<div class="ui-g">
+					<div class="card">
+						<div class="ui-g">
+
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<p:graphicImage name="images/logo.png" library="icarus-layout" style="width: 20%;"/>
+							</div>
+
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<h1>Aviso de atualização do sistema.</h1>
+							</div>
+						</div>
+
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<p:outputLabel> O AARF deve ser considerado</p:outputLabel>
+								<p:outputLabel style="color: #ff0023; font-weight: bold;"> inoperante </p:outputLabel>
+								<p:outputLabel>até o momento da conclusão desta atualização.</p:outputLabel>
+							</div>
+						</div>
+
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<p:outputLabel style="color: #001dff;" value="#{avisoAtualizacaoMB.atualizacao.observacao}"/>
+							</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<p:outputLabel> Período previsto para a realização da atualização: </p:outputLabel>
+								<p:outputLabel style="color: #ff0016;" value="#{avisoAtualizacaoMB.horarioPrevista()}"/>
+							</div>
+						</div>
+
+
+
+						<div class="ui-g">
+
+							<div class="ui-g-12 ui-md-12 ui-lg-6">
+								<p:commandButton id="deslogar"
+												 styleClass="red-button"
+												 action="#{identity.deslogar()}"
+												 value="Deslogar"/>
+							</div>
+
+							<div class="ui-g-12 ui-md-12 ui-lg-6">
+								<p:commandButton id="concluirAtualizacao"
+												 icon="fa fa-check"
+												 styleClass="green-button"
+												 value="Concluir aviso de atualização "
+												 rendered="#{identity.isUsuarioAdministrador()}"
+												 action="#{avisoAtualizacaoMB.concluir()}"
+												 process="@this"
+												 update="@all"/>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</p:dialog>
+</ui:composition>

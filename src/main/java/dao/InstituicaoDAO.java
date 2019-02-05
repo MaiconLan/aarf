@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import dto.InstituicaoDTO;
 import generics.GenericDAO;
 import model.Instituicao;
+import model.TipoInstituicao;
 
 public class InstituicaoDAO extends GenericDAO<Instituicao>{
 
@@ -61,7 +62,7 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
         sql.append("WHERE i.tipo = :tipo ");
 
         return em.createQuery(sql.toString())
-                .setParameter("tipo", "Educação")
+                .setParameter("tipo", TipoInstituicao.ENSINO.getDescricao())
                 .getResultList();
     }
 
@@ -71,7 +72,7 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
 	    sql.append("WHERE i.tipo = :tipo");
 
 	    return em.createQuery(sql.toString())
-                .setParameter("tipo", "Financeira")
+                .setParameter("tipo", TipoInstituicao.FINANCEIRA.getDescricao())
                 .getResultList();
     }
 

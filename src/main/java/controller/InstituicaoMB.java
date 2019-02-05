@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import model.*;
+import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 
 import dto.EstudanteDTO;
@@ -49,8 +50,8 @@ public class InstituicaoMB implements Serializable{
 
     public List<String> getTipos(){
 		List<String> tipos = new ArrayList();
-		tipos.add("Financeira");
-		tipos.add("Educação");
+		tipos.add(TipoInstituicao.FINANCEIRA.getDescricao());
+		tipos.add(TipoInstituicao.ENSINO.getDescricao());
 		return tipos;
 	}
 
@@ -68,6 +69,7 @@ public class InstituicaoMB implements Serializable{
 	
 	public void salvarInstituicao() {
 		instituicaoService.salvar(instituicao);
+		Messages.addInfo(null, "Instituição salva com sucesso");
 		limparCampos();
 	}
 	

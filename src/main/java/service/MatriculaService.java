@@ -1,11 +1,10 @@
 package service;
 
-import java.util.List;
-
 import exception.MatriculaBusinessException;
-import model.Edital;
 import model.Matricula;
 import model.Viagem;
+
+import java.util.List;
 
 public interface MatriculaService {
 	
@@ -15,9 +14,11 @@ public interface MatriculaService {
 	
 	void aprovarMatricula(Matricula m);
 	
-	void recusarMatricula(Matricula m, String motivo);
+	void cancelarMatricula(Matricula m, String motivo);
 	
 	List<Matricula> listarMatriculas(Matricula m);
 
     Matricula obterMatricula(Long idEstudante);
+
+	void enviarParaAprovacao(Matricula matricula);
 }

@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="card">
+                    <h1 class="lightBlack centerText">Cadastro de Associado</h1>
+
+                    <h3 class="lightBlack">Dados Cadastrais</h3>
+
+                    <h:form id="form">
+
+                        <div class="ui-g">
+                            <div class="ui-g-4 ui-md-3 ui-lg-3">
+                                <p:calendar id="inicio"
+                                            value="#{cadastroAtualizacaoMB.atualizacao.inicio}"
+                                            required="true"
+                                            requiredMessage="Início obrigatório"
+                                            placeholder="Início"
+                                            pattern="dd/MM/yyyy"
+                                            converter="localDateConverter">
+                                    <p:ajax event="dateSelect" update="termino"/>
+                                    <p:ajax event="change" update="termino"/>
+                                </p:calendar>
+                            </div>
+
+                            <div class="ui-g-4 ui-md-3 ui-lg-3">
+                                <p:calendar id="termino"
+                                            value="#{cadastroAtualizacaoMB.atualizacao.termino}"
+                                            required="true"
+                                            requiredMessage="Término obrigatório"
+                                            placeholder="Término"
+                                            mindate="#{cadastroAtualizacaoMB.atualizacao.inicio}"
+                                            pattern="dd/MM/yyyy"
+                                            converter="localDateConverter"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-4 ui-md-3 ui-lg-6">
+                               <p:inputTextarea id="observacao"
+                                                value="#{cadastroAtualizacaoMB.atualizacao.observacao}"
+                                                required="true"
+                                                requiredMessage="Observação obrigatória"
+                                                label="Observação"
+                                                autoResize="true"
+                                                placeholder="Observação"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-4 ui-lg-2">
+                                <p:commandButton icon="fa fa-check"
+                                                 value="Salvar"
+                                                 styleClass="green-button"
+                                                 action="#{cadastroAtualizacaoMB.salvar()}"
+                                                 process="@form"
+                                                 update="@form" />
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

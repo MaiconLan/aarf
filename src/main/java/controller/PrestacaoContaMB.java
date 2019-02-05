@@ -53,6 +53,11 @@ public class PrestacaoContaMB implements Serializable {
     public void salvar(){
         try{
             prestacaoContaService.salvarPrestacao(prestacaoConta);
+/*
+            byte foto[] = event.getFile().getContents();
+            String encoded = Base64.getEncoder().encodeToString(foto);
+            prestacaoContaAnexoMB.salvarAnexos(encoded, event.getFile().getFileName());
+            */
             Messages.addInfo(null, "Prestação realizada com sucesso");
         }catch(Exception e){
             e.printStackTrace();
@@ -64,12 +69,6 @@ public class PrestacaoContaMB implements Serializable {
             prestacaoContaAnexoMB.setPrestacaoConta(prestacaoConta);
 
         prestacaoContaAnexoMB.enviarArquivoTemporario(event);
-
-
-        byte foto[] = event.getFile().getContents();
-        String encoded = Base64.getEncoder().encodeToString(foto);
-        prestacaoContaAnexoMB.salvarAnexos(encoded, event.getFile().getFileName());
-
     }
 
     private void carregarPrestacoes(){

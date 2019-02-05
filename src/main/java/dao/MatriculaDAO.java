@@ -28,10 +28,11 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         StringBuilder sql = new StringBuilder();
 
         sql.append("SELECT m FROM Matricula m ");
-        sql.append("JOIN m.estudante e ");
+        sql.append("JOIN FETCH m.estudante e ");
+        sql.append("LEFT JOIN m.cancelamento c ");
 
         sql.append("WHERE e.idEstudante = :idEstudante ");
-        sql.append("AND m.cancelamento.idCancelamento IS NULL ");
+        sql.append("AND c.idCancelamento IS NULL ");
         Query query = em.createQuery(sql.toString());
 
         try {

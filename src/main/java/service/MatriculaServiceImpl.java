@@ -3,7 +3,6 @@ package service;
 import business.MatriculaBusiness;
 import model.Matricula;
 import model.Viagem;
-import service.MatriculaService;
 
 import javax.inject.Inject;
 import java.io.Serializable;
@@ -37,12 +36,17 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 	}
 
 	@Override
+	public void enviarParaAprovacao(Matricula matricula) {
+		matriculaBusiness.enviarParaAprovacao(matricula);
+	}
+
+	@Override
 	public void aprovarMatricula(Matricula m) {
 		matriculaBusiness.autorizaMatricula(m);
 	}
 
 	@Override
-	public void recusarMatricula(Matricula m, String motivo) {
-		matriculaBusiness.recusarMatricula(m, motivo);
+	public void cancelarMatricula(Matricula m, String motivo) {
+		matriculaBusiness.cancelarMatricula(m, motivo);
 	}
 }

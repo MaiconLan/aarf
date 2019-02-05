@@ -145,7 +145,7 @@ CREATE TABLE cadastro.instituicao(
 	tipo character varying NOT NULL,
 	id_cidade integer,
 	CONSTRAINT id_instituicao PRIMARY KEY (id_instituicao),
-	CONSTRAINT ck_tipo CHECK (tipo IN ('Educação', 'Financeira'))
+	CONSTRAINT ck_tipo CHECK (tipo IN ('Ensino', 'Financeira'))
 
 );
 -- ddl-end --
@@ -188,7 +188,8 @@ CREATE TABLE matricula.matricula(
 	id_estudante integer,
 	semestre character varying,
 	inscricao timestamp NOT NULL,
-	confirmacao timestamp,
+	situacao character varying NOT NULL,
+	data_situacao timestamp NOT NULL,
 	CONSTRAINT id_matricula_pk PRIMARY KEY (id_matricula)
 
 );
@@ -331,6 +332,8 @@ ALTER TABLE financeiro.apoio OWNER TO postgres;
 CREATE TABLE cadastro.anexo(
 	id_anexo serial NOT NULL,
 	nome character varying NOT NULL,
+	extensao character varying NOT NULL,
+	hash character varying NOT NULL,
 	caminho character varying NOT NULL,
 	tipo character varying,
 	CONSTRAINT id_anexo_pk PRIMARY KEY (id_anexo)
@@ -418,9 +421,9 @@ REFERENCES financeiro.parcela (id_parcela) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: cadastro.matriculas_anexos | type: TABLE --
--- DROP TABLE IF EXISTS cadastro.matriculas_anexos CASCADE;
-CREATE TABLE cadastro.matriculas_anexos(
+-- object: matricula.matriculas_anexos | type: TABLE --
+-- DROP TABLE IF EXISTS matricula.matriculas_anexos CASCADE;
+CREATE TABLE matricula.matriculas_anexos(
 	id_anexo integer,
 	id_matricula integer,
 	CONSTRAINT matriculas_anexos_pk PRIMARY KEY (id_anexo,id_matricula)
@@ -429,15 +432,15 @@ CREATE TABLE cadastro.matriculas_anexos(
 -- ddl-end --
 
 -- object: anexo_fk | type: CONSTRAINT --
--- ALTER TABLE cadastro.matriculas_anexos DROP CONSTRAINT IF EXISTS anexo_fk CASCADE;
-ALTER TABLE cadastro.matriculas_anexos ADD CONSTRAINT anexo_fk FOREIGN KEY (id_anexo)
+-- ALTER TABLE matricula.matriculas_anexos DROP CONSTRAINT IF EXISTS anexo_fk CASCADE;
+ALTER TABLE matricula.matriculas_anexos ADD CONSTRAINT anexo_fk FOREIGN KEY (id_anexo)
 REFERENCES cadastro.anexo (id_anexo) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: matricula_fk | type: CONSTRAINT --
--- ALTER TABLE cadastro.matriculas_anexos DROP CONSTRAINT IF EXISTS matricula_fk CASCADE;
-ALTER TABLE cadastro.matriculas_anexos ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula)
+-- ALTER TABLE matricula.matriculas_anexos DROP CONSTRAINT IF EXISTS matricula_fk CASCADE;
+ALTER TABLE matricula.matriculas_anexos ADD CONSTRAINT matricula_fk FOREIGN KEY (id_matricula)
 REFERENCES matricula.matricula (id_matricula) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
@@ -610,6 +613,21 @@ CREATE TABLE financeiro.prestacao_conta
 	WITH (
 	OIDS=FALSE
 			 );
+
+CREATE TABLE cadastro.atualizacao
+(
+   id_atualizacao serial NOT NULL,
+   inicio date NOT NULL,
+   termino date NOT NULL,
+   concluido boolean,
+   observacao character varying,
+   CONSTRAINT id_atualizacao_pk PRIMARY KEY (id_atualizacao)
+)
+WITH (
+  OIDS = FALSE
+)
+;
+
 
 INSERT INTO cadastro.usuario (login, senha) VALUES
   ('admin', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918');

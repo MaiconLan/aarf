@@ -1,5 +1,6 @@
 package controller;
 
+import enumered.CargoEnum;
 import exception.LoginException;
 import model.*;
 import org.omnifaces.util.Faces;
@@ -41,7 +42,7 @@ public class Identity implements Serializable {
 		novoLogin();
 	}
 
-	public String logar() {
+	public void logar() {
 		String redirect = "";
 		try {
 
@@ -57,18 +58,16 @@ public class Identity implements Serializable {
 				Messages.addWarn(null, LOGIN_ERRO_DETALHES);
 			}
 
+			Faces.redirect(redirect);
+
 		} catch (LoginException e) {
 			Messages.addWarn(null, LOGIN_ERRO_DETALHES);
 			e.printStackTrace();
-			redirect = "";
 
 		}  catch (Exception e) {
 			Messages.addError(null, "Detalhes: " + e.getMessage());
 			e.printStackTrace();
-			redirect = "";
 
-		} finally {
-			return redirect;
 		}
 	}
 
@@ -81,6 +80,10 @@ public class Identity implements Serializable {
 			return "Estudante";
 
 		return "";
+	}
+
+	public boolean isUsuarioAdministrador(){
+		return obterCargo().equals(CargoEnum.ADMINISTRADOR.getDescricao());
 	}
 
 	public String obterNome(){

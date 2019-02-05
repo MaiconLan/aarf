@@ -35,6 +35,10 @@
                 <p:menuitem id="relatorioMatricula" value="Matrícula" icon="fa fa-bank" outcome="/empty-page" />
                 <p:menuitem id="relatorioEstudante" value="Estudante" icon="fa fa-bank" outcome="/empty-page" />
             </p:submenu>
+
+            <p:submenu id="configuracoes" label="Configurações" icon="fa fa-gears" rendered="#{identity.isUsuarioAdministrador()}">
+                <p:menuitem id="atualizacao" value="Atualizacao" icon="fa fa-download" outcome="/security/configuracoes/atualizacao/cadastro-atualizacao" />
+            </p:submenu>
         </pi:menu>
         
     </h:form>

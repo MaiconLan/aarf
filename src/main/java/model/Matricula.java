@@ -1,5 +1,6 @@
 package model;
 
+import enumered.MatriculaSituacao;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -41,7 +42,10 @@ public class Matricula  implements Serializable {
     
     private LocalDateTime inscricao;
 
-    private LocalDateTime confirmacao;
+    private String situacao;
+
+    @Column(name = "data_situacao")
+    private LocalDateTime dataSituacao;
 
     @ManyToOne
     @JoinColumn(name = "id_estudante")
@@ -51,12 +55,13 @@ public class Matricula  implements Serializable {
     @JoinColumn(name = "id_edital")
     private Edital edital;
 
-    @OneToOne(mappedBy = "matricula", cascade = {javax.persistence.CascadeType.ALL})
+    @OneToOne(mappedBy = "matricula", cascade = javax.persistence.CascadeType.ALL)
     @Cascade(value = CascadeType.ALL)
     private Cancelamento cancelamento;
 
-    @ManyToMany
-    @JoinTable(name="cadastro.matriculas_anexos", joinColumns=
+    @ManyToMany(cascade = javax.persistence.CascadeType.ALL)
+    @Cascade(value = CascadeType.ALL)
+    @JoinTable(schema = "matricula", name="matriculas_anexos", joinColumns=
             {@JoinColumn(name="id_matricula")}, inverseJoinColumns=
             {@JoinColumn(name="id_anexo")})
     private List<Anexo> anexos;
@@ -81,12 +86,20 @@ public class Matricula  implements Serializable {
         this.inscricao = inscricao;
     }
 
-    public LocalDateTime getConfirmacao() {
-        return confirmacao;
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setConfirmacao(LocalDateTime confirmacao) {
-        this.confirmacao = confirmacao;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public LocalDateTime getDataSituacao() {
+        return dataSituacao;
+    }
+
+    public void setDataSituacao(LocalDateTime dataSituacao) {
+        this.dataSituacao = dataSituacao;
     }
 
     public Estudante getEstudante() {
@@ -105,18 +118,6 @@ public class Matricula  implements Serializable {
         this.edital = edital;
     }
 
-    public List<Viagem> getViagens() {
-		return viagens;
-	}
-
-	public void setViagens(List<Viagem> viagens) {
-		this.viagens = viagens;
-	}
-
-	public boolean isConfirmada(){
-        return confirmacao != null;
-    }
-
     public Cancelamento getCancelamento() {
         return cancelamento;
     }
@@ -124,6 +125,14 @@ public class Matricula  implements Serializable {
     public void setCancelamento(Cancelamento cancelamento) {
         this.cancelamento = cancelamento;
     }
+
+    public List<Viagem> getViagens() {
+		return viagens;
+	}
+
+	public void setViagens(List<Viagem> viagens) {
+		this.viagens = viagens;
+	}
 
     public List<Anexo> getAnexos() {
         return anexos;
@@ -141,6 +150,26 @@ public class Matricula  implements Serializable {
         this.semestre = semestre;
     }
 
+    public boolean isInscricao(){
+        return situacao != null && situacao.equals(MatriculaSituacao.INSCRICAO.getDescricao());
+    }
+
+    public boolean isEmAprovacao(){
+        return situacao != null && situacao.equals(MatriculaSituacao.EM_APROVACAO.getDescricao());
+    }
+
+    public boolean isCancelada(){
+        return situacao != null && situacao.equals(MatriculaSituacao.CANCELADO.getDescricao());
+    }
+
+    public boolean isMatriculado(){
+        return situacao != null && situacao.equals(MatriculaSituacao.MATRICULADO.getDescricao());
+    }
+
+    public boolean isFinalizado(){
+        return situacao != null && situacao.equals(MatriculaSituacao.FINALIZADO.getDescricao());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -156,9 +185,7 @@ public class Matricula  implements Serializable {
 
     @Override
     public String toString() {
-        String confirmada = isConfirmada() ? "Confirmada" : "Não-Confirmada";
-
         return "Estudante: " + estudante.toString()
-                + " - " + confirmada;
+                + " - " + situacao;
     }
 }

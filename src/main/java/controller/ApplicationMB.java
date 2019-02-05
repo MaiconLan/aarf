@@ -1,6 +1,5 @@
 package controller;
 
-import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import service.ApplicationServiceImpl;
 import utils.Constantes;
@@ -8,7 +7,6 @@ import utils.Constantes;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.Application;
-import javax.faces.application.FacesMessage;
 import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;

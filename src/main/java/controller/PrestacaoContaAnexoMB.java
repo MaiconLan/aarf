@@ -1,5 +1,6 @@
 package controller;
 
+import enumered.TipoAnexoEnum;
 import model.Anexo;
 import model.PrestacaoConta;
 import service.AnexoService;
@@ -27,15 +28,16 @@ public class PrestacaoContaAnexoMB extends ArquivoAbstract implements Serializab
 
     private PrestacaoConta prestacaoConta;
 
-
     @Override
-    protected void salvarAnexos(String caminho, String arquivo) {
-        Anexo anexo = new Anexo();
-        anexo.setCaminho(caminho);
-        anexo.setNome(arquivo);
-        anexo.setTipo("Prestaçao Conta");
+    protected void salvarAnexos(Anexo anexo) {
+        anexo.setTipo(TipoAnexoEnum.PRESTACAO_CONTA.getDescricao());
         prestacaoConta.getAnexos().add(anexo);
         anexoService.salvarAnexo(anexo);
+    }
+
+    @Override
+    protected void removerAnexo(Anexo anexo) {
+        prestacaoConta.getAnexos().remove(anexo);
     }
 
     @Override

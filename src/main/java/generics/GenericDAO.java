@@ -97,7 +97,7 @@ public class GenericDAO<T> {
 	/**
 	 * @property Remove registros por ID
 	 */
-	public void remove(Long id) throws NullPointerException, Exception {
+	public void remove(Long id) {
 		T t = findById(id);
 		try {
 			em.getTransaction().begin();

@@ -35,6 +35,7 @@
                                                 <div class="box #{edital.finalizado ? 'redBack' : 'greenBack'}">
                                                     <i class="fa #{edital.finalizado ? 'fa-remove' : 'fa-check'}" aria-hidden="true"></i>
                                                     <h2>#{edital.titulo}</h2>
+                                                    <p:outputLabel styleClass="lightBlack" style="font-weight: bold" value="Período de inscrição: "/>
                                                     <p>#{matriculaMB.obterPeriodo(edital)}
                                                     </p>
                                                 </div>

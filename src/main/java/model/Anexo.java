@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.io.File;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -17,9 +18,16 @@ public class Anexo implements Serializable {
 
     private String nome;
 
+    private String extensao;
+
     private String caminho;
 
     private String tipo;
+
+    private String hash;
+
+    @Transient
+    private File file;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -57,6 +65,30 @@ public class Anexo implements Serializable {
         this.tipo = tipo;
     }
 
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public String getExtensao() {
+        return extensao;
+    }
+
+    public void setExtensao(String extensao) {
+        this.extensao = extensao;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,5 +102,8 @@ public class Anexo implements Serializable {
         return Objects.hash(idAnexo);
     }
 
+    public String getPath(){
+        return caminho + hash +"."+ extensao;
+    }
 
 }
