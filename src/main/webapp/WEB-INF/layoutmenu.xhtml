@@ -11,27 +11,33 @@
 
         <pi:menu widgetVar="IcarusMenu">
             <p:menuitem id="home" value="Página Inicial" icon="fa fa-home" outcome="/security/dashboard"/>
-            <p:submenu id="cadastros" label="Cadastros" icon="fa fa-plus-circle">
+            <p:submenu id="cadastros" label="Cadastros" icon="fa fa-plus-circle" rendered="#{identity.isUsuarioAssociado()}">
                 <p:menuitem id="estudante" value="Estudante" icon="fa fa-users" outcome="/security/cadastros/estudante/cadastro-estudante" ajax="false" />
-                <p:menuitem id="associado" value="Associado" icon="fa fa-user-md"  outcome="/security/cadastros/associado/cadastro-associado" ajax="false" />
+                <p:menuitem id="associado" value="Associado" icon="fa fa-user-md" outcome="/security/cadastros/associado/cadastro-associado" ajax="false" />
                 <p:menuitem id="cadastroEdital" value="Edital" icon="fa fa-newspaper-o" outcome="/security/cadastros/edital/cadastro-edital" ajax="false" />
                 <p:menuitem id="cadastroInstituicao" value="Instituição" icon="fa fa-newspaper-o" outcome="/security/cadastros/instituicao/cadastro-instituicao" ajax="false" />
             </p:submenu>
-            <p:menuitem id="noticias" value="Noticias" icon="fa fa-newspaper-o" outcome="/promotion-page"/>
+			
+            <p:menuitem id="noticias" value="Noticias" icon="fa fa-newspaper-o" outcome="/security/noticia/cadastro-noticia" rendered="#{identity.isUsuarioAssociado()}"/>
             <p:submenu id="im_components" label="Acompanhamento" icon="fa fa-sitemap">
-                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" ajax="false" />
-                <p:menuitem id="acompanhamentoEdital" value="Edital" icon="fa fa-newspaper-o" ajax="false" />
+                <p:menuitem id="acompanhamentoMatriculaAprovacao" value="Aprovar Matrículas" icon="fa fa-user" rendered="#{identity.isUsuarioAssociado()}" outcome="/security/acompanhamento/matricula/matricula-aprovacao" ajax="false" />
+                <p:menuitem id="acompanhamentoMatricula" value="Matrícula" icon="fa fa-user" outcome="/security/acompanhamento/matricula/matricula" ajax="false" rendered="#{!identity.isUsuarioAssociado()}"/>
+                <p:menuitem id="acompanhamentoViagem" value="Viagem" icon="fa fa-bus" outcome="/security/acompanhamento/viagem/viagem" ajax="false" rendered="#{identity.isUsuarioAssociado()}"/>
             </p:submenu>
-            <p:submenu id="financeiro" label="Financeiro" icon="fa fa-money">
+            <p:submenu id="financeiro" label="Financeiro" icon="fa fa-money" rendered="#{identity.isUsuarioAssociado()}">
                 <p:menuitem id="contaBancaria" value="Conta Bancária" icon="fa fa-bank" outcome="/security/financeiro/conta/cadastro-conta" ajax="false"  />
                 <p:menuitem id="banco" value="Banco" icon="fa fa-bank" outcome="/security/financeiro/banco/cadastro-banco" ajax="false"  />
-                <p:menuitem id="prestacaoContas" value="Prestação de Contas" icon="fa fa-credit-card" outcome="/access-denied" />
+                <p:menuitem id="prestacaoContas" value="Prestação de Contas" icon="fa fa-credit-card" outcome="/security/financeiro/conta/prestacao-conta" ajax="false" />
                 <p:menuitem id="impressaoBoleto" value="Impressão de Boletos" icon="fa fa-barcode" outcome="/access-denied" />
             </p:submenu>
 
-            <p:submenu id="relatorios" label="Relatórios" icon="fa fa-list-alt">
+            <p:submenu id="relatorios" label="Relatórios" icon="fa fa-list-alt" rendered="#{identity.isUsuarioAssociado()}">
                 <p:menuitem id="relatorioMatricula" value="Matrícula" icon="fa fa-bank" outcome="/empty-page" />
                 <p:menuitem id="relatorioEstudante" value="Estudante" icon="fa fa-bank" outcome="/empty-page" />
+            </p:submenu>
+
+            <p:submenu id="configuracoes" label="Configurações" icon="fa fa-gears" rendered="#{identity.isUsuarioAdministrador()}">
+                <p:menuitem id="atualizacao" value="Atualizacao" icon="fa fa-download" outcome="/security/configuracoes/atualizacao/cadastro-atualizacao" />
             </p:submenu>
         </pi:menu>
         

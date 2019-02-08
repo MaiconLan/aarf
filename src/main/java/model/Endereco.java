@@ -27,6 +27,11 @@ public class Endereco implements Serializable {
     @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
 
+    
+    public String getEnderecoFormatado() {
+    	return "Cep: " + this.cep + ", Bairro:" + this.bairro + ", Rua: " + this.logradouro;
+    }
+    
     public Long getIdEndereco() {
         return idEndereco;
     }
@@ -90,11 +95,6 @@ public class Endereco implements Serializable {
 
     @Override
     public String toString() {
-        return "Endereco{" +
-                "cep='" + cep + '\'' +
-                ", logradouro='" + logradouro + '\'' +
-                ", complemento='" + complemento + '\'' +
-                ", bairro='" + bairro + '\'' +
-                '}';
+        return "Rua " + logradouro + ", " + bairro + " - " + cep;
     }
 }

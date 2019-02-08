@@ -1,0 +1,142 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="card">
+                    <h1 class="lightBlack centerText">Prestação de Contas</h1>
+
+                    <h3 class="lightBlack">Gerar Prestação</h3>
+
+                    <h:form id="formPresCon">
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:selectOneMenu id="Instituicao"
+                                                 value="#{prestacaoContaMB.prestacaoConta.instituicao}"
+                                                 converter="omnifaces.SelectItemsIndexConverter"
+                                                 filter="true"
+                                                 required="true"
+                                                 placeholder="Instituicao">
+                                    <f:selectItem itemLabel="Selecione uma instituição" noSelectionOption="true"/>
+                                    <f:selectItems var="instituicao"
+                                                   itemLabel="#{instituicao}"
+                                                   itemValue="#{instituicao}"
+                                                   value="#{prestacaoContaMB.instituicoes}"/>
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:inputNumber id="valor"
+                                             required="true"
+                                             symbol="R$"
+                                             symbolPosition="s"
+                                             decimalSeparator=","
+                                             thousandSeparator="."
+                                             requiredMessage="Campo obrigatório"
+                                             placeholder="Valor"
+                                             value="#{prestacaoContaMB.prestacaoConta.valor}"/>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:calendar id="data"
+                                            value="#{prestacaoContaMB.prestacaoConta.data}"
+                                            mask="true"
+                                            showOn="button"
+                                            required="true"
+                                            pattern="dd/MM/yyyy"
+                                            placeholder="Data"
+                                            requiredMessage="Campo obrigatório"
+                                            >
+                                    <!--<p:ajax event="dateSelect" update="@form"/>-->
+                                    <!--<p:ajax event="change" update="@form"/>-->
+                                </p:calendar>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-20">
+                                <p:inputText id="observacao"
+                                             equiredMessage="Campo obrigatório"
+                                             placeholder="observacao"
+                                             value="#{prestacaoContaMB.prestacaoConta.observacao}"
+                                />
+                            </div>
+                        </div>
+                        <h1 class="lightBlack centerText">Gastos</h1>
+
+                        <div class="ui-g">
+                            <div class="ui-g-2 ui-md-6 ui-lg-4">
+                                <p:inputText id="descGasto"
+                                             placeholder="Descrição do gasto"
+                                             value="#{prestacaoContaMB.prestacaoConta.nome_gasto}"/>
+                            </div>
+                            <div class="ui-g-2 ui-md-6 ui-lg-2">
+                                <p:inputNumber id="vlGasto"
+                                             placeholder="Valor gasto"
+                                             required="true"
+                                             symbol="R$"
+                                             symbolPosition="s"
+                                             decimalSeparator=","
+                                             thousandSeparator="."
+                                             requiredMessage="Campo obrigatório"
+                                             value="#{prestacaoContaMB.prestacaoConta.valor_gasto}"/>
+                            </div>
+                            <div class="ui-g-2 ui-md-6 ui-lg-2">
+                                <p:inputText id="obsGasto"
+                                             placeholder="Observacao"
+                                             value="#{prestacaoContaMB.prestacaoConta.observacao_gasto}"/>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2 ui-md-6 ui-lg-6">
+                                <p:fileUpload fileUploadListener="#{prestacaoContaAnexoMB.enviarArquivo}" multiple="true" sequential="true"
+                                              label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
+
+                                <div class="ui-g-2 ui-md-6 ui-lg-2">
+                                    <p:commandButton id="add"
+                                                     value="Add"
+                                                     process="@form"
+                                                     update="@form"
+                                                     action="#{prestacaoContaMB.salvar()}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-2 ui-md-6 ui-lg-12">
+                                <p:dataTable var="prestacao" value="#{prestacaoContaMB.prestacoes}" rows="10"
+                                             paginator="true" reflow="true">
+                                    <f:facet name="header">Prestações de Contas</f:facet>
+
+                                    <p:column headerText="Nome" width="6%">
+                                        <h:outputText value="#{prestacao.nome_gasto}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Valor" width="10%">
+                                        <h:outputText value=" R$ #{prestacao.valor}" />
+                                    </p:column>
+
+                                    <p:column headerText="Observacao" width="10%">
+                                        <h:outputText value="#{prestacao.observacao_gasto}" />
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        Foram encontrados #{prestacaoContaMB.prestacoes.size()} registro(s).
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <ui:include src="/template/confirm.xhtml"/>
+    </ui:define>
+</ui:composition>

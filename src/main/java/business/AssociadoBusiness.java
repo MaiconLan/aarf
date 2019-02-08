@@ -11,6 +11,7 @@ import model.Usuario;
 import service.UsuarioService;
 import utils.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,7 @@ public class AssociadoBusiness {
     public void salvarAssociado(Associado a) throws AssociadoBusinessException, LoginException {
         validarSalvarAssociado(a);
 
-        removerCaracteres(a.getPessoa());
+        StringUtils.removerCaracteres(a.getPessoa());
         usuarioService.salvarUsuario(a.getUsuario());
 
         Endereco endereco = a.getPessoa().getEndereco();
@@ -42,13 +43,25 @@ public class AssociadoBusiness {
     }
 
     private void validarSalvarAssociado(Associado a) throws AssociadoBusinessException {
-        Collection<String> detalhes = Collections.EMPTY_LIST;
+        Collection<String> detalhes = new ArrayList<>();
 
+        validarCpf(a, detalhes);
+        validarRg(a, detalhes);
         validarAssociado(a, detalhes);
         validarEndereco(a.getPessoa().getEndereco(), detalhes);
 
         if(!detalhes.isEmpty())
             throw new AssociadoBusinessException(detalhes);
+    }
+
+    private void validarCpf(Associado associado, Collection<String> detalhes){
+        if(associadoDAO.isCpfCadastrado(associado))
+            detalhes.add("Este CPF já está cadastrado para um Associado ");
+    }
+
+    private void validarRg(Associado associado, Collection<String> detalhes){
+        if(associadoDAO.isRgCadastrado(associado))
+            detalhes.add("Este RG já está cadastrado para um Associado ");
     }
 
     private void validarAssociado(Associado a, Collection<String> detalhes) {
@@ -65,20 +78,6 @@ public class AssociadoBusiness {
 
         if(endereco.getLogradouro() == null)
             detalhes.add("Logradouro é de preenchimento obrigatório");
-    }
-
-    private void removerCaracteres(Pessoa pessoa){
-        String cpf = StringUtils.removerCaracteres(pessoa.getCpf());
-        String rg = StringUtils.removerCaracteres(pessoa.getRg());
-        String celular = StringUtils.removerCaracteres(pessoa.getCelular());
-        String telefone = StringUtils.removerCaracteres(pessoa.getTelefone());
-        String cep = StringUtils.removerCaracteres(pessoa.getEndereco().getCep());
-
-        pessoa.getEndereco().setCep(cep);
-        pessoa.setCelular(celular);
-        pessoa.setTelefone(telefone);
-        pessoa.setCpf(cpf);
-        pessoa.setRg(rg);
     }
 
     public List<Associado> consultarAssociados(AssociadoDTO associadoDTO) {
@@ -98,7 +97,7 @@ public class AssociadoBusiness {
 
     public void removerAssociado(Associado a) {
         a.setInativo(Boolean.TRUE);
-        removerCaracteres(a.getPessoa());
+        StringUtils.removerCaracteres(a.getPessoa());
         associadoDAO.update(a);
     }
 

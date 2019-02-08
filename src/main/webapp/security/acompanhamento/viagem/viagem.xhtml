@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"
+				xmlns:o="http://omnifaces.org/ui"
+>
+
+	<ui:define name="content">
+		<div class="ui-fluid">
+			<div class="ui-g">
+				<div class="card">
+					<h:form id="formViagem">
+						<h1 class="lightBlack centerText">Matrícula
+							#{viagemMB.edital.titulo}</h1>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-12">
+								<p class="lightBlack">#{viagemMB.obterPeriodo()}</p>
+							</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-6">
+								<p:selectManyCheckbox id="checkDiaSemana" value="#{viagemMB.filtro.diaSemana}">
+									<f:selectItems value="#{viagemMB.obterDiaSemana()}" var="diaSemana" itemLabel="#{diaSemana.descricao}" itemValue="#{diaSemana.descricao}" />
+								</p:selectManyCheckbox>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-6">
+								<p:selectOneMenu id="selectInstituicao" converter="omnifaces.SelectItemsIndexConverter" value="#{viagemMB.filtro.instituicao}">
+									<f:selectItem itemLabel="Selecione a instituição" noSelectionOption="true"/>
+									<f:selectItems value="#{viagemMB.instituicoes}" var="instituicao" itemLabel="#{instituicao}" itemValue="#{instituicao}" />
+								</p:selectOneMenu>
+							</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-6">
+								<p:selectManyCheckbox id="selectSentido"
+													  value="#{viagemMB.filtro.sentido}">
+									<f:selectItem itemLabel="Ida" itemValue="Ida" />
+									<f:selectItem itemLabel="Volta" itemValue="Volta" />
+								</p:selectManyCheckbox>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-3">
+								<p:commandButton id="buscar"
+												 action="#{viagemMB.buscarEstudantes()}"
+												 process="buscar checkDiaSemana selectInstituicao selectSentido panelTotalViagens"
+												 update="panelTotalViagens"
+												 value="Buscar"/>
+							</div>
+
+							<div class="ui-g-12 ui-md-6 ui-lg-12">
+								<p:outputPanel id="panelTotalViagens">
+									<p:outputLabel value="Total de Viagens: #{viagemMB.viagens.size()}"/>
+								</p:outputPanel>
+							</div>
+						</div>
+
+						<p:spacer height="10%"/>
+
+						<h1 class="lightBlack">Atribuir Valores</h1>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-3">
+								<p:inputNumber id="valor"
+											   symbol="$"
+											   thousandSeparator="."
+											   minValue="0"
+											   decimalPlaces="2"
+											   decimalSeparator=","
+											   placeholder="Valor"
+											   required="true"
+											   requiredMessage="Campo valor obrigatório"
+											   value="#{viagemMB.valor}"/>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-3">
+								<p:commandButton id="gerarValor"
+												 value="Gerar Valor"
+												 icon="fa fa-money"
+												 styleClass="green-button"
+												 update="@form"
+												 process="@form"
+												 action="#{viagemMB.gerarValores()}" />
+							</div>
+						</div>
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<p:dataTable id="tableConfiguracao" var="configuracao" value="#{viagemMB.configuracoesEdital}">
+									<p:column headerText="Instituição">
+										<p:outputLabel value="#{configuracao.instituicao}" />
+									</p:column>
+									<p:column headerText="Dia da Semana">
+										<ui:repeat value="#{configuracao.diaSemana}" var="vDiaSemana">
+											<p:outputLabel value="#{vDiaSemana}, " />
+										</ui:repeat>
+									</p:column>
+									<p:column headerText="Sentido">
+										<ui:repeat value="#{configuracao.sentido}" var="vSentido">
+											<p:outputLabel value="#{vSentido}, " />
+										</ui:repeat>
+
+									</p:column>
+									<p:column headerText="Valor" width="10%">
+										<p:outputLabel value="#{configuracao.valor}" />
+									</p:column>
+									<p:column headerText="Ações" width="10%">
+										<p:commandButton id="remover"
+                                                         action="#{viagemMB.removerConfiguracao(configuracao)}"
+														 icon="fa fa-remove"
+														 styleClass="red-button"
+														 update="tableConfiguracao"
+														 process="@this"/>
+									</p:column>
+									<f:facet name="footer">
+										Foram encontrados #{viagemMB.viagens.size()} registro(s).
+									</f:facet>
+								</p:dataTable>
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+
+		<ui:include src="modal-consulta-editais.xhtml"/>
+	</ui:define>
+
+</ui:composition>

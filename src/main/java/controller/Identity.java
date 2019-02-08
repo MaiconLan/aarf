@@ -1,5 +1,6 @@
 package controller;
 
+import enumered.CargoEnum;
 import exception.LoginException;
 import model.*;
 import org.omnifaces.util.Faces;
@@ -41,7 +42,7 @@ public class Identity implements Serializable {
 		novoLogin();
 	}
 
-	public String logar() {
+	public void logar() {
 		String redirect = "";
 		try {
 
@@ -54,21 +55,19 @@ public class Identity implements Serializable {
 
 				redirect = "security/dashboard.xhtml";
 			} else {
-				Messages.addWarn(LOGIN_ERRO_MENSAGEM, LOGIN_ERRO_DETALHES);
+				Messages.addWarn(null, LOGIN_ERRO_DETALHES);
 			}
 
+			Faces.redirect(redirect);
+
 		} catch (LoginException e) {
-			Messages.addWarn(LOGIN_ERRO_MENSAGEM, LOGIN_ERRO_DETALHES);
+			Messages.addWarn(null, LOGIN_ERRO_DETALHES);
 			e.printStackTrace();
-			redirect = "";
 
 		}  catch (Exception e) {
-			Messages.addError(LOGIN_ERRO_MENSAGEM, "Detalhes: " + e.getStackTrace());
+			Messages.addError(null, "Detalhes: " + e.getMessage());
 			e.printStackTrace();
-			redirect = "";
 
-		} finally {
-			return redirect;
 		}
 	}
 
@@ -83,17 +82,25 @@ public class Identity implements Serializable {
 		return "";
 	}
 
+	public boolean isUsuarioAdministrador(){
+		return obterCargo().equals(CargoEnum.ADMINISTRADOR.getDescricao());
+	}
+
 	public String obterNome(){
+		String nome = "";
+
+		if(usuario == null)
+			return nome;
+
 		Associado associado = usuario.getAssociado();
 		Estudante estudante = usuario.getEstudante();
-		Pessoa pessoa = null;
 
 		if(isUsuarioAssociado())
-			pessoa = associado.getPessoa();
+			nome = associado.getPessoa().getPrimeiroNome();
 		else if(isUsuarioEstudante())
-			pessoa = estudante.getPessoa();
+			nome = estudante.getPessoa().getPrimeiroNome();
 
-		return pessoa.getNome();
+		return nome;
 	}
 
 	public void deslogar() {

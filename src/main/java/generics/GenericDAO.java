@@ -91,13 +91,13 @@ public class GenericDAO<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> list() {
 		Query query = em.createQuery("FROM " + clazz.getSimpleName());
-		return query.setMaxResults(100).getResultList();
+		return query.getResultList();
 	}
 
 	/**
 	 * @property Remove registros por ID
 	 */
-	public void remove(Long id) throws NullPointerException, Exception {
+	public void remove(Long id) {
 		T t = findById(id);
 		try {
 			em.getTransaction().begin();

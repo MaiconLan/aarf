@@ -17,19 +17,21 @@ public class Instituicao implements Serializable {
 
     private String nome;
     
-    private String cidade;
-
     private String tipo;
 
-    public String getCidade() {
-		return cidade;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cidade")
+    private Cidade cidade;
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
+    public Cidade getCidade() {
+        return cidade;
+    }
 
-	public Long getIdInstituicao() {
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    public Long getIdInstituicao() {
         return idInstituicao;
     }
 
@@ -66,6 +68,10 @@ public class Instituicao implements Serializable {
         return Objects.hash(idInstituicao);
     }
 
+    @Override
+    public String toString() {
+        return nome + " - " + cidade;
+    }
 }
 
 

@@ -25,10 +25,10 @@ public class Usuario implements Serializable {
     private String login;
     private String senha;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario", optional = true)
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "usuario", optional = true)
     private Estudante estudante;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario", optional = true)
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "usuario", optional = true)
     private Associado associado;
 
     @Transient

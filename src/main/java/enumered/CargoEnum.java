@@ -1,6 +1,7 @@
 package enumered;
 
 public enum CargoEnum {
+  	ADMINISTRADOR("Administrador"),
   	PRESIDENTE("Presidente"),
     VICE_PRECIDENTE("Vice Presidente"),
     SECRETARIO("Secretário"),

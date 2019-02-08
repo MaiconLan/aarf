@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import dto.InstituicaoDTO;
 import generics.GenericDAO;
 import model.Instituicao;
+import model.TipoInstituicao;
 
 public class InstituicaoDAO extends GenericDAO<Instituicao>{
 
@@ -44,8 +45,35 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
 
         return query.getResultList();
     }
+	
+	public List<Instituicao> listarInstituicoes() {
+        return list();
+    }
+	
 
     public List<Instituicao> obterInstituicoes() {
 	    return list();
     }
+
+    public List<Instituicao> obterInstituicoesEnsino() {
+        StringBuilder sql = new StringBuilder();
+
+        sql.append("SELECT i FROM Instituicao i ");
+        sql.append("WHERE i.tipo = :tipo ");
+
+        return em.createQuery(sql.toString())
+                .setParameter("tipo", TipoInstituicao.ENSINO.getDescricao())
+                .getResultList();
+    }
+
+    public List<Instituicao> obterInstituicoesFinanceiras(){
+	    StringBuilder sql  = new StringBuilder();
+	    sql.append("SELECT i FROM Instituicao i ");
+	    sql.append("WHERE i.tipo = :tipo");
+
+	    return em.createQuery(sql.toString())
+                .setParameter("tipo", TipoInstituicao.FINANCEIRA.getDescricao())
+                .getResultList();
+    }
+
 }

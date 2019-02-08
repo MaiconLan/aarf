@@ -4,10 +4,7 @@ import dao.EstudanteDAO;
 import dto.EstudanteDTO;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
-import model.Endereco;
-import model.Estudante;
-import model.Pessoa;
-import model.Usuario;
+import model.*;
 import service.UsuarioService;
 import utils.StringUtils;
 
@@ -45,11 +42,23 @@ public class EstudanteBusiness {
     private void validarSalvarEstudante(Estudante estudante) throws EstudanteBusinessException {
         Collection<String> detalhes = new ArrayList<>();
 
+        validarCpf(estudante, detalhes);
+        validarRg(estudante, detalhes);
         validarEstudante(estudante, detalhes);
         validarEndereco(estudante.getPessoa().getEndereco(), detalhes);
 
         if(!detalhes.isEmpty())
             throw new EstudanteBusinessException(detalhes);
+    }
+
+    private void validarCpf(Estudante estudante, Collection<String> detalhes){
+        if(estudanteDAO.isCpfCadastrado(estudante))
+            detalhes.add("Este CPF já está cadastrado para um Estudante!");
+    }
+
+    private void validarRg(Estudante estudante, Collection<String> detalhes){
+        if(estudanteDAO.isRgCadastrado(estudante))
+            detalhes.add("Este RG já está cadastrado para um Estudante!");
     }
 
     private void validarEstudante(Estudante estudante, Collection<String> detalhes) {

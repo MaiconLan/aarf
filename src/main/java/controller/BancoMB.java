@@ -45,7 +45,8 @@ public class BancoMB implements Serializable{
 	
 	public void modalConsultaBanco() {
 		bancos = new ArrayList<>();
-		RequestContext.getCurrentInstance().update("PF('modalConsultaBanco').show();");
+		RequestContext.getCurrentInstance().execute("PF('modalConsultaBanco').show();");
+		RequestContext.getCurrentInstance().update("modalConsultaBanco");
 	}
 	
 	public void salvarBanco() {

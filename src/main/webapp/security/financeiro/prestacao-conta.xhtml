@@ -1,0 +1,102 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="card">
+                    <h1 class="lightBlack centerText">Prestação de Contas</h1>
+
+                    <h3 class="lightBlack">Gerar Prestação</h3>
+
+                    <h:form id="formPresCon">
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:inputText id="colaborador"
+                                             required="true"
+                                             requiredMessage="Campo obrigatório"
+                                             placeholder="Colaborador"
+                                             value=""/>
+                                <p:commandButton id="buscarEdital"
+                                                 icon="fa fa-search"
+                                                 value="Buscar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{editalMB.consultarEdital()}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:inputText id="valor"
+                                             required="true"
+                                             requiredMessage="Campo obrigatório"
+                                             placeholder="Valor"
+                                             value="" />
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:calendar id="data"
+                                            value=""
+                                            mask="true"
+                                            showOn="button"
+                                            required="true"
+                                            pattern="dd/MM/yyyy"
+                                            placeholder="Inicio"
+                                            requiredMessage="Campo obrigatório"
+                                            converter="localDateConverter">
+                                    <p:ajax event="dateSelect" update="@form"/>
+                                    <p:ajax event="change" update="@form"/>
+                                </p:calendar>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:calendar id="termino"
+                                            value="#{editalMB.edital.termino}"
+                                            mindate="#{editalMB.edital.inicio}"
+                                            mask="true"
+                                            showOn="button"
+                                            required="true"
+                                            pattern="dd/MM/yyyy"
+                                            placeholder="Termino"
+                                            requiredMessage="Campo obrigatório"
+                                            converter="localDateConverter" />
+                            </div>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="salvarEstudante"
+                                                 icon="fa fa-check"
+                                                 value="Salvar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 disabled="#{editalMB.isFinalizado()}"
+                                                 action="#{editalMB.salvarEdital()}"/>
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="finalizarEdital"
+                                                 icon="fa fa-lock"
+                                                 value="Finalizar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 styleClass="green-button"
+                                                 rendered="#{editalMB.renderizarBotaoFinalizar()}"
+                                                 action="#{editalMB.finalizarPeriodo()}">
+                                    <p:confirm header="Finalizar Período" message="Tem certeza que deseja finaliaar o periodo?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <ui:include src="/template/confirm.xhtml"/>
+    </ui:define>
+
+</ui:composition>

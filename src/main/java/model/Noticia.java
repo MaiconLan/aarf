@@ -1,14 +1,33 @@
 package model;
 
-import javax.persistence.ManyToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+@Entity
+@Table(schema = "publico", name = "noticia")
 public class Noticia implements Serializable {
 
-    private static final long serialVersionUID = 189533548214715527L;
+	private static final long serialVersionUID = 189533548214715527L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_noticia")
     private Long idNoticia;
 
     private String titulo;
@@ -17,16 +36,23 @@ public class Noticia implements Serializable {
 
     private String severidade;
 
-    private String abrangencia;
+    private Boolean abrangencia;
 
     private String conteudo;
 
-    @ManyToMany
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_instituicao")
     private Instituicao instituicao;
-
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_associado")
     private Associado associado;
+    
+    public Noticia() {
+		this.associado = new Associado();
+	}
 
-    public Long getIdNoticia() {
+	public Long getIdNoticia() {
         return idNoticia;
     }
 
@@ -46,6 +72,12 @@ public class Noticia implements Serializable {
         return publicacao;
     }
 
+    public String getPublicacaoFormatada() {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return publicacao.format(formatter);
+    }
+
     public void setPublicacao(LocalDateTime publicacao) {
         this.publicacao = publicacao;
     }
@@ -58,15 +90,15 @@ public class Noticia implements Serializable {
         this.severidade = severidade;
     }
 
-    public String getAbrangencia() {
-        return abrangencia;
-    }
+	public Boolean getAbrangencia() {
+		return abrangencia;
+	}
 
-    public void setAbrangencia(String abrangencia) {
-        this.abrangencia = abrangencia;
-    }
+	public void setAbrangencia(Boolean abrangencia) {
+		this.abrangencia = abrangencia;
+	}
 
-    public String getConteudo() {
+	public String getConteudo() {
         return conteudo;
     }
 

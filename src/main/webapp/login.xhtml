@@ -12,12 +12,13 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
             <meta name="apple-mobile-web-app-capable" content="yes" />
         </f:facet>
-        <title>PrimeFaces Icarus</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/icarus-layout/images/logo2.png"/>
+        <title>AARF - Login</title>
     </h:head>
 
     <h:body styleClass="containerLogin">
         <div class="logo-container">
-            <h:graphicImage name="images/logo.png" id="PageLogo" library="icarus-layout"/>
+            <h:graphicImage name="images/logo3branca.fw.png" id="PageLogo" library="icarus-layout"/>
         </div>
             <div class="ui-g">
                 <p:panel id="panelLogin" header="Login" styleClass="panel-login">
@@ -44,9 +45,15 @@
                                                styleClass="link-decoration"
                                                value="Esqueci minha senha" />
                             </div>
-                        </div>
-                        <div class="ui-g-12">
                             <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                <p:link id="criarUsuario"
+                                               href="/public/cadastro-usuario.xhtml"
+                                               styleClass="link-decoration"
+                                               value="Cadastrar-se" />
+                            </div>
+                        </div>
+                        <div class="ui-fluid ui-g-12">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
                                 <p:commandButton id="loginButton"
                                                  value="Login"
                                                  process="formLogin"
@@ -56,10 +63,6 @@
                         </div>
                     </h:form>
                 </p:panel>
-                <div class="ui-g-12 footer-login">
-                    <span>PrimeFaces Icarus Theme and Layout </span><br/>
-                    <span>All rights reserved.</span>
-                </div>
             </div>
 
 

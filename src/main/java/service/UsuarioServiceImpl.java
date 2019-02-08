@@ -33,7 +33,7 @@ public class UsuarioServiceImpl implements UsuarioService, Serializable {
     }
 
     @Override
-    public Usuario logar(Usuario usuario) throws NullPointerException, PersistenceException, Exception {
+    public Usuario logar(Usuario usuario) throws LoginException, UnsupportedEncodingException, NoSuchAlgorithmException {
         return usuarioBusiness.logar(usuario);
     }
 

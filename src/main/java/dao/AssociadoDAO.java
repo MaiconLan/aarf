@@ -1,12 +1,12 @@
 package dao;
 
-import java.util.List;
-
-import javax.persistence.Query;
-
 import dto.AssociadoDTO;
 import generics.GenericDAO;
 import model.Associado;
+import utils.StringUtils;
+
+import javax.persistence.Query;
+import java.util.List;
 
 public class AssociadoDAO extends GenericDAO<Associado> {
 
@@ -73,4 +73,52 @@ public class AssociadoDAO extends GenericDAO<Associado> {
         return query.getResultList();
     }
 
+
+    public boolean isCpfCadastrado(Associado associado){
+        String cpf = StringUtils.removerCaracteres(associado.getPessoa().getCpf());
+        Long idAssociado = associado.getIdAssociado();
+
+        String sql = "SELECT EXISTS ( ";
+        sql += "SELECT 1 FROM cadastro.associado a ";
+        sql += "JOIN cadastro.pessoa p ON a.id_pessoa = p.id_pessoa ";
+        sql += "WHERE p.cpf = :cpf ";
+
+        if(idAssociado != null)
+            sql += "AND a.id_associado <> :idAssociado ";
+
+        sql += "AND (a.inativo IS NULL ";
+        sql += "OR a.inativo <> 't')) ";
+
+        Query query = em.createNativeQuery(sql);
+        query.setParameter("cpf", cpf);
+
+        if(idAssociado != null)
+            query.setParameter("idAssociado", idAssociado);
+
+        return (boolean) query.getSingleResult();
+    }
+
+    public boolean isRgCadastrado(Associado associado) {
+        String rg = StringUtils.removerCaracteres(associado.getPessoa().getRg());
+        Long idAssociado = associado.getIdAssociado();
+
+        String sql = "SELECT EXISTS ( ";
+        sql += "SELECT 1 FROM cadastro.associado a ";
+        sql += "JOIN cadastro.pessoa p ON a.id_pessoa = p.id_pessoa ";
+        sql += "WHERE p.rg = :rg ";
+
+        if(idAssociado != null)
+            sql += "AND a.id_associado <> :idAssociado ";
+
+        sql += "AND (a.inativo IS NULL ";
+        sql += "OR a.inativo <> 't')) ";
+
+        Query query = em.createNativeQuery(sql);
+        query.setParameter("rg", rg);
+
+        if(idAssociado != null)
+            query.setParameter("idAssociado", idAssociado);
+
+        return (boolean) query.getSingleResult();
+    }
 }
