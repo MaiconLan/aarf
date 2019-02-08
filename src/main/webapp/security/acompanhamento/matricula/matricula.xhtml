@@ -86,7 +86,7 @@
                                                  disabled="#{matriculaMB.desabilitarCampos()}">
                                     <f:selectItem itemLabel="Selecione a instituição" noSelectionOption="true"/>
                                     <f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao"
-                                                   itemLabel="#{instituicao.nome}" itemValue="#{instituicao}"/>
+                                                   itemLabel="#{instituicao}" itemValue="#{instituicao}"/>
                                 </p:selectOneMenu>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-1">
@@ -101,7 +101,9 @@
                         </div>
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <p:dataTable id="tableViagens" var="viagem" value="#{matriculaMB.viagens}">
+                                <p:dataTable id="tableViagens"
+                                             var="viagem"
+                                             value="#{matriculaMB.viagens}">
                                     <p:column headerText="Ações" width="10%">
                                         <p:commandButton id="remover"
                                                          icon="fa fa-remove"
@@ -125,6 +127,8 @@
                         </div>
                     </h:form>
                     <h:form id="formAnexo" enctype="multipart/form-data">
+
+                        <h1 class="lightBlack">Comprovante de Matrícula</h1>
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-12 ui-lg-12 ">
                                 <p:fileUpload fileUploadListener="#{matriculaMB.enviarArquivo}"

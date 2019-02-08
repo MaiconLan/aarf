@@ -34,7 +34,7 @@ public class AvisoAtualizacaoMB implements Serializable {
         String horario = "";
         DateTimeFormatter formato = DateTimeFormatter.ofPattern(DateUtils.FORMATO_DIA_MES_ANO);
         if(atualizacao.getIdAtualizacao() != null) {
-            horario += DateUtils.formatoDataHora(atualizacao.getInicio()) + " até " + DateUtils.formatoDataHora(atualizacao.getTermino());
+            horario += DateUtils.formatoData(atualizacao.getInicio()) + " até " + DateUtils.formatoData(atualizacao.getTermino());
         }
         return horario;
     }

@@ -24,9 +24,10 @@ import java.util.List;
 public class PrestacaoContaMB implements Serializable {
 
     private static final long serialVersionUID = 5913546911158814932L;
-    private PrestacaoConta prestacaoConta;
+
     @Inject
     private InstituicaoService instituicaoService;
+
     private PrestacaoContaDTO prestacaoContaDTO = new PrestacaoContaDTO();
     @Inject
     private PrestacaoContaService prestacaoContaService;
@@ -34,16 +35,15 @@ public class PrestacaoContaMB implements Serializable {
     private InstituicaoDTO instituicaoDTO;
 
     private Instituicao instituicao;
-    private PrestacaoContaBusiness prestacaoContaBusiness;
     private List<PrestacaoConta> prestacoes;
     private List<Instituicao> instituicoes;
     private PrestacaoContaAnexoMB prestacaoContaAnexoMB;
+    private PrestacaoConta prestacaoConta;
 
     @PostConstruct
     public void init(){
         newPrestacaoConta();
         carregarInstituicoes();
-        carregarPrestacoes();
     }
 
     private void newPrestacaoConta(){
@@ -70,11 +70,6 @@ public class PrestacaoContaMB implements Serializable {
 
         prestacaoContaAnexoMB.enviarArquivoTemporario(event);
     }
-
-    private void carregarPrestacoes(){
-        prestacoes = prestacaoContaService.obterPrestacao();
-    }
-
 
     private void carregarInstituicoes(){
         instituicoes = instituicaoService.obterInstuicoesFinanceiras();

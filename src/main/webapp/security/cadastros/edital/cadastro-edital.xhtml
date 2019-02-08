@@ -35,6 +35,7 @@
                                              required="true"
                                              requiredMessage="Campo obrigatório"
                                              placeholder="Título"
+                                             disabled="#{editalMB.isFinalizado()}"
                                              value="#{editalMB.edital.titulo}"/>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -45,6 +46,7 @@
                                             required="true"
                                             pattern="dd/MM/yyyy"
                                             placeholder="Inicio"
+                                            disabled="#{editalMB.isFinalizado()}"
                                             requiredMessage="Campo obrigatório"
                                             converter="localDateConverter">
                                     <p:ajax event="dateSelect" update="termino"/>
@@ -61,6 +63,7 @@
                                             required="true"
                                             pattern="dd/MM/yyyy"
                                             placeholder="Termino"
+                                            disabled="#{editalMB.isFinalizado()}"
                                             requiredMessage="Campo obrigatório"
                                             converter="localDateConverter"/>
                             </div>
@@ -90,11 +93,48 @@
                             </div>
                         </div>
                     </h:form>
+
+                    <h:form id="formInscritos">
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <p:dataTable id="tableInscritos"
+                                             rendered="#{editalMB.renderizaInscritos()}"
+                                             value="#{editalMB.edital.matriculas}"
+                                             var="matricula"
+                                             rows="10"
+                                             paginator="true"
+                                             reflow="true">
+                                    <f:facet name="header">Inscritos</f:facet>
+
+                                    <p:column headerText="Código">
+                                        <p:outputLabel value="#{matricula.idMatricula}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Estudante">
+                                        <p:commandLink id="linkEstudante"
+                                                       value="#{matricula.estudante.pessoa.nome}"
+                                                       action="#{editalMB.acessarEstudante(matricula)}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Instituicao">
+                                        <p:outputLabel value="#{matricula.estudante.instituicao}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Situação">
+                                        <p:outputLabel value="#{matricula.situacao}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Data Situação">
+                                        <p:outputLabel value="#{editalMB.dataFormatada(matricula.dataSituacao)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </h:form>
                 </div>
             </div>
         </div>
         <ui:include src="modal-busca-finalizar-edital.xhtml"/>
-
         <ui:include src="/template/confirm.xhtml"/>
     </ui:define>
 

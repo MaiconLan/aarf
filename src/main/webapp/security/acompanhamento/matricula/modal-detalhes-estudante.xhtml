@@ -28,8 +28,8 @@
 				         	     <h3>Data Nascimento:<p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.nascimento}" /></h3>
                    		 	     <h3>Telefone:<p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.telefone} " /></h3>
                    		 	     <h3>Email:<p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.email} " /></h3>
-                   		 	     <h3>Instituição: <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.instituicao.nome}" /></h3>
-                   		 	     <h3>Endereço: <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.endereco.enderecoFormatado}" /></h3>
+                   		 	     <h3>Instituição: <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.instituicao}" /></h3>
+                   		 	     <h3>Endereço: <p:outputLabel value="#{matriculaAprovacaoMB.matriculaSelecionada.estudante.pessoa.endereco}" /></h3>
                    		 	     
                    		 	 </h:panelGrid>                   		 	
 				         </div>
@@ -59,10 +59,17 @@
 					<div class="ui-g-12 ui-md-12 ui-lg-12">
 						<p:dataTable id="tabAnexos" var="anexo" value="#{matriculaAprovacaoMB.matriculaSelecionada.anexos}">
 							<p:column headerText="Anexo" width="100%" >
-								<p:outputLabel value="#{anexo.nome}" />
-					
-								<object data="data:application/pdf;base64,#{anexo.caminho}" type="application/pdf" 
-								        style="width:100%; height: 100%; display: 'none'};" />
+								<p:outputLabel value="#{anexo.nome}.#{anexo.extensao}" />
+
+									<object data="data:application/pdf;base64,#{anexo.path}" type="application/pdf"
+											style="width:100%; height: 100%; display: 'none'};" />
+
+								<p:commandButton value="Download"
+												 ajax="false"
+												 onclick="PrimeFaces.monitorDownload(start, stop);"
+												 icon="fa fa-long-arrow-down">
+									<p:fileDownload value="#{matriculaAnexoMB.download(anexo)}"/>
+								</p:commandButton>
 							</p:column>
 						</p:dataTable>
 					</div>

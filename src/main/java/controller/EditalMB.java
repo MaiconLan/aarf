@@ -4,20 +4,22 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import business.EditalBusiness;
 import dao.EditalDAO;
 import dto.EditalDTO;
 import exception.EstudanteBusinessException;
-import model.Endereco;
-import model.Estudante;
-import model.Usuario;
+import model.*;
+import org.omnifaces.cdi.Param;
+import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 import service.EditalService;
-import model.Edital;
+import utils.DateUtils;
 
 import java.util.List;
 import javax.faces.model.SelectItem;
@@ -34,17 +36,25 @@ public class EditalMB implements Serializable {
     @Inject
     private EditalService editalService;
 
-    private EditalBusiness editalBusiness;
+    @Inject @Param
+    private Long idEdital;
 
     private List<Edital> editais;
 
     @PostConstruct
     public void init() {
-        novoEdital();
+        if(idEdital != null)
+            carregarEdital();
+        else
+            novoEdital();
     }
 
     private void novoEdital() {
         edital = new Edital();
+    }
+
+    private void carregarEdital(){
+        edital = editalService.listarEdital(idEdital);
     }
 
     public void salvarEdital() {
@@ -61,6 +71,7 @@ public class EditalMB implements Serializable {
         setEdital(edital);
         RequestContext.getCurrentInstance().execute("PF('modalFinalizarEdital').hide();");
         RequestContext.getCurrentInstance().update("formEdital");
+        RequestContext.getCurrentInstance().update("formInscritos");
     }
 
     public void modalEdital() {
@@ -71,6 +82,9 @@ public class EditalMB implements Serializable {
          editais = editalService.consultarEdital(editalDTO);
     }
 
+    public String dataFormatada(LocalDateTime localDateTime){
+        return DateUtils.formatoDataHora(localDateTime);
+    }
 
     public void finalizarPeriodo() {
         editalService.finalizarPeriodo(edital);
@@ -82,6 +96,21 @@ public class EditalMB implements Serializable {
 
     public boolean renderizarBotaoFinalizar(){
         return edital.getIdEdital() != null && (edital.getFinalizado() == null || !edital.getFinalizado());
+    }
+
+    public boolean renderizaInscritos(){
+        return edital != null && edital.getIdEdital() != null;
+    }
+
+    public void acessarEstudante(Matricula matricula) {
+        Estudante estudante = matricula.getEstudante();
+        try {
+            Faces.redirect("security/cadastros/estudante/cadastro-estudante.xhtml?idEstudante=" + estudante.getIdEstudante() + "&isAcessarPerfil=false");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Messages.addError(null, "Erro ao redirecionar para o cadastro do estudante!");
+        }
     }
 
     public Edital getEdital() {

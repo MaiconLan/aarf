@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import dto.MatriculaDTO;
+import enumered.MatriculaSituacao;
 import generics.GenericDAO;
 import model.Matricula;
 
@@ -17,8 +19,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         sql.append("JOIN m.estudante e ");
         sql.append("JOIN m.edital ed ");
     
-        sql.append("WHERE m.confirmacao is null ");
-        sql.append("AND m.cancelamento.idCancelamento IS NULL ");
+        sql.append("WHERE m.cancelamento.idCancelamento IS NULL ");
         Query query = em.createQuery(sql.toString());
 
         return query.getResultList();
@@ -42,5 +43,30 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         } catch (NoResultException e) {
             return null;
         }
+    }
+
+    public List<Matricula> listarMatriculasEmAprovacao(MatriculaDTO matriculaDTO) {
+        StringBuilder sql = new StringBuilder();
+
+        sql.append("SELECT matricula FROM Matricula matricula ");
+        sql.append("JOIN matricula.estudante estudante ");
+        sql.append("JOIN matricula.edital edital ");
+        sql.append("JOIN estudante.instituicao instituicao ");
+        sql.append("LEFT JOIN matricula.cancelamento cancelamento ");
+        sql.append("WHERE matricula.situacao = :situacao ");
+        sql.append("AND cancelamento.idCancelamento IS NULL ");
+
+        if(matriculaDTO.getIdInstituicao() != null)
+            sql.append("AND instituicao.idInstituicao = :idInstituicao ");
+
+        Query query = em.createQuery(sql.toString());
+
+        query.setParameter("situacao", MatriculaSituacao.EM_APROVACAO.getDescricao());
+
+        if(matriculaDTO.getIdInstituicao() != null)
+            query.setParameter("idInstituicao", matriculaDTO.getIdInstituicao());
+
+
+        return query.getResultList();
     }
 }

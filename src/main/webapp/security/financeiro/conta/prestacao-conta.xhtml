@@ -17,20 +17,18 @@
 
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                    <p:selectOneMenu id="Instituicao"
-                                                     value="#{prestacaoContaMB.prestacaoConta.instituicao}"
-                                                     converter="omnifaces.SelectItemsIndexConverter"
-                                                     filter="true"
-                                                     required="true"
-                                                     placeholder="Instituicao">
-                                        <f:selectItem itemLabel="Selecione uma instituição" noSelectionOption="true"/>
-                                        <f:selectItems var="instituicao"
-                                                       itemLabel="#{instituicao.nome}"
-                                                       itemValue="#{instituicao}"
-                                                       value="#{prestacaoContaMB.instituicoes}"/>
-                                    </p:selectOneMenu>
-                                </div>
+                                <p:selectOneMenu id="Instituicao"
+                                                 value="#{prestacaoContaMB.prestacaoConta.instituicao}"
+                                                 converter="omnifaces.SelectItemsIndexConverter"
+                                                 filter="true"
+                                                 required="true"
+                                                 placeholder="Instituicao">
+                                    <f:selectItem itemLabel="Selecione uma instituição" noSelectionOption="true"/>
+                                    <f:selectItems var="instituicao"
+                                                   itemLabel="#{instituicao}"
+                                                   itemValue="#{instituicao}"
+                                                   value="#{prestacaoContaMB.instituicoes}"/>
+                                </p:selectOneMenu>
                             </div>
                         </div>
 

@@ -29,7 +29,7 @@ public class Endereco implements Serializable {
 
     
     public String getEnderecoFormatado() {
-    	return "Cep" + this.cep + ", Bairro:" + this.bairro + ", Rua: " + this.logradouro;
+    	return "Cep: " + this.cep + ", Bairro:" + this.bairro + ", Rua: " + this.logradouro;
     }
     
     public Long getIdEndereco() {
@@ -95,11 +95,6 @@ public class Endereco implements Serializable {
 
     @Override
     public String toString() {
-        return "Endereco{" +
-                "cep='" + cep + '\'' +
-                ", logradouro='" + logradouro + '\'' +
-                ", complemento='" + complemento + '\'' +
-                ", bairro='" + bairro + '\'' +
-                '}';
+        return "Rua " + logradouro + ", " + bairro + " - " + cep;
     }
 }

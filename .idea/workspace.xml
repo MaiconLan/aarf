@@ -7,42 +7,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9be7d68-7d27-4128-99f5-46b7046a22b1" name="Default Changelist" comment="Default Changelist">
-      <change afterPath="$PROJECT_DIR$/src/main/java/business/AnexoBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/business/AtualizacaoBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CadastroAtualizacaoMB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/AtualizacaoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Atualizacao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/AtualizacaoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/AtualizacaoServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/security/configuracoes/atualizacao/cadastro-atualizacao.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ApplicationMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ApplicationMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Identity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Identity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InstituicaoMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InstituicaoMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/EditalMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EditalMB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MatriculaAprovacaoMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MatriculaAprovacaoMB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaAnexoMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaAnexoMB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/AnexoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/AnexoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EditalDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EditalDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enumered/CargoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enumered/CargoEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/generics/GenericDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generics/GenericDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Anexo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Anexo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/EditalDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/EditalDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/MatriculaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/MatriculaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cidade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Endereco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Estudante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Estudante.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Matricula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Matricula.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/TipoInstituicao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/TipoInstituicao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/AnexoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AnexoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/AnexoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/AnexoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/MatriculaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/MatriculaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/public/promotion-page.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/public/promotion-page.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula-aprovacao.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula-aprovacao.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-detalhes-estudante.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-detalhes-estudante.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/viagem/viagem.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/viagem/viagem.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/cadastros/instituicao/cadastro-instituicao.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/cadastros/instituicao/cadastro-instituicao.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/noticia/cadastro-noticia.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/noticia/cadastro-noticia.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -66,7 +57,17 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="aarf-develop@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="aarf-develop@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FavoritesManager">
@@ -75,102 +76,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/template/aviso-atualizacao.xhtml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="33" column="69" lean-forward="true" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="39" column="152" selection-start-line="39" selection-start-column="141" selection-end-line="39" selection-end-column="152" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/security/configuracoes/atualizacao/cadastro-atualizacao.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="20" column="91" selection-start-line="20" selection-start-column="91" selection-end-line="20" selection-end-column="91" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/Atualizacao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+            <state relative-caret-position="85">
+              <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#762#763#0" expanded="true" />
-                <element signature="e#791#792#0" expanded="true" />
-                <element signature="e#838#839#0" expanded="true" />
-                <element signature="e#874#875#0" expanded="true" />
-                <element signature="e#911#912#0" expanded="true" />
-                <element signature="e#941#942#0" expanded="true" />
-                <element signature="e#990#991#0" expanded="true" />
-                <element signature="e#1028#1029#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/associado/cadastro-associado.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="24" column="34" lean-forward="true" selection-end-line="24" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1235#1236#0" expanded="true" />
-                <element signature="e#1274#1275#0" expanded="true" />
-                <element signature="e#767#768#0" expanded="true" />
-                <element signature="e#815#816#0" expanded="true" />
-                <element signature="e#1277#1278#0" expanded="true" />
-                <element signature="e#1311#1312#0" expanded="true" />
-                <element signature="e#1370#1371#0" expanded="true" />
-                <element signature="e#1416#1417#0" expanded="true" />
+                <element signature="e#1456#1457#0" expanded="true" />
+                <element signature="e#1509#1510#0" expanded="true" />
+                <element signature="e#2405#2406#0" expanded="true" />
+                <element signature="e#2483#2484#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/DateUtils.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/CadastroAtualizacaoMB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-              <folding>
-                <element signature="e#633#634#0" expanded="true" />
-                <element signature="e#680#681#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="15" column="43" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -189,36 +113,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>include</find>
-      <find>matriculaSelecionada</find>
-      <find>listMatricula</find>
-      <find>matricula</find>
-      <find>download</find>
-      <find>cadastro.matricula</find>
-      <find>salvarArquivosTemporarios</find>
-      <find>formAnexo</find>
-      <find>adici</find>
-      <find>remover</find>
-      <find>font-fam</find>
-      <find>color</find>
-      <find>anexo</find>
-      <find>cadastro.anexo</find>
-      <find>matriculaanexo</find>
-      <find>arquivosAdicionados</find>
-      <find>post</find>
-      <find>arquivosTemporarios</find>
-      <find>salvar</find>
-      <find>inicio</find>
-      <find>limpar</find>
-      <find>anexoService.remover(anexo);</find>
-      <find>ativos que é fincanciad</find>
-      <find>content</find>
-      <find>messages</find>
-      <find>admin</find>
-      <find>fa-loa</find>
       <find>&lt;p:calendar</find>
       <find>avisoAtualizacaoBusiness</find>
       <find>avisoa</find>
+      <find>salvar</find>
+      <find>filtro</find>
+      <find>m.</find>
+      <find>perfil&quot;</find>
+      <find>&quot;perfil&quot;</find>
+      <find>Gray Button</find>
+      <find>styleClass=&quot;red-button&quot;</find>
+      <find>lista</find>
+      <find>confirm.xhtml&quot;/&gt;</find>
+      <find>card</find>
+      <find>matriculaDTO</find>
+      <find>&quot;#{instituicao</find>
+      <find>itemLabel=&quot;#{</find>
+      <find>itemLabel=&quot;#{instituicao</find>
+      <find>itemLabel=&quot;#{instituicao</find>
+      <find>instituicao.nome</find>
+      <find>dia da semana</find>
+      <find>&lt;p:dataTable</find>
+      <find>&lt;p:dataTable</find>
+      <find>&lt;f:face</find>
+      <find>linkEstudante</find>
+      <find>@Inject @Param</find>
+      <find>listaEditais</find>
+      <find>editalDTO</find>
+      <find>enviar</find>
+      <find>LIKE</find>
+      <find>download</find>
     </findStrings>
     <replaceStrings>
       <replace>Usuario</replace>
@@ -236,37 +160,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/dao/AssociadoDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/template_email/email_cadastro_usuario.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/template_email/email_matricula_realizada.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/template_email/email_matricula_aprovacao.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/template_email/email_matricula_aprovada.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/template_email/email_matricula_reprovada.html" />
-        <option value="$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-reprovar-matricula.html" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaAprovacaoMB.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-reprovar-matricula.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula-aprovacao.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/service/MatriculaService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/generics/GenericDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/business/AnexoBusiness.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/AnexoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/AnexoService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/AnexoDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaAnexoMB.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/instituicao/cadastro-instituicao.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/model/TipoInstituicao.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/InstituicaoMB.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/model/Anexo.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Matricula.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/public/promotion-page.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/business/AvisoAtualizacaoBusiness.java" />
@@ -277,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/main/java/service/AvisoAtualizacaoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/AvisoAtualizacaoDAO.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/template/aviso-atualizacao.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/AtualizacaoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/AtualizacaoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/business/AtualizacaoBusiness.java" />
@@ -285,8 +183,34 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/security/configuracoes/atualizacao/cadastro-atualizacao.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/model/Atualizacao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" />
         <option value="$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/dto/MatriculaDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/MatriculaService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/70e0a600-6887-4579-8cb9-34e3dd4afdab/console_1.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Cidade.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/noticia/cadastro-noticia.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Endereco.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaAprovacaoMB.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/viagem/viagem.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Matricula.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Estudante.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/EditalMB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dto/EditalDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/EditalDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula-aprovacao.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-detalhes-estudante.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml" />
       </list>
     </option>
   </component>
@@ -409,7 +333,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="configuracoes" type="462c0819:PsiDirectoryNode" />
+              <item name="acompanhamento" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
@@ -418,8 +342,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="configuracoes" type="462c0819:PsiDirectoryNode" />
-              <item name="atualizacao" type="462c0819:PsiDirectoryNode" />
+              <item name="acompanhamento" type="462c0819:PsiDirectoryNode" />
+              <item name="viagem" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -432,7 +356,7 @@
     <property name="SearchEverywhereHistoryKey" value="we&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;web&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;pom.x&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;web.xml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;cadastro-co&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/financeiro/conta/cadastro-conta.xhtml&#10;banco&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Banco.java&#10;layoutme&#9;FILE&#9;file://C:/Users/teste/workspace-oxygen/aarf/src/main/webapp/WEB-INF/layoutmenu.xhtml&#10;institui&#9;FILE&#9;file://C:/Users/teste/workspace-oxygen/aarf/src/main/java/controller/InstituicaoMB.java&#10;cadastrobanco&#9;FILE&#9;file://C:/Users/teste/workspace-oxygen/aarf/src/main/webapp/security/cadastros/financeiro/cadastrobanco.xhtml&#10;v1&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/flyway/V1__1.0.1.sql&#10;menu&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/layoutmenu.xhtml&#10;empty&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/empty-page.xhtml&#10;Test&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;Pessoa&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Pessoa.java&#10;Unit&#9;FILE&#9;file://C:/workspace/aarf/src/test/java/utils/UnitTest.java&#10;pom&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;Usuario&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Usuario.java&#10;Matricula&#9;PSI&#9;JAVA://model.Matricula&#10;Un&#9;PSI&#9;JAVA://utils.UnitTest&#10;cadas&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/security/cadastros/cadastro-estudante.xhtml&#10;persistence.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/resources/META-INF/persistence.xml&#10;persi&#9;ACTION&#9;ActivatePersistenceToolWindow&#10;web.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/WEB-INF/web.xml&#10;pom.xm&#9;FILE&#9;file://C:/workspace/aarf/pom.xml&#10;form&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/forms.xhtml&#10;CharacterEncodingFilter&#9;PSI&#9;JAVA://org.omnifaces.filter.CharacterEncodingFilter&#10;data.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/data.xhtml&#10;sa&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/sample.xhtml&#10;Unt&#9;PSI&#9;JAVA://utils.UnitTest&#10;dashboard.xhtml&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;theme&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/resources/sass/theme&#10;FaceletViewHandlingStrategy&#9;PSI&#9;JAVA://com.sun.faces.application.view.FaceletViewHandlingStrategy&#10;dashboard.x&#9;FILE&#9;file://C:/workspace/aarf/src/main/webapp/dashboard.xhtml&#10;noticia&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/model/Noticia.java&#10;matricula&#9;FILE&#9;file://C:/workspace/aarf/src/main/java/controller/MatriculaMB.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549085133707" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549663418513" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/service" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
@@ -651,7 +575,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206613000" />
+    <option name="totallyTimeSpent" value="224017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -664,15 +588,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4924623" visible="true" weight="0.15245202" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49140894" visible="true" weight="0.15458423" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" sideWeight="0.50753766" side_tool="true" weight="0.24840085" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.50753766" side_tool="true" weight="0.2249467" />
+      <window_info id="Favorites" order="6" sideWeight="0.50859106" side_tool="true" visible="true" weight="0.15458423" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Web" order="8" sideWeight="0.50270855" side_tool="true" weight="0.18283582" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -715,32 +638,13 @@
       <path value="$PROJECT_DIR$/aarf" />
     </ignored-roots>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java</url>
-          <line>43</line>
-          <properties />
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/AnexoServiceImpl.java</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dao/AtualizacaoDAO.java</url>
-          <line>9</line>
-          <properties />
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>return query.getResultList();</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>em.createQuery(sql).getResultList()</expression-string>
         <language-id>JAVA</language-id>
@@ -783,363 +687,457 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>associadoDAO.isCpfCadastrado(associado)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/public/promotion-page.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/forms.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="153" column="89" lean-forward="true" selection-start-line="153" selection-start-column="89" selection-end-line="153" selection-end-column="89" />
+        <state relative-caret-position="276">
+          <caret line="310" column="79" lean-forward="true" selection-start-line="310" selection-start-column="79" selection-end-line="310" selection-end-column="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/template/confirm.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="153" column="13" lean-forward="true" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="42" column="63" lean-forward="true" selection-start-line="42" selection-start-column="63" selection-end-line="42" selection-end-column="63" />
+        <state relative-caret-position="412">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/icarus-trasporte.fw.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/icarus_screen.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/logo2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/logo.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/template/loading.xhtml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Associado.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="18" />
+        <state relative-caret-position="184">
+          <caret line="60" column="108" selection-start-line="60" selection-start-column="108" selection-end-line="60" selection-end-column="108" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/ApplicationBusiness.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/time/LocalDateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="1749" column="18" selection-start-line="1749" selection-start-column="18" selection-end-line="1749" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/generics/GenericDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="75" column="16" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/enumered/CargoEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="17" />
+        <state relative-caret-position="184">
+          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/Identity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="86" column="41" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="41" />
+        <state relative-caret-position="456">
+          <caret line="134" column="5" lean-forward="true" selection-start-line="118" selection-start-column="4" selection-end-line="134" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/70e0a600-6887-4579-8cb9-34e3dd4afdab/console_1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="30" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Cidade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/noticia/cadastro-noticia.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="54" column="75" selection-start-line="54" selection-start-column="75" selection-end-line="54" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="155" column="75" lean-forward="true" selection-start-line="155" selection-start-column="50" selection-end-line="155" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="246" column="83" selection-start-line="246" selection-start-column="58" selection-end-line="246" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Endereco.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="97" column="59" selection-start-line="97" selection-start-column="59" selection-end-line="97" selection-end-column="59" />
           <folding>
-            <element signature="e#2189#2190#0" expanded="true" />
-            <element signature="e#2205#2206#0" expanded="true" />
+            <element signature="e#2196#2197#0" expanded="true" />
+            <element signature="e#2268#2269#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/AssociadoMB.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Anexo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="28" column="50" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="50" />
+        <state relative-caret-position="401">
+          <caret line="104" column="18" selection-start-line="104" selection-start-column="18" selection-end-line="104" selection-end-column="18" />
+          <folding>
+            <element signature="e#2003#2004#0" expanded="true" />
+            <element signature="e#2055#2056#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/AnexoBusiness.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Instituicao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ApplicationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ApplicationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/AssociadoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="56" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet-shaded/3.0.3.Final/weld-servlet-shaded-3.0.3.Final-sources.jar!/org/jboss/weld/module/web/el/AbstractWeldELResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet-shaded/3.0.3.Final/weld-servlet-shaded-3.0.3.Final-sources.jar!/org/jboss/weld/injection/producer/DefaultLifecycleCallbackInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ApplicationMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="45" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/BancoMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="7" column="38" lean-forward="true" selection-start-line="7" selection-start-column="38" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/associado/modal-consulta-associado.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="65" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="26" selection-end-column="65" />
+        <state relative-caret-position="82">
+          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+          <folding>
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#928#929#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/AtualizacaoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="92" />
+        <state relative-caret-position="153">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/generics/GenericDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="54" />
+        <state relative-caret-position="272">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/data.xhtml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/sample.xhtml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/docs.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/jpautil/JPAUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="59" lean-forward="true" selection-start-line="3" selection-start-column="59" selection-end-line="3" selection-end-column="59" />
+        <state relative-caret-position="201">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/panel.xhtml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/misc.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/ViagemBusiness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="59" lean-forward="true" selection-start-line="3" selection-start-column="59" selection-end-line="3" selection-end-column="59" />
+        <state relative-caret-position="82">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/business/AtualizacaoBusiness.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ViagemServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="25" column="49" lean-forward="true" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="316">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/AtualizacaoServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ViagemService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#740#741#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/AtualizacaoService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/viagem/viagem.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="321">
+          <caret line="79" column="72" selection-start-line="79" selection-start-column="72" selection-end-line="79" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/CadastroAtualizacaoMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-          <folding>
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/overlay.xhtml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/template/aviso-atualizacao.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="33" column="69" lean-forward="true" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layoutmenu.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="39" column="152" selection-start-line="39" selection-start-column="141" selection-end-line="39" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/associado/cadastro-associado.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="34" lean-forward="true" selection-end-line="24" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/primefaces/primefaces/6.1/primefaces-6.1.jar!/META-INF/primefaces-p.taglib.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/associado/modal-consulta-associado.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
-          <caret line="9332" column="8" selection-start-line="9332" selection-start-column="8" selection-end-line="9332" selection-end-column="8" />
+          <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Pessoa.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="50" column="77" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="50" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Atualizacao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        <state relative-caret-position="269">
+          <caret line="153" column="18" selection-start-line="153" selection-start-column="18" selection-end-line="153" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#762#763#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#838#839#0" expanded="true" />
-            <element signature="e#874#875#0" expanded="true" />
-            <element signature="e#911#912#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
-            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#3381#3382#0" expanded="true" />
+            <element signature="e#3423#3424#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/configuracoes/atualizacao/cadastro-atualizacao.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaAprovacaoMB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="20" column="91" selection-start-line="20" selection-start-column="91" selection-end-line="20" selection-end-column="91" />
+        <state relative-caret-position="443">
+          <caret line="59" column="5" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="59" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Estudante.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+        <state relative-caret-position="367">
+          <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1235#1236#0" expanded="true" />
-            <element signature="e#1274#1275#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#815#816#0" expanded="true" />
-            <element signature="e#1277#1278#0" expanded="true" />
-            <element signature="e#1311#1312#0" expanded="true" />
-            <element signature="e#1370#1371#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
+            <element signature="e#2319#2320#0" expanded="true" />
+            <element signature="e#2359#2360#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/flyway/V1__1.0.1.sql">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Matricula.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="591" column="50" lean-forward="true" selection-start-line="591" selection-start-column="50" selection-end-line="591" selection-end-column="50" />
+        <state relative-caret-position="177">
+          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
+          <folding>
+            <element signature="e#2702#2703#0" expanded="true" />
+            <element signature="e#2737#2738#0" expanded="true" />
+            <element signature="e#2887#2888#0" expanded="true" />
+            <element signature="e#2919#2920#0" expanded="true" />
+            <element signature="e#3201#3202#0" expanded="true" />
+            <element signature="e#3236#3237#0" expanded="true" />
+            <element signature="e#3298#3299#0" expanded="true" />
+            <element signature="e#3346#3347#0" expanded="true" />
+            <element signature="e#3456#3457#0" expanded="true" />
+            <element signature="e#3485#3486#0" expanded="true" />
+            <element signature="e#4898#4899#0" expanded="true" />
+            <element signature="e#4960#4961#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/DateUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
+        <state relative-caret-position="238">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="34" column="53" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet-shaded/3.0.3.Final/weld-servlet-shaded-3.0.3.Final-sources.jar!/org/jboss/weld/injection/producer/DefaultLifecycleCallbackInvoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dto/EditalDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/EditalBusiness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+          <folding>
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EditalMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="33" column="44" lean-forward="true" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding>
+            <element signature="e#1061#1062#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1181#1182#0" expanded="true" />
+            <element signature="e#1210#1211#0" expanded="true" />
+            <element signature="e#1696#1697#0" expanded="true" />
+            <element signature="e#1793#1794#0" expanded="true" />
+            <element signature="e#2016#2017#0" expanded="true" />
+            <element signature="e#2058#2059#0" expanded="true" />
+            <element signature="e#1971#1972#0" expanded="true" />
+            <element signature="e#2068#2069#0" expanded="true" />
+            <element signature="e#2276#2277#0" expanded="true" />
+            <element signature="e#2345#2346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ViagemMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="63" column="32" lean-forward="true" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exception/MatriculaBusinessException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <element signature="e#787#788#0" expanded="true" />
+            <element signature="e#818#819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="375" column="18" selection-start-line="375" selection-start-column="18" selection-end-line="375" selection-end-column="18" />
+          <folding>
+            <element signature="e#15711#15712#0" expanded="true" />
+            <element signature="e#15747#15748#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/exception/GenericException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+          <folding>
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/MatriculaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Long.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="78" column="90" selection-start-line="78" selection-start-column="90" selection-end-line="78" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/EstudanteDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/EditalDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
+          <folding>
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-consulta-editais.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="78" lean-forward="true" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="156" column="58" lean-forward="true" selection-start-line="152" selection-start-column="40" selection-end-line="156" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-detalhes-estudante.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula-aprovacao.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="105" column="45" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="152" column="39" selection-start-line="152" selection-start-column="39" selection-end-line="152" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9089#9090#0" expanded="true" />
+            <element signature="e#9124#9125#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="e#1456#1457#0" expanded="true" />
+            <element signature="e#1509#1510#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
+            <element signature="e#2483#2484#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="43" />
         </state>
       </provider>
     </entry>

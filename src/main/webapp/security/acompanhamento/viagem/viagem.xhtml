@@ -12,7 +12,7 @@
 				<div class="card">
 					<h:form id="formViagem">
 						<h1 class="lightBlack centerText">Matrícula
-							#{matriculaMB.edital.titulo}</h1>
+							#{viagemMB.edital.titulo}</h1>
 						<div class="ui-g">
 							<div class="ui-g-12 ui-md-6 ui-lg-12">
 								<p class="lightBlack">#{viagemMB.obterPeriodo()}</p>
@@ -26,8 +26,8 @@
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-6">
 								<p:selectOneMenu id="selectInstituicao" converter="omnifaces.SelectItemsIndexConverter" value="#{viagemMB.filtro.instituicao}">
-									<f:selectItem  itemLabel="Selecione a instituição" noSelectionOption="true"/>
-									<f:selectItems value="#{viagemMB.instituicoes}" var="instituicao" itemLabel="#{instituicao.nome}" itemValue="#{instituicao}" />
+									<f:selectItem itemLabel="Selecione a instituição" noSelectionOption="true"/>
+									<f:selectItems value="#{viagemMB.instituicoes}" var="instituicao" itemLabel="#{instituicao}" itemValue="#{instituicao}" />
 								</p:selectOneMenu>
 							</div>
 						</div>
@@ -42,13 +42,13 @@
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<p:commandButton id="buscar"
 												 action="#{viagemMB.buscarEstudantes()}"
-												 process="@form"
-												 update="@form"
+												 process="buscar checkDiaSemana selectInstituicao selectSentido panelTotalViagens"
+												 update="panelTotalViagens"
 												 value="Buscar"/>
 							</div>
 
 							<div class="ui-g-12 ui-md-6 ui-lg-12">
-								<p:outputPanel>
+								<p:outputPanel id="panelTotalViagens">
 									<p:outputLabel value="Total de Viagens: #{viagemMB.viagens.size()}"/>
 								</p:outputPanel>
 							</div>
@@ -66,6 +66,8 @@
 											   decimalPlaces="2"
 											   decimalSeparator=","
 											   placeholder="Valor"
+											   required="true"
+											   requiredMessage="Campo valor obrigatório"
 											   value="#{viagemMB.valor}"/>
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
@@ -73,7 +75,8 @@
 												 value="Gerar Valor"
 												 icon="fa fa-money"
 												 styleClass="green-button"
-												 update="@form" process="@form" title="Adicionar"
+												 update="@form"
+												 process="@form"
 												 action="#{viagemMB.gerarValores()}" />
 							</div>
 						</div>
@@ -88,7 +91,7 @@
 											<p:outputLabel value="#{vDiaSemana}, " />
 										</ui:repeat>
 									</p:column>
-									<p:column headerText="Valor">
+									<p:column headerText="Sentido">
 										<ui:repeat value="#{configuracao.sentido}" var="vSentido">
 											<p:outputLabel value="#{vSentido}, " />
 										</ui:repeat>

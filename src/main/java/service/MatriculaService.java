@@ -1,5 +1,6 @@
 package service;
 
+import dto.MatriculaDTO;
 import exception.MatriculaBusinessException;
 import model.Matricula;
 import model.Viagem;
@@ -20,5 +21,7 @@ public interface MatriculaService {
 
     Matricula obterMatricula(Long idEstudante);
 
-	void enviarParaAprovacao(Matricula matricula);
+	void enviarParaAprovacao(Matricula matricula) throws MatriculaBusinessException;
+
+	List<Matricula> listarMatriculasEmAprovacao(MatriculaDTO matriculaDTO);
 }

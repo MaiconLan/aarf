@@ -1,6 +1,9 @@
 package service;
 
 import business.MatriculaBusiness;
+import dao.MatriculaDAO;
+import dto.MatriculaDTO;
+import exception.MatriculaBusinessException;
 import model.Matricula;
 import model.Viagem;
 
@@ -14,6 +17,9 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 
     @Inject
     private MatriculaBusiness matriculaBusiness;
+
+    @Inject
+	private MatriculaDAO matriculaDAO;
 
 	@Override
 	public void salvar(Matricula matricula) {
@@ -36,8 +42,13 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 	}
 
 	@Override
-	public void enviarParaAprovacao(Matricula matricula) {
+	public void enviarParaAprovacao(Matricula matricula) throws MatriculaBusinessException {
 		matriculaBusiness.enviarParaAprovacao(matricula);
+	}
+
+	@Override
+	public List<Matricula> listarMatriculasEmAprovacao(MatriculaDTO matriculaDTO) {
+		return matriculaDAO.listarMatriculasEmAprovacao(matriculaDTO);
 	}
 
 	@Override
