@@ -59,6 +59,6 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString(){
-        return nome + " - " + uf;
+        return nome + "/" + uf;
     }
 }

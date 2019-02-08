@@ -19,10 +19,13 @@ public class EditalDAO extends GenericDAO<Edital> {
         sql.append("WHERE 1=1 ");
 
         if (editalDTO.getTitulo() != null && !editalDTO.getTitulo().isEmpty()) {
-            sql.append("AND e.titulo = :titulo ");
+            sql.append("AND LOWER(e.titulo) LIKE '%' || LOWER(:titulo) || '%' ");
         }
 
         sql.append("ORDER BY e.inicio ");
+
+        if(!editalDTO.isOrder())
+            sql.append("DESC ");
 
         Query query = em.createQuery(sql.toString());
 

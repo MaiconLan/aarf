@@ -3,12 +3,15 @@ package business;
 import dao.MatriculaDAO;
 import dao.ViagemDAO;
 import enumered.MatriculaSituacao;
+import exception.MatriculaBusinessException;
 import model.Cancelamento;
 import model.Matricula;
 import model.Viagem;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MatriculaBusiness {
@@ -58,9 +61,24 @@ public class MatriculaBusiness {
         return matriculaDAO.obterMatricula(idEstudante);
     }
 
-    public void enviarParaAprovacao(Matricula matricula) {
+    public void enviarParaAprovacao(Matricula matricula) throws MatriculaBusinessException {
+        validarEnviarParaAprovacao(matricula);
+
         matricula.setSituacao(MatriculaSituacao.EM_APROVACAO.getDescricao());
         matricula.setDataSituacao(LocalDateTime.now());
         matriculaDAO.update(matricula);
+    }
+
+    private void validarEnviarParaAprovacao(Matricula matricula) throws MatriculaBusinessException {
+        Collection<String> detalhes = new ArrayList<>();
+
+        if(matricula.getAnexos().isEmpty())
+            detalhes.add("É necessário pelo menos um comprovante de estudo!");
+
+        if(matricula.getViagens().isEmpty())
+            detalhes.add("É necessário pelo menos uma viagem selecionada para se inscrever!");
+
+        if(!detalhes.isEmpty())
+            throw new MatriculaBusinessException(detalhes);
     }
 }

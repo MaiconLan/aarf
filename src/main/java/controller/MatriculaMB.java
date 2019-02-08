@@ -74,7 +74,9 @@ public class MatriculaMB implements Serializable {
     }
 
     private void carregarListaEditais() {
-        listaEditais = editalService.consultarEdital(new EditalDTO());
+        EditalDTO editalDTO = new EditalDTO();
+        editalDTO.setOrder(false);
+        listaEditais = editalService.consultarEdital(editalDTO);
     }
 
     private void abrirModalEditais(){
@@ -152,6 +154,9 @@ public class MatriculaMB implements Serializable {
             Messages.addInfo(null, "Matrícula enviada para aprovação com sucesso!");
             Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
 
+        } catch (MatriculaBusinessException e) {
+            e.getMessages().forEach(error -> Messages.addError(null, error));
+
         } catch (IOException e) {
             e.printStackTrace();
             Messages.addFatal(null, e.getMessage());
@@ -218,7 +223,6 @@ public class MatriculaMB implements Serializable {
         if(idEdital == null) {
             carregarListaEditais();
             abrirModalEditais();
-
         }
         if (idEdital != null) {
             edital = editalService.listarEdital(idEdital);

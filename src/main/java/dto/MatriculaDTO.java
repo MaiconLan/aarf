@@ -10,8 +10,8 @@ public class MatriculaDTO implements Serializable{
 	private String nome;
 	private String cidade;
 	private String tipo;
-	
-	
+
+
 	public Long getIdInstituicao() {
 		return idInstituicao;
 	}
@@ -36,7 +36,7 @@ public class MatriculaDTO implements Serializable{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
-	
+
+
+
 }

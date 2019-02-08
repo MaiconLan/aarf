@@ -2,10 +2,11 @@ package controller;
 
 
 import dto.FiltroViagemDTO;
-import model.Instituicao;
-import model.Matricula;
+import dto.MatriculaDTO;
+import model.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.mail.EmailException;
+import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 import service.InstituicaoService;
@@ -38,7 +39,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 	
     private List<Instituicao> instituicoes;
 	private List<Matricula> listMatricula;
-	private Matricula filtro;
+	private MatriculaDTO matriculaDTO;
 	private Matricula matriculaSelecionada;
 	private String motivoCancelamento;
 	
@@ -46,20 +47,30 @@ public class MatriculaAprovacaoMB implements Serializable {
 	public void init() {
 		limpar();
 	}
+
+	public void acessarEstudante(Matricula matricula) {
+		Estudante estudante = matricula.getEstudante();
+		try {
+			Faces.redirect("security/cadastros/estudante/cadastro-estudante.xhtml?idEstudante=" + estudante.getIdEstudante() + "&isAcessarPerfil=false");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			Messages.addError(null, "Erro ao redirecionar para o cadastro do estudante!");
+		}
+	}
 	
 	public void limpar() {
 		this.matriculaSelecionada = new Matricula();
 		this.listMatricula = new ArrayList<>();
-		this.filtro = new Matricula();
+		this.matriculaDTO = new MatriculaDTO();
 		carregarInstituicoes();
-		buscarMatricula();
 	}
 	
 	public void reprovarMatricula() {
 		matriculaService.cancelarMatricula(matriculaSelecionada, motivoCancelamento);
 		enviarEmail(matriculaSelecionada);
 		Messages.addInfo(null, "Matricula reprovada com sucesso!");
-		buscarMatricula();
+		buscarMatriculas();
 		fecharModalReprovarMatricula();
 	}
 
@@ -71,6 +82,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 
 	public void fecharModalReprovarMatricula(){
 		limpar();
+		buscarMatriculas();
 		RequestContext.getCurrentInstance().execute("PF('modalReprovarMatricula').hide();");
 		RequestContext.getCurrentInstance().update("modalReprovarMatricula");
 	}
@@ -79,7 +91,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 		matriculaService.aprovarMatricula(matricula);
 		enviarEmail(matricula);
 		Messages.addInfo(null, "Matricula aprovada com sucesso!");
-		buscarMatricula();
+		buscarMatriculas();
 		fecharModalReprovarMatricula();
 	}
 
@@ -137,7 +149,6 @@ public class MatriculaAprovacaoMB implements Serializable {
 
 	private void carregarInstituicoes(){
         instituicoes = instituicaoService.obterInstituicoesEnsino();
-        buscarMatricula();
     }
 	
 	public void consultarDetalhes(Matricula m) {
@@ -151,9 +162,13 @@ public class MatriculaAprovacaoMB implements Serializable {
 		RequestContext.getCurrentInstance().update("modalDetalhesEstudante");
 		RequestContext.getCurrentInstance().execute("PF('modalDetalhesEstudante').show();");
 	}
+
+	public boolean renderizarAnexo(Anexo anexo, String extensao){
+		return anexo.getExtensao().equals(extensao);
+	}
 	
-	public void buscarMatricula(){
-		 this.listMatricula = matriculaService.listarMatriculas(this.filtro);
+	public void buscarMatriculas(){
+		 this.listMatricula = matriculaService.listarMatriculasEmAprovacao(matriculaDTO);
 	}
 
 	public List<Matricula> getListMatricula() {
@@ -164,12 +179,12 @@ public class MatriculaAprovacaoMB implements Serializable {
 		this.listMatricula = listMatricula;
 	}
 
-	public Matricula getFiltro() {
-		return filtro;
+	public MatriculaDTO getMatriculaDTO() {
+		return matriculaDTO;
 	}
 
-	public void setFiltro(Matricula filtro) {
-		this.filtro = filtro;
+	public void setMatriculaDTO(MatriculaDTO matriculaDTO) {
+		this.matriculaDTO = matriculaDTO;
 	}
 
 	public List<Instituicao> getInstituicoes() {

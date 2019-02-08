@@ -93,7 +93,7 @@ public class Estudante implements Serializable {
 
     @Override
     public String toString() {
-        return "Estudante: " + pessoa.toString();
+        return pessoa.toString();
     }
 
 }
