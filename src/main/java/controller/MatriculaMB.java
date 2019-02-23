@@ -150,6 +150,7 @@ public class MatriculaMB implements Serializable {
 
     public void enviarParaAprovacao(){
         try {
+            salvar();
             matriculaService.enviarParaAprovacao(matricula);
             Messages.addInfo(null, "Matrícula enviada para aprovação com sucesso!");
             Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
