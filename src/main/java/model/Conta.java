@@ -1,10 +1,7 @@
 package model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Table(schema = "financeiro", name = "conta")

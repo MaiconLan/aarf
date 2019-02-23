@@ -28,20 +28,24 @@ public class PrestacaoContaMB implements Serializable {
     @Inject
     private InstituicaoService instituicaoService;
 
-    private PrestacaoContaDTO prestacaoContaDTO = new PrestacaoContaDTO();
     @Inject
     private PrestacaoContaService prestacaoContaService;
+
     @Inject
+    private PrestacaoContaAnexoMB prestacaoContaAnexoMB;
+
     private InstituicaoDTO instituicaoDTO;
+
+    private PrestacaoContaDTO prestacaoContaDTO;
 
     private Instituicao instituicao;
     private List<PrestacaoConta> prestacoes;
     private List<Instituicao> instituicoes;
-    private PrestacaoContaAnexoMB prestacaoContaAnexoMB;
     private PrestacaoConta prestacaoConta;
 
     @PostConstruct
     public void init(){
+        instituicaoDTO = new InstituicaoDTO();
         newPrestacaoConta();
         carregarInstituicoes();
     }
@@ -53,11 +57,6 @@ public class PrestacaoContaMB implements Serializable {
     public void salvar(){
         try{
             prestacaoContaService.salvarPrestacao(prestacaoConta);
-/*
-            byte foto[] = event.getFile().getContents();
-            String encoded = Base64.getEncoder().encodeToString(foto);
-            prestacaoContaAnexoMB.salvarAnexos(encoded, event.getFile().getFileName());
-            */
             Messages.addInfo(null, "Prestação realizada com sucesso");
         }catch(Exception e){
             e.printStackTrace();
