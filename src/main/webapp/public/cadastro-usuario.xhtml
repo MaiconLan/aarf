@@ -29,73 +29,63 @@
                     <div id="landing-nav" class="sidebar-nav">
                         <ul id="landing-sidebar-container" class="sidebar-nav-container">
                             <li class="sidebar-menuitem">
-                                <a href="../public/promotion-page.xhtml" class="menuLink">
+                                <a href="/aarf" class="menuLink">
                                     <div class="tablet-view">
                                         <span class="menu-text">Home</span>
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     </div>
                                 </a>
                             </li>
-                            <li class="sidebar-menuitem">
-                                <a href="promotion-page.xhtml#landing-slogan" class="menuLink">
-                                    <div class="tablet-view">
-                                        <span class="menu-text">Slogan</span>
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </div>
-                                </a>
-                            </li>
+
                             <li class="sidebar-menuitem">
                                 <a href="promotion-page.xhtml#landing-feature" class="menuLink">
                                     <div class="tablet-view">
-                                        <span class="menu-text">Features</span>
+                                        <span class="menu-text">Notícias</span>
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     </div>
                                 </a>
                             </li>
-                            <li class="sidebar-menuitem">
-                                <a href="promotion-page.xhtml#landing-promotion" class="menuLink">
-                                    <div class="tablet-view">
-                                        <span class="menu-text">Promotion</span>
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </div>
-                                </a>
-                            </li>
+
                             <li class="sidebar-menuitem">
                                 <a href="promotion-page.xhtml#landing-pricing" class="menuLink">
                                     <div class="tablet-view">
-                                        <span class="menu-text">Pricing</span>
+                                        <span class="menu-text">Contato</span>
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     </div>
                                 </a>
                             </li>
+
                             <li class="sidebar-menuitem">
-                                <a href="/login.xhtml" class="menuLink">
-                                    <div class="tablet-view">
-                                        <span class="menu-text">Login</span>
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </div>
-                                </a>
+                                <p:outputPanel id="linkRedirecionarLoginMob"
+                                               rendered="#{!identity.isLogado()}">
+                                    <a href="/aarf/login" class="menuLink">
+                                        <div class="tablet-view">
+                                            <span class="menu-text">Login</span>
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </p:outputPanel>
                             </li>
                             <li class="sidebar-menuitem">
-                                <div class="tablet-view">
-                                    <p:commandLink id="acessarSistema"
-                                                   styleClass="menuLink"
-                                                   value="Acessar Sistema">
-                                        <i class="fa fa-angle-right" aria-hidden="true"/>
-                                    </p:commandLink>
-                                </div>
+                                <p:outputPanel id="linkRedirecionarSistemaMob"
+                                               rendered="#{identity.isLogado()}">
+                                    <a href="/aarf/security/dashboard" class="menuLink">
+                                        <div class="tablet-view">
+                                            <span class="menu-text">Acessar Sistema</span>
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </div>
+                                    </a>
+                                </p:outputPanel>
                             </li>
                         </ul>
                     </div>
 
                     <div class="landing-nav-bar">
                         <ul>
-                            <li><a href="promotion-page.xhtml">Home</a></li>
-                            <li><a class="nav" href="promotion-page.xhtml#landing-slogan">Slogan</a></li>
-                            <li><a href="promotion-page.xhtml#landing-feature">Features</a></li>
-                            <li><a href="promotion-page.xhtml#landing-promotion">Promotion</a></li>
-                            <li><a href="promotion-page.xhtml#landing-pricing">Pricing</a></li>
-                            <li><a href="promotion-page.xhtml#landing-video">Video</a></li>
+                            <li><a href="">Home</a></li>
+                            <li><a class="nav" href="promotion-page.xhtml#landing-feature">Notícia</a></li>
+                            <li><a href="promotion-page.xhtml#landing-promotion">Contato</a></li>
+
                             <li>
                                 <p:link id="linkRedirecionarLogin"
                                         rendered="#{!identity.isLogado()}"

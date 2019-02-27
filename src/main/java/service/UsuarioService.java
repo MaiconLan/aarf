@@ -2,6 +2,7 @@ package service;
 
 import dto.UsuarioDTO;
 import exception.LoginException;
+import exception.UsuarioException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
@@ -26,4 +27,6 @@ public interface UsuarioService {
     List<Perfil> buscarPerfis() throws NullPointerException, PersistenceException, Exception;
 
     List<Usuario> buscarUsuarios(UsuarioDTO usuarioDTO);
+
+    void recuperarSenha(String email, String cpf) throws UsuarioException, LoginException;
 }
