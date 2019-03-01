@@ -3,16 +3,23 @@ package business;
 import dao.UsuarioDAO;
 import dto.UsuarioDTO;
 import exception.LoginException;
+import exception.UsuarioException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
+import net.bytebuddy.implementation.bytecode.Throw;
+import org.apache.commons.mail.EmailException;
+import org.omnifaces.util.Messages;
 import utils.Criptografia;
+import utils.EmailUtils;
+import utils.StringUtils;
 
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.UUID;
 
 public class UsuarioBusiness {
 
@@ -89,4 +96,31 @@ public class UsuarioBusiness {
         return usuarioDAO.buscarLogins(loginDTO);
     }
 
+    public void recuperarSenha(String email, String cpf) throws UsuarioException, LoginException {
+        if(!(email != null && cpf != null) && !(email.isEmpty() && cpf.isEmpty()))
+            throw new UsuarioException("É necessário informar o CPF ou E-mail para recuperar a senha");
+
+        cpf = StringUtils.removerCaracteres(cpf);
+        Usuario usuario = usuarioDAO.buscarUsuarioByCpfEmail(email, cpf);
+
+        if(usuario == null)
+            throw new UsuarioException("Usuário com este CPF ou E-mail não encontrado");
+
+        String senha = UUID.randomUUID().toString().substring(0, 7);
+        String titulo = "Recuperação de login e senha";
+        String mensagem = "Olá, seu login é <strong>" + usuario.getLogin() + "</strong> e sua nova senha é <strong>" + senha + "</strong>. " +
+                        "Para manter a segurança dos seus dados, altere a sua senha ao realizar o login novamente.";
+        String destinatario = usuario.getEstudante().getPessoa().getEmail();
+
+        usuario.setSenha(senha);
+        usuario.setAlterarLogin(true);
+        salvar(usuario);
+
+        try {
+            EmailUtils.enviarHtmlEmail(titulo, mensagem, destinatario);
+        } catch (EmailException e) {
+            Messages.addError(null, "Não foi possível enviar E-mail com novas credenciais");
+            e.printStackTrace();
+        }
+    }
 }

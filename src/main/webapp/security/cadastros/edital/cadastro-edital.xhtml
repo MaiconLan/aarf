@@ -33,7 +33,7 @@
                             <div class="ui-g-6 ui-md-3  ui-lg-3">
                                 <p:inputText id="titulo"
                                              required="true"
-                                             requiredMessage="Campo obrigatório"
+                                             requiredMessage="Campo título obrigatório"
                                              placeholder="Título"
                                              disabled="#{editalMB.isFinalizado()}"
                                              value="#{editalMB.edital.titulo}"/>
@@ -47,7 +47,7 @@
                                             pattern="dd/MM/yyyy"
                                             placeholder="Inicio"
                                             disabled="#{editalMB.isFinalizado()}"
-                                            requiredMessage="Campo obrigatório"
+                                            requiredMessage="Campo início obrigatório"
                                             converter="localDateConverter">
                                     <p:ajax event="dateSelect" update="termino"/>
                                     <p:ajax event="change" update="termino"/>
@@ -64,7 +64,7 @@
                                             pattern="dd/MM/yyyy"
                                             placeholder="Termino"
                                             disabled="#{editalMB.isFinalizado()}"
-                                            requiredMessage="Campo obrigatório"
+                                            requiredMessage="Campo término obrigatório"
                                             converter="localDateConverter"/>
                             </div>
                         </div>

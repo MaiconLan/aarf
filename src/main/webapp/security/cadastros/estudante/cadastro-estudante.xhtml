@@ -38,6 +38,7 @@
                                 <p:inputText id="nome"
                                              required="true"
                                              placeholder="Nome"
+                                             requiredMessage="Campo nome obrigatório"
                                              value="#{estudanteMB.estudante.pessoa.nome}" />
                             </div>
 
@@ -49,12 +50,14 @@
                                             showOn="button"
                                             pattern="dd/MM/yyyy"
                                             placeholder="Nascimento"
+                                            requiredMessage="Campo nascimento obrigatório"
                                             converter="localDateConverter" />
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:selectOneRadio id="genero"
                                                   required="true"
+                                                  requiredMessage="Campo gênero obrigatório"
                                                   value="#{estudanteMB.estudante.pessoa.genero}">
                                     <f:selectItem itemLabel="Masculino" itemValue="M" />
                                     <f:selectItem itemLabel="Feminino" itemValue="F" />
@@ -68,6 +71,7 @@
                                              required="true"
                                              mask="999.999.999-99"
                                              placeholder="CPF"
+                                             requiredMessage="Campo CPF obrigatório"
                                              value="#{estudanteMB.estudante.pessoa.cpf}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -75,6 +79,7 @@
                                              required="true"
                                              mask="9.999.999"
                                              placeholder="RG"
+                                             requiredMessage="Campo RG obrigatório"
                                              value="#{estudanteMB.estudante.pessoa.rg}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -82,6 +87,7 @@
                                              required="true"
                                              mask="(99) 9999-9999"
                                              placeholder="Telefone (Fixo)"
+                                             requiredMessage="Campo telefone obrigatório"
                                              value="#{estudanteMB.estudante.pessoa.telefone}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -89,6 +95,7 @@
                                              required="true"
                                              mask="(99) 9 9999-9999"
                                              placeholder="Celular"
+                                             requiredMessage="Campo celular obrigatório"
                                              value="#{estudanteMB.estudante.pessoa.celular}" />
                             </div>
                         </div>
@@ -98,6 +105,7 @@
                                 <p:inputText id="email"
                                              required="true"
                                              placeholder="E-mail"
+                                             requiredMessage="Campo e-mail obrigatório"
                                              value="#{estudanteMB.estudante.pessoa.email}" />
                             </div>
                         </div>
@@ -116,14 +124,18 @@
                                 </div>
                                 <div class="ui-g-12 ui-md-4 ui-lg-3">
                                     <p:inputMask id="cep"
+                                                 required="true"
                                                  placeholder="CEP"
                                                  mask="99 999-999"
+                                                 requiredMessage="Campo CEP obrigatório"
                                                  value="#{estudanteMB.estudante.pessoa.endereco.cep}" />
                                 </div>
 
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:inputText id="logradouro"
                                                  placeholder="Rua"
+                                                 required="true"
+                                                 requiredMessage="Campo rua obrigatório"
                                                  value="#{estudanteMB.estudante.pessoa.endereco.logradouro}" />
                                 </div>
 
@@ -137,7 +149,9 @@
 
                                 <div class="ui-g-12 ui-md-6 ui-lg-2">
                                     <p:inputText id="bairro"
+                                                 required="true"
                                                  placeholder="Bairro"
+                                                 requiredMessage="Campo bairro obrigatório"
                                                  value="#{estudanteMB.estudante.pessoa.endereco.bairro}" />
                                 </div>
                             </div>
@@ -150,6 +164,7 @@
                                                  converter="omnifaces.SelectItemsConverter"
                                                  filter="true"
                                                  required="true"
+                                                 requiredMessage="Campo instituição obrigatório"
                                                  placeholder="Instituição de Ensino">
                                     <f:selectItem itemLabel="Selecione uma Instituição" noSelectionOption="true"/>
                                     <f:selectItems var="instituicao"
@@ -178,6 +193,7 @@
                                     <p:inputText id="usuario"
                                                  required="true"
                                                  placeholder="Login"
+                                                 requiredMessage="Campo login obrigatório"
                                                  disabled="#{estudanteMB.desabilitarAlteracaoLogin}"
                                                  value="#{estudanteMB.estudante.usuario.login}" />
                                 </div>
@@ -185,6 +201,7 @@
                                     <p:password id="senha"
                                                 required="true"
                                                 placeholder="Senha"
+                                                requiredMessage="Campo senha obrigatório"
                                                 disabled="#{estudanteMB.desabilitarAlteracaoLogin}"
                                                 value="#{estudanteMB.estudante.usuario.senha}" />
                                 </div>

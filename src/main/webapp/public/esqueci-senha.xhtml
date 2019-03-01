@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    </f:facet>
+    <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/icarus-layout/images/logo2.png"/>
+    <title>AARF - Recuperação de senha</title>
+</h:head>
+
+<h:body styleClass="containerLogin">
+    <div class="logo-container">
+        <h:graphicImage name="images/logo3branca.fw.png" id="PageLogo" library="icarus-layout"/>
+    </div>
+    <div class="ui-g">
+
+        <p:panel id="panelLogin" header="Recuperação de senha" styleClass="panel-login">
+            <ui:include src="/template/loading.xhtml" />
+            <p:messages id="messages" autoUpdate="true"/>
+
+            <h:form id="formRecuperacao">
+                <div class="ui-g-12" style="padding-top:35px;">
+                    <p:outputLabel value="Insira o seu CPF ou seu E-mail para recuperar a sua senha!"/>
+                </div>
+                <div class="ui-g-12" style="padding-top:35px;">
+                    <p:inputText id="email"
+                                 value="#{recuperacaoSenhaMB.email}"
+                                 placeholder="Seu E-mail"
+                                 style="width:60%;"/><br/>
+                </div>
+                <div class="ui-g-12" style="padding-top:10px;">
+                    <p:inputMask id="cpf"
+                                 mask="999.999.999-99"
+                                 value="#{recuperacaoSenhaMB.cpf}"
+                                 placeholder="Seu CPF"
+                                 style="width:60%;"/><br/>
+                </div>
+                <div class="ui-g-2"></div>
+                <div class="ui-g-8 login-input-container">
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                        <p:link id="criarUsuario"
+                                href="/public/cadastro-usuario.xhtml"
+                                styleClass="link-decoration"
+                                value="Cadastrar-se" />
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-6">
+                        <p:link id="acessarLogin"
+                                href="/login.xhtml"
+                                styleClass="link-decoration"
+                                value="Login" />
+                    </div>
+                </div>
+                <div class="ui-fluid ui-g-12">
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <p:commandButton id="recuperarButton"
+                                         value="Recuperar"
+                                         process="formRecuperacao"
+                                         update="formRecuperacao"
+                                         action="#{recuperacaoSenhaMB.recuperarSenha()}"/>
+                    </div>
+                </div>
+            </h:form>
+        </p:panel>
+    </div>
+
+
+    <style type="text/css">
+        html {height: 100%;}
+        .ui-button-text, .ui-button-text-only .ui-button-text{padding:8px !important; transition:none !important;}
+        .ui-panel .ui-panel-title {font-size: 17px;}
+    </style>
+
+    <h:outputStylesheet name="css/layout.css" library="icarus-layout" />
+</h:body>
+
+</html>

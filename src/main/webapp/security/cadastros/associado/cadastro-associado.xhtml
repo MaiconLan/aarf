@@ -36,6 +36,7 @@
                                 <p:inputText id="nome"
                                              required="true"
                                              placeholder="Nome"
+                                             requiredMessage="Campo nome obrigatório"
                                              value="#{associadoMB.associado.pessoa.nome}" />
                             </div>
 
@@ -47,12 +48,14 @@
                                             pattern="dd/MM/yyyy"
                                             placeholder="Nascimento"
                                             converter="localDateConverter"
+                                            requiredMessage="Campo nascimento obrigatório"
                                             showOn="button"/>
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:selectOneRadio id="genero"
                                                   required="true"
+                                                  requiredMessage="Campo gênero obrigatório"
                                                   value="#{associadoMB.associado.pessoa.genero}">
                                     <f:selectItem itemLabel="Masculino" itemValue="M" />
                                     <f:selectItem itemLabel="Feminino" itemValue="F" />
@@ -66,6 +69,7 @@
                                              required="true"
                                              mask="999.999.999-99"
                                              placeholder="CPF"
+                                             requiredMessage="Campo CPF obrigatório"
                                              value="#{associadoMB.associado.pessoa.cpf}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -73,6 +77,7 @@
                                              required="true"
                                              mask="9.999.999"
                                              placeholder="RG"
+                                             requiredMessage="Campo RG obrigatório"
                                              value="#{associadoMB.associado.pessoa.rg}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -80,6 +85,7 @@
                                              required="true"
                                              mask="(99) 9999-9999"
                                              placeholder="Telefone (Fixo)"
+                                             requiredMessage="Campo telefone obrigatório"
                                              value="#{associadoMB.associado.pessoa.telefone}" />
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
@@ -87,6 +93,7 @@
                                              required="true"
                                              mask="(99) 9 9999-9999"
                                              placeholder="Celular"
+                                             requiredMessage="Campo celular obrigatório"
                                              value="#{associadoMB.associado.pessoa.celular}" />
                             </div>
                         </div>
@@ -96,6 +103,7 @@
                                 <p:inputText id="email"
                                              required="true"
                                              placeholder="E-mail"
+                                             requiredMessage="Campo e-mail obrigatório"
                                              value="#{associadoMB.associado.pessoa.email}" />
                             </div>
 
@@ -103,6 +111,7 @@
                                 <p:selectOneMenu  id="cargo"
                                                   title="Cargo"
                                                   required="true"
+                                                  requiredMessage="Campo cargo obrigatório"
                                                   converter="omnifaces.SelectItemsConverter"
                                                   value="#{associadoMB.associado.cargo}">
                                     <f:selectItem itemLabel="Selecione Cargo" />
@@ -128,12 +137,16 @@
                                     <p:inputMask id="cep"
                                                  placeholder="CEP"
                                                  mask="99 999-999"
+                                                 required="true"
+                                                 requiredMessage="Campo CEP obrigatório"
                                                  value="#{associadoMB.associado.pessoa.endereco.cep}" />
                                 </div>
 
                                 <div class="ui-g-12 ui-md-6 ui-lg-3">
                                     <p:inputText id="logradouro"
                                                  placeholder="Rua"
+                                                 required="true"
+                                                 requiredMessage="Campo rua obrigatório"
                                                  value="#{associadoMB.associado.pessoa.endereco.logradouro}" />
                                 </div>
 
@@ -148,6 +161,8 @@
                                 <div class="ui-g-12 ui-md-6 ui-lg-2">
                                     <p:inputText id="bairro"
                                                  placeholder="Bairro"
+                                                 required="true"
+                                                 requiredMessage="Campo bairro obrigatório"
                                                  value="#{associadoMB.associado.pessoa.endereco.bairro}" />
                                 </div>
                             </div>
@@ -171,6 +186,7 @@
                                     <p:inputText id="usuario"
                                                  required="true"
                                                  placeholder="Login"
+                                                 requiredMessage="Campo Login obrigatório"
                                                  disabled="#{associadoMB.desabilitarAlteracaoLogin}"
                                                  value="#{associadoMB.associado.usuario.login}" />
                                 </div>
@@ -178,6 +194,7 @@
                                     <p:password id="senha"
                                                 required="true"
                                                 placeholder="Senha"
+                                                requiredMessage="Campo senha obrigatório"
                                                 disabled="#{associadoMB.desabilitarAlteracaoLogin}"
                                                 value="#{associadoMB.associado.usuario.senha}" />
                                 </div>

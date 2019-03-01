@@ -7,6 +7,7 @@ import model.Regra;
 import model.Usuario;
 import utils.Criptografia;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -136,4 +137,31 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
         return sql.toString();
     }
 
+    public Usuario buscarUsuarioByCpfEmail(String email, String cpf) {
+        StringBuilder sql = new StringBuilder();
+
+        sql.append("SELECT u FROM Usuario u ");
+        sql.append("JOIN u.estudante.pessoa p ");
+        sql.append("WHERE 1=1 ");
+
+        if(email != null && !email.isEmpty())
+            sql.append("AND p.email = :email ");
+
+        if(cpf != null && !cpf.isEmpty())
+            sql.append("AND p.cpf = :cpf ");
+
+        Query query = em.createQuery(sql.toString());
+
+        if(email != null && !email.isEmpty())
+            query.setParameter("email", email);
+
+        if(cpf != null && !cpf.isEmpty())
+            query.setParameter("cpf", cpf);
+
+        try {
+            return (Usuario) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 }
