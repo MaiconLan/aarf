@@ -238,6 +238,7 @@
                 <version>2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>/opt/tomcat/webapps</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
