@@ -6,7 +6,7 @@
 
     <groupId>aarf</groupId>
     <artifactId>aarf</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>war</packaging>
     <name>AARF</name>
 
@@ -238,6 +238,7 @@
                 <version>2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>/opt/tomcat/webapps</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

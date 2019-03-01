@@ -3,6 +3,7 @@ package service;
 import business.UsuarioBusiness;
 import dto.UsuarioDTO;
 import exception.LoginException;
+import exception.UsuarioException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
@@ -55,5 +56,10 @@ public class UsuarioServiceImpl implements UsuarioService, Serializable {
     @Override
     public List<Usuario> buscarUsuarios(UsuarioDTO usuarioDTO) {
         return null;
+    }
+
+    @Override
+    public void recuperarSenha(String email, String cpf) throws UsuarioException, LoginException {
+        usuarioBusiness.recuperarSenha(email, cpf);
     }
 }
