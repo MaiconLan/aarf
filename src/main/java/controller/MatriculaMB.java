@@ -63,6 +63,8 @@ public class MatriculaMB implements Serializable {
 
     private List<Instituicao> instituicoes = new ArrayList();
 
+    private List<Matricula> matriculas = new ArrayList<>();
+
     @Inject
     @Param
     private Long idEdital;
@@ -71,6 +73,11 @@ public class MatriculaMB implements Serializable {
     public void init() {
         carregarMatricula();
         carregarEdital();
+        listarMatriculas();
+    }
+
+    private void listarMatriculas() {
+        matriculas = matriculaService.listarMatriculasByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
     }
 
     private void carregarListaEditais() {
@@ -89,7 +96,7 @@ public class MatriculaMB implements Serializable {
 
     public void carregarMatricula() {
         if(identity.isUsuarioEstudante()){
-            matricula = matriculaService.obterMatricula(identity.getUsuario().getEstudante().getIdEstudante());
+            matricula = matriculaService.obterMatriculaByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
 
             if(matricula == null) {
                 matricula = new Matricula();
@@ -102,6 +109,18 @@ public class MatriculaMB implements Serializable {
             Messages.addError(null, "Apenas estudantes podem realizar a matrícula!");
         }
 
+        matriculaAnexoMB.setMatricula(matricula);
+    }
+
+    public void selecionarMatricula(){
+        if(matricula != null) {
+            matricula = matriculaService.obterMatriculaById(matricula.getIdMatricula());
+            viagens = matricula.getViagens();
+            idEdital = matricula.getEdital().getIdEdital();
+        } else {
+            matricula = new Matricula();
+            matricula.setEstudante(identity.getUsuario().getEstudante());
+        }
         matriculaAnexoMB.setMatricula(matricula);
     }
 
@@ -186,6 +205,11 @@ public class MatriculaMB implements Serializable {
 
     public boolean renderizarCamposMatriculaSalva(){
         return matricula.getIdMatricula() != null;
+    }
+
+    public boolean renderizarSelecionarMatricula(){
+        return false;
+        // return matriculas != null && !matriculas.isEmpty();
     }
 
     private void enviarEmail(){
@@ -308,5 +332,13 @@ public class MatriculaMB implements Serializable {
 
     public void setListaEditais(List<Edital> listaEditais) {
         this.listaEditais = listaEditais;
+    }
+
+    public List<Matricula> getMatriculas() {
+        return matriculas;
+    }
+
+    public void setMatriculas(List<Matricula> matriculas) {
+        this.matriculas = matriculas;
     }
 }

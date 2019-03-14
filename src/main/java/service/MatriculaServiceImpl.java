@@ -37,8 +37,13 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 	}
 
 	@Override
-	public Matricula obterMatricula(Long idEstudante) {
-		return matriculaBusiness.obterMatricula(idEstudante);
+	public List<Matricula> listarMatriculasByIdEstudante(Long idEstudante) {
+		return matriculaDAO.listarMatriculasByIdEstudante(idEstudante);
+	}
+
+	@Override
+	public Matricula obterMatriculaByIdEstudante(Long idEstudante) {
+		return matriculaBusiness.obterMatriculaByIdEstudante(idEstudante);
 	}
 
 	@Override
@@ -49,6 +54,11 @@ public class MatriculaServiceImpl implements MatriculaService, Serializable {
 	@Override
 	public List<Matricula> listarMatriculasEmAprovacao(MatriculaDTO matriculaDTO) {
 		return matriculaDAO.listarMatriculasEmAprovacao(matriculaDTO);
+	}
+
+	@Override
+	public Matricula obterMatriculaById(Long idMatricula) {
+		return matriculaDAO.findById(idMatricula);
 	}
 
 	@Override
