@@ -25,7 +25,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         return query.getResultList();
     }
 
-    public Matricula obterMatricula(Long idEstudante) {
+    public Matricula obterMatriculaByIdEstudante(Long idEstudante) {
         StringBuilder sql = new StringBuilder();
 
         sql.append("SELECT m FROM Matricula m ");
@@ -46,13 +46,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
     }
 
     public List<Matricula> listarMatriculasEmAprovacao(MatriculaDTO matriculaDTO) {
-        StringBuilder sql = new StringBuilder();
-
-        sql.append("SELECT matricula FROM Matricula matricula ");
-        sql.append("JOIN matricula.estudante estudante ");
-        sql.append("JOIN matricula.edital edital ");
-        sql.append("JOIN estudante.instituicao instituicao ");
-        sql.append("LEFT JOIN matricula.cancelamento cancelamento ");
+        StringBuilder sql = getSqlObterMatricula();
         sql.append("WHERE matricula.situacao = :situacao ");
         sql.append("AND cancelamento.idCancelamento IS NULL ");
 
@@ -68,5 +62,26 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
 
 
         return query.getResultList();
+    }
+
+    public List<Matricula> listarMatriculasByIdEstudante(Long idEstudante) {
+        StringBuilder sql = getSqlObterMatricula();
+        sql.append("WHERE estudante.idEstudante = :idEstudante ");
+
+        return em.createQuery(sql.toString())
+                .setParameter("idEstudante", idEstudante)
+                .getResultList();
+    }
+
+    private StringBuilder getSqlObterMatricula(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT matricula FROM Matricula matricula ");
+        sql.append("JOIN matricula.estudante estudante ");
+        sql.append("JOIN matricula.edital edital ");
+        sql.append("JOIN estudante.instituicao instituicao ");
+        sql.append("LEFT JOIN matricula.cancelamento cancelamento ");
+
+
+        return sql;
     }
 }

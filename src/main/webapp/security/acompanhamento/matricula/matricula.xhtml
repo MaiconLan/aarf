@@ -14,117 +14,143 @@
                             #{matriculaMB.edital.titulo}</h1>
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-6 ui-lg-12">
-                                <p:outputLabel styleClass="lightBlack" style="font-weight: bold" value="Período de inscrição: "/>
+                                <p:outputLabel styleClass="lightBlack" style="font-weight: bold"
+                                               value="Período de inscrição: "/>
                                 <p class="lightBlack">#{matriculaMB.obterPeriodo()}</p>
                             </div>
                         </div>
-                        <h:form rendered="#{matriculaMB.renderizarCamposMatriculaSalva()}">
+                        <h:form id="formIdMatricula" rendered="#{matriculaMB.renderizarCamposMatriculaSalva()}">
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-6">
-                                    <p:outputLabel styleClass="lightBlack" style="font-weight: bold" value="Código da matrícula: "/>
-                                    <p:outputLabel styleClass="lightBlack" style="font-weight: bold" value="#{matriculaMB.matricula.idMatricula}"/>
+                                    <p:outputLabel styleClass="lightBlack" style="font-weight: bold"
+                                                   value="Código da matrícula: "/>
+                                    <p:outputLabel styleClass="lightBlack" style="font-weight: bold"
+                                                   value="#{matriculaMB.matricula.idMatricula}"/>
                                 </div>
                             </div>
                         </h:form>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:outputLabel for="semestre" value="Semestre Cursando"/>
-                                <p:inputText id="semestre"
-                                             placeholder="Semestre Cursando"
-                                             value="#{matriculaMB.matricula.semestre}"
-                                             disabled="#{matriculaMB.desabilitarCampos()}"/>
-                            </div>
-                        </div>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:outputLabel id="diaSemana" value="Dia da semana"/>
+                        <h:form id="formSelecionarMatricula" rendered="#{matriculaMB.renderizarSelecionarMatricula()}">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-6">
+                                    <p:selectOneMenu id="comboMatriculas"
+                                                     value="#{matriculaMB.matricula}"
+                                                     converter="omnifaces.SelectItemsIndexConverter"
+                                                     filter="true">
+                                        <f:selectItem itemLabel="Matrículas anteriores" noSelectionOption="true"/>
+                                        <f:selectItems var="vMatricula"
+                                                       itemLabel="#{vMatricula}"
+                                                       itemValue="#{vMatricula}"
+                                                       value="#{matriculaMB.matriculas}"/>
+                                        <p:ajax event="change" listener="#{matriculaMB.selecionarMatricula()}"
+                                                process="@this" update="formMatricula formMatricula formAnexo"/>
+                                    </p:selectOneMenu>
 
+                                    <p:outputLabel styleClass="lightBlack" style="font-weight: bold"
+                                                   value="#{matriculaMB.matricula.idMatricula}"/>
+                                </div>
                             </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:outputLabel id="sentido" value="Sentido"/>
-
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:outputLabel id="instituicao" value="Instituição de insino"/>
-
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:outputLabel id="acoes" value="Ações"/>
-                            </div>
-                        </div>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:selectOneMenu id="selectDia"
-                                                 value="#{matriculaMB.viagem.diaSemana}"
-                                                 required="true"
-                                                 requiredMessage="Selecione o dia da viagem"
-                                                 converter="omnifaces.SelectItemsConverter"
-                                                 disabled="#{matriculaMB.desabilitarCampos()}">
-                                    <f:selectItem itemLabel="Selecione o dia" noSelectionOption="true"/>
-                                    <f:selectItems value="#{matriculaMB.obterDiaSemana()}" var="diaSemana"
-                                                   itemLabel="#{diaSemana.descricao}"
-                                                   itemValue="#{diaSemana.descricao}"/>
-
-                                </p:selectOneMenu>
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:selectManyCheckbox id="selectSentido"
-                                                      value="#{matriculaMB.sentido}"
-                                                      required="true"
-                                                      requiredMessage="Selecione o sentido da viagem"
-                                                      disabled="#{matriculaMB.desabilitarCampos()}">
-                                    <f:selectItem itemLabel="Ida" itemValue="Ida"/>
-                                    <f:selectItem itemLabel="Volta" itemValue="Volta"/>
-                                </p:selectManyCheckbox>
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:selectOneMenu id="selectInstituicao"
-                                                 value="#{matriculaMB.viagem.instituicao}"
-                                                 required="true"
-                                                 requiredMessage="Selecione a instituição de ensino destino"
-                                                 converter="omnifaces.SelectItemsIndexConverter"
-                                                 disabled="#{matriculaMB.desabilitarCampos()}">
-                                    <f:selectItem itemLabel="Selecione a instituição" noSelectionOption="true"/>
-                                    <f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao"
-                                                   itemLabel="#{instituicao}" itemValue="#{instituicao}"/>
-                                </p:selectOneMenu>
-                            </div>
-                            <div class="ui-g-12 ui-md-6 ui-lg-1">
-                                <p:commandButton id="adicionar"
-                                                 icon="fa fa-plus"
-                                                 title="Adicionar"
-                                                 styleClass="green-button"
-                                                 update="@form" process="@form"
-                                                 action="#{matriculaMB.salvarViagem()}"
+                        </h:form>
+                        <h:form id="formDadosMatricula">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <p:outputLabel for="semestre" value="Semestre Cursando"/>
+                                    <p:inputText id="semestre"
+                                                 placeholder="Semestre Cursando"
+                                                 value="#{matriculaMB.matricula.semestre}"
                                                  disabled="#{matriculaMB.desabilitarCampos()}"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-12 ui-lg-12">
-                                <p:dataTable id="tableViagens"
-                                             var="viagem"
-                                             value="#{matriculaMB.viagens}">
-                                    <p:column headerText="Ações" width="10%">
-                                        <p:commandButton id="remover"
-                                                         icon="fa fa-remove"
-                                                         styleClass="red-button"
-                                                         update="@form"
-                                                         process="@this"
-                                                         action="#{matriculaMB.removerViagem(viagem)}"
-                                                         disabled="#{matriculaMB.desabilitarCampos()}"/>
-                                    </p:column>
-                                    <p:column headerText="Dia da Semana">
-                                        <p:outputLabel value="#{viagem.diaSemana}"/>
-                                    </p:column>
-                                    <p:column headerText="Sentido">
-                                        <p:outputLabel value="#{viagem.sentido}"/>
-                                    </p:column>
-                                    <p:column headerText="Instituição de Ensino">
-                                        <p:outputLabel value="#{viagem.instituicao.nome}"/>
-                                    </p:column>
-                                </p:dataTable>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <p:outputLabel id="diaSemana" value="Dia da semana"/>
+
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:outputLabel id="sentido" value="Sentido"/>
+
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <p:outputLabel id="instituicao" value="Instituição de insino"/>
+
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:outputLabel id="acoes" value="Ações"/>
+                                </div>
                             </div>
-                        </div>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <p:selectOneMenu id="selectDia"
+                                                     value="#{matriculaMB.viagem.diaSemana}"
+                                                     required="true"
+                                                     requiredMessage="Selecione o dia da viagem"
+                                                     converter="omnifaces.SelectItemsConverter"
+                                                     disabled="#{matriculaMB.desabilitarCampos()}">
+                                        <f:selectItem itemLabel="Selecione o dia" noSelectionOption="true"/>
+                                        <f:selectItems value="#{matriculaMB.obterDiaSemana()}" var="diaSemana"
+                                                       itemLabel="#{diaSemana.descricao}"
+                                                       itemValue="#{diaSemana.descricao}"/>
+
+                                    </p:selectOneMenu>
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <p:selectManyCheckbox id="selectSentido"
+                                                          value="#{matriculaMB.sentido}"
+                                                          required="true"
+                                                          requiredMessage="Selecione o sentido da viagem"
+                                                          disabled="#{matriculaMB.desabilitarCampos()}">
+                                        <f:selectItem itemLabel="Ida" itemValue="Ida"/>
+                                        <f:selectItem itemLabel="Volta" itemValue="Volta"/>
+                                    </p:selectManyCheckbox>
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <p:selectOneMenu id="selectInstituicao"
+                                                     value="#{matriculaMB.viagem.instituicao}"
+                                                     required="true"
+                                                     requiredMessage="Selecione a instituição de ensino destino"
+                                                     converter="omnifaces.SelectItemsIndexConverter"
+                                                     disabled="#{matriculaMB.desabilitarCampos()}">
+                                        <f:selectItem itemLabel="Selecione a instituição" noSelectionOption="true"/>
+                                        <f:selectItems value="#{matriculaMB.instituicoes}" var="instituicao"
+                                                       itemLabel="#{instituicao}" itemValue="#{instituicao}"/>
+                                    </p:selectOneMenu>
+                                </div>
+                                <div class="ui-g-12 ui-md-6 ui-lg-1">
+                                    <p:commandButton id="adicionar"
+                                                     icon="fa fa-plus"
+                                                     title="Adicionar"
+                                                     styleClass="green-button"
+                                                     update="@form" process="@form"
+                                                     action="#{matriculaMB.salvarViagem()}"
+                                                     disabled="#{matriculaMB.desabilitarCampos()}"/>
+                                </div>
+                            </div>
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <p:dataTable id="tableViagens"
+                                                 var="viagem"
+                                                 value="#{matriculaMB.viagens}">
+                                        <p:column headerText="Ações" width="10%">
+                                            <p:commandButton id="remover"
+                                                             icon="fa fa-remove"
+                                                             styleClass="red-button"
+                                                             update="@form"
+                                                             process="@this"
+                                                             action="#{matriculaMB.removerViagem(viagem)}"
+                                                             disabled="#{matriculaMB.desabilitarCampos()}"/>
+                                        </p:column>
+                                        <p:column headerText="Dia da Semana">
+                                            <p:outputLabel value="#{viagem.diaSemana}"/>
+                                        </p:column>
+                                        <p:column headerText="Sentido">
+                                            <p:outputLabel value="#{viagem.sentido}"/>
+                                        </p:column>
+                                        <p:column headerText="Instituição de Ensino">
+                                            <p:outputLabel value="#{viagem.instituicao.nome}"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </div>
+                            </div>
+                        </h:form>
                     </h:form>
                     <h:form id="formAnexo" enctype="multipart/form-data">
 
@@ -146,7 +172,9 @@
 
                                 <div class="ui-g">
                                     <div class="ui-g-6 ui-md-6 ui-lg-4">
-                                        <p:outputLabel styleClass="color: #{anexo.idAnexo == null ? 'Red' : 'Green'} !important;;" value="#{anexo.nome}"/>
+                                        <p:outputLabel
+                                                styleClass="color: #{anexo.idAnexo == null ? 'Red' : 'Green'} !important;;"
+                                                value="#{anexo.nome}"/>
                                     </div>
 
                                     <div class="ui-g-6 ui-md-2 ui-lg-1">
@@ -200,7 +228,9 @@
                                                  action="#{matriculaMB.cancelar()}"
                                                  rendered="#{matriculaMB.renderizarCancelarMatricula()}"
                                                  process="formMatricula formAnexo" update="formMatricula formAnexo">
-                                    <p:confirm header="Cancelar Matrícula" message="Tem certeza que deseja cancelar a matrícula?" icon="ui-icon-alert" />
+                                    <p:confirm header="Cancelar Matrícula"
+                                               message="Tem certeza que deseja cancelar a matrícula?"
+                                               icon="ui-icon-alert"/>
                                 </p:commandButton>
                             </div>
                         </div>
