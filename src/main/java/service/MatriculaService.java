@@ -19,9 +19,13 @@ public interface MatriculaService {
 	
 	List<Matricula> listarMatriculas(Matricula m);
 
-    Matricula obterMatricula(Long idEstudante);
+	List<Matricula> listarMatriculasByIdEstudante(Long idEstudante);
+
+    Matricula obterMatriculaByIdEstudante(Long idEstudante);
 
 	void enviarParaAprovacao(Matricula matricula) throws MatriculaBusinessException;
 
 	List<Matricula> listarMatriculasEmAprovacao(MatriculaDTO matriculaDTO);
+
+	Matricula obterMatriculaById(Long idMatricula);
 }

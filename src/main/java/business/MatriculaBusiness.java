@@ -57,8 +57,8 @@ public class MatriculaBusiness {
        return matriculaDAO.buscarMatriculas(m);
     }
 
-    public Matricula obterMatricula(Long idEstudante) {
-        return matriculaDAO.obterMatricula(idEstudante);
+    public Matricula obterMatriculaByIdEstudante(Long idEstudante) {
+        return matriculaDAO.obterMatriculaByIdEstudante(idEstudante);
     }
 
     public void enviarParaAprovacao(Matricula matricula) throws MatriculaBusinessException {

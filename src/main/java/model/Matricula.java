@@ -185,6 +185,6 @@ public class Matricula  implements Serializable {
 
     @Override
     public String toString() {
-        return estudante.toString() + " - " + situacao;
+        return idMatricula + " - " + estudante.toString() + " - " + situacao;
     }
 }

@@ -194,21 +194,15 @@
                                 <h:panelGroup id="panelEndereco">
                                     <h3 class="lightBlack">Endereço</h3>
                                     <div class="ui-g">
-                                        <div class="ui-g-12 ui-md-2 ui-lg-1">
-                                            <p:commandButton id="consultarEndereco"
-                                                             icon="fa fa-search"
-                                                             styleClass="navy-button"
-                                                             process="panelEndereco"
-                                                             update="panelEndereco"
-                                                             action="#{usuarioMB.consultarCep()}"/>
-
-                                        </div>
-                                        <div class="ui-g-12 ui-md-4 ui-lg-3">
+                                        <div class="ui-g-12 ui-md-6 ui-lg-2">
                                             <p:inputMask id="cep"
+                                                         required="true"
                                                          placeholder="CEP"
                                                          mask="99 999-999"
                                                          requiredMessage="Campo CEP obrigatório"
-                                                         value="#{usuarioMB.estudante.pessoa.endereco.cep}" />
+                                                         value="#{usuarioMB.estudante.pessoa.endereco.cep}" >
+                                                <p:ajax event="change" listener="#{usuarioMB.consultarCep()}" update="panelEndereco"/>
+                                            </p:inputMask>
                                         </div>
 
                                         <div class="ui-g-12 ui-md-6 ui-lg-3">
@@ -220,7 +214,7 @@
 
                                     </div>
                                     <div class="ui-g">
-                                        <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                        <div class="ui-g-12 ui-md-6 ui-lg-5">
                                             <p:inputText id="complemento"
                                                          placeholder="Complemento"
                                                          value="#{usuarioMB.estudante.pessoa.endereco.complemento}" />
@@ -237,7 +231,7 @@
                                 </h:panelGroup>
 
                                 <div class="ui-g">
-                                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-3">
                                         <p:selectOneMenu id="instituicao"
                                                          value="#{usuarioMB.estudante.instituicao}"
                                                          converter="omnifaces.SelectItemsConverter"
