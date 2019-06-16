@@ -1,8 +1,8 @@
 package controller;
 
+import business.AtualizacaoBusiness;
 import model.Atualizacao;
 import org.omnifaces.util.Messages;
-import service.AtualizacaoService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -17,7 +17,7 @@ public class CadastroAtualizacaoMB implements Serializable {
     private static final long serialVersionUID = -5319505388371020513L;
 
     @Inject
-    private AtualizacaoService atualizacaoService;
+    private AtualizacaoBusiness atualizacaoBusiness;
 
     private Atualizacao atualizacao;
 
@@ -28,7 +28,7 @@ public class CadastroAtualizacaoMB implements Serializable {
     }
 
     public void salvar(){
-        atualizacaoService.salvar(atualizacao);
+        atualizacaoBusiness.salvar(atualizacao);
         Messages.addInfo(null, "Atualização salva com sucesso!");
     }
 

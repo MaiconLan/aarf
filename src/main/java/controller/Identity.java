@@ -1,18 +1,20 @@
 package controller;
 
+import business.UsuarioBusiness;
 import enumered.CargoEnum;
 import exception.LoginException;
-import model.*;
+import model.Associado;
+import model.Estudante;
+import model.Regra;
+import model.Usuario;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
-import service.UsuarioService;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.PersistenceException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class Identity implements Serializable {
 	private static final String LOGIN_ERRO_MENSAGEM = "Erro ao efetuar login!";
 
 	@Inject
-	private UsuarioService usuarioService;
+	private UsuarioBusiness usuarioBusiness;
 
 	private Usuario usuario;
 
@@ -46,11 +48,11 @@ public class Identity implements Serializable {
 		String redirect = "";
 		try {
 
-			logado = usuarioService.isValido(usuario);
+			logado = usuarioBusiness.isValido(usuario);
 
 			if (logado) {
-				usuario = usuarioService.logar(usuario);
-				regras = usuarioService.buscarRegras(usuario);
+				usuario = usuarioBusiness.logar(usuario);
+				regras = usuarioBusiness.buscarRegras(usuario);
 				adicionarParametroSessao("usuario", usuario);
 
 				redirect = "security/dashboard.xhtml";

@@ -22,4 +22,8 @@ public class BancoBusiness {
 	public List<Banco> consultaBanco(BancoDTO bancoDTO) {
 		return bancoDAO.consultaBanco(bancoDTO);
 	}
+
+	public List<Banco> listarBancos() {
+		return bancoDAO.list();
+	}
 }

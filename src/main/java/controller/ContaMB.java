@@ -1,17 +1,13 @@
 package controller;
 
+import business.BancoBusiness;
+import business.ContaBusiness;
 import dto.ContaDTO;
 import exception.ContaBusinessException;
-import exception.LoginException;
 import model.Banco;
 import model.Conta;
-import model.Estudante;
-import model.Instituicao;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
-import service.BancoService;
-import service.ContaService;
-import service.EstudanteService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -28,10 +24,10 @@ public class ContaMB implements Serializable {
     private static final long serialVersionUID = 8382542571692876048L;
 
     @Inject
-    private ContaService contaService;
+    private ContaBusiness contaBusiness;
 
     @Inject
-    private BancoService bancoService;
+    private BancoBusiness bancoBusiness;
 
     private Conta conta;
 
@@ -49,7 +45,7 @@ public class ContaMB implements Serializable {
 
     public void salvarConta(){
         try {
-            contaService.salvarConta(conta);
+            contaBusiness.salvarConta(conta);
             Messages.addInfo(null, "Conta salva com sucesso");
             novaConta();
         } catch (ContaBusinessException e) {
@@ -59,7 +55,7 @@ public class ContaMB implements Serializable {
 
     public void inativarConta(){
         try {
-            contaService.inativarConta(conta);
+            contaBusiness.inativarConta(conta);
             Messages.addWarn(null, "Conta inativada com sucesso");
         } catch (ContaBusinessException e) {
             Messages.addWarn(null, e.getMessage());
@@ -68,14 +64,14 @@ public class ContaMB implements Serializable {
     }
 
     public void consultarConta(){
-        listaContas = contaService.consultarConta(contaDTO);
+        listaContas = contaBusiness.consultarConta(contaDTO);
 
         if(listaContas.isEmpty())
             Messages.addWarn(null, "Não foram encontrados resultados.");
     }
 
     public void listarBancos(){
-        listaBancos = bancoService.listarBancos();
+        listaBancos = bancoBusiness.listarBancos();
 
         if(listaContas.isEmpty())
             Messages.addWarn(null, "Não foram encontrados resultados.");

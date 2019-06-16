@@ -3,8 +3,6 @@ package controller;
 import enumered.TipoAnexoEnum;
 import model.Anexo;
 import model.PrestacaoConta;
-import service.AnexoService;
-import service.PrestacaoContaService;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;

@@ -1,17 +1,20 @@
 package controller;
 
 
+import business.InstituicaoBusiness;
+import business.MatriculaBusiness;
+import business.ViagemBusiness;
 import dto.FiltroViagemDTO;
 import dto.MatriculaDTO;
-import model.*;
+import model.Anexo;
+import model.Estudante;
+import model.Instituicao;
+import model.Matricula;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.mail.EmailException;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
-import service.InstituicaoService;
-import service.MatriculaService;
-import service.ViagemService;
 import utils.EmailUtils;
 
 import javax.annotation.PostConstruct;
@@ -29,13 +32,13 @@ public class MatriculaAprovacaoMB implements Serializable {
 	private static final long serialVersionUID = -7785394172005232068L;
 
 	@Inject
-	private MatriculaService matriculaService;
+	private MatriculaBusiness matriculaBusiness;
 	
 	@Inject
-	private ViagemService viagemService;
+	private ViagemBusiness viagemBusiness;
     
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
 	
     private List<Instituicao> instituicoes;
 	private List<Matricula> listMatricula;
@@ -67,7 +70,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 	}
 	
 	public void reprovarMatricula() {
-		matriculaService.cancelarMatricula(matriculaSelecionada, motivoCancelamento);
+		matriculaBusiness.cancelarMatricula(matriculaSelecionada, motivoCancelamento);
 		enviarEmail(matriculaSelecionada);
 		Messages.addInfo(null, "Matricula reprovada com sucesso!");
 		buscarMatriculas();
@@ -88,7 +91,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 	}
 
 	public void aprovarMatricula(Matricula matricula) {
-		matriculaService.aprovarMatricula(matricula);
+		matriculaBusiness.aprovarMatricula(matricula);
 		enviarEmail(matricula);
 		Messages.addInfo(null, "Matricula aprovada com sucesso!");
 		buscarMatriculas();
@@ -148,7 +151,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 	}
 
 	private void carregarInstituicoes(){
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
 	
 	public void consultarDetalhes(Matricula m) {
@@ -158,7 +161,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 		filtroViagemDTO.setIdEdital(m.getEdital().getIdEdital());		
 		filtroViagemDTO.setIdMatricula(m.getIdMatricula());		
 		
-		this.matriculaSelecionada.setViagens(viagemService.buscarViagens(filtroViagemDTO));
+		this.matriculaSelecionada.setViagens(viagemBusiness.buscarViagens(filtroViagemDTO));
 		RequestContext.getCurrentInstance().update("modalDetalhesEstudante");
 		RequestContext.getCurrentInstance().execute("PF('modalDetalhesEstudante').show();");
 	}
@@ -168,7 +171,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 	}
 	
 	public void buscarMatriculas(){
-		 this.listMatricula = matriculaService.listarMatriculasEmAprovacao(matriculaDTO);
+		 this.listMatricula = matriculaBusiness.listarMatriculasEmAprovacao(matriculaDTO);
 	}
 
 	public List<Matricula> getListMatricula() {

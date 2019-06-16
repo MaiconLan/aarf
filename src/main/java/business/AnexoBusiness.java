@@ -14,4 +14,11 @@ public class AnexoBusiness {
         anexoDAO.removerMatriculaAnexo(anexo, idMatricula);
     }
 
+    public void salvarAnexo(Anexo anexo) {
+        anexoDAO.save(anexo);
+    }
+
+    public void remover(Anexo anexo) {
+        anexoDAO.remove(anexo.getIdAnexo());
+    }
 }

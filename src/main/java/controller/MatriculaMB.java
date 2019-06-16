@@ -14,9 +14,6 @@ import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FileUploadEvent;
-import service.EditalService;
-import service.InstituicaoService;
-import service.MatriculaService;
 import utils.EmailUtils;
 
 import javax.annotation.PostConstruct;

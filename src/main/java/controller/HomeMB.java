@@ -1,6 +1,7 @@
 package controller;
 
-import service.NoticiaService;
+import business.NoticiaBusiness;
+import model.Noticia;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -10,8 +11,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Noticia;
-
 
 @ViewScoped
 @Named("homeMB")
@@ -20,7 +19,7 @@ public class HomeMB  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     @Inject
-    private NoticiaService noticiaService;
+    private NoticiaBusiness noticiaBusiness;
     
     private Noticia noticia;
     
@@ -34,7 +33,7 @@ public class HomeMB  implements Serializable {
     }
     
     private void carregarNoticias() {
-    	noticias = noticiaService.listarNoticias(this.noticia);
+    	noticias = noticiaBusiness.listarNoticias(this.noticia);
     }
 
 	public List<Noticia> getNoticias() {

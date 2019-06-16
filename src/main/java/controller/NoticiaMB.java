@@ -9,10 +9,7 @@ import model.Noticia;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 
-import enumered.CargoEnum;
 import enumered.SerevidadeEnum;
-import service.InstituicaoService;
-import service.NoticiaService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -20,7 +17,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @ViewScoped

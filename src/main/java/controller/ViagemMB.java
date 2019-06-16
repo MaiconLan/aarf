@@ -10,9 +10,6 @@ import model.Viagem;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
-import service.EditalService;
-import service.InstituicaoService;
-import service.ViagemService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;

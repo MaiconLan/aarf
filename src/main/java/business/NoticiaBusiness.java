@@ -36,7 +36,8 @@ public class NoticiaBusiness {
         dao.update(n);
     }
     
-    public List<Noticia> consultarNoticias(Noticia noticia) {
+    public List<Noticia> listarNoticias(Noticia noticia) {
         return dao.consultaNoticia(noticia);
-    }	
+    }
+
 }

@@ -1,21 +1,21 @@
 package business;
 
-import java.util.List;
+import dao.CidadeDAO;
+import dao.InstituicaoDAO;
+import dto.InstituicaoDTO;
+import model.Cidade;
+import model.Instituicao;
 
 import javax.inject.Inject;
-
-import dao.InstituicaoDAO;
-import dto.EstudanteDTO;
-import dto.InstituicaoDTO;
-import model.Estudante;
-import model.Instituicao;
-import model.Pessoa;
-import utils.StringUtils;
+import java.util.List;
 
 public class InstituicaoBusiness {
 
 	@Inject
 	private InstituicaoDAO instituicaoDAO;
+	
+	@Inject
+	private CidadeDAO cidadeDAO;
 	
 	public void salvar(Instituicao instituicao) {
 		if(instituicao.getIdInstituicao() == null)
@@ -36,4 +36,16 @@ public class InstituicaoBusiness {
     public List<Instituicao> obterInstituicoes() {
 		return instituicaoDAO.obterInstituicoes();
     }
+
+    public List<Cidade> obterCidades() {
+		return cidadeDAO.list();
+    }
+
+	public List<Instituicao> obterInstuicoesFinanceiras() {
+		return instituicaoDAO.obterInstituicoesFinanceiras();
+	}
+
+	public List<Instituicao> obterInstituicoesEnsino() {
+		return instituicaoDAO.obterInstituicoesEnsino();
+	}
 }

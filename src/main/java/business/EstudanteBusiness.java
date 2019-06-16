@@ -5,14 +5,12 @@ import dto.EstudanteDTO;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
 import model.*;
-import service.UsuarioService;
 import utils.StringUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Stateless
@@ -22,13 +20,13 @@ public class EstudanteBusiness {
     private EstudanteDAO estudanteDAO;
 
     @Inject
-    private UsuarioService usuarioService;
+    private UsuarioBusiness usuarioBusiness;
 
     public void salvarEstudante(Estudante estudante) throws EstudanteBusinessException, LoginException {
         validarSalvarEstudante(estudante);
 
         removerCaracteres(estudante.getPessoa());
-        usuarioService.salvarUsuario(estudante.getUsuario());
+        usuarioBusiness.salvar(estudante.getUsuario());
 
         Endereco endereco = estudante.getPessoa().getEndereco();
         endereco.setPessoa(estudante.getPessoa());

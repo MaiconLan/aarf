@@ -7,22 +7,17 @@ import javax.inject.Named;
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import business.EditalBusiness;
-import dao.EditalDAO;
 import dto.EditalDTO;
-import exception.EstudanteBusinessException;
 import model.*;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
-import service.EditalService;
 import utils.DateUtils;
 
 import java.util.List;
-import javax.faces.model.SelectItem;
 
 @ViewScoped
 @Named("editalMB")
@@ -34,7 +29,7 @@ public class EditalMB implements Serializable {
     private EditalDTO editalDTO = new EditalDTO();
 
     @Inject
-    private EditalService editalService;
+    private EditalBusiness editalBusiness;
 
     @Inject @Param
     private Long idEdital;
@@ -54,12 +49,12 @@ public class EditalMB implements Serializable {
     }
 
     private void carregarEdital(){
-        edital = editalService.listarEdital(idEdital);
+        edital = editalBusiness.listarEdital(idEdital);
     }
 
     public void salvarEdital() {
         try {
-            editalService.salvarEdital(edital);
+            editalBusiness.salvarEdital(edital);
             Messages.addInfo(null, "Edital cadastrado com sucesso");
 
         } catch (Exception e) {
@@ -79,7 +74,7 @@ public class EditalMB implements Serializable {
     }
 
     public void consultarEdital() {
-         editais = editalService.consultarEdital(editalDTO);
+         editais = editalBusiness.consultarEdital(editalDTO);
     }
 
     public String dataFormatada(LocalDateTime localDateTime){
@@ -87,7 +82,7 @@ public class EditalMB implements Serializable {
     }
 
     public void finalizarPeriodo() {
-        editalService.finalizarPeriodo(edital);
+        editalBusiness.finalizarPeriodo(edital);
     }
 
     public boolean isFinalizado() {

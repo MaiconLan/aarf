@@ -7,22 +7,25 @@ import exception.UsuarioException;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.apache.commons.mail.EmailException;
 import org.omnifaces.util.Messages;
 import utils.Criptografia;
 import utils.EmailUtils;
 import utils.StringUtils;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.UUID;
 
-public class UsuarioBusiness {
+@Stateless
+public class UsuarioBusiness implements Serializable {
 
+    private static final long serialVersionUID = -6830314258195136090L;
 
     @Inject
     private UsuarioDAO usuarioDAO;

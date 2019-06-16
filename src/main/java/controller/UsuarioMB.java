@@ -10,8 +10,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.mail.EmailException;
 import org.omnifaces.util.Messages;
 import service.CepService;
-import service.EstudanteService;
-import service.InstituicaoService;
 import utils.EmailUtils;
 
 import javax.annotation.PostConstruct;

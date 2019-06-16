@@ -4,9 +4,7 @@ import exception.LoginException;
 import exception.UsuarioException;
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Messages;
-import service.UsuarioService;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;

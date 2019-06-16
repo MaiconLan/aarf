@@ -1,7 +1,7 @@
 package controller;
 
+import business.AtualizacaoBusiness;
 import model.Atualizacao;
-import service.AtualizacaoService;
 import utils.DateUtils;
 
 import javax.annotation.PostConstruct;
@@ -20,7 +20,7 @@ public class AvisoAtualizacaoMB implements Serializable {
     private boolean possuiAtualizacaoPendente = false;
 
     @Inject
-    private AtualizacaoService atualizacaoService;
+    private AtualizacaoBusiness atualizacaoBusiness;
 
     private Atualizacao atualizacao;
 
@@ -40,14 +40,14 @@ public class AvisoAtualizacaoMB implements Serializable {
     }
 
     public void concluir(){
-        atualizacaoService.concluir(atualizacao);
+        atualizacaoBusiness.concluir(atualizacao);
     }
 
     private void verificarAtualizacaoPendente(){
-        possuiAtualizacaoPendente = atualizacaoService.possuiAtualizacaoPendente();
+        possuiAtualizacaoPendente = atualizacaoBusiness.possuiAtualizacaoPendente();
 
         if(possuiAtualizacaoPendente)
-            atualizacao = atualizacaoService.obterAtualizacaoPendente();
+            atualizacao = atualizacaoBusiness.obterAtualizacaoPendente();
     }
 
     public boolean isPossuiAtualizacaoPendente() {
