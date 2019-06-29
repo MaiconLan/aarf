@@ -26,5 +26,5 @@ public class Unit {
 	public static final String DIGITAL_OCEAN = "Digital Ocean";
 	public static final String LOCAL = "localhost";
 
-	public static final String HOSPEDAGEM = LOCAL;
+	public static final String HOSPEDAGEM = DIGITAL_OCEAN;
 }

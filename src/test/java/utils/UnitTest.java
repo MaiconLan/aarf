@@ -9,7 +9,7 @@ public class UnitTest {
 
     @Test
     public void deveGerarWarCorretamente(){
-        Assert.assertEquals(Unit.HOSPEDAGEM, Unit.LOCAL);
+        Assert.assertEquals(Unit.HOSPEDAGEM, Unit.DIGITAL_OCEAN);
     }
 
 }
