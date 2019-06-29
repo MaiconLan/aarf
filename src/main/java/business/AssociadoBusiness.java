@@ -11,13 +11,16 @@ import utils.StringUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 @Stateless
-public class AssociadoBusiness {
+public class AssociadoBusiness implements Serializable {
 
-	@Inject
+    private static final long serialVersionUID = 6383912285469352846L;
+
+    @Inject
 	private AssociadoDAO associadoDAO;
 
 	@Inject

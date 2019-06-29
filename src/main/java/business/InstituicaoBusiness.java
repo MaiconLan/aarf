@@ -7,9 +7,12 @@ import model.Cidade;
 import model.Instituicao;
 
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
-public class InstituicaoBusiness {
+public class InstituicaoBusiness implements Serializable {
+
+	private static final long serialVersionUID = -8728285264514923175L;
 
 	@Inject
 	private InstituicaoDAO instituicaoDAO;

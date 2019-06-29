@@ -8,9 +8,12 @@ import model.ConfiguracaoViagem;
 import model.Viagem;
 
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
-public class ViagemBusiness {
+public class ViagemBusiness implements Serializable {
+
+    private static final long serialVersionUID = 1791186782801042327L;
 
     @Inject
     private ViagemDAO viagemDAO;

@@ -4,8 +4,11 @@ import dao.AtualizacaoDAO;
 import model.Atualizacao;
 
 import javax.inject.Inject;
+import java.io.Serializable;
 
-public class AtualizacaoBusiness {
+public class AtualizacaoBusiness implements Serializable {
+
+    private static final long serialVersionUID = -4615447888686958398L;
 
     @Inject
     private AtualizacaoDAO atualizacaoDAO;

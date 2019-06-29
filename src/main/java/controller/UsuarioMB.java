@@ -1,5 +1,7 @@
 package controller;
 
+import business.EstudanteBusiness;
+import business.InstituicaoBusiness;
 import exception.CepBussinesException;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
@@ -31,13 +33,13 @@ public class UsuarioMB implements Serializable {
     private List<Instituicao> instituicoes;
 
     @Inject
-    private EstudanteService estudanteService;
+    private EstudanteBusiness estudanteBusiness;
 
     @Inject
     private CepService cepService;
 
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
 
     @PostConstruct
     public void init(){
@@ -46,12 +48,12 @@ public class UsuarioMB implements Serializable {
     }
 
     private void carregarInstituicoes(){
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
 
     public void salvarEstudante(){
         try {
-            estudanteService.salvarEstudante(estudante);
+            estudanteBusiness.salvarEstudante(estudante);
             Messages.addInfo(null, "Bem-vindo " + estudante.getPessoa().getNome());
 
             enviarEmail();

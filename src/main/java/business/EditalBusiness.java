@@ -7,11 +7,14 @@ import model.Edital;
 import javax.ejb.Stateless;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-public class EditalBusiness {
+public class EditalBusiness implements Serializable {
+
+    private static final long serialVersionUID = -94532722529078881L;
 
     @Inject
     private EditalDAO editalDAO;

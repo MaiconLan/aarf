@@ -4,8 +4,11 @@ import dao.AnexoDAO;
 import model.Anexo;
 
 import javax.inject.Inject;
+import java.io.Serializable;
 
-public class AnexoBusiness {
+public class AnexoBusiness implements Serializable {
+
+    private static final long serialVersionUID = -8262433147845488476L;
 
     @Inject
     private AnexoDAO anexoDAO;

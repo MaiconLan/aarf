@@ -2,6 +2,7 @@ package business;
 
 import dao.MatriculaDAO;
 import dao.ViagemDAO;
+import dto.MatriculaDTO;
 import enumered.MatriculaSituacao;
 import exception.MatriculaBusinessException;
 import model.Cancelamento;
@@ -9,12 +10,15 @@ import model.Matricula;
 import model.Viagem;
 
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class MatriculaBusiness {
+public class MatriculaBusiness implements Serializable {
+
+    private static final long serialVersionUID = 8400123922801095381L;
 
     @Inject
     private MatriculaDAO matriculaDAO;
@@ -36,7 +40,7 @@ public class MatriculaBusiness {
         viagemDAO.save(viagem);
     }
 
-    public void autorizaMatricula(Matricula m) {
+    public void aprovarMatricula(Matricula m) {
     	m.setSituacao(MatriculaSituacao.MATRICULADO.getDescricao());
     	m.setDataSituacao(LocalDateTime.now());
     	matriculaDAO.update(m);
@@ -80,5 +84,17 @@ public class MatriculaBusiness {
 
         if(!detalhes.isEmpty())
             throw new MatriculaBusinessException(detalhes);
+    }
+
+    public List<Matricula> listarMatriculasEmAprovacao(MatriculaDTO matriculaDTO) {
+        return matriculaDAO.listarMatriculasEmAprovacao(matriculaDTO);
+    }
+
+    public Matricula obterMatriculaById(Long idMatricula) {
+        return matriculaDAO.findById(idMatricula);
+    }
+
+    public List<Matricula> listarMatriculasByIdEstudante(Long idEstudante) {
+        return matriculaDAO.listarMatriculasByIdEstudante(idEstudante);
     }
 }

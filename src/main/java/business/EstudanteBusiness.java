@@ -9,12 +9,15 @@ import utils.StringUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Stateless
-public class EstudanteBusiness {
+public class EstudanteBusiness implements Serializable {
+
+    private static final long serialVersionUID = -3589614238684913472L;
 
     @Inject
     private EstudanteDAO estudanteDAO;

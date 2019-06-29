@@ -1,5 +1,8 @@
 package controller;
 
+import business.EditalBusiness;
+import business.InstituicaoBusiness;
+import business.MatriculaBusiness;
 import dto.EditalDTO;
 import enumered.DiaSemanaEnum;
 import exception.MatriculaBusinessException;
@@ -32,16 +35,16 @@ public class MatriculaMB implements Serializable {
     private static final long serialVersionUID = -7785394172005232068L;
 
     @Inject
-    private MatriculaService matriculaService;
+    private MatriculaBusiness matriculaBusiness;
 
     @Inject
-    private EditalService editalService;
+    private EditalBusiness editalBusiness;
 
     @Inject
     private Identity identity;
 
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
 
     @Inject
     private MatriculaAnexoMB matriculaAnexoMB;
@@ -74,13 +77,13 @@ public class MatriculaMB implements Serializable {
     }
 
     private void listarMatriculas() {
-        matriculas = matriculaService.listarMatriculasByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
+        matriculas = matriculaBusiness.listarMatriculasByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
     }
 
     private void carregarListaEditais() {
         EditalDTO editalDTO = new EditalDTO();
         editalDTO.setOrder(false);
-        listaEditais = editalService.consultarEdital(editalDTO);
+        listaEditais = editalBusiness.consultarEdital(editalDTO);
     }
 
     private void abrirModalEditais(){
@@ -93,7 +96,7 @@ public class MatriculaMB implements Serializable {
 
     public void carregarMatricula() {
         if(identity.isUsuarioEstudante()){
-            matricula = matriculaService.obterMatriculaByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
+            matricula = matriculaBusiness.obterMatriculaByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
 
             if(matricula == null) {
                 matricula = new Matricula();
@@ -111,7 +114,7 @@ public class MatriculaMB implements Serializable {
 
     public void selecionarMatricula(){
         if(matricula != null) {
-            matricula = matriculaService.obterMatriculaById(matricula.getIdMatricula());
+            matricula = matriculaBusiness.obterMatriculaById(matricula.getIdMatricula());
             viagens = matricula.getViagens();
             idEdital = matricula.getEdital().getIdEdital();
         } else {
@@ -142,32 +145,27 @@ public class MatriculaMB implements Serializable {
     }
 
     public void salvar(){
-        try {
-            matriculaAnexoMB.salvarArquivosTemporarios();
+        matriculaAnexoMB.salvarArquivosTemporarios();
 
-            Long idMatricula = matricula.getIdMatricula();
-            matricula.setAnexos(matriculaAnexoMB.anexosAdicionados());
-            matricula.setEstudante(identity.getUsuario().getEstudante());
-            matricula.setEdital(this.edital);
-            matricula.setViagens(viagens);
-            matriculaService.salvar(matricula);
+        Long idMatricula = matricula.getIdMatricula();
+        matricula.setAnexos(matriculaAnexoMB.anexosAdicionados());
+        matricula.setEstudante(identity.getUsuario().getEstudante());
+        matricula.setEdital(this.edital);
+        matricula.setViagens(viagens);
+        matriculaBusiness.salvar(matricula);
 
-            matriculaAnexoMB.removerArquivosTemporarios();
+        matriculaAnexoMB.removerArquivosTemporarios();
 
-            Messages.addInfo(null, "Matricula salva com sucesso");
+        Messages.addInfo(null, "Matricula salva com sucesso");
 
-            if(idMatricula == null)
-                enviarEmail();
-
-        } catch (MatriculaBusinessException e) {
-            e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
-        }
+        if(idMatricula == null)
+            enviarEmail();
     }
 
     public void enviarParaAprovacao(){
         try {
             salvar();
-            matriculaService.enviarParaAprovacao(matricula);
+            matriculaBusiness.enviarParaAprovacao(matricula);
             Messages.addInfo(null, "Matrícula enviada para aprovação com sucesso!");
             Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
 
@@ -182,7 +180,7 @@ public class MatriculaMB implements Serializable {
 
     public void cancelar(){
         try {
-            matriculaService.cancelarMatricula(matricula, "Cancelado pelo estudante!");
+            matriculaBusiness.cancelarMatricula(matricula, "Cancelado pelo estudante!");
             Messages.addInfo(null, "Matrícula cancelada com sucesso!");
             Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
 
@@ -247,7 +245,7 @@ public class MatriculaMB implements Serializable {
             abrirModalEditais();
         }
         if (idEdital != null) {
-            edital = editalService.listarEdital(idEdital);
+            edital = editalBusiness.listarEdital(idEdital);
         }
         listarInstituicao();
         novaViagem();
@@ -272,7 +270,7 @@ public class MatriculaMB implements Serializable {
     }
 
     public void listarInstituicao() {
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
 
     public Matricula getMatricula() {

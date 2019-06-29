@@ -1,5 +1,7 @@
 package controller;
 
+import business.InstituicaoBusiness;
+import business.NoticiaBusiness;
 import exception.LoginException;
 import exception.NoticiaBusinessException;
 
@@ -30,10 +32,10 @@ public class NoticiaMB implements Serializable {
     private List<Instituicao> instituicoes;
     
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
     
     @Inject
-    private NoticiaService service;
+    private NoticiaBusiness noticiaBusiness;
 
     @PostConstruct
     public void init(){
@@ -53,7 +55,7 @@ public class NoticiaMB implements Serializable {
     public void salvarNoticia(){
         try {
         	noticia.setPublicacao(LocalDateTime.now());
-            service.salvarNoticia(noticia);
+            noticiaBusiness.salvarNoticia(noticia);
             Messages.addInfo(null, "Notícia salva com sucesso");
             novaNoticia();
         } catch (NoticiaBusinessException | LoginException e) {
@@ -62,13 +64,13 @@ public class NoticiaMB implements Serializable {
     }
 
     public void removerNoticia(){
-        service.removerNoticia(noticia);
+        noticiaBusiness.removerNoticia(noticia);
         Messages.addInfo(null, "Noticia removido com sucesso");
         novaNoticia();
     }
 
     private void carregarInstituicoes(){
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
     
     public  SerevidadeEnum[] getSerevidades(){
