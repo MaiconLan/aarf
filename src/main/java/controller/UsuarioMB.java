@@ -9,10 +9,9 @@ import model.Endereco;
 import model.Estudante;
 import model.Instituicao;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.mail.EmailException;
 import org.omnifaces.util.Messages;
 import service.CepService;
-import utils.EmailUtils;
+import utils.email.EmailHtml;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -42,7 +41,7 @@ public class UsuarioMB implements Serializable {
     private InstituicaoBusiness instituicaoBusiness;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         novoEstudante();
         carregarInstituicoes();
     }
@@ -51,7 +50,7 @@ public class UsuarioMB implements Serializable {
         instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
 
-    public void salvarEstudante(){
+    public void salvarEstudante() {
         try {
             estudanteBusiness.salvarEstudante(estudante);
             Messages.addInfo(null, "Bem-vindo " + estudante.getPessoa().getNome());
@@ -63,10 +62,10 @@ public class UsuarioMB implements Serializable {
         }
     }
 
-    public void consultarCep(){
+    public void consultarCep() {
         String cep = estudante.getPessoa().getEndereco().getCep();
         Long idEndereco = estudante.getPessoa().getEndereco().getIdEndereco();
-        if(cep != null && !cep.isEmpty()){
+        if (cep != null && !cep.isEmpty()) {
             try {
                 Endereco endereco = cepService.getEnderecoCompleto(cep);
                 endereco.setIdEndereco(idEndereco);
@@ -80,18 +79,18 @@ public class UsuarioMB implements Serializable {
         }
     }
 
-    private void novoEstudante(){
+    private void novoEstudante() {
         estudante = new Estudante();
         estudante.getUsuario().setAlterarLogin(true);
     }
 
-    private void enviarEmail(){
+    private void enviarEmail() {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             String mensagem = IOUtils.toString(classLoader.getResource("template_email/email_cadastro_usuario.html"), "UTF-8");
             String emailDestinatario = estudante.getPessoa().getEmail();
-            String genero =  estudante.getPessoa().getGenero();
-            String recepcao = genero.equals("M") ? "Bem-Vindo": genero.equals("F") ? "Bem-Vinda" : "Bem-Vindo(a)";
+            String genero = estudante.getPessoa().getGenero();
+            String recepcao = genero.equals("M") ? "Bem-Vindo" : genero.equals("F") ? "Bem-Vinda" : "Bem-Vindo(a)";
 
             mensagem = mensagem.replaceAll(":recepcao:", recepcao);
             mensagem = mensagem.replaceAll(":nomeEstudante:", estudante.getPessoa().getPrimeiroNome());
@@ -99,38 +98,11 @@ public class UsuarioMB implements Serializable {
             mensagem = mensagem.replaceAll(":numero:", "Número");
             mensagem = mensagem.replaceAll(":telefone:", "Telefone");
 
-            EmailUtils.enviarHtmlEmail("AARF", mensagem, emailDestinatario);
+            new EmailHtml("AARF", mensagem, emailDestinatario).enviar();
 
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (EmailException e) {
             Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
-            e.printStackTrace();
-        }
-    }
-
-    private void enviarEmailSimples(){
-        try {
-            String emailDestinatario = estudante.getPessoa().getEmail();
-            String genero =  estudante.getPessoa().getGenero();
-            String recepcao = genero.equals("M") ? "Bem-Vindo": genero.equals("F") ? "Bem-Vinda" : "Bem-Vindo(a)";
-            String mensagem = "Olá :nomeEstudante:. "
-                    + "<br/> Seja :recepcao: à AARF. <br/>"
-                    + "Agora você possui acesso ao sistema da associação. Sinta-se a vontade para realizar a inscrição nos editais disponíveis.<br/>"
-                    + "Caso necessite alterar a senha, você poderá realizar pela tela de login. Você pode conferir suas informações em seu Perifl.<br/>"
-                    + "Você receberá por e-mail novos comunicados, editais disponíveis e notícias.";
-
-            mensagem = mensagem.replaceAll(":recepcao:", recepcao);
-            mensagem = mensagem.replaceAll(":nomeEstudante:", estudante.getPessoa().getPrimeiroNome());
-            mensagem = mensagem.replaceAll(":endereco:", "Endereço");
-            mensagem = mensagem.replaceAll(":numero:", "Número");
-            mensagem = mensagem.replaceAll(":telefone:", "Telefone");
-
-            EmailUtils.enviarHtmlEmail(recepcao + " à AARF", mensagem, emailDestinatario);
-
-        } catch (EmailException e) {
-            Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
-            e.printStackTrace();
         }
     }
 

@@ -10,8 +10,9 @@ import model.Usuario;
 import org.apache.commons.mail.EmailException;
 import org.omnifaces.util.Messages;
 import utils.Criptografia;
-import utils.EmailUtils;
+import utils.email.Email;
 import utils.StringUtils;
+import utils.email.EmailHtml;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,6 +22,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.Future;
 
 @Stateless
 public class UsuarioBusiness implements Serializable {
@@ -119,11 +121,6 @@ public class UsuarioBusiness implements Serializable {
         usuario.setAlterarLogin(true);
         salvar(usuario);
 
-        try {
-            EmailUtils.enviarHtmlEmail(titulo, mensagem, destinatario);
-        } catch (EmailException e) {
-            Messages.addError(null, "Não foi possível enviar E-mail com novas credenciais");
-            e.printStackTrace();
-        }
+        new EmailHtml(titulo, mensagem, destinatario).enviar();
     }
 }

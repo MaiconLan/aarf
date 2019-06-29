@@ -11,11 +11,10 @@ import model.Estudante;
 import model.Instituicao;
 import model.Matricula;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.mail.EmailException;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
-import utils.EmailUtils;
+import utils.email.EmailHtml;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -118,13 +117,11 @@ public class MatriculaAprovacaoMB implements Serializable {
 			mensagem = mensagem.replaceAll(":numero:", "Número");
 			mensagem = mensagem.replaceAll(":telefone:", "Telefone");
 
-			EmailUtils.enviarHtmlEmail("AARF", mensagem, emailDestinatario);
+			new EmailHtml("AARF", mensagem, emailDestinatario).enviar();
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (EmailException e) {
 			Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
-			e.printStackTrace();
 		}
 	}
 
@@ -140,13 +137,12 @@ public class MatriculaAprovacaoMB implements Serializable {
 			mensagem = mensagem.replaceAll(":numero:", "Número");
 			mensagem = mensagem.replaceAll(":telefone:", "Telefone");
 
-			EmailUtils.enviarHtmlEmail("AARF", mensagem, emailDestinatario);
+
+			new EmailHtml("AARF", mensagem, emailDestinatario).enviar();
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (EmailException e) {
 			Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
-			e.printStackTrace();
 		}
 	}
 
