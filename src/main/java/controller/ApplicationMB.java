@@ -1,7 +1,7 @@
 package controller;
 
+import business.ApplicationBusiness;
 import org.omnifaces.util.Messages;
-import service.ApplicationServiceImpl;
 import utils.Constantes;
 
 import javax.annotation.PostConstruct;
@@ -25,12 +25,12 @@ public class ApplicationMB implements Serializable {
     public static final String SECURITY_PATH = "/security/";
 
     @Inject
-    private ApplicationServiceImpl service;
+    private ApplicationBusiness applicationBusiness;
 
     @PostConstruct
     public void initialize() {
         direitos = Constantes.DIREITOS;
-        versao = service.getVersaoCompleta();
+        versao = applicationBusiness.getVersaoCompleta();
     }
 
     public void ausente() {

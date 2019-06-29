@@ -1,20 +1,17 @@
 package controller;
 
+import business.AssociadoBusiness;
+import dto.AssociadoDTO;
+import enumered.CargoEnum;
 import exception.AssociadoBusinessException;
 import exception.CepBussinesException;
 import exception.LoginException;
 import model.Associado;
 import model.Endereco;
-import model.Instituicao;
 import model.Usuario;
-
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
-
-import dto.AssociadoDTO;
-import enumered.CargoEnum;
-import service.AssociadoService;
 import service.CepService;
 
 import javax.annotation.PostConstruct;
@@ -45,7 +42,7 @@ public class AssociadoMB implements Serializable {
     private Identity identity;
     
     @Inject
-    private AssociadoService service;
+    private AssociadoBusiness associadoBusiness;
 
     @Inject @Param
     private Long idAssociado;
@@ -58,7 +55,7 @@ public class AssociadoMB implements Serializable {
     private void carregarAssociado(){
         if(idAssociado != null ){
             if(identity.isUsuarioAssociado())
-                selecionarAssociado(service.obterAssociado(idAssociado));
+                selecionarAssociado(associadoBusiness.obterAssociado(idAssociado));
         } else {
             novoAssociado();
         }
@@ -78,7 +75,7 @@ public class AssociadoMB implements Serializable {
         	associado.getPessoa().setEndereco(new Endereco());
         }
 
-        setAlterarLogin(!service.isLoginPreenchido(associado.getUsuario()));
+        setAlterarLogin(!associadoBusiness.isLoginPreenchido(associado.getUsuario()));
 
         RequestContext.getCurrentInstance().execute("PF('modalConsultaAssociado').hide();");
         RequestContext.getCurrentInstance().update("form");
@@ -88,7 +85,7 @@ public class AssociadoMB implements Serializable {
     public void salvarAssociado(){
         try {
             associado.getUsuario().setAlterarLogin(alterarLogin);
-            service.salvarAssociado(associado);
+            associadoBusiness.salvarAssociado(associado);
             Messages.addInfo(null, "Associado salvo com sucesso");
             novoAssociado();
 
@@ -101,13 +98,13 @@ public class AssociadoMB implements Serializable {
     }
 
     public void removerAssociado(){
-        service.removerAssociado(associado);
+        associadoBusiness.removerAssociado(associado);
         Messages.addInfo(null, "Associado removido com sucesso");
         novoAssociado();
     }
 
     public void consultarAssociado(){
-        listaAssociado = service.consultarAssociados(associadoDTO);
+        listaAssociado = associadoBusiness.consultarAssociados(associadoDTO);
     }
 
     public boolean isDesabilitarAlteracaoLogin(){

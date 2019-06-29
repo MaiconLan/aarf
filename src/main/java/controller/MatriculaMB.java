@@ -1,5 +1,8 @@
 package controller;
 
+import business.EditalBusiness;
+import business.InstituicaoBusiness;
+import business.MatriculaBusiness;
 import dto.EditalDTO;
 import enumered.DiaSemanaEnum;
 import exception.MatriculaBusinessException;
@@ -8,16 +11,12 @@ import model.Instituicao;
 import model.Matricula;
 import model.Viagem;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.mail.EmailException;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FileUploadEvent;
-import service.EditalService;
-import service.InstituicaoService;
-import service.MatriculaService;
-import utils.EmailUtils;
+import utils.email.EmailHtml;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -35,16 +34,16 @@ public class MatriculaMB implements Serializable {
     private static final long serialVersionUID = -7785394172005232068L;
 
     @Inject
-    private MatriculaService matriculaService;
+    private MatriculaBusiness matriculaBusiness;
 
     @Inject
-    private EditalService editalService;
+    private EditalBusiness editalBusiness;
 
     @Inject
     private Identity identity;
 
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
 
     @Inject
     private MatriculaAnexoMB matriculaAnexoMB;
@@ -77,16 +76,16 @@ public class MatriculaMB implements Serializable {
     }
 
     private void listarMatriculas() {
-        matriculas = matriculaService.listarMatriculasByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
+        matriculas = matriculaBusiness.listarMatriculasByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
     }
 
     private void carregarListaEditais() {
         EditalDTO editalDTO = new EditalDTO();
         editalDTO.setOrder(false);
-        listaEditais = editalService.consultarEdital(editalDTO);
+        listaEditais = editalBusiness.consultarEdital(editalDTO);
     }
 
-    private void abrirModalEditais(){
+    private void abrirModalEditais() {
         RequestContext.getCurrentInstance().execute("PF('modalConsultaEditais').show();");
     }
 
@@ -95,10 +94,10 @@ public class MatriculaMB implements Serializable {
     }
 
     public void carregarMatricula() {
-        if(identity.isUsuarioEstudante()){
-            matricula = matriculaService.obterMatriculaByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
+        if (identity.isUsuarioEstudante()) {
+            matricula = matriculaBusiness.obterMatriculaByIdEstudante(identity.getUsuario().getEstudante().getIdEstudante());
 
-            if(matricula == null) {
+            if (matricula == null) {
                 matricula = new Matricula();
                 matricula.setEstudante(identity.getUsuario().getEstudante());
             } else {
@@ -112,9 +111,9 @@ public class MatriculaMB implements Serializable {
         matriculaAnexoMB.setMatricula(matricula);
     }
 
-    public void selecionarMatricula(){
-        if(matricula != null) {
-            matricula = matriculaService.obterMatriculaById(matricula.getIdMatricula());
+    public void selecionarMatricula() {
+        if (matricula != null) {
+            matricula = matriculaBusiness.obterMatriculaById(matricula.getIdMatricula());
             viagens = matricula.getViagens();
             idEdital = matricula.getEdital().getIdEdital();
         } else {
@@ -129,8 +128,8 @@ public class MatriculaMB implements Serializable {
         Messages.addInfo(null, "Viagem removida com sucesso!");
     }
 
-    public void salvarViagem(){
-        for(int i = 0; i < sentido.length; i++) {
+    public void salvarViagem() {
+        for (int i = 0; i < sentido.length; i++) {
             Viagem viagemMatricula = new Viagem();
             viagemMatricula.setDiaSemana(viagem.getDiaSemana());
             viagemMatricula.setInstituicao(viagem.getInstituicao());
@@ -144,33 +143,28 @@ public class MatriculaMB implements Serializable {
         sentido = new String[2];
     }
 
-    public void salvar(){
-        try {
-            matriculaAnexoMB.salvarArquivosTemporarios();
+    public void salvar() {
+        matriculaAnexoMB.salvarArquivosTemporarios();
 
-            Long idMatricula = matricula.getIdMatricula();
-            matricula.setAnexos(matriculaAnexoMB.anexosAdicionados());
-            matricula.setEstudante(identity.getUsuario().getEstudante());
-            matricula.setEdital(this.edital);
-            matricula.setViagens(viagens);
-            matriculaService.salvar(matricula);
+        Long idMatricula = matricula.getIdMatricula();
+        matricula.setAnexos(matriculaAnexoMB.anexosAdicionados());
+        matricula.setEstudante(identity.getUsuario().getEstudante());
+        matricula.setEdital(this.edital);
+        matricula.setViagens(viagens);
+        matriculaBusiness.salvar(matricula);
 
-            matriculaAnexoMB.removerArquivosTemporarios();
+        matriculaAnexoMB.removerArquivosTemporarios();
 
-            Messages.addInfo(null, "Matricula salva com sucesso");
+        Messages.addInfo(null, "Matricula salva com sucesso");
 
-            if(idMatricula == null)
-                enviarEmail();
-
-        } catch (MatriculaBusinessException e) {
-            e.getMessages().forEach(mensagem -> Messages.addError(null, mensagem));
-        }
+        if (idMatricula == null)
+            enviarEmail();
     }
 
-    public void enviarParaAprovacao(){
+    public void enviarParaAprovacao() {
         try {
             salvar();
-            matriculaService.enviarParaAprovacao(matricula);
+            matriculaBusiness.enviarParaAprovacao(matricula);
             Messages.addInfo(null, "Matrícula enviada para aprovação com sucesso!");
             Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
 
@@ -183,9 +177,9 @@ public class MatriculaMB implements Serializable {
         }
     }
 
-    public void cancelar(){
+    public void cancelar() {
         try {
-            matriculaService.cancelarMatricula(matricula, "Cancelado pelo estudante!");
+            matriculaBusiness.cancelarMatricula(matricula, "Cancelado pelo estudante!");
             Messages.addInfo(null, "Matrícula cancelada com sucesso!");
             Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
 
@@ -195,30 +189,30 @@ public class MatriculaMB implements Serializable {
         }
     }
 
-    public boolean desabilitarCampos(){
+    public boolean desabilitarCampos() {
         return renderizarCamposMatriculaSalva() && !matricula.isInscricao();
     }
 
-    public boolean renderizarCancelarMatricula(){
+    public boolean renderizarCancelarMatricula() {
         return renderizarCamposMatriculaSalva() && (matricula.isMatriculado() || matricula.isEmAprovacao());
     }
 
-    public boolean renderizarCamposMatriculaSalva(){
+    public boolean renderizarCamposMatriculaSalva() {
         return matricula.getIdMatricula() != null;
     }
 
-    public boolean renderizarSelecionarMatricula(){
+    public boolean renderizarSelecionarMatricula() {
         return false;
         // return matriculas != null && !matriculas.isEmpty();
     }
 
-    private void enviarEmail(){
+    private void enviarEmail() {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             String mensagem = IOUtils.toString(classLoader.getResource("template_email/email_matricula_realizada.html"), "UTF-8");
             String emailDestinatario = matricula.getEstudante().getPessoa().getEmail();
-            String genero =  matricula.getEstudante().getPessoa().getGenero();
-            String recepcao = genero.equals("M") ? "Bem-Vindo": genero.equals("F") ? "Bem-Vinda" : "Bem-Vindo(a)";
+            String genero = matricula.getEstudante().getPessoa().getGenero();
+            String recepcao = genero.equals("M") ? "Bem-Vindo" : genero.equals("F") ? "Bem-Vinda" : "Bem-Vindo(a)";
 
             mensagem = mensagem.replaceAll(":recepcao:", recepcao);
             mensagem = mensagem.replaceAll(":nomeEstudante:", matricula.getEstudante().getPessoa().getPrimeiroNome());
@@ -227,30 +221,28 @@ public class MatriculaMB implements Serializable {
             mensagem = mensagem.replaceAll(":numero:", "Número");
             mensagem = mensagem.replaceAll(":telefone:", "Telefone");
 
-            EmailUtils.enviarHtmlEmail("AARF", mensagem, emailDestinatario);
+            new EmailHtml("AARF", mensagem, emailDestinatario).enviar();
 
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (EmailException e) {
             Messages.addWarn(null, "Ocorreu um erro ao enviar o e-mail");
-            e.printStackTrace();
         }
     }
 
     public void enviarArquivo(FileUploadEvent event) {
-        if(matriculaAnexoMB.getMatricula() == null)
+        if (matriculaAnexoMB.getMatricula() == null)
             matriculaAnexoMB.setMatricula(matricula);
 
         matriculaAnexoMB.enviarArquivoTemporario(event);
     }
 
     private void carregarEdital() {
-        if(idEdital == null) {
+        if (idEdital == null) {
             carregarListaEditais();
             abrirModalEditais();
         }
         if (idEdital != null) {
-            edital = editalService.listarEdital(idEdital);
+            edital = editalBusiness.listarEdital(idEdital);
         }
         listarInstituicao();
         novaViagem();
@@ -275,7 +267,7 @@ public class MatriculaMB implements Serializable {
     }
 
     public void listarInstituicao() {
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
 
     public Matricula getMatricula() {

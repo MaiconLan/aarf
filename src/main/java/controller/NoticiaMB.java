@@ -1,5 +1,7 @@
 package controller;
 
+import business.InstituicaoBusiness;
+import business.NoticiaBusiness;
 import exception.LoginException;
 import exception.NoticiaBusinessException;
 
@@ -9,10 +11,7 @@ import model.Noticia;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 
-import enumered.CargoEnum;
 import enumered.SerevidadeEnum;
-import service.InstituicaoService;
-import service.NoticiaService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -20,7 +19,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @ViewScoped
@@ -34,10 +32,10 @@ public class NoticiaMB implements Serializable {
     private List<Instituicao> instituicoes;
     
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
     
     @Inject
-    private NoticiaService service;
+    private NoticiaBusiness noticiaBusiness;
 
     @PostConstruct
     public void init(){
@@ -57,7 +55,7 @@ public class NoticiaMB implements Serializable {
     public void salvarNoticia(){
         try {
         	noticia.setPublicacao(LocalDateTime.now());
-            service.salvarNoticia(noticia);
+            noticiaBusiness.salvarNoticia(noticia);
             Messages.addInfo(null, "Notícia salva com sucesso");
             novaNoticia();
         } catch (NoticiaBusinessException | LoginException e) {
@@ -66,13 +64,13 @@ public class NoticiaMB implements Serializable {
     }
 
     public void removerNoticia(){
-        service.removerNoticia(noticia);
+        noticiaBusiness.removerNoticia(noticia);
         Messages.addInfo(null, "Noticia removido com sucesso");
         novaNoticia();
     }
 
     private void carregarInstituicoes(){
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
     
     public  SerevidadeEnum[] getSerevidades(){

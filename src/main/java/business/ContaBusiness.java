@@ -7,13 +7,16 @@ import model.Conta;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 @Stateless
-public class ContaBusiness {
+public class ContaBusiness implements Serializable {
+
+    private static final long serialVersionUID = 2300287425942998599L;
 
     @Inject
     private ContaDAO contaDAO;

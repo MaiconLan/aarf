@@ -1,5 +1,8 @@
 package controller;
 
+import business.EditalBusiness;
+import business.InstituicaoBusiness;
+import business.ViagemBusiness;
 import dto.EditalDTO;
 import dto.FiltroViagemDTO;
 import enumered.DiaSemanaEnum;
@@ -10,9 +13,6 @@ import model.Viagem;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
-import service.EditalService;
-import service.InstituicaoService;
-import service.ViagemService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -30,13 +30,13 @@ public class ViagemMB implements Serializable {
     private static final long serialVersionUID = 8896076229004605469L;
 
     @Inject
-    private EditalService editalService;
+    private EditalBusiness editalBusiness;
 
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
 
     @Inject
-    private ViagemService viagemService;
+    private ViagemBusiness viagemBusiness;
 
     private FiltroViagemDTO filtro;
 
@@ -73,7 +73,7 @@ public class ViagemMB implements Serializable {
     }
 
     private void carregarListaEditais() {
-        listaEditais = editalService.consultarEdital(new EditalDTO());
+        listaEditais = editalBusiness.consultarEdital(new EditalDTO());
     }
 
     private void abrirModalEditais(){
@@ -86,7 +86,7 @@ public class ViagemMB implements Serializable {
 
     public void removerConfiguracao(ConfiguracaoViagem configuracaoViagem){
         try {
-            viagemService.removerConfiguracao(configuracaoViagem);
+            viagemBusiness.removerConfiguracao(configuracaoViagem);
             Messages.addInfo(null, "Configuracao removida com sucesso!");
             carregarConfiguracoesEdital();
         } catch (Exception e) {
@@ -101,7 +101,7 @@ public class ViagemMB implements Serializable {
         configuracaoViagem.setInstituicao(filtro.getInstituicao());
         configuracaoViagem.setValor(valor);
 
-        viagemService.gerarValores(configuracaoViagem, viagens);
+        viagemBusiness.gerarValores(configuracaoViagem, viagens);
 
         Messages.addInfo(null, "Valores gerados com sucesso!");
         viagens = new ArrayList<>();
@@ -110,16 +110,16 @@ public class ViagemMB implements Serializable {
 
     public void buscarEstudantes(){
         filtro.setIdEdital(idEdital);
-        viagens = viagemService.buscarViagens(filtro);
+        viagens = viagemBusiness.buscarViagens(filtro);
     }
 
     private void carregarConfiguracoesEdital() {
         if(idEdital != null)
-            configuracoesEdital = viagemService.obterConfiguracoesViagemEdital(idEdital);
+            configuracoesEdital = viagemBusiness.obterConfiguracoesViagemEdital(idEdital);
     }
 
     public void listarInstituicoes() {
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
 
     public DiaSemanaEnum[] obterDiaSemana() {
@@ -148,7 +148,7 @@ public class ViagemMB implements Serializable {
 
     private void carregarEdital() {
         if (idEdital != null) {
-            edital = editalService.listarEdital(idEdital);
+            edital = editalBusiness.listarEdital(idEdital);
         }
     }
 

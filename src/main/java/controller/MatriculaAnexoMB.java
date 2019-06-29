@@ -1,22 +1,13 @@
 package controller;
 
+import business.AnexoBusiness;
 import enumered.TipoAnexoEnum;
 import model.Anexo;
 import model.Matricula;
-import org.omnifaces.util.Faces;
-import org.omnifaces.util.Messages;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
-import service.AnexoService;
 
-import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,20 +19,20 @@ public class MatriculaAnexoMB extends ArquivoAbstract implements Serializable {
     private static final String DIRETORIO_MODULO = "\\matricula\\";
 
     @Inject
-    private AnexoService anexoService;
+    private AnexoBusiness anexoBusiness;
 
     private Matricula matricula;
 
     protected void salvarAnexos(Anexo anexo) {
         anexo.setTipo(TipoAnexoEnum.COMPROVANTE_MATRICULA.getDescricao());
         arquivosAdicionados.add(anexo);
-        anexoService.salvarAnexo(anexo);
+        anexoBusiness.salvarAnexo(anexo);
     }
 
     @Override
     protected void removerAnexo(Anexo anexo) {
         matricula.getAnexos().remove(anexo);
-        anexoService.remover(anexo);
+        anexoBusiness.remover(anexo);
     }
 
     protected List<Anexo> anexosAdicionados(){

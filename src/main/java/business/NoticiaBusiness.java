@@ -7,6 +7,7 @@ import exception.NoticiaBusinessException;
 import model.Instituicao;
 import model.Noticia;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -14,9 +15,11 @@ import javax.inject.Inject;
 
 import controller.Identity;
 @Stateless
-public class NoticiaBusiness {
-	
-	@Inject
+public class NoticiaBusiness implements Serializable {
+
+    private static final long serialVersionUID = -2413736911888084396L;
+
+    @Inject
 	private NoticiaDAO dao;
 
 	@Inject
@@ -36,7 +39,8 @@ public class NoticiaBusiness {
         dao.update(n);
     }
     
-    public List<Noticia> consultarNoticias(Noticia noticia) {
+    public List<Noticia> listarNoticias(Noticia noticia) {
         return dao.consultaNoticia(noticia);
-    }	
+    }
+
 }

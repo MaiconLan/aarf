@@ -5,30 +5,31 @@ import dto.EstudanteDTO;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
 import model.*;
-import service.UsuarioService;
 import utils.StringUtils;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Stateless
-public class EstudanteBusiness {
+public class EstudanteBusiness implements Serializable {
+
+    private static final long serialVersionUID = -3589614238684913472L;
 
     @Inject
     private EstudanteDAO estudanteDAO;
 
     @Inject
-    private UsuarioService usuarioService;
+    private UsuarioBusiness usuarioBusiness;
 
     public void salvarEstudante(Estudante estudante) throws EstudanteBusinessException, LoginException {
         validarSalvarEstudante(estudante);
 
         removerCaracteres(estudante.getPessoa());
-        usuarioService.salvarUsuario(estudante.getUsuario());
+        usuarioBusiness.salvar(estudante.getUsuario());
 
         Endereco endereco = estudante.getPessoa().getEndereco();
         endereco.setPessoa(estudante.getPessoa());

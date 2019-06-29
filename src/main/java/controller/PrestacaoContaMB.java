@@ -1,22 +1,19 @@
 package controller;
 
+import business.InstituicaoBusiness;
 import business.PrestacaoContaBusiness;
-import dao.InstituicaoDAO;
 import dto.InstituicaoDTO;
 import dto.PrestacaoContaDTO;
 import model.Instituicao;
 import model.PrestacaoConta;
 import org.omnifaces.util.Messages;
 import org.primefaces.event.FileUploadEvent;
-import service.InstituicaoService;
-import service.PrestacaoContaService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.Base64;
 import java.util.List;
 
 @ViewScoped
@@ -26,10 +23,10 @@ public class PrestacaoContaMB implements Serializable {
     private static final long serialVersionUID = 5913546911158814932L;
 
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
 
     @Inject
-    private PrestacaoContaService prestacaoContaService;
+    private PrestacaoContaBusiness prestacaoContaBusiness;
 
     @Inject
     private PrestacaoContaAnexoMB prestacaoContaAnexoMB;
@@ -56,7 +53,7 @@ public class PrestacaoContaMB implements Serializable {
 
     public void salvar(){
         try{
-            prestacaoContaService.salvarPrestacao(prestacaoConta);
+            prestacaoContaBusiness.salvarPrestacao(prestacaoConta);
             Messages.addInfo(null, "Prestação realizada com sucesso");
         }catch(Exception e){
             e.printStackTrace();
@@ -71,7 +68,7 @@ public class PrestacaoContaMB implements Serializable {
     }
 
     private void carregarInstituicoes(){
-        instituicoes = instituicaoService.obterInstuicoesFinanceiras();
+        instituicoes = instituicaoBusiness.obterInstuicoesFinanceiras();
     }
 
     public PrestacaoConta getPrestacaoConta() {

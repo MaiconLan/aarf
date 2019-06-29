@@ -1,25 +1,26 @@
 package controller;
 
+import business.EstudanteBusiness;
+import business.InstituicaoBusiness;
 import dto.EstudanteDTO;
 import exception.CepBussinesException;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
-import model.*;
+import model.Endereco;
+import model.Estudante;
+import model.Instituicao;
+import model.Usuario;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
 import service.CepService;
-import service.EstudanteService;
-import service.InstituicaoService;
 
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @ViewScoped
@@ -39,7 +40,7 @@ public class EstudanteMB implements Serializable {
     private boolean alterarLogin;
 
     @Inject
-    private EstudanteService estudanteService;
+    private EstudanteBusiness estudanteBusiness;
 
     @Inject
     private CepService cepService;
@@ -48,7 +49,7 @@ public class EstudanteMB implements Serializable {
     private Identity identity;
 
     @Inject
-    private InstituicaoService instituicaoService;
+    private InstituicaoBusiness instituicaoBusiness;
 
     @Inject @Param
     private Long idEstudante;
@@ -63,7 +64,7 @@ public class EstudanteMB implements Serializable {
     }
 
     private void carregarInstituicoes(){
-        instituicoes = instituicaoService.obterInstituicoesEnsino();
+        instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
     }
 
     private void carregarEstudante(){
@@ -71,7 +72,7 @@ public class EstudanteMB implements Serializable {
 
         if(idEstudante != null) {
             if(identity.isUsuarioEstudante() && estudante.getIdEstudante().equals(idEstudante) || identity.isUsuarioAssociado())
-                selecionarEstudante(estudanteService.obterEstudante(idEstudante));
+                selecionarEstudante(estudanteBusiness.obterEstudante(idEstudante));
 
         } else {
             novoEstudante();
@@ -99,7 +100,7 @@ public class EstudanteMB implements Serializable {
             estudante.getPessoa().setEndereco(new Endereco());
         }
 
-        setAlterarLogin(!estudanteService.isLoginPreenchido(estudante.getUsuario()));
+        setAlterarLogin(!estudanteBusiness.isLoginPreenchido(estudante.getUsuario()));
 
         RequestContext.getCurrentInstance().execute("PF('modalConsultaEstudante').hide();");
         RequestContext.getCurrentInstance().update("formEstudante");
@@ -109,7 +110,7 @@ public class EstudanteMB implements Serializable {
     public void salvarEstudante(){
         try {
             estudante.getUsuario().setAlterarLogin(alterarLogin);
-            estudanteService.salvarEstudante(estudante);
+            estudanteBusiness.salvarEstudante(estudante);
             Messages.addInfo(null, "Estudante salvo com sucesso");
 
             if(!isAcessarPerfil)
@@ -121,13 +122,13 @@ public class EstudanteMB implements Serializable {
     }
 
     public void removerEstudante(){
-        estudanteService.removerEstudante(estudante);
+        estudanteBusiness.removerEstudante(estudante);
         Messages.addInfo(null, "Estudante removido com sucesso");
         novoEstudante();
     }
 
     public void consultarEstudante(){
-        listaEstudantes = estudanteService.consultarEstudantes(estudanteDTO);
+        listaEstudantes = estudanteBusiness.consultarEstudantes(estudanteDTO);
     }
 
     public boolean isDesabilitarAlteracaoLogin(){

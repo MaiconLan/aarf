@@ -1,10 +1,10 @@
 package controller;
 
+import business.AnexoBusiness;
+import business.PrestacaoContaBusiness;
 import enumered.TipoAnexoEnum;
 import model.Anexo;
 import model.PrestacaoConta;
-import service.AnexoService;
-import service.PrestacaoContaService;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -21,10 +21,10 @@ public class PrestacaoContaAnexoMB extends ArquivoAbstract implements Serializab
     private static final String DIRETORIO_MODULO = "prestacao_contas\\";
 
     @Inject
-    private PrestacaoContaService prestacaoContaService;
+    private PrestacaoContaBusiness prestacaoContaBusiness;
 
     @Inject
-    private AnexoService anexoService;
+    private AnexoBusiness anexoBusiness;
 
     private PrestacaoConta prestacaoConta;
 
@@ -32,7 +32,7 @@ public class PrestacaoContaAnexoMB extends ArquivoAbstract implements Serializab
     protected void salvarAnexos(Anexo anexo) {
         anexo.setTipo(TipoAnexoEnum.PRESTACAO_CONTA.getDescricao());
         prestacaoConta.getAnexos().add(anexo);
-        anexoService.salvarAnexo(anexo);
+        anexoBusiness.salvarAnexo(anexo);
     }
 
     @Override

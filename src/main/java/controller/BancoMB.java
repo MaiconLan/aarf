@@ -1,9 +1,9 @@
 package controller;
 
+import business.BancoBusiness;
 import dto.BancoDTO;
 import model.Banco;
 import org.primefaces.context.RequestContext;
-import service.BancoService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -26,7 +26,7 @@ public class BancoMB implements Serializable{
 	private List<Banco> bancos;
 
 	@Inject
-	private BancoService bancoService;
+	private BancoBusiness bancoBusiness;
 	
 	@PostConstruct
     public void init(){
@@ -40,7 +40,7 @@ public class BancoMB implements Serializable{
     }
 	
 	public void consultarBanco() {
-		bancos = bancoService.consultaBanco(bancoDTO);
+		bancos = bancoBusiness.consultaBanco(bancoDTO);
 	}
 	
 	public void modalConsultaBanco() {
@@ -50,7 +50,7 @@ public class BancoMB implements Serializable{
 	}
 	
 	public void salvarBanco() {
-		bancoService.salvar(banco);
+		bancoBusiness.salvar(banco);
 		limparCampos();
 	}
 	

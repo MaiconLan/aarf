@@ -1,22 +1,20 @@
 package controller;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import business.InstituicaoBusiness;
+import dto.InstituicaoDTO;
+import model.Cidade;
+import model.Instituicao;
+import model.TipoInstituicao;
+import org.omnifaces.util.Messages;
+import org.primefaces.context.RequestContext;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import model.*;
-import org.omnifaces.util.Messages;
-import org.primefaces.context.RequestContext;
-
-import dto.EstudanteDTO;
-import dto.InstituicaoDTO;
-import service.InstituicaoService;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @ViewScoped
 @Named("instituicaoMB")
@@ -33,7 +31,7 @@ public class InstituicaoMB implements Serializable{
 	private List<Instituicao> instituicoes;
 	
 	@Inject
-	private InstituicaoService instituicaoService;
+	private InstituicaoBusiness instituicaoBusiness;
 
 	@PostConstruct
     public void init(){
@@ -56,11 +54,11 @@ public class InstituicaoMB implements Serializable{
 	}
 
     private void carregarCidades(){
-		cidades = instituicaoService.obterCidades();
+		cidades = instituicaoBusiness.obterCidades();
 	}
 
 	public void consultarInstituicao() {
-		instituicoes = instituicaoService.consultaInstituicao(instituicaoDTO);
+		instituicoes = instituicaoBusiness.consultarInstituicoes(instituicaoDTO);
 	}
 	
 	public void modalConsultaInstituicao() {
@@ -68,7 +66,7 @@ public class InstituicaoMB implements Serializable{
 	}
 	
 	public void salvarInstituicao() {
-		instituicaoService.salvar(instituicao);
+		instituicaoBusiness.salvar(instituicao);
 		Messages.addInfo(null, "Instituição salva com sucesso");
 		limparCampos();
 	}

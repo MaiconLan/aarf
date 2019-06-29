@@ -6,32 +6,31 @@ import exception.AssociadoBusinessException;
 import exception.LoginException;
 import model.Associado;
 import model.Endereco;
-import model.Pessoa;
 import model.Usuario;
-import service.UsuarioService;
 import utils.StringUtils;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 @Stateless
-public class AssociadoBusiness {
+public class AssociadoBusiness implements Serializable {
 
-	@Inject
+    private static final long serialVersionUID = 6383912285469352846L;
+
+    @Inject
 	private AssociadoDAO associadoDAO;
 
 	@Inject
-	private UsuarioService usuarioService;
+	private UsuarioBusiness usuarioBusiness;
 
     public void salvarAssociado(Associado a) throws AssociadoBusinessException, LoginException {
         validarSalvarAssociado(a);
 
         StringUtils.removerCaracteres(a.getPessoa());
-        usuarioService.salvarUsuario(a.getUsuario());
+        usuarioBusiness.salvar(a.getUsuario());
 
         Endereco endereco = a.getPessoa().getEndereco();
         endereco.setPessoa(a.getPessoa());
@@ -101,4 +100,7 @@ public class AssociadoBusiness {
         associadoDAO.update(a);
     }
 
+    public Associado obterAssociado(Long idAssociado) {
+        return associadoDAO.findById(idAssociado);
+    }
 }
