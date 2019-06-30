@@ -18,6 +18,9 @@ public class JPAUtil {
 	private static final String IP_DIGITAL_OCEAN = "jdbc:postgresql://" + Unit.IP_BASE_DADOS_DO + ":5432/"
 			+ Unit.NOME_BASE_DADOS_DO;
 
+	private static final String IP_HEROKU = "jdbc:postgresql://" + Unit.IP_BASE_DADOS_HEROKU + ":5432/"
+			+ Unit.NOME_BASE_DADOS_HEROKU;
+
 	private static synchronized void loadInstance(String usuario, String senha, String ssl, String unidade, String ip) {
 		try {
 			Map<String, String> map = new HashMap<String, String>();
@@ -50,6 +53,11 @@ public class JPAUtil {
 				loadInstance(Unit.USUARIO_BASE_DADOS_DO, Unit.SENHA_BASE_DADOS_DO, Unit.SSL, Unit.NOME_UNIDADE,
 						IP_DIGITAL_OCEAN);
 				break;
+
+				case Unit.HEROKU:
+					loadInstance(Unit.USUARIO_BASE_DADOS_HEROKU, Unit.SENHA_BASE_DADOS_HEROKU, Unit.SSL, Unit.NOME_UNIDADE,
+							IP_HEROKU);
+					break;
 
 			default:
 				break;

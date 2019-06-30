@@ -37,6 +37,10 @@ public class IniciarAplicacaoListener implements ServletContextListener {
 						Unit.USUARIO_BASE_DADOS_DO, Unit.SENHA_BASE_DADOS_DO);
 				break;
 
+			case Unit.HEROKU:
+				flyway.setDataSource("jdbc:postgresql://" + Unit.IP_BASE_DADOS_HEROKU + "/" + Unit.NOME_BASE_DADOS_HEROKU,
+						Unit.USUARIO_BASE_DADOS_HEROKU, Unit.SENHA_BASE_DADOS_HEROKU);
+				break;
 			default:
 				break;
 
