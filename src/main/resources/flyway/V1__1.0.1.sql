@@ -18,28 +18,28 @@
 -- DROP SCHEMA IF EXISTS cadastro CASCADE;
 CREATE SCHEMA cadastro;
 -- ddl-end --
-ALTER SCHEMA cadastro OWNER TO postgres;
+ALTER SCHEMA cadastro OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: matricula | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS matricula CASCADE;
 CREATE SCHEMA matricula;
 -- ddl-end --
-ALTER SCHEMA matricula OWNER TO postgres;
+ALTER SCHEMA matricula OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: publico | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS publico CASCADE;
 CREATE SCHEMA publico;
 -- ddl-end --
-ALTER SCHEMA publico OWNER TO postgres;
+ALTER SCHEMA publico OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: financeiro | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS financeiro CASCADE;
 CREATE SCHEMA financeiro;
 -- ddl-end --
-ALTER SCHEMA financeiro OWNER TO postgres;
+ALTER SCHEMA financeiro OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 SET search_path TO pg_catalog,public,cadastro,matricula,publico,financeiro;
@@ -58,7 +58,7 @@ CREATE TABLE cadastro.endereco(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.endereco OWNER TO postgres;
+ALTER TABLE cadastro.endereco OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: cadastro.pessoa | type: TABLE --
@@ -77,7 +77,7 @@ CREATE TABLE cadastro.pessoa(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.pessoa OWNER TO postgres;
+ALTER TABLE cadastro.pessoa OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: cadastro.usuario | type: TABLE --
@@ -90,7 +90,7 @@ CREATE TABLE cadastro.usuario(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.usuario OWNER TO postgres;
+ALTER TABLE cadastro.usuario OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: cadastro.associado | type: TABLE --
@@ -105,7 +105,7 @@ CREATE TABLE cadastro.associado(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.associado OWNER TO postgres;
+ALTER TABLE cadastro.associado OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: cadastro.estudante | type: TABLE --
@@ -120,7 +120,7 @@ CREATE TABLE cadastro.estudante(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.estudante OWNER TO postgres;
+ALTER TABLE cadastro.estudante OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: pessoa_fk | type: CONSTRAINT --
@@ -149,7 +149,7 @@ CREATE TABLE cadastro.instituicao(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.instituicao OWNER TO postgres;
+ALTER TABLE cadastro.instituicao OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: instituicao_fk | type: CONSTRAINT --
@@ -170,7 +170,7 @@ CREATE TABLE cadastro.historico_instituicao(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.historico_instituicao OWNER TO postgres;
+ALTER TABLE cadastro.historico_instituicao OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: estudante_fk | type: CONSTRAINT --
@@ -194,7 +194,7 @@ CREATE TABLE matricula.matricula(
 
 );
 -- ddl-end --
-ALTER TABLE matricula.matricula OWNER TO postgres;
+ALTER TABLE matricula.matricula OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: matricula.edital | type: TABLE --
@@ -209,7 +209,7 @@ CREATE TABLE matricula.edital(
 
 );
 -- ddl-end --
-ALTER TABLE matricula.edital OWNER TO postgres;
+ALTER TABLE matricula.edital OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: estudante_fk | type: CONSTRAINT --
@@ -237,7 +237,7 @@ CREATE TABLE matricula.cancelamento(
 
 );
 -- ddl-end --
-ALTER TABLE matricula.cancelamento OWNER TO postgres;
+ALTER TABLE matricula.cancelamento OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: matricula_fk | type: CONSTRAINT --
@@ -279,7 +279,7 @@ CREATE TABLE publico.noticia(
 
 );
 -- ddl-end --
-ALTER TABLE publico.noticia OWNER TO postgres;
+ALTER TABLE publico.noticia OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: associado_fk | type: CONSTRAINT --
@@ -324,7 +324,7 @@ CREATE TABLE financeiro.apoio(
 
 );
 -- ddl-end --
-ALTER TABLE financeiro.apoio OWNER TO postgres;
+ALTER TABLE financeiro.apoio OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: cadastro.anexo | type: TABLE --
@@ -340,7 +340,7 @@ CREATE TABLE cadastro.anexo(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.anexo OWNER TO postgres;
+ALTER TABLE cadastro.anexo OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: financeiro.boleto | type: TABLE --
@@ -355,7 +355,7 @@ CREATE TABLE financeiro.boleto(
 
 );
 -- ddl-end --
-ALTER TABLE financeiro.boleto OWNER TO postgres;
+ALTER TABLE financeiro.boleto OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: instituicao_fk | type: CONSTRAINT --
@@ -376,7 +376,7 @@ CREATE TABLE financeiro.parcela(
 
 );
 -- ddl-end --
-ALTER TABLE financeiro.parcela OWNER TO postgres;
+ALTER TABLE financeiro.parcela OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: matricula_fk | type: CONSTRAINT --
@@ -397,7 +397,7 @@ CREATE TABLE financeiro.investimento(
 
 );
 -- ddl-end --
-ALTER TABLE financeiro.investimento OWNER TO postgres;
+ALTER TABLE financeiro.investimento OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: apoio_fk | type: CONSTRAINT --
@@ -471,7 +471,7 @@ CREATE TABLE financeiro.conta(
 
 );
 -- ddl-end --
-ALTER TABLE financeiro.conta OWNER TO postgres;
+ALTER TABLE financeiro.conta OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: conta_fk | type: CONSTRAINT --
@@ -490,7 +490,7 @@ CREATE TABLE financeiro.banco(
 
 );
 -- ddl-end --
-ALTER TABLE financeiro.banco OWNER TO postgres;
+ALTER TABLE financeiro.banco OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: banco_fk | type: CONSTRAINT --
@@ -510,7 +510,7 @@ CREATE TABLE cadastro.cidade(
 
 );
 -- ddl-end --
-ALTER TABLE cadastro.cidade OWNER TO postgres;
+ALTER TABLE cadastro.cidade OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: cidade_fk | type: CONSTRAINT --
@@ -540,7 +540,7 @@ CREATE TABLE matricula.viagem(
 
 );
 -- ddl-end --
-ALTER TABLE matricula.viagem OWNER TO postgres;
+ALTER TABLE matricula.viagem OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: matricula_fk | type: CONSTRAINT --
@@ -570,7 +570,7 @@ CREATE TABLE matricula.configuracao_viagem(
 
 );
 -- ddl-end --
-ALTER TABLE matricula.configuracao_viagem OWNER TO postgres;
+ALTER TABLE matricula.configuracao_viagem OWNER TO shjheeuabowupi;
 -- ddl-end --
 
 -- object: instituicao_fk | type: CONSTRAINT --
