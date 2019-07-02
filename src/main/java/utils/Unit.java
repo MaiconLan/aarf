@@ -26,8 +26,8 @@ public class Unit {
 
 	// Dados Sistema
 	public static final String DESCRICAO_VERSAO = "Versão: ";
-	public static final String NUMERO_VERSAO = "1.5";
-	public static final String SNAPSHOT = "";
+	public static final String NUMERO_VERSAO = "1.6";
+	public static final String SNAPSHOT = ".0";
 
 	public static final String HEROKU = "Heroku";
 	public static final String DIGITAL_OCEAN = "Digital Ocean";
