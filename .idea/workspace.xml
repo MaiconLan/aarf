@@ -7,33 +7,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9be7d68-7d27-4128-99f5-46b7046a22b1" name="Default Changelist" comment="Default Changelist">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/layout-blue.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/layout-green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/layout-orange.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/layout-red.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/nanoscroller.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/access.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/avatar_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/icarus_screen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/landing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/preloader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/profile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/images/slogan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/js/layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/js/nanoscroller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/_layout_styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/_theme_styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/layout/_layout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/layout/layout-blue.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/layout/layout-green.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/layout/layout-orange.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/layout/layout-red.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/theme/_theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/theme/blue/theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/theme/green/theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/theme/orange/theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/sass/theme/red/theme.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AvisoAtualizacaoMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/EditalMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/EditalMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MatriculaAprovacaoMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MatriculaAprovacaoMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/EditalDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/EditalDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/EditalDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/EditalDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/MatriculaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/MatriculaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Endereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Estudante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Estudante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Matricula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Matricula.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/MatriculaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/MatriculaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula-aprovacao.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula-aprovacao.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/matricula.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-detalhes-estudante.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-detalhes-estudante.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/viagem/viagem.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/viagem/viagem.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/security/noticia/cadastro-noticia.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/security/noticia/cadastro-noticia.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -57,18 +71,11 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aarf-develop@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="aarf-develop@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-    </expand>
+    <expand />
     <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="aarf" />
@@ -78,23 +85,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-              <folding>
-                <element signature="e#1456#1457#0" expanded="true" />
-                <element signature="e#1509#1510#0" expanded="true" />
-                <element signature="e#2405#2406#0" expanded="true" />
-                <element signature="e#2483#2484#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="544">
+              <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="284" column="54" selection-start-line="284" selection-start-column="54" selection-end-line="284" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/login.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" column="43" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="43" />
+            <state relative-caret-position="454">
+              <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="30" column="57" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -113,9 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;p:calendar</find>
-      <find>avisoAtualizacaoBusiness</find>
-      <find>avisoa</find>
       <find>salvar</find>
       <find>filtro</find>
       <find>m.</find>
@@ -130,10 +164,8 @@
       <find>&quot;#{instituicao</find>
       <find>itemLabel=&quot;#{</find>
       <find>itemLabel=&quot;#{instituicao</find>
-      <find>itemLabel=&quot;#{instituicao</find>
       <find>instituicao.nome</find>
       <find>dia da semana</find>
-      <find>&lt;p:dataTable</find>
       <find>&lt;p:dataTable</find>
       <find>&lt;f:face</find>
       <find>linkEstudante</find>
@@ -143,12 +175,18 @@
       <find>enviar</find>
       <find>LIKE</find>
       <find>download</find>
+      <find>maven-install-plugin</find>
+      <find>library=&quot;icarus-layout&quot;</find>
+      <find>THEME</find>
+      <find>theme</find>
+      <find>icarus</find>
     </findStrings>
     <replaceStrings>
       <replace>Usuario</replace>
       <replace>usuario</replace>
       <replace>name=&quot;css/layout.css&quot;</replace>
       <replace>matricula.matriculas_anexos</replace>
+      <replace>library=&quot;primefaces-icarus-blue&quot;</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -160,14 +198,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/security/cadastros/instituicao/cadastro-instituicao.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/java/model/TipoInstituicao.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/InstituicaoMB.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Anexo.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/ArquivoAbstract.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/MatriculaAnexoMB.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/public/promotion-page.xhtml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/business/AvisoAtualizacaoBusiness.java" />
         <option value="$PROJECT_DIR$/src/main/java/enumered/CargoEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/Identity.java" />
@@ -211,6 +246,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/security/acompanhamento/matricula/modal-detalhes-estudante.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.xhtml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml" />
       </list>
     </option>
   </component>
@@ -250,7 +288,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="164" />
+    <option name="y" value="64" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -292,7 +331,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -316,6 +354,13 @@
               <item name="aarf" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -324,7 +369,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
@@ -332,8 +377,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="acompanhamento" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="icarus-layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
@@ -341,14 +386,34 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="acompanhamento" type="462c0819:PsiDirectoryNode" />
-              <item name="viagem" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="icarus-layout" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aarf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="aarf" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,7 +425,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549663418513" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/service" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/resources" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -369,19 +434,16 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\workspace\aarf\src\main\webapp\security\configuracoes\atualizacao" />
-      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\financeiro" />
-      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security" />
-      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\cadastros\financeiro\banco" />
-      <recent name="C:\workspace\aarf\src\main\webapp\security\cadastros\edital" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="business" />
+      <recent name="dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\workspace\aarf\src\main\webapp\resources" />
+      <recent name="C:\workspace\aarf\src\main\webapp\resources\icarus-layout\images" />
       <recent name="C:\workspace\aarf\src\main\webapp\security\configuracoes" />
       <recent name="C:\workspace\aarf\src\main\webapp\template" />
       <recent name="C:\workspace\aarf\src\main\resources\template_email" />
-      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\cadastros\financeiro" />
-      <recent name="C:\workspace\aarf\src\main\webapp\security\cadastros" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="controller" />
@@ -390,9 +452,12 @@
       <recent name="model" />
       <recent name="dto" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="business" />
-      <recent name="dto" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\workspace\aarf\src\main\webapp\security\configuracoes\atualizacao" />
+      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\financeiro" />
+      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security" />
+      <recent name="C:\Users\teste\workspace-oxygen\aarf\src\main\webapp\security\cadastros\financeiro\banco" />
+      <recent name="C:\workspace\aarf\src\main\webapp\security\cadastros\edital" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -431,6 +496,31 @@
               </list>
             </option>
             <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="aarf [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
             <option name="profilesMap">
               <map />
             </option>
@@ -517,8 +607,14 @@
     <list>
       <item itemvalue="JavaScript Debug.template.xhtml" />
       <item itemvalue="Maven.Install Theme" />
+      <item itemvalue="Maven.aarf [install]" />
       <item itemvalue="Tomcat Server.Tomcat" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Maven.aarf [install]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -561,6 +657,7 @@
       <workItem from="1549075813337" duration="296000" />
       <workItem from="1549076200911" duration="43000" />
       <workItem from="1549076301586" duration="8601000" />
+      <workItem from="1562285440060" duration="2665000" />
     </task>
     <servers />
   </component>
@@ -576,7 +673,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224017000" />
+    <option name="totallyTimeSpent" value="228343000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -590,19 +687,19 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49140894" visible="true" weight="0.15458423" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49140894" visible="true" weight="0.18710022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" sideWeight="0.50753766" side_tool="true" weight="0.24840085" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.50859106" side_tool="true" visible="true" weight="0.15458423" />
+      <window_info id="Favorites" order="6" sideWeight="0.50859106" side_tool="true" weight="0.15458423" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Web" order="8" sideWeight="0.50270855" side_tool="true" weight="0.18283582" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.32827735" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3531961" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" visible="true" weight="0.36944744" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28710726" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.36944744" />
       <window_info anchor="bottom" id="Database Console" order="4" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -616,7 +713,7 @@
       <window_info anchor="bottom" id="Database Changes" order="14" />
       <window_info anchor="bottom" id="Version Control" order="15" weight="0.32936078" />
       <window_info anchor="bottom" id="JPA Console" order="16" weight="0.1787649" />
-      <window_info anchor="right" id="Maven" order="0" />
+      <window_info anchor="right" id="Maven" order="0" weight="0.18230277" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
@@ -691,94 +788,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/forms.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="310" column="79" lean-forward="true" selection-start-line="310" selection-start-column="79" selection-end-line="310" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/template/confirm.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/MatriculaDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/EstudanteMB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="60" column="108" selection-start-line="60" selection-start-column="108" selection-end-line="60" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/Identity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="134" column="5" lean-forward="true" selection-start-line="118" selection-start-column="4" selection-end-line="134" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/70e0a600-6887-4579-8cb9-34e3dd4afdab/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="30" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Cidade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="61" column="24" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/noticia/cadastro-noticia.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="54" column="75" selection-start-line="54" selection-start-column="75" selection-end-line="54" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/estudante/cadastro-estudante.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="155" column="75" lean-forward="true" selection-start-line="155" selection-start-column="50" selection-end-line="155" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="246" column="83" selection-start-line="246" selection-start-column="58" selection-end-line="246" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Endereco.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="97" column="59" selection-start-line="97" selection-start-column="59" selection-end-line="97" selection-end-column="59" />
-          <folding>
-            <element signature="e#2196#2197#0" expanded="true" />
-            <element signature="e#2268#2269#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/Anexo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
@@ -832,20 +841,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ViagemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/ViagemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ViagemServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/ViagemService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/security/acompanhamento/viagem/viagem.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
@@ -930,13 +927,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet-shaded/3.0.3.Final/weld-servlet-shaded-3.0.3.Final-sources.jar!/org/jboss/weld/injection/producer/DefaultLifecycleCallbackInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/weld/servlet/weld-servlet-shaded/3.0.3.Final/weld-servlet-shaded-3.0.3.Final-sources.jar!/org/jboss/weld/injection/producer/DefaultLifecycleCallbackInvoker.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/security/cadastros/edital/cadastro-edital.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -1007,17 +998,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Throwable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="375" column="18" selection-start-line="375" selection-start-column="18" selection-end-line="375" selection-end-column="18" />
-          <folding>
-            <element signature="e#15711#15712#0" expanded="true" />
-            <element signature="e#15747#15748#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Throwable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/exception/GenericException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -1029,20 +1010,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/MatriculaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Long.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/MatriculaService.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Long.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/business/MatriculaBusiness.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -1103,13 +1072,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/MatriculaServiceImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/MatriculaMB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1122,23 +1085,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/js/layout.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/js/nanoscroller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/icarus-layout/css/layout-blue.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="71" selection-start-column="71" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Unit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/PrestacaoContaMB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="e#1456#1457#0" expanded="true" />
-            <element signature="e#1509#1510#0" expanded="true" />
-            <element signature="e#2405#2406#0" expanded="true" />
-            <element signature="e#2483#2484#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="544">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/sass/theme/red/theme.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/public/cadastro-usuario.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="30" column="57" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/security/financeiro/conta/prestacao-conta.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="43" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="43" />
+        <state relative-caret-position="289">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/sass/theme/_theme.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="54" column="37" lean-forward="true" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="284" column="54" selection-start-line="284" selection-start-column="54" selection-end-line="284" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
         </state>
       </provider>
     </entry>
