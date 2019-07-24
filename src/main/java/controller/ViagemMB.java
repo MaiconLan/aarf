@@ -90,6 +90,7 @@ public class ViagemMB implements Serializable {
             Messages.addInfo(null, "Configuracao removida com sucesso!");
             carregarConfiguracoesEdital();
         } catch (Exception e) {
+            e.printStackTrace();
             Messages.addError(null, "Não foi possível remover a configuração!");
         }
     }

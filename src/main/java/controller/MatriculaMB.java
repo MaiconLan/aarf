@@ -135,7 +135,14 @@ public class MatriculaMB implements Serializable {
             viagemMatricula.setInstituicao(viagem.getInstituicao());
             viagemMatricula.setSentido(sentido[i]);
             viagemMatricula.setMatricula(matricula);
-            viagens.add(viagemMatricula);
+
+            if(viagens.contains(viagemMatricula)) {
+                Messages.addWarn(null, "Esta viagem já foi adicionada!");
+                return;
+
+            } else {
+                viagens.add(viagemMatricula);
+            }
         }
 
         Messages.addInfo(null, "Viagem adicionada com sucesso!");
@@ -190,7 +197,7 @@ public class MatriculaMB implements Serializable {
     }
 
     public boolean desabilitarCampos() {
-        return renderizarCamposMatriculaSalva() && !matricula.isInscricao();
+        return renderizarCamposMatriculaSalva() && !matricula.isInscricao() || idEdital == null;
     }
 
     public boolean renderizarCancelarMatricula() {
