@@ -2,6 +2,7 @@ package controller;
 
 import business.InstituicaoBusiness;
 import dto.InstituicaoDTO;
+import exception.InstituicaoBusinessException;
 import model.Cidade;
 import model.Instituicao;
 import model.TipoInstituicao;
@@ -66,9 +67,14 @@ public class InstituicaoMB implements Serializable{
 	}
 	
 	public void salvarInstituicao() {
-		instituicaoBusiness.salvar(instituicao);
-		Messages.addInfo(null, "Instituição salva com sucesso");
-		limparCampos();
+		try {
+			instituicaoBusiness.salvar(instituicao);
+
+			Messages.addInfo(null, "Instituição salva com sucesso");
+			limparCampos();
+		} catch (InstituicaoBusinessException e) {
+			Messages.addWarn(null, e.getMessage());
+		}
 	}
 	
 	public void limparCampos() {

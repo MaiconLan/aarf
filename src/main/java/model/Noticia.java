@@ -44,7 +44,7 @@ public class Noticia implements Serializable {
     @JoinColumn(name = "id_instituicao")
     private Instituicao instituicao;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_associado")
     private Associado associado;
     

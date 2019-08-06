@@ -104,11 +104,11 @@ public class MatriculaMB implements Serializable {
                 viagens = matricula.getViagens();
                 idEdital = matricula.getEdital().getIdEdital();
             }
+            matriculaAnexoMB.setMatricula(matricula);
         } else {
             Messages.addError(null, "Apenas estudantes podem realizar a matrícula!");
         }
 
-        matriculaAnexoMB.setMatricula(matricula);
     }
 
     public void selecionarMatricula() {

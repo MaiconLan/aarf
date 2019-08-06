@@ -26,4 +26,8 @@ public class StringUtils {
         pessoa.setCpf(cpf);
         pessoa.setRg(rg);
     }
+
+    public static boolean isBlank(String tipo) {
+        return tipo == null || tipo.isEmpty();
+    }
 }

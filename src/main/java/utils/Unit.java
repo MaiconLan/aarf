@@ -13,10 +13,10 @@ public class Unit {
 	public static final String SENHA_BASE_DADOS_LOCAL = "postgres";
 
 	// Dados da base local
-	public static final String IP_BASE_DADOS_HEROKU = "ec2-54-204-35-248.compute-1.amazonaws.com";
-	public static final String NOME_BASE_DADOS_HEROKU = "d11cj1tk6dhdha";
-	public static final String USUARIO_BASE_DADOS_HEROKU = "emoesghhevygpb";
-	public static final String SENHA_BASE_DADOS_HEROKU = "5989eb809afc5873f73edc5a9723cbe9ab886c4df8ea9d8dd38d5809a939f487";
+	public static final String IP_BASE_DADOS_HEROKU = "e";
+	public static final String NOME_BASE_DADOS_HEROKU = "";
+	public static final String USUARIO_BASE_DADOS_HEROKU = "";
+	public static final String SENHA_BASE_DADOS_HEROKU = "";
 	
 	// Dados da base DigitalOcean
 	public static final String IP_BASE_DADOS_DO = "127.0.0.1";

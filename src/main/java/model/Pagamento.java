@@ -12,13 +12,17 @@ public class Pagamento {
     @Column(name = "id_pagamento")
     private Long idPagemento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_prestacao_conta")
-    private PrestacaoConta prestacaoConta;
+    private String descricao;
+
+    private String observacao;
 
     private LocalDate pagamento;
 
     private Double valor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_prestacao_conta")
+    private PrestacaoConta prestacaoConta;
 
     public Long getIdPagemento() {
         return idPagemento;
@@ -50,5 +54,21 @@ public class Pagamento {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
