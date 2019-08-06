@@ -30,7 +30,6 @@ public class Associado implements Serializable {
     
     private Boolean inativo;
 
-    
     public Associado() {
         this.pessoa = new Pessoa();
         this.usuario = new Usuario();

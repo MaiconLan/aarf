@@ -26,7 +26,6 @@
                         <h1 class="lightBlack centerText">Selecione o Edital</h1>
                         <div class="ui-g">
                             <ui:repeat var="edital" value="#{matriculaMB.listaEditais}">
-
                                 <div id="main-wrapper-content">
                                     <div class="ui-g">
                                         <div class="ui-g-12 ui-md-12 ui-lg-12">
@@ -44,6 +43,15 @@
                                     </div>
                                 </div>
                             </ui:repeat>
+                        </div>
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:commandButton id="fechar"
+                                                 styleClass="red-button"
+                                                 icon="fa fa-times"
+                                                 value="Cancelar"
+                                                 onmousedown="PF('modalConsultaEditais').hide();"/>
+                            </div>
                         </div>
                     </div>
                 </div>

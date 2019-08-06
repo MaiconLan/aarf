@@ -29,13 +29,13 @@
                     <h:form id="formLogin">
                         <div class="ui-g-12" style="padding-top:35px;">
                             <p:inputText id="login"
-                                         value="#{identity.usuario.login}"
+                                         value="#{loginMB.usuario.login}"
                                          placeholder="Seu Login"
                                          style="width:60%;"/><br/>
                         </div>
                         <div class="ui-g-12" style="padding-top:10px;">
                             <p:password id="senha"
-                                        value="#{identity.usuario.senha}"
+                                        value="#{loginMB.usuario.senha}"
                                         placeholder="Sua Senha"
                                         style="width:60%"/>
                         </div>
@@ -60,7 +60,7 @@
                                                  value="Login"
                                                  process="formLogin"
                                                  update="formLogin"
-                                                 action="#{identity.logar()}"/>
+                                                 action="#{loginMB.logar()}"/>
                             </div>
                         </div>
                     </h:form>
@@ -74,7 +74,7 @@
             .ui-panel .ui-panel-title {font-size: 17px;}
         </style>
 
-        <h:outputStylesheet name="css/layout.css" library="icarus-layout" />
+        <h:outputStylesheet name="css/layout-blue.css" library="icarus-layout" />
     </h:body>
 
 </html>

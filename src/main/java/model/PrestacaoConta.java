@@ -1,11 +1,9 @@
 package model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,11 +25,16 @@ public class PrestacaoConta implements Serializable {
 
     private LocalDate recebimento;
 
+    private String observacao;
+
     @ManyToMany
     @JoinTable(name="prestacao_conta_anexo", joinColumns=
             {@JoinColumn(name="id_prestacaoConta")}, inverseJoinColumns=
             {@JoinColumn(name="id_anexo")})
     private List<Anexo> anexos;
+
+    @OneToMany(mappedBy = "prestacaoConta", cascade = CascadeType.ALL)
+    private List<Pagamento> pagamentos = new ArrayList<>();
 
     public Long getIdPrestacaoConta() {
         return idPrestacaoConta;
@@ -71,5 +74,21 @@ public class PrestacaoConta implements Serializable {
 
     public void setAnexos(List<Anexo> anexos) {
         this.anexos = anexos;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public List<Pagamento> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(List<Pagamento> pagamentos) {
+        this.pagamentos = pagamentos;
     }
 }

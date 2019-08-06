@@ -22,19 +22,19 @@
 
     <h:body>
         <div class="wrapper">
-            
+
             <div id="sidebar-wrapper">
                 <ui:include src="sidebarheader.xhtml" />
-                            
+
                 <div class="sidebar-nav nano">
                     <div class="nano-content sidebar-scroll-content">
                         <ui:include src="layoutmenu.xhtml" />
                     </div>
                 </div>
-            </div>   
-            
-            <ui:include src="topbar.xhtml" />         
-            
+            </div>
+
+            <ui:include src="topbar.xhtml" />
+
             <div id="main-wrapper">
                 <div class="main-content">
                     <p:growl id="messages" showDetail="false" autoUpdate="true" life="5000" />
@@ -42,7 +42,7 @@
                     <ui:include src="/template/aviso-atualizacao.xhtml"/>
                     <ui:insert name="content"></ui:insert>
                 </div>
-                
+
                 <ui:include src="footer.xhtml" />
             </div>
         </div>

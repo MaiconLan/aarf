@@ -23,15 +23,8 @@ import java.util.List;
 @SessionScoped
 @Named(value = "identity")
 public class Identity implements Serializable {
+
 	private static final long serialVersionUID = 3570532101723065655L;
-
-	private static final String ERRO_DETALHES = "Ocorreu um erro ao tentar efetuar Login.";
-	private static final String AVISO_DESLOGADO = "Você deve estar logado para efetuar esta ação.";
-	private static final String LOGIN_ERRO_DETALHES = "Verifique seu Login/Senha! Lembre-se que maiúsculas e minúsculas fazem a diferença.";
-	private static final String LOGIN_ERRO_MENSAGEM = "Erro ao efetuar login!";
-
-	@Inject
-	private UsuarioBusiness usuarioBusiness;
 
 	private Usuario usuario;
 
@@ -44,33 +37,9 @@ public class Identity implements Serializable {
 		novoLogin();
 	}
 
-	public void logar() {
-		String redirect = "";
-		try {
-
-			logado = usuarioBusiness.isValido(usuario);
-
-			if (logado) {
-				usuario = usuarioBusiness.logar(usuario);
-				regras = usuarioBusiness.buscarRegras(usuario);
-				adicionarParametroSessao("usuario", usuario);
-
-				redirect = "security/dashboard.xhtml";
-			} else {
-				Messages.addWarn(null, LOGIN_ERRO_DETALHES);
-			}
-
-			Faces.redirect(redirect);
-
-		} catch (LoginException e) {
-			Messages.addWarn(null, LOGIN_ERRO_DETALHES);
-			e.printStackTrace();
-
-		}  catch (Exception e) {
-			Messages.addError(null, "Detalhes: " + e.getMessage());
-			e.printStackTrace();
-
-		}
+	public void novoLogin() {
+		regras = new ArrayList<>();
+		usuario = new Usuario();
 	}
 
 	public String obterCargo(){
@@ -106,7 +75,6 @@ public class Identity implements Serializable {
 	}
 
 	public void deslogar() {
-		novoLogin();
 		logado = false;
 
 		try {
@@ -153,24 +121,6 @@ public class Identity implements Serializable {
 		return false;
 	}
 
-	private void adicionarParametroSessao(String parametro, Object object) {
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(parametro, object);
-	}
-
-	public String avisoDeslogado() {
-		String aviso = "";
-
-		if (!logado) {
-			aviso = AVISO_DESLOGADO;
-		}
-
-		return aviso;
-	}
-
-	public void novoLogin() {
-		regras = new ArrayList<>();
-		usuario = new Usuario();
-	}
 
 	public Usuario getUsuario() {
 		return usuario;

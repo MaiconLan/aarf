@@ -56,7 +56,7 @@
                                                  styleClass="green-button"
                                                  value="Confirmar Reprovação"
                                                  process="@form"
-                                                 update="@form"
+                                                 update="formAprovacao"
                                                  action="#{matriculaAprovacaoMB.reprovarMatricula()}"/>
                             </div>
 
@@ -65,8 +65,8 @@
                                                  icon="fa fa-remove"
                                                  styleClass="red-button"
                                                  value="Cancelar Reprovação"
-                                                 process="@form"
-                                                 update="@form"
+                                                 process="@this"
+                                                 update="formAprovacao"
                                                  action="#{matriculaAprovacaoMB.fecharModalReprovarMatricula()}"/>
                             </div>
                         </div>

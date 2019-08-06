@@ -3,8 +3,10 @@ package business;
 import dao.CidadeDAO;
 import dao.InstituicaoDAO;
 import dto.InstituicaoDTO;
+import exception.InstituicaoBusinessException;
 import model.Cidade;
 import model.Instituicao;
+import utils.StringUtils;
 
 import javax.inject.Inject;
 import java.io.Serializable;
@@ -20,11 +22,18 @@ public class InstituicaoBusiness implements Serializable {
 	@Inject
 	private CidadeDAO cidadeDAO;
 	
-	public void salvar(Instituicao instituicao) {
+	public void salvar(Instituicao instituicao) throws InstituicaoBusinessException {
+		validarInstituicao(instituicao);
+
 		if(instituicao.getIdInstituicao() == null)
 			instituicaoDAO.save(instituicao);
 		else
 			instituicaoDAO.update(instituicao);
+	}
+
+	private void validarInstituicao(Instituicao instituicao) throws InstituicaoBusinessException {
+		if(StringUtils.isBlank(instituicao.getTipo()))
+			throw new InstituicaoBusinessException("Tipo é obrigatório");
 	}
 	
 	 public List<Instituicao> consultarInstituicoes(InstituicaoDTO instituicaoDTO) {

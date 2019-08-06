@@ -9,7 +9,7 @@
         <div class="ui-fluid">
             <div class="ui-g">
                 <div class="card">
-                    <h:form id="formMatricula" enctype="multipart/form-data">
+                    <h:form id="formMatricula">
                         <h1 class="lightBlack centerText">Matrícula
                             #{matriculaMB.edital.titulo}</h1>
                         <div class="ui-g">
@@ -19,7 +19,7 @@
                                 <p class="lightBlack">#{matriculaMB.obterPeriodo()}</p>
                             </div>
                         </div>
-                        <h:form id="formIdMatricula" rendered="#{matriculaMB.renderizarCamposMatriculaSalva()}">
+                        <h:panelGroup id="formIdMatricula" rendered="#{matriculaMB.renderizarCamposMatriculaSalva()}">
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-6">
                                     <p:outputLabel styleClass="lightBlack" style="font-weight: bold"
@@ -28,8 +28,8 @@
                                                    value="#{matriculaMB.matricula.idMatricula}"/>
                                 </div>
                             </div>
-                        </h:form>
-                        <h:form id="formSelecionarMatricula" rendered="#{matriculaMB.renderizarSelecionarMatricula()}">
+                        </h:panelGroup>
+                        <h:panelGroup id="formSelecionarMatricula" rendered="#{matriculaMB.renderizarSelecionarMatricula()}">
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-6">
                                     <p:selectOneMenu id="comboMatriculas"
@@ -49,8 +49,8 @@
                                                    value="#{matriculaMB.matricula.idMatricula}"/>
                                 </div>
                             </div>
-                        </h:form>
-                        <h:form id="formDadosMatricula">
+                        </h:panelGroup>
+                        <h:panelGroup id="formDadosMatricula">
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-4">
                                     <p:outputLabel for="semestre" value="Semestre Cursando"/>
@@ -119,7 +119,7 @@
                                                      icon="fa fa-plus"
                                                      title="Adicionar"
                                                      styleClass="green-button"
-                                                     update="@form" process="@form"
+                                                     update="tableViagens" process="@form"
                                                      action="#{matriculaMB.salvarViagem()}"
                                                      disabled="#{matriculaMB.desabilitarCampos()}"/>
                                 </div>
@@ -150,7 +150,7 @@
                                     </p:dataTable>
                                 </div>
                             </div>
-                        </h:form>
+                        </h:panelGroup>
                     </h:form>
                     <h:form id="formAnexo" enctype="multipart/form-data">
 
@@ -208,7 +208,7 @@
                                                  icon="fa fa-fw fa-edit"
                                                  action="#{matriculaMB.salvar()}"
                                                  disabled="#{matriculaMB.desabilitarCampos()}"
-                                                 process="formMatricula formAnexo" update="formMatricula formAnexo"/>
+                                                 process="@this formMatricula" update="formMatricula formAnexo"/>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:commandButton id="enviarAprovacao"
@@ -218,7 +218,7 @@
                                                  action="#{matriculaMB.enviarParaAprovacao()}"
                                                  disabled="#{matriculaMB.desabilitarCampos()}"
                                                  rendered="#{matriculaMB.renderizarCamposMatriculaSalva()}"
-                                                 process="formMatricula formAnexo" update="formMatricula formAnexo"/>
+                                                 process="@this formMatricula" update="formMatricula formAnexo"/>
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-lg-2">
                                 <p:commandButton id="cancelarMatricula"
@@ -227,7 +227,7 @@
                                                  icon="fa fa-fw fa-times"
                                                  action="#{matriculaMB.cancelar()}"
                                                  rendered="#{matriculaMB.renderizarCancelarMatricula()}"
-                                                 process="formMatricula formAnexo" update="formMatricula formAnexo">
+                                                 process="@this formMatricula" update="formMatricula formAnexo">
                                     <p:confirm header="Cancelar Matrícula"
                                                message="Tem certeza que deseja cancelar a matrícula?"
                                                icon="ui-icon-alert"/>
