@@ -9,6 +9,8 @@ import model.Endereco;
 import model.Estudante;
 import model.Instituicao;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.mail.EmailException;
+import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import service.CepService;
 import utils.email.EmailHtml;
@@ -84,7 +86,16 @@ public class UsuarioMB implements Serializable {
         estudante.getUsuario().setAlterarLogin(true);
     }
 
-    private void enviarEmail() {
+    private void direcionaLogin(){
+        try {
+            String redirect = "public/home";
+            Faces.redirect(redirect);
+        }catch (Exception e){
+
+        };
+    }
+
+    private void enviarEmail(){
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             String mensagem = IOUtils.toString(classLoader.getResource("template_email/email_cadastro_usuario.html"), "UTF-8");
@@ -99,6 +110,7 @@ public class UsuarioMB implements Serializable {
             mensagem = mensagem.replaceAll(":telefone:", "Telefone");
 
             new EmailHtml("AARF", mensagem, emailDestinatario).enviar();
+            direcionaLogin();
 
         } catch (IOException e) {
             e.printStackTrace();
