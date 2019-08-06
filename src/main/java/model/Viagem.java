@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(schema = "matricula", name = "viagem")
@@ -79,28 +80,19 @@ public class Viagem implements Serializable {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((idViagem == null) ? 0 : idViagem.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Viagem viagem = (Viagem) o;
+		return Objects.equals(idViagem, viagem.idViagem) &&
+				Objects.equals(diaSemana, viagem.diaSemana) &&
+				Objects.equals(sentido, viagem.sentido) &&
+				Objects.equals(instituicao, viagem.instituicao) &&
+				Objects.equals(matricula, viagem.matricula);
 	}
+
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Viagem other = (Viagem) obj;
-		if (idViagem == null) {
-			if (other.idViagem != null)
-				return false;
-		} else if (!idViagem.equals(other.idViagem))
-			return false;
-		return true;
+	public int hashCode() {
+		return Objects.hash(idViagem, diaSemana, sentido, instituicao, matricula);
 	}
-
-
 }

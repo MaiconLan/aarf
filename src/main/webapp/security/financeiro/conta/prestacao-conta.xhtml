@@ -6,134 +6,163 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <div class="ui-fluid">
-            <div class="ui-g">
-                <div class="card">
-                    <h1 class="lightBlack centerText">Prestação de Contas</h1>
+        <div class="card">
+            <div class="ui-g ui-fluid">
+                <h:form id="formRecebimento">
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <h1 class="lightBlack centerText">Prestação de Contas</h1>
+                    </div>
 
                     <h3 class="lightBlack">Gerar Prestação</h3>
 
-                    <h:form id="formPresCon">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">
+                        <p:outputLabel for="instituicao" value="Instituição"/>
+                        <p:selectOneMenu id="instituicao"
+                                         value="#{prestacaoContaMB.prestacaoConta.instituicao}"
+                                         converter="omnifaces.SelectItemsIndexConverter"
+                                         filter="true"
+                                         required="true">
+                            <f:selectItem itemLabel="Selecione uma instituição" noSelectionOption="true"/>
+                            <f:selectItems var="instituicao"
+                                           itemLabel="#{instituicao}"
+                                           itemValue="#{instituicao}"
+                                           value="#{prestacaoContaMB.instituicoes}"/>
+                        </p:selectOneMenu>
+                    </div>
 
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-4">
-                                <p:selectOneMenu id="Instituicao"
-                                                 value="#{prestacaoContaMB.prestacaoConta.instituicao}"
-                                                 converter="omnifaces.SelectItemsIndexConverter"
-                                                 filter="true"
-                                                 required="true"
-                                                 placeholder="Instituicao">
-                                    <f:selectItem itemLabel="Selecione uma instituição" noSelectionOption="true"/>
-                                    <f:selectItems var="instituicao"
-                                                   itemLabel="#{instituicao}"
-                                                   itemValue="#{instituicao}"
-                                                   value="#{prestacaoContaMB.instituicoes}"/>
-                                </p:selectOneMenu>
-                            </div>
-                        </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                        <p:outputLabel for="valor" value="Valor recebido"/>
+                        <p:inputNumber id="valor"
+                                       required="true"
+                                       symbol="R$"
+                                       decimalSeparator=","
+                                       thousandSeparator="."
+                                       requiredMessage="Campo obrigatório"
+                                       placeholder="Valor"
+                                       value="#{prestacaoContaMB.prestacaoConta.valor}"/>
+                    </div>
 
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:inputNumber id="valor"
-                                             required="true"
-                                             symbol="R$"
-                                             symbolPosition="s"
-                                             decimalSeparator=","
-                                             thousandSeparator="."
-                                             requiredMessage="Campo obrigatório"
-                                             placeholder="Valor"
-                                             value="#{prestacaoContaMB.prestacaoConta.valor}"/>
-                            </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                        <p:outputLabel for="data" value="Data de Recebimento"/>
+                        <p:calendar id="data"
+                                    value="#{prestacaoContaMB.prestacaoConta.recebimento}"
+                                    mask="true"
+                                    showOn="button"
+                                    required="true"
+                                    pattern="dd/MM/yyyy"
+                                    placeholder="Data"
+                                    requiredMessage="Campo obrigatório">
+                        </p:calendar>
+                    </div>
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <p:outputLabel for="observacao" value="Observação"/>
+                        <p:inputTextarea id="observacao"
+                                         requiredMessage="Campo obrigatório"
+                                         placeholder="Observação"
+                                         value="#{prestacaoContaMB.prestacaoConta.observacao}"/>
+                    </div>
+                </h:form>
 
-                            <div class="ui-g-12 ui-md-6 ui-lg-2">
-                                <p:calendar id="data"
-                                            value="#{prestacaoContaMB.prestacaoConta.data}"
-                                            mask="true"
-                                            showOn="button"
-                                            required="true"
-                                            pattern="dd/MM/yyyy"
-                                            placeholder="Data"
-                                            requiredMessage="Campo obrigatório"
-                                            >
-                                    <!--<p:ajax event="dateSelect" update="@form"/>-->
-                                    <!--<p:ajax event="change" update="@form"/>-->
-                                </p:calendar>
-                            </div>
-                        </div>
-                        <div class="ui-g">
-                            <div class="ui-g-12 ui-md-6 ui-lg-20">
-                                <p:inputText id="observacao"
-                                             equiredMessage="Campo obrigatório"
-                                             placeholder="observacao"
-                                             value="#{prestacaoContaMB.prestacaoConta.observacao}"
-                                />
-                            </div>
-                        </div>
-                        <h1 class="lightBlack centerText">Gastos</h1>
+                <h:form id="formPagamento">
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <h3 class="lightBlack">Pagamentos</h3>
+                    </div>
 
-                        <div class="ui-g">
-                            <div class="ui-g-2 ui-md-6 ui-lg-4">
-                                <p:inputText id="descGasto"
-                                             placeholder="Descrição do gasto"
-                                             value="#{prestacaoContaMB.prestacaoConta.nome_gasto}"/>
-                            </div>
-                            <div class="ui-g-2 ui-md-6 ui-lg-2">
-                                <p:inputNumber id="vlGasto"
-                                             placeholder="Valor gasto"
-                                             required="true"
-                                             symbol="R$"
-                                             symbolPosition="s"
-                                             decimalSeparator=","
-                                             thousandSeparator="."
-                                             requiredMessage="Campo obrigatório"
-                                             value="#{prestacaoContaMB.prestacaoConta.valor_gasto}"/>
-                            </div>
-                            <div class="ui-g-2 ui-md-6 ui-lg-2">
-                                <p:inputText id="obsGasto"
-                                             placeholder="Observacao"
-                                             value="#{prestacaoContaMB.prestacaoConta.observacao_gasto}"/>
-                            </div>
-                        </div>
-                        <div class="ui-g">
-                            <div class="ui-g-2 ui-md-6 ui-lg-6">
-                                <p:fileUpload fileUploadListener="#{prestacaoContaAnexoMB.enviarArquivo}" multiple="true" sequential="true"
-                                              label="Escolher" uploadLabel="Enviar" cancelLabel="Cancelar" />
+                    <div class="ui-g-2 ui-md-6 ui-lg-4">
+                        <p:outputLabel for="descricao" value="Descrição"/>
+                        <p:inputText id="descricao"
+                                     required="true"
+                                     requiredMessage="Campo descrição obrigatório"
+                                     placeholder="Descrição do pagamento"
+                                     value="#{prestacaoContaMB.pagamento.descricao}"/>
+                    </div>
+                    <div class="ui-g-2 ui-md-6 ui-lg-2">
+                        <p:outputLabel for="valorPagamento" value="Valor Pagamento"/>
+                        <p:inputNumber id="valorPagamento"
+                                       placeholder="Valor pagamento"
+                                       required="true"
+                                       symbol="R$"
+                                       decimalSeparator=","
+                                       thousandSeparator="."
+                                       requiredMessage="Campo obrigatório"
+                                       value="#{prestacaoContaMB.pagamento.valor}"/>
+                    </div>
+                    <div class="ui-g-2 ui-md-6 ui-lg-4">
+                        <p:outputLabel for="observacaoGasto" value="Observação"/>
+                        <p:inputTextarea id="observacaoGasto"
+                                         placeholder="Observacao do gasto"
+                                         value="#{prestacaoContaMB.pagamento.observacao}"/>
+                    </div>
 
-                                <div class="ui-g-2 ui-md-6 ui-lg-2">
-                                    <p:commandButton id="add"
-                                                     value="Add"
-                                                     process="@form"
-                                                     update="@form"
-                                                     action="#{prestacaoContaMB.salvar()}"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui-g">
-                            <div class="ui-g-2 ui-md-6 ui-lg-12">
-                                <p:dataTable var="prestacao" value="#{prestacaoContaMB.prestacoes}" rows="10"
-                                             paginator="true" reflow="true">
-                                    <f:facet name="header">Prestações de Contas</f:facet>
+                    <div class="ui-g-2 ui-md-6 ui-lg-2">
+                        <p:commandButton id="adicionar"
+                                         icon="fa fa-plus"
+                                         value="Adicionar"
+                                         styleClass="green-button"
+                                         process="@form"
+                                         update="@form"
+                                         action="#{prestacaoContaMB.adicionarPagamento()}"/>
+                    </div>
+                    <div class="ui-g-2 ui-md-6 ui-lg-12">
+                        <p:dataTable id="tablePagamentos" var="pagamento" value="#{prestacaoContaMB.prestacaoConta.pagamentos}" rows="10"
+                                     paginator="true" reflow="true">
+                            <f:facet name="header">Prestações de Contas</f:facet>
 
-                                    <p:column headerText="Nome" width="6%">
-                                        <h:outputText value="#{prestacao.nome_gasto}"/>
-                                    </p:column>
+                            <p:column headerText="Ações" width="4%">
+                                <p:commandButton id="editarPagamento"
+                                                 styleClass="navy-button"
+                                                 icon="fa fa-pencil"
+                                                 process="@this"
+                                                 update="@form"
+                                                 action="#{prestacaoContaMB.editarPagamento(pagamento)}"/>
+                                <p:commandButton id="removerPagamento"
+                                                 styleClass="red-button"
+                                                 icon="fa fa-times"
+                                                 process="@this"
+                                                 update="tablePagamentos"
+                                                 action="#{prestacaoContaMB.removerPagamento(pagamento)}"/>
+                            </p:column>
 
-                                    <p:column headerText="Valor" width="10%">
-                                        <h:outputText value=" R$ #{prestacao.valor}" />
-                                    </p:column>
+                            <p:column headerText="Nome" width="10%">
+                                <h:outputText value="#{pagamento.descricao}"/>
+                            </p:column>
 
-                                    <p:column headerText="Observacao" width="10%">
-                                        <h:outputText value="#{prestacao.observacao_gasto}" />
-                                    </p:column>
+                            <p:column headerText="Valor" width="4%">
+                                <h:outputText value=" R$ #{pagamento.valor}"/>
+                            </p:column>
 
-                                    <f:facet name="footer">
-                                        Foram encontrados #{prestacaoContaMB.prestacoes.size()} registro(s).
-                                    </f:facet>
-                                </p:dataTable>
-                            </div>
-                        </div>
-                    </h:form>
-                </div>
+                            <p:column headerText="Observacao" width="20%">
+                                <h:outputText value="#{pagamento.observacao}"/>
+                            </p:column>
+
+                            <f:facet name="footer">
+                                Foram encontrados #{prestacaoContaMB.prestacaoConta.pagamentos.size()} registro(s).
+                            </f:facet>
+                        </p:dataTable>
+                    </div>
+                </h:form>
+
+                <h:form id="acoes">
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <p:outputLabel for="anexo" value="Anexo"/>
+                        <p:fileUpload id="anexo"
+                                      fileUploadListener="#{prestacaoContaAnexoMB.enviarArquivoTemporario}"
+                                      multiple="true"
+                                      sequential="true"
+                                      label="Escolher"
+                                      uploadLabel="Enviar"
+                                      cancelLabel="Cancelar"/>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <p:commandButton id="salvar"
+                                         icon="fa fa-check"
+                                         value="Salvar"
+                                         process="formPagamento formRecebimento @this"
+                                         update="formPagamento formRecebimento @this"
+                                         action="#{prestacaoContaMB.salvar()}"/>
+                    </div>
+                </h:form>
             </div>
         </div>
 

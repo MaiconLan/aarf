@@ -12,6 +12,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public class GenericDAO<T> {
+
 	protected static Criteria filtro;
 	protected static EntityManager em;
 	protected Class<T> clazz;
@@ -23,7 +24,9 @@ public class GenericDAO<T> {
 	@SuppressWarnings("unchecked")
 	public GenericDAO() {
 		try {
-			em = JPAUtil.getEntityManager();
+			if(em == null) {
+				em = JPAUtil.getEntityManager();
+			}
 			this.clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
 		} catch (PersistenceException e) {
