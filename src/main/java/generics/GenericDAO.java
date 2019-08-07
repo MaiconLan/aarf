@@ -24,9 +24,7 @@ public class GenericDAO<T> {
 	@SuppressWarnings("unchecked")
 	public GenericDAO() {
 		try {
-			if(em == null) {
-				em = JPAUtil.getEntityManager();
-			}
+			em = JPAUtil.getEntityManager();
 			this.clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
 		} catch (PersistenceException e) {

@@ -72,7 +72,11 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
     }
 
     public Usuario dadosUsuario(Usuario usuario) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        String hql = "FROM Usuario u WHERE login = :login AND senha = :senha ";
+        String hql = "SELECT u FROM Usuario u " +
+                        "LEFT JOIN FETCH u.associado a " +
+                        "LEFT JOIN FETCH u.estudante e " +
+                        "WHERE u.login = :login " +
+                        "AND u.senha = :senha ";
 
         Query query = em.createQuery(hql);
         query.setParameter("login", usuario.getLogin());

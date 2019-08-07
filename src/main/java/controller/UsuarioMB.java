@@ -58,7 +58,9 @@ public class UsuarioMB implements Serializable {
             enviarEmail();
 
         } catch (EstudanteBusinessException | LoginException e) {
-            Messages.addError(null, e.getMessage());
+            e.getMessages().forEach(m -> Messages.addError(null, m));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
