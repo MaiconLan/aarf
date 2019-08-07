@@ -59,8 +59,6 @@ public class UsuarioMB implements Serializable {
 
         } catch (EstudanteBusinessException | LoginException e) {
             e.getMessages().forEach(m -> Messages.addError(null, m));
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
