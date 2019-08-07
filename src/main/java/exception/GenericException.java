@@ -1,10 +1,11 @@
 package exception;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class GenericException extends Exception {
 
-    private Collection<String> messages;
+    private Collection<String> messages = new ArrayList<>();
 
     public GenericException() {
         super();
@@ -13,14 +14,17 @@ public class GenericException extends Exception {
     public GenericException(String message, Throwable cause, boolean enableSuppression,
                                       boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
+        messages.add(message);
     }
 
     public GenericException(String message, Throwable cause) {
         super(message, cause);
+        messages.add(message);
     }
 
     public GenericException(String message) {
         super(message);
+        messages.add(message);
     }
 
     public GenericException(Throwable cause) {

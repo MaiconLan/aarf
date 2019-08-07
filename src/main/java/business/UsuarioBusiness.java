@@ -20,6 +20,8 @@ import javax.persistence.PersistenceException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Future;
@@ -55,13 +57,19 @@ public class UsuarioBusiness implements Serializable {
     }
 
     private void validarLogin(Usuario usuario) throws LoginException {
+        Collection<String> detalhes = new ArrayList<>();
+
 
         if(usuarioDAO.possuiUsuario(usuario)){
-            throw new LoginException("Este usuário já está cadastrado, insira outro nome de usuário.");
+            detalhes.add("Este usuário já está cadastrado, insira outro nome de usuário.");
         }
 
         if(usuario.getLogin().contains(" ")){
-            throw new LoginException("Não insira espaços em branco.");
+            detalhes.add("Não insira espaços em branco.");
+        }
+
+        if(!detalhes.isEmpty()) {
+            throw new LoginException(detalhes);
         }
     }
 
