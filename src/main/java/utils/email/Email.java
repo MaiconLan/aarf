@@ -3,6 +3,7 @@ package utils.email;
 import model.Anexo;
 import model.Pessoa;
 import org.apache.commons.mail.*;
+import utils.Unit;
 
 import javax.validation.constraints.Null;
 import java.io.File;
@@ -14,8 +15,8 @@ import java.util.concurrent.Future;
 public abstract class Email implements Callable {
 
     protected final static String smtp = "smtp.gmail.com";
-    protected final static String emailRemetente = "sistema.aarf@gmail.com";
-    protected final static String emailSenha = "#e#j#m#m#r";
+    protected final static String emailRemetente = Unit.HOSPEDAGEM.equals(Unit.LOCAL) ? "sistema.aarf@gmail.com" : "aariofortuna@gmail.com";
+    protected final static String emailSenha = Unit.HOSPEDAGEM.equals(Unit.LOCAL) ? "#e#j#m#m#r" : "presidente2018";
     protected final static boolean authentication = true;
 
     protected String titulo;
