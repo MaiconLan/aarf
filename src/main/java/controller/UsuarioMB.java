@@ -9,7 +9,6 @@ import model.Endereco;
 import model.Estudante;
 import model.Instituicao;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.mail.EmailException;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 import service.CepService;
@@ -55,12 +54,14 @@ public class UsuarioMB implements Serializable {
     public void salvarEstudante() {
         try {
             estudanteBusiness.salvarEstudante(estudante);
-            Messages.addInfo(null, "Bem-vindo " + estudante.getPessoa().getNome());
-
             enviarEmail();
+
+            Faces.redirect("/public/bem-vindo.xhtml");
 
         } catch (EstudanteBusinessException | LoginException e) {
             e.getMessages().forEach(m -> Messages.addError(null, m));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
