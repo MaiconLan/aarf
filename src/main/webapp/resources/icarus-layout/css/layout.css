@@ -47,7 +47,7 @@ body {
 
 #sidebar-header {
   height: 100px;
-  background: #5BA5D8;
+  background: #ffffff; /*Fonte do tema #5BA5D8 */
   text-align: center;
   position: relative;
 }
@@ -117,7 +117,7 @@ body {
   vertical-align: top;
 }
 .sidebar-nav .sidebar-menuitem .menuLink.active-menu span {
-  color: #5BA5D8;
+  color: #ffffff;
 }
 .sidebar-nav .sidebar-menuitem .menuLink.active-menu:hover .menu-text {
   color: #fff;
@@ -869,20 +869,30 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background: -moz-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* ff3.6+ */
+
+  background: #ff8000;
+
+
+  /*
+
+
+    background: -moz-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
+   ff3.6+
   background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #f6bb4e), color-stop(100%, #fbdf86));
-  /* safari4+,chrome */
+   safari4+,chrome
   background: -webkit-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* safari5.1+,chrome10+ */
+  safari5.1+,chrome10+
   background: -o-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* opera 11.10+ */
+  opera 11.10+
   background: -ms-linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* ie10+ */
+  ie10+
   background: linear-gradient(125deg, #f6bb4e 0%, #fbdf86 100%);
-  /* w3c */
+   w3c
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f6bb4e", endColorstr="#fbdf86",GradientType=1 );
-  /* ie6-9 */
+   ie6-9
+
+  */
+
 }
 
 .containerError {
@@ -1018,7 +1028,7 @@ body {
   margin-right: auto;
 }
 #landing-page-wrapper #landing-top-bar {
-  background: #5BA5D8;
+  background: #ffffff;
   width: 100%;
   height: 140px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
@@ -1035,7 +1045,7 @@ body {
   padding: 25px 0;
 }
 #landing-page-wrapper #landing-top-bar .landing-logo img {
-  width: 80px;
+  width: 120x;
   height: 80px;
 }
 #landing-page-wrapper #landing-top-bar .landing-nav-bar {
@@ -1048,11 +1058,11 @@ body {
 }
 #landing-page-wrapper #landing-top-bar .landing-nav-bar ul li a {
   text-decoration: none;
-  color: #fff;
+  color: #FF7F00;
 }
 #landing-page-wrapper #landing-top-bar .landing-nav-bar ul li a:hover {
-  border-bottom: 5px solid #206FA5;
-  border-radius: 2px;
+  border-bottom: 5px solid #FF7F00;
+  border-radius: 1px;
 }
 #landing-page-wrapper #landing-slogan {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
@@ -1538,3 +1548,5 @@ body {
 }
 
 /* Add your customizations of layout here */
+
+/*# sourceMappingURL=layout.css.map */
