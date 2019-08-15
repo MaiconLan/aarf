@@ -4,7 +4,7 @@ public enum Versao {
 
     MAJOR(1),
     MINOR(7),
-    RELEASE(2);
+    RELEASE(3);
 
     Versao(int numero) {
         this.numero = numero;
