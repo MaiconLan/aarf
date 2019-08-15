@@ -1,5 +1,6 @@
 package jpautil;
 
+import utils.Ambiente;
 import utils.Unit;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
+
+import static utils.Ambiente.*;
 
 public class JPAUtil {
 
@@ -29,7 +32,7 @@ public class JPAUtil {
 			map.put("javax.persistence.jdbc.password", senha);
 			map.put("javax.persistence.jdbc.ssl", ssl);
 			map.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-			map.put("hibernate.show_sql", Unit.LOCAL.equals(unidade) ? "true" : "false");
+			map.put("hibernate.show_sql", "false");
 			map.put("javax.persistence.jdbc.url", ip);
 
 			factory = Persistence.createEntityManagerFactory(unidade, map);
@@ -42,19 +45,19 @@ public class JPAUtil {
 	public static EntityManager getEntityManager() {
 		if (factory == null) {
 
-			switch (Unit.HOSPEDAGEM) {
+			switch (Unit.AMBIENTE) {
 
-			case Unit.LOCAL:
+			case LOCAL:
 				loadInstance(Unit.USUARIO_BASE_DADOS_LOCAL, Unit.SENHA_BASE_DADOS_LOCAL, Unit.SSL, Unit.NOME_UNIDADE,
 						IP_LOCAL);
 				break;
 
-			case Unit.DIGITAL_OCEAN:
+			case DIGITAL_OCEAN:
 				loadInstance(Unit.USUARIO_BASE_DADOS_DO, Unit.SENHA_BASE_DADOS_DO, Unit.SSL, Unit.NOME_UNIDADE,
 						IP_DIGITAL_OCEAN);
 				break;
 
-				case Unit.HEROKU:
+				case HEROKU:
 					loadInstance(Unit.USUARIO_BASE_DADOS_HEROKU, Unit.SENHA_BASE_DADOS_HEROKU, Unit.SSL, Unit.NOME_UNIDADE,
 							IP_HEROKU);
 					break;

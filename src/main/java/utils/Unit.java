@@ -22,16 +22,7 @@ public class Unit {
 	public static final String IP_BASE_DADOS_DO = "127.0.0.1";
 	public static final String NOME_BASE_DADOS_DO = "aarf-oficial";
 	public static final String USUARIO_BASE_DADOS_DO = "postgres";
-	public static final String SENHA_BASE_DADOS_DO = "postgres";
+	public static final String SENHA_BASE_DADOS_DO = "#e#j#m#m#r";
 
-	// Dados Sistema
-	public static final String DESCRICAO_VERSAO = "Versão: ";
-	public static final String NUMERO_VERSAO = "1.7";
-	public static final String SNAPSHOT = ".1";
-
-	public static final String HEROKU = "Heroku";
-	public static final String DIGITAL_OCEAN = "Digital Ocean";
-	public static final String LOCAL = "localhost";
-
-	public static final String HOSPEDAGEM = LOCAL;
+	public static final Ambiente AMBIENTE = Ambiente.LOCAL;
 }
