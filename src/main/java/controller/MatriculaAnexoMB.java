@@ -16,7 +16,7 @@ import java.util.List;
 public class MatriculaAnexoMB extends ArquivoAbstract implements Serializable {
 
     private static final long serialVersionUID = 8963237834826726202L;
-    private static final String DIRETORIO_MODULO = "\\matricula\\";
+    private static final String DIRETORIO_MODULO = "/matricula";
 
     @Inject
     private AnexoBusiness anexoBusiness;
