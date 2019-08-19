@@ -24,5 +24,5 @@ public class Unit {
 	public static final String USUARIO_BASE_DADOS_DO = "postgres";
 	public static final String SENHA_BASE_DADOS_DO = "#e#j#m#m#r";
 
-	public static final Ambiente AMBIENTE = Ambiente.DIGITAL_OCEAN;
+	public static final Ambiente AMBIENTE = Ambiente.LOCAL;
 }
