@@ -29,7 +29,7 @@
     </context-param>
     <context-param>
         <param-name>upload.location</param-name>
-        <param-value>\aarf\arquivos</param-value>
+        <param-value>/aarf/arquivos</param-value>
     </context-param>
     <filter>
         <filter-name>Character Encoding Filter</filter-name>

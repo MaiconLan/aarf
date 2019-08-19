@@ -103,7 +103,7 @@ public class Anexo implements Serializable {
     }
 
     public String getPath(){
-        return caminho + hash +"."+ extensao;
+        return caminho + "/" + hash + "." + extensao;
     }
 
 }

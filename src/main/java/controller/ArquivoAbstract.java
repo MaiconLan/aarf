@@ -66,11 +66,11 @@ public abstract class ArquivoAbstract {
         for (Anexo anexo : arquivosTemporarios) {
             try {
                 File arquivoFisico = new File(obterDiretorioCompleto(), anexo.getHash() + "." + anexo.getExtensao());
-                FileUtils.copyFile(anexo.getFile(), arquivoFisico);
-
-                if(!arquivoFisico.exists())
+                if(!arquivoFisico.getParentFile().exists())
                     arquivoFisico.getParentFile().mkdirs();
-                arquivoFisico.createNewFile();
+
+                FileUtils.copyFile(anexo.getFile(), arquivoFisico);
+                //arquivoFisico.createNewFile();
 
                 salvarAnexos(anexo);
             } catch (IOException e) {
