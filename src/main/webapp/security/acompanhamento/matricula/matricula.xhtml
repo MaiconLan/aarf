@@ -152,15 +152,31 @@
                             </div>
                         </h:panelGroup>
                     </h:form>
+
+                    <br/>
+                    <br/>
                     <h:form id="formAnexo" enctype="multipart/form-data">
 
-                        <h1 class="lightBlack">Comprovante de Matrícula</h1>
+                        <h1 class="lightBlack">Comprovantes</h1>
+                        <h3 class="lightBlack">Arquivos permitidos: </h3>
+                        <ul>
+                            <li><p:outputLabel value="-Extrato de Matrícula"/></li>
+                            <li><p:outputLabel value="-Comprovante de Residência"/></li>
+                            <li><p:outputLabel value="-Boleto"/></li>
+                        </ul>
+
                         <div class="ui-g">
                             <div class="ui-g-12 ui-md-12 ui-lg-12 ">
                                 <p:fileUpload fileUploadListener="#{matriculaMB.enviarArquivo}"
                                               multiple="true"
                                               sequential="true"
                                               label="Escolher"
+                                              dragDropSupport="true"
+                                              sizeLimit="100000"
+                                              allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/"
+                                              invalidFileMessage="Arquivo ou extensão inválido(a). Permitido apenas PNG, JPG/JPEG e PDF."
+                                              fileLimit="5"
+                                              fileLimitMessage="Só é possível escolher 5 arquivos por vez."
                                               uploadLabel="Enviar"
                                               cancelLabel="Cancelar"
                                               disabled="#{matriculaMB.desabilitarCampos()}"/>
