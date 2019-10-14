@@ -29,6 +29,8 @@ public class ViagemBusiness implements Serializable {
     }
 
     public void gerarValores(ConfiguracaoViagem configuracaoViagem, List<ViagemDTO> viagensDTO) {
+        configuracaoViagemDAO.save(configuracaoViagem);
+
         Double valor = configuracaoViagem.getValor();
         Long quantidade = viagensDTO.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens()));
 
@@ -37,10 +39,10 @@ public class ViagemBusiness implements Serializable {
         List<Viagem> viagens = viagemDAO.buscarViagens(configuracaoViagem.getEdital().getIdEdital(), configuracaoViagem.getInstituicao().getIdInstituicao());
         for (Viagem viagem : viagens) {
             viagem.setValor(valorPorViagem);
+            viagem.setConfiguracaoViagem(configuracaoViagem);
             viagemDAO.save(viagem);
         }
 
-        configuracaoViagemDAO.save(configuracaoViagem);
     }
 
     public void removerConfiguracao(ConfiguracaoViagem configuracaoViagem) throws Exception {

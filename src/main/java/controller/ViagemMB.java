@@ -103,12 +103,21 @@ public class ViagemMB implements Serializable {
 
         Messages.addInfo(null, "Valores gerados com sucesso!");
 
-        buscarEstudantes();
+        buscarEstudantesSemConfiguracaoViagem();
     }
 
     public void buscarEstudantes() {
         if(filtro.getInstituicao() != null) {
             carregarConfiguracaoViagem();
+            viagens = viagemBusiness.buscarViagensDTO(idEdital, filtro.getInstituicao().getIdInstituicao());
+        } else {
+            novaConfiguracaoViagem();
+            viagens.clear();
+        }
+    }
+
+    public void buscarEstudantesSemConfiguracaoViagem() {
+        if(filtro.getInstituicao() != null) {
             viagens = viagemBusiness.buscarViagensDTO(idEdital, filtro.getInstituicao().getIdInstituicao());
         } else {
             novaConfiguracaoViagem();
@@ -136,7 +145,7 @@ public class ViagemMB implements Serializable {
 
     public Double getValorTotal(){
         if(configuracaoViagem != null && !viagens.isEmpty())
-            return viagens.stream().collect(Collectors.summingDouble(ViagemDTO::getValor));
+            return viagens.stream().collect(Collectors.summingDouble(viagem -> viagem.getValor() != null ? viagem.getValor() : 0D));
         return 0D;
     }
 
@@ -145,7 +154,7 @@ public class ViagemMB implements Serializable {
             Double valor = configuracaoViagem.getValor();
             Long quantidade = viagens.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens()));
 
-            return valor / quantidade;
+            return valor != null ? valor / quantidade : 0D;
         }
 
         return 0D;
