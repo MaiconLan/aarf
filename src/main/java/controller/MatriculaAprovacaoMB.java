@@ -157,7 +157,7 @@ public class MatriculaAprovacaoMB implements Serializable {
 		filtroViagemDTO.setIdEdital(m.getEdital().getIdEdital());		
 		filtroViagemDTO.setIdMatricula(m.getIdMatricula());		
 		
-		this.matriculaSelecionada.setViagens(viagemBusiness.buscarViagens(filtroViagemDTO));
+		//this.matriculaSelecionada.setViagens(viagemBusiness.buscarViagens(filtroViagemDTO));
 		RequestContext.getCurrentInstance().update("modalDetalhesEstudante");
 		RequestContext.getCurrentInstance().execute("PF('modalDetalhesEstudante').show();");
 	}

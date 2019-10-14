@@ -3,13 +3,16 @@ package business;
 import dao.ConfiguracaoViagemDAO;
 import dao.ViagemDAO;
 import dto.FiltroViagemDTO;
+import dto.ViagemDTO;
 import enumered.DiaSemanaEnum;
 import model.ConfiguracaoViagem;
 import model.Viagem;
 
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ViagemBusiness implements Serializable {
 
@@ -21,42 +24,32 @@ public class ViagemBusiness implements Serializable {
     @Inject
     private ConfiguracaoViagemDAO configuracaoViagemDAO;
 
-    public List<ConfiguracaoViagem> obterConfiguracoesViagemEdital(Long idEdital) {
-        return configuracaoViagemDAO.obterConfiguracoesViagemEdital(idEdital);
+    public List<ViagemDTO> buscarViagensDTO(Long idEdital, Long idInstituicao) {
+        return viagemDAO.buscarViagensDTO(idEdital, idInstituicao);
     }
 
-    public List<Viagem> buscarViagens(FiltroViagemDTO filtro) {
-        return viagemDAO.buscarViagens(filtro);
-    }
+    public void gerarValores(ConfiguracaoViagem configuracaoViagem, List<ViagemDTO> viagensDTO) {
+        configuracaoViagemDAO.save(configuracaoViagem);
 
-    public void gerarValores(ConfiguracaoViagem configuracaoViagem, List<Viagem> viagens) {
-        if(configuracaoViagem.getDiaSemana().length == 0) {
-            int i = 0;
+        Double valor = configuracaoViagem.getValor();
+        Long quantidade = viagensDTO.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens()));
 
-            String[] diaSemana = new String[5];
-            for (DiaSemanaEnum diaSemanaEnum: DiaSemanaEnum.values()) {
-                diaSemana[i] = diaSemanaEnum.getDescricao();
-                i++;
-            }
+        Double valorPorViagem = valor / quantidade;
 
-            configuracaoViagem.setDiaSemana(diaSemana);
-        }
-
-        if(configuracaoViagem.getSentido().length == 0) {
-            String[] sentido = new String[2];
-            sentido[0] = "Ida";
-            sentido[1] = "Volta";
-            configuracaoViagem.setSentido(sentido);
-        }
-
+        List<Viagem> viagens = viagemDAO.buscarViagens(configuracaoViagem.getEdital().getIdEdital(), configuracaoViagem.getInstituicao().getIdInstituicao());
         for (Viagem viagem : viagens) {
-            configuracaoViagemDAO.save(configuracaoViagem);
+            viagem.setValor(valorPorViagem);
             viagem.setConfiguracaoViagem(configuracaoViagem);
             viagemDAO.save(viagem);
         }
+
     }
 
     public void removerConfiguracao(ConfiguracaoViagem configuracaoViagem) throws Exception {
         configuracaoViagemDAO.remove(configuracaoViagem.getIdConfiguracaoViagem());
+    }
+
+    public ConfiguracaoViagem obterConfiguracaoViagem(Long idEdital, Long idInstituicao) {
+        return configuracaoViagemDAO.obterConfiguracaoViagem(idEdital, idInstituicao);
     }
 }

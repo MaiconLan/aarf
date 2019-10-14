@@ -1,7 +1,6 @@
 package model;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
@@ -29,14 +28,6 @@ public class ConfiguracaoViagem implements Serializable {
     private Edital edital;
 
     private Double valor;
-
-    @Column(name = "dia_semana")
-    @Type(type = "stringArray" )
-    private String[] diaSemana;
-
-    @Column(name = "sentido")
-    @Type(type = "stringArray" )
-    private String[] sentido;
 
     public Long getIdConfiguracaoViagem() {
         return idConfiguracaoViagem;
@@ -71,19 +62,4 @@ public class ConfiguracaoViagem implements Serializable {
         this.edital = edital;
     }
 
-    public String[] getDiaSemana() {
-        return diaSemana;
-    }
-
-    public void setDiaSemana(String[] diaSemana) {
-        this.diaSemana = diaSemana;
-    }
-
-    public String[] getSentido() {
-        return sentido;
-    }
-
-    public void setSentido(String[] sentido) {
-        this.sentido = sentido;
-    }
 }

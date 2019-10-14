@@ -29,7 +29,8 @@
                                 </div>
                             </div>
                         </h:panelGroup>
-                        <h:panelGroup id="formSelecionarMatricula" rendered="#{matriculaMB.renderizarSelecionarMatricula()}">
+                        <h:panelGroup id="formSelecionarMatricula"
+                                      rendered="#{matriculaMB.renderizarSelecionarMatricula()}">
                             <div class="ui-g">
                                 <div class="ui-g-12 ui-md-6 ui-lg-6">
                                     <p:selectOneMenu id="comboMatriculas"
@@ -172,11 +173,13 @@
                                               sequential="true"
                                               label="Escolher"
                                               dragDropSupport="true"
-                                              sizeLimit="100000"
+                                              sizeLimit="100000000"
+                                              invalidSizeMessage="Arquivo muito grande! "
                                               allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/"
                                               invalidFileMessage="Arquivo ou extensão inválido(a). Permitido apenas PNG, JPG/JPEG e PDF."
                                               fileLimit="5"
-                                              fileLimitMessage="Só é possível escolher 5 arquivos por vez."
+                                              fileLimitMessage="Só é possível escolher 5 arquivos por op
+                                              vez."
                                               uploadLabel="Enviar"
                                               cancelLabel="Cancelar"
                                               disabled="#{matriculaMB.desabilitarCampos()}"/>
