@@ -1,7 +1,9 @@
 language: java
 
 install: true
-script: mvn clean install -DskipTests
+script: 
+  - mvn clean -DskipTests
+  - mvn install -DskipTests
 
 cache:
   directories:
