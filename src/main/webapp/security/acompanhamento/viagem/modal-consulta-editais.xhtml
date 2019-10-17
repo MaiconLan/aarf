@@ -35,14 +35,26 @@
                                                 <div class="box #{edital.finalizado ? 'redBack' : 'greenBack'}">
                                                     <i class="fa #{edital.finalizado ? 'fa-remove' : 'fa-check'}" aria-hidden="true"></i>
                                                     <h2>#{edital.titulo}</h2>
+                                                    <p:outputLabel styleClass="lightBlack" style="font-weight: bold" value="Período de inscrição: "/>
                                                     <p>#{viagemMB.obterPeriodo(edital)}
                                                     </p>
                                                 </div>
+
                                             </p:link>
                                         </div>
                                     </div>
                                 </div>
                             </ui:repeat>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                                <p:commandButton id="fechar"
+                                                 styleClass="red-button"
+                                                 icon="fa fa-times"
+                                                 value="Cancelar"
+                                                 onmousedown="PF('modalConsultaEditais').hide();"/>
+                            </div>
                         </div>
                     </div>
                 </div>
