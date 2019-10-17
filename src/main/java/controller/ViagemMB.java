@@ -5,11 +5,11 @@ import business.InstituicaoBusiness;
 import business.ViagemBusiness;
 import dto.EditalDTO;
 import dto.FiltroViagemDTO;
+import dto.ViagemDTO;
 import enumered.DiaSemanaEnum;
 import model.ConfiguracaoViagem;
 import model.Edital;
 import model.Instituicao;
-import model.Viagem;
 import org.omnifaces.cdi.Param;
 import org.omnifaces.util.Messages;
 import org.primefaces.context.RequestContext;
@@ -22,6 +22,7 @@ import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ViewScoped
 @Named("viagemMB")
@@ -42,24 +43,23 @@ public class ViagemMB implements Serializable {
 
     private List<Edital> listaEditais = new ArrayList();
 
-    private List<ConfiguracaoViagem> configuracoesEdital = new ArrayList();
-
     private List<Instituicao> instituicoes = new ArrayList();
 
-    private List<Viagem> viagens = new ArrayList<>();
+    private List<ViagemDTO> viagens = new ArrayList<>();
 
     private ConfiguracaoViagem configuracaoViagem;
 
     private Double valor;
 
-    @Inject @Param
+    @Inject
+    @Param
     private Long idEdital;
 
     private Edital edital;
 
     @PostConstruct
-    public void init(){
-        if(idEdital == null) {
+    public void init() {
+        if (idEdital == null) {
             carregarListaEditais();
             abrirModalEditais();
 
@@ -68,7 +68,7 @@ public class ViagemMB implements Serializable {
             carregarEdital();
             listarInstituicoes();
             novaConfiguracaoViagem();
-            carregarConfiguracoesEdital();
+            carregarConfiguracaoViagem();
         }
     }
 
@@ -76,47 +76,88 @@ public class ViagemMB implements Serializable {
         listaEditais = editalBusiness.consultarEdital(new EditalDTO());
     }
 
-    private void abrirModalEditais(){
+    private void abrirModalEditais() {
         RequestContext.getCurrentInstance().execute("PF('modalConsultaEditais').show();");
     }
 
-    private void novaConfiguracaoViagem(){
+    private void novaConfiguracaoViagem() {
         configuracaoViagem = new ConfiguracaoViagem();
     }
 
-    public void removerConfiguracao(ConfiguracaoViagem configuracaoViagem){
+    public void removerConfiguracao(ConfiguracaoViagem configuracaoViagem) {
         try {
             viagemBusiness.removerConfiguracao(configuracaoViagem);
             Messages.addInfo(null, "Configuracao removida com sucesso!");
-            carregarConfiguracoesEdital();
+            carregarConfiguracaoViagem();
         } catch (Exception e) {
             e.printStackTrace();
             Messages.addError(null, "Não foi possível remover a configuração!");
         }
     }
 
-    public void gerarValores(){
-        configuracaoViagem.setDiaSemana(filtro.getDiaSemana());
-        configuracaoViagem.setSentido(filtro.getSentido());
+    public void gerarValores() {
         configuracaoViagem.setEdital(edital);
         configuracaoViagem.setInstituicao(filtro.getInstituicao());
-        configuracaoViagem.setValor(valor);
 
         viagemBusiness.gerarValores(configuracaoViagem, viagens);
 
         Messages.addInfo(null, "Valores gerados com sucesso!");
-        viagens = new ArrayList<>();
-        carregarConfiguracoesEdital();
+
+        buscarEstudantesSemConfiguracaoViagem();
     }
 
-    public void buscarEstudantes(){
-        filtro.setIdEdital(idEdital);
-        viagens = viagemBusiness.buscarViagens(filtro);
+    public void buscarEstudantes() {
+        if(filtro.getInstituicao() != null) {
+            carregarConfiguracaoViagem();
+            viagens = viagemBusiness.buscarViagensDTO(idEdital, filtro.getInstituicao().getIdInstituicao());
+        } else {
+            novaConfiguracaoViagem();
+            viagens.clear();
+        }
     }
 
-    private void carregarConfiguracoesEdital() {
-        if(idEdital != null)
-            configuracoesEdital = viagemBusiness.obterConfiguracoesViagemEdital(idEdital);
+    public void buscarEstudantesSemConfiguracaoViagem() {
+        if(filtro.getInstituicao() != null) {
+            viagens = viagemBusiness.buscarViagensDTO(idEdital, filtro.getInstituicao().getIdInstituicao());
+        } else {
+            novaConfiguracaoViagem();
+            viagens.clear();
+        }
+    }
+
+    private void carregarConfiguracaoViagem() {
+        if (idEdital != null && filtro.getInstituicao() != null) {
+            configuracaoViagem = viagemBusiness.obterConfiguracaoViagem(idEdital, filtro.getInstituicao().getIdInstituicao());
+
+            if (configuracaoViagem == null) {
+                novaConfiguracaoViagem();
+                configuracaoViagem.setInstituicao(instituicaoBusiness.obterInstituicao(filtro.getInstituicao().getIdInstituicao()));
+                configuracaoViagem.setEdital(edital);
+            }
+        }
+    }
+
+    public Long getTotalViagens(){
+        if(configuracaoViagem != null && !viagens.isEmpty())
+            return viagens.stream().collect(Collectors.summingLong(viagem -> viagem.getTotalViagens()));
+       return 0L;
+    }
+
+    public Double getValorTotal(){
+        if(configuracaoViagem != null && !viagens.isEmpty())
+            return viagens.stream().collect(Collectors.summingDouble(viagem -> viagem.getValor() != null ? viagem.getValor() : 0D));
+        return 0D;
+    }
+
+    public Double getValorPorViagem(){
+        if(configuracaoViagem != null && !viagens.isEmpty()) {
+            Double valor = configuracaoViagem.getValor();
+            Long quantidade = viagens.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens()));
+
+            return valor != null ? valor / quantidade : 0D;
+        }
+
+        return 0D;
     }
 
     public void listarInstituicoes() {
@@ -135,6 +176,14 @@ public class ViagemMB implements Serializable {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return "Período de inscrição: " + formato.format(edital.getInicio()) + " à "
                 + formato.format(edital.getTermino()) + aberto;
+    }
+
+    public boolean isPeriodoAberto() {
+        return edital != null && edital.getFinalizado() == null;
+    }
+
+    public boolean isDesabilitarValor() {
+        return filtro != null && filtro.getInstituicao() == null;
     }
 
     public String obterPeriodo(Edital edital) {
@@ -169,27 +218,11 @@ public class ViagemMB implements Serializable {
         this.edital = edital;
     }
 
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
-    public List<ConfiguracaoViagem> getConfiguracoesEdital() {
-        return configuracoesEdital;
-    }
-
-    public void setConfiguracoesEdital(List<ConfiguracaoViagem> configuracoesEdital) {
-        this.configuracoesEdital = configuracoesEdital;
-    }
-
-    public List<Viagem> getViagens() {
+    public List<ViagemDTO> getViagens() {
         return viagens;
     }
 
-    public void setViagens(List<Viagem> viagens) {
+    public void setViagens(List<ViagemDTO> viagens) {
         this.viagens = viagens;
     }
 

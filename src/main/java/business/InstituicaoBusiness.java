@@ -60,4 +60,8 @@ public class InstituicaoBusiness implements Serializable {
 	public List<Instituicao> obterInstituicoesEnsino() {
 		return instituicaoDAO.obterInstituicoesEnsino();
 	}
+
+    public Instituicao obterInstituicao(Long idInstituicao) {
+		return instituicaoDAO.findById(idInstituicao);
+    }
 }
