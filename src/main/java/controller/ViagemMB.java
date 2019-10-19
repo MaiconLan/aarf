@@ -19,6 +19,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,7 +108,7 @@ public class ViagemMB implements Serializable {
     }
 
     public void buscarEstudantes() {
-        if(filtro.getInstituicao() != null) {
+        if (filtro.getInstituicao() != null) {
             carregarConfiguracaoViagem();
             viagens = viagemBusiness.buscarViagensDTO(idEdital, filtro.getInstituicao().getIdInstituicao());
         } else {
@@ -117,7 +118,7 @@ public class ViagemMB implements Serializable {
     }
 
     public void buscarEstudantesSemConfiguracaoViagem() {
-        if(filtro.getInstituicao() != null) {
+        if (filtro.getInstituicao() != null) {
             viagens = viagemBusiness.buscarViagensDTO(idEdital, filtro.getInstituicao().getIdInstituicao());
         } else {
             novaConfiguracaoViagem();
@@ -137,27 +138,27 @@ public class ViagemMB implements Serializable {
         }
     }
 
-    public Long getTotalViagens(){
-        if(configuracaoViagem != null && !viagens.isEmpty())
+    public Long getTotalViagens() {
+        if (configuracaoViagem != null && !viagens.isEmpty())
             return viagens.stream().collect(Collectors.summingLong(viagem -> viagem.getTotalViagens()));
-       return 0L;
+        return 0L;
     }
 
-    public Double getValorTotal(){
-        if(configuracaoViagem != null && !viagens.isEmpty())
-            return viagens.stream().collect(Collectors.summingDouble(viagem -> viagem.getValor() != null ? viagem.getValor() : 0D));
+    public Double getValorTotal() {
+        if (configuracaoViagem != null && !viagens.isEmpty())
+            return viagens.stream().collect(Collectors.summingDouble(viagem -> viagem.getValor() != null ? viagem.getValor().doubleValue() : 0D));
         return 0D;
     }
 
-    public Double getValorPorViagem(){
-        if(configuracaoViagem != null && !viagens.isEmpty()) {
-            Double valor = configuracaoViagem.getValor();
+    public BigDecimal getValorPorViagem() {
+        if (configuracaoViagem != null && !viagens.isEmpty()) {
+            BigDecimal valor = new BigDecimal(configuracaoViagem.getValor());
             Long quantidade = viagens.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens()));
 
-            return valor != null ? valor / quantidade : 0D;
+            return valor != null ? valor.divide(new BigDecimal(quantidade)).setScale(2) : BigDecimal.ZERO;
         }
 
-        return 0D;
+        return BigDecimal.ZERO;
     }
 
     public void listarInstituicoes() {
@@ -184,6 +185,28 @@ public class ViagemMB implements Serializable {
 
     public boolean isDesabilitarValor() {
         return filtro != null && filtro.getInstituicao() == null;
+    }
+
+    public boolean isDesabilitarEditarValor(ViagemDTO viagem) {
+        Boolean editalFinalizado = viagemBusiness.isEditalFinalizadoByMatricula(viagem.getIdMatricula());
+
+        return editalFinalizado != null && editalFinalizado || viagemBusiness.isMatriculaCancelada(viagem.getIdMatricula());
+    }
+
+    public void atualizarValorViagem(ViagemDTO viagem) {
+        viagemBusiness.atualizarValorViagem(viagem);
+        Messages.addInfo(null, "Valor alterado com sucesso");
+
+        buscarEstudantes();
+    }
+
+    public boolean isValorAlterado(ViagemDTO viagem) {
+        BigDecimal valorViagem = getValorPorViagem();
+
+        if (valorViagem != null && viagem.getValor() != null)
+            return !valorViagem.equals(viagem.getValor());
+
+        return false;
     }
 
     public String obterPeriodo(Edital edital) {

@@ -37,7 +37,7 @@ public class ViagemDTO implements Serializable {
     }
 
     public Double getValor() {
-        return valor;
+        return valor != null ? valor : 0D;
     }
 
     public void setValor(Double valor) {

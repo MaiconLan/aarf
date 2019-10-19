@@ -52,4 +52,22 @@ public class ViagemBusiness implements Serializable {
     public ConfiguracaoViagem obterConfiguracaoViagem(Long idEdital, Long idInstituicao) {
         return configuracaoViagemDAO.obterConfiguracaoViagem(idEdital, idInstituicao);
     }
+
+    public Boolean isEditalFinalizadoByMatricula(Long idMatricula) {
+        return configuracaoViagemDAO.isEditalFinalizadoByMatricula(idMatricula);
+    }
+
+    public boolean isMatriculaCancelada(Long idMatricula) {
+        return configuracaoViagemDAO.isMatriculaCancelada(idMatricula);
+    }
+
+    public void atualizarValorViagem(ViagemDTO viagemDTO) {
+        List<Viagem> viagens = viagemDAO.buscarViagensByMatriculaInstituicao(viagemDTO.getIdMatricula(), viagemDTO.getIdInstituciao());
+        Double valorPorViagem = viagemDTO.getValor() / viagemDTO.getTotalViagens();
+
+        for (Viagem viagem: viagens) {
+            viagem.setValor(valorPorViagem);
+            viagemDAO.save(viagem);
+        }
+    }
 }
