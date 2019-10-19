@@ -1,11 +1,20 @@
 package freemarker.relatorio.matricula;
 
+import java.util.List;
+
 public class EstudanteFM {
 
     private Long idMatricula;
     private String nome;
-    private String instituicao;
-    private String diaSemana;
+    private List<String> diasSemana;
+
+    public EstudanteFM() {
+    }
+
+    public EstudanteFM(Long idMatricula, String nome) {
+        this.idMatricula = idMatricula;
+        this.nome = nome;
+    }
 
     public Long getIdMatricula() {
         return idMatricula;
@@ -23,19 +32,11 @@ public class EstudanteFM {
         this.nome = nome;
     }
 
-    public String getInstituicao() {
-        return instituicao;
+    public List<String> getDiasSemana() {
+        return diasSemana;
     }
 
-    public void setInstituicao(String instituicao) {
-        this.instituicao = instituicao;
-    }
-
-    public String getDiaSemana() {
-        return diaSemana;
-    }
-
-    public void setDiaSemana(String diaSemana) {
-        this.diaSemana = diaSemana;
+    public void setDiasSemana(List<String> diasSemana) {
+        this.diasSemana = diasSemana;
     }
 }
