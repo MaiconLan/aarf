@@ -58,10 +58,10 @@
                             </div>
 
                             <div class="ui-g-12 ui-md-6 ui-lg-3">
-                                <p:outputLabel for="valorPorViagem" value="Valor por viagem: " />
+                                <p:outputLabel for="valorPorViagem" value="Valor por viagem: "/>
 
-                                <h:outputText id="valorPorViagem" value="#{viagemMB.valorPorViagem}" >
-                                    <f:convertNumber locale="pt_BR" type="currency" />
+                                <h:outputText id="valorPorViagem" value="#{viagemMB.valorPorViagem}">
+                                    <f:convertNumber locale="pt_BR" type="currency"/>
                                 </h:outputText>
                             </div>
 
@@ -80,27 +80,38 @@
                                         <p:outputLabel value="#{viagem.totalViagens}"/>
                                     </p:column>
                                     <p:column headerText="Valor" width="20%">
-                                        <p:inputNumber
-                                                style="style: #{viagemMB.isValorAlterado(viagem) ? 'red' : 'black'}"
-                                                id="valorEstudante"
-                                                symbol="$"
-                                                thousandSeparator="."
-                                                minValue="0"
-                                                decimalPlaces="2"
-                                                decimalSeparator=","
-                                                placeholder="Valor"
-                                                value="#{viagem.valor}" disabled="#{viagemMB.isDesabilitarEditarValor(viagem)}">
-                                            <p:ajax process="@this" update="@form" listener="#{viagemMB.atualizarValorViagem(viagem)}"/>
-                                        </p:inputNumber>
+                                        <div class="ui-g">
+                                            <div class="ui-g-10 ui-md-10 ui-lg-10">
+                                                <p:inputNumber
+                                                        id="valorEstudante"
+                                                        symbol="$"
+                                                        thousandSeparator="."
+                                                        minValue="0"
+                                                        decimalPlaces="2"
+                                                        decimalSeparator=","
+                                                        styleClass="red-button"
+                                                        placeholder="Valor"
+                                                        value="#{viagem.valor}"
+                                                        disabled="#{viagemMB.isDesabilitarEditarValor(viagem)}">
+                                                    <p:ajax process="@this" update="@form"
+                                                            listener="#{viagemMB.atualizarValorViagem(viagem)}"/>
+                                                </p:inputNumber>
+                                            </div>
+                                            <h:panelGroup rendered="#{viagemMB.isValorAlterado(viagem)}">
+                                                <div class="ui-g-2 ui-md-2 ui-lg-2" style="color:red">
+                                                    <i class="fa fa-fw fa-exclamation"></i>
+                                                </div>
+                                            </h:panelGroup>
+                                        </div>
                                     </p:column>
                                     <f:facet name="footer">
                                         Foram encontrados #{viagemMB.viagens.size()} registro(s).
                                     </f:facet>
                                     <p:columnGroup type="footer">
                                         <p:row>
-                                            <p:column colspan="1" style="text-align:right" footerText="Totais:" />
-                                            <p:column footerText="#{viagemMB.totalViagens}" />
-                                            <p:column footerText="R$#{viagemMB.valorTotal}" />
+                                            <p:column colspan="1" style="text-align:right" footerText="Totais:"/>
+                                            <p:column footerText="#{viagemMB.totalViagens}"/>
+                                            <p:column footerText="R$#{viagemMB.valorTotal}"/>
                                         </p:row>
                                     </p:columnGroup>
                                 </p:dataTable>

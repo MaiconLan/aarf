@@ -2,15 +2,14 @@ package business;
 
 import dao.ConfiguracaoViagemDAO;
 import dao.ViagemDAO;
-import dto.FiltroViagemDTO;
 import dto.ViagemDTO;
-import enumered.DiaSemanaEnum;
 import model.ConfiguracaoViagem;
 import model.Viagem;
 
 import javax.inject.Inject;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,10 +30,10 @@ public class ViagemBusiness implements Serializable {
     public void gerarValores(ConfiguracaoViagem configuracaoViagem, List<ViagemDTO> viagensDTO) {
         configuracaoViagemDAO.save(configuracaoViagem);
 
-        Double valor = configuracaoViagem.getValor();
+        BigDecimal valor = configuracaoViagem.getValor();
         Long quantidade = viagensDTO.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens()));
 
-        Double valorPorViagem = valor / quantidade;
+        BigDecimal valorPorViagem = valor.divide(new BigDecimal(quantidade));
 
         List<Viagem> viagens = viagemDAO.buscarViagens(configuracaoViagem.getEdital().getIdEdital(), configuracaoViagem.getInstituicao().getIdInstituicao());
         for (Viagem viagem : viagens) {
@@ -63,7 +62,7 @@ public class ViagemBusiness implements Serializable {
 
     public void atualizarValorViagem(ViagemDTO viagemDTO) {
         List<Viagem> viagens = viagemDAO.buscarViagensByMatriculaInstituicao(viagemDTO.getIdMatricula(), viagemDTO.getIdInstituciao());
-        Double valorPorViagem = viagemDTO.getValor() / viagemDTO.getTotalViagens();
+        BigDecimal valorPorViagem = viagemDTO.getValor().divide(new BigDecimal(viagemDTO.getTotalViagens()), 2, RoundingMode.HALF_UP);
 
         for (Viagem viagem: viagens) {
             viagem.setValor(valorPorViagem);

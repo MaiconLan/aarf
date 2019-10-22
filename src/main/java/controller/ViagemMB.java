@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -144,18 +145,18 @@ public class ViagemMB implements Serializable {
         return 0L;
     }
 
-    public Double getValorTotal() {
+    public BigDecimal getValorTotal() {
         if (configuracaoViagem != null && !viagens.isEmpty())
-            return viagens.stream().collect(Collectors.summingDouble(viagem -> viagem.getValor() != null ? viagem.getValor().doubleValue() : 0D));
-        return 0D;
+            return new BigDecimal(viagens.stream().collect(Collectors.summingDouble(viagem -> viagem.getValor() != null ? viagem.getValor().doubleValue() : 0D))).setScale(2, RoundingMode.HALF_UP);
+        return BigDecimal.ZERO;
     }
 
     public BigDecimal getValorPorViagem() {
         if (configuracaoViagem != null && !viagens.isEmpty()) {
-            BigDecimal valor = new BigDecimal(configuracaoViagem.getValor());
-            Long quantidade = viagens.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens()));
+            BigDecimal valor = configuracaoViagem.getValor();
+            BigDecimal quantidadeViagens = new BigDecimal(viagens.stream().collect(Collectors.summingLong(viagemDTO -> viagemDTO.getTotalViagens())));
 
-            return valor != null ? valor.divide(new BigDecimal(quantidade)).setScale(2) : BigDecimal.ZERO;
+            return valor != null ? valor.divide(quantidadeViagens, 2, RoundingMode.HALF_UP) : BigDecimal.ZERO;
         }
 
         return BigDecimal.ZERO;
@@ -203,8 +204,10 @@ public class ViagemMB implements Serializable {
     public boolean isValorAlterado(ViagemDTO viagem) {
         BigDecimal valorViagem = getValorPorViagem();
 
-        if (valorViagem != null && viagem.getValor() != null)
-            return !valorViagem.equals(viagem.getValor());
+        BigDecimal totalViagens = new BigDecimal(viagem.getTotalViagens());
+
+        if (viagem.getValor() != null)
+            return !valorViagem.equals(viagem.getValor().divide(totalViagens, 2,  BigDecimal.ROUND_HALF_UP));
 
         return false;
     }
