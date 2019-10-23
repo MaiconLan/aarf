@@ -6,7 +6,7 @@
 
     <groupId>aarf</groupId>
     <artifactId>aarf</artifactId>
-    <version>1.7.6-SNAPSHOT</version>
+    <version>1.8.0</version>
     <packaging>war</packaging>
     <name>AARF</name>
 
@@ -138,7 +138,6 @@
             <artifactId>omnifaces</artifactId>
             <version>2.6.8</version>
         </dependency>
-
 
         <dependency>
             <groupId>javax.ejb</groupId>
