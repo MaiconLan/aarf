@@ -6,6 +6,7 @@ import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Table(schema = "matricula", name = "configuracao_viagem")
@@ -27,7 +28,7 @@ public class ConfiguracaoViagem implements Serializable {
     @JoinColumn(name = "id_edital")
     private Edital edital;
 
-    private Double valor;
+    private BigDecimal valor;
 
     public Long getIdConfiguracaoViagem() {
         return idConfiguracaoViagem;
@@ -45,11 +46,11 @@ public class ConfiguracaoViagem implements Serializable {
         this.instituicao = instituicao;
     }
 
-    public Double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

@@ -1,28 +1,62 @@
 package utils;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class Unit {
 
-	//Geral
-	public static final String NOME_UNIDADE = "AARF";
-	public static final String SSL = "false";
+    //Geral
+    public static final String NOME_UNIDADE = "AARF";
+    public static final String SSL = "false";
 
-	// Dados da base local
-	public static final String IP_BASE_DADOS_LOCAL = "localhost";
-	public static final String NOME_BASE_DADOS_LOCAL = "aarf-develop";
-	public static final String USUARIO_BASE_DADOS_LOCAL = "postgres";
-	public static final String SENHA_BASE_DADOS_LOCAL = "postgres";
+    // Dados da base local
+    private String ipBaseDados = "";
+    private String nomeBaseDados = "";
+    private String usuarioBaseDados = "";
+    private String senhaBaseDados = "";
+    private String emailRemetente = "";
+    private String emailSenha = "";
 
-	// Dados da base local
-	public static final String IP_BASE_DADOS_HEROKU = "";
-	public static final String NOME_BASE_DADOS_HEROKU = "";
-	public static final String USUARIO_BASE_DADOS_HEROKU = "";
-	public static final String SENHA_BASE_DADOS_HEROKU = "";
-	
-	// Dados da base DigitalOcean
-	public static final String IP_BASE_DADOS_DO = "127.0.0.1";
-	public static final String NOME_BASE_DADOS_DO = "aarf-oficial";
-	public static final String USUARIO_BASE_DADOS_DO = "postgres";
-	public static final String SENHA_BASE_DADOS_DO = "#e#j#m#m#r";
+    public Unit() {
+        Properties properties = new Properties();
 
-	public static final Ambiente AMBIENTE = Ambiente.DIGITAL_OCEAN;
+        try {
+            properties.load(new FileInputStream("/opt/tomcat/config/variaveis.properties"));
+
+            ipBaseDados = properties.getProperty("IP_BASE_DADOS");
+            nomeBaseDados = properties.getProperty("NOME_BASE_DADOS");
+            usuarioBaseDados = properties.getProperty("USUARIO_BASE_DADOS");
+            senhaBaseDados = properties.getProperty("SENHA_BASE_DADOS");
+            emailRemetente = properties.getProperty("EMAIL_REMETENTE");
+            emailSenha = properties.getProperty("EMAIL_SENHA");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getIpBaseDados() {
+        return ipBaseDados;
+    }
+
+    public String getNomeBaseDados() {
+        return nomeBaseDados;
+    }
+
+    public String getUsuarioBaseDados() {
+        return usuarioBaseDados;
+    }
+
+    public String getSenhaBaseDados() {
+        return senhaBaseDados;
+    }
+
+    public String getEmailRemetente() {
+        return emailRemetente;
+    }
+
+    public String getEmailSenha() {
+        return emailSenha;
+    }
 }

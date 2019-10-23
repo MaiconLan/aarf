@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="card centerText">
+                    <h:form id="formEstudante">
+
+                        <h1 class="lightBlack">Relatório de Matrículas</h1>
+                        <p class="lightBlack">Selecione os filtros conforme desejado.</p>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                <p:outputLabel for="edital" value="Edital"/>
+                                <p:selectOneMenu id="edital"
+                                                 required="true"
+                                                 requiredMessage="É necessário selecionar o edital"
+                                                 filter="true"
+                                                 filterMatchMode="contains"
+                                                 value="#{relatorioMatriculaMB.idEdital}">
+                                    <f:selectItem itemLabel="Selecione o Edital" noSelectionOption="true"/>
+                                    <f:selectItems var="edital"
+                                                   value="#{relatorioMatriculaMB.editais}"
+                                                   itemLabel="#{edital.titulo}"
+                                                   itemValue="#{edital.idEdital}"/>
+                                </p:selectOneMenu>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-3">
+                                <p:outputLabel for="instituicao" value="Instituição"/>
+                                <p:selectOneMenu id="instituicao"
+                                                 required="true"
+                                                 requiredMessage="É necessário selecionar a instituição"
+                                                 filter="true"
+                                                 filterMatchMode="contains"
+                                                 value="#{relatorioMatriculaMB.idInstituicao}">
+                                    <f:selectItem itemLabel="Selecione Tipo" noSelectionOption="true"/>
+                                    <f:selectItems var="instituicao"
+                                                   value="#{relatorioMatriculaMB.instituicoes}"
+                                                   itemLabel="#{instituicao}"
+                                                   itemValue="${instituicao.idInstituicao}"/>
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-4 ui-lg-3">
+                                <p:commandButton value="Gerar relatório"
+                                                 process="@form"
+                                                 onclick="PrimeFaces.monitorDownload(start, stop);"
+                                                 icon="fa fa-print" >
+                                    <p:fileDownload value="#{relatorioMatriculaMB.gerarRelatorio()}"/>
+                                </p:commandButton>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
