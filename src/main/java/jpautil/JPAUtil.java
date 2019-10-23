@@ -32,7 +32,7 @@ public class JPAUtil {
 			map.put("javax.persistence.jdbc.password", senha);
 			map.put("javax.persistence.jdbc.ssl", ssl);
 			map.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-			map.put("hibernate.show_sql", "false");
+			map.put("hibernate.show_sql", "true");
 			map.put("javax.persistence.jdbc.url", ip);
 
 			factory = Persistence.createEntityManagerFactory(unidade, map);
