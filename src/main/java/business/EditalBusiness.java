@@ -40,5 +40,7 @@ public class EditalBusiness implements Serializable {
     }
 
 
-
+    public List<Edital> listarEditais() {
+        return editalDAO.list();
+    }
 }

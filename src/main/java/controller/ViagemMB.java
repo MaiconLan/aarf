@@ -214,11 +214,11 @@ public class ViagemMB implements Serializable {
 
     public String obterPeriodo(Edital edital) {
         if (edital == null) {
-            return "Edital Não Carregado";
+            return "Edital não carregado";
         }
         String aberto = edital.getFinalizado() == null ? " (Aberto)" : " (Fechado)";
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return "Período de inscrição: " + formato.format(edital.getInicio()) + " à "
+        return formato.format(edital.getInicio()) + " à "
                 + formato.format(edital.getTermino()) + aberto;
     }
 
