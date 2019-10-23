@@ -3,8 +3,8 @@ package utils;
 public enum Versao {
 
     MAJOR(1),
-    MINOR(7),
-    RELEASE(6);
+    MINOR(8),
+    RELEASE(1);
 
     Versao(int numero) {
         this.numero = numero;
