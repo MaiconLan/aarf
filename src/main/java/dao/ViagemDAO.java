@@ -78,4 +78,19 @@ public class ViagemDAO extends GenericDAO<Viagem> {
                 .setParameter("idInstituicao", idInstituicao)
                 .getResultList();
     }
+
+    public List<Viagem> buscarViagensByMatriculaInstituicao(Long idMatricula, Long idInstituicao) {
+        String sql = "SELECT v "
+                + "FROM Viagem v "
+                + "JOIN v.matricula m "
+                + "LEFT JOIN m.cancelamento c "
+                + "WHERE c.idCancelamento IS NULL "
+                + "AND v.matricula.idMatricula = :idMatricula "
+                + "AND v.instituicao.idInstituicao = :idInstituicao";
+
+        return em.createQuery(sql)
+                .setParameter("idMatricula", idMatricula)
+                .setParameter("idInstituicao", idInstituicao)
+                .getResultList();
+    }
 }

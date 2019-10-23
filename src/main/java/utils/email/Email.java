@@ -15,10 +15,10 @@ import java.util.concurrent.Future;
 
 public abstract class Email implements Callable {
 
-    protected final static String smtp = "smtp.gmail.com";
-    protected final static String emailRemetente = Unit.AMBIENTE.equals(Ambiente.LOCAL) ? "sistema.aarf@gmail.com" : "aariofortuna@gmail.com";
-    protected final static String emailSenha = Unit.AMBIENTE.equals(Ambiente.LOCAL) ? "#e#j#m#m#r" : "presidente2018";
-    protected final static boolean authentication = true;
+    protected String smtp = "smtp.gmail.com";
+    protected String emailRemetente = "";
+    protected String emailSenha = "";
+    protected boolean authentication = true;
 
     protected String titulo;
     protected String mensagem;
@@ -28,6 +28,7 @@ public abstract class Email implements Callable {
     private static final ExecutorService threadpool = Executors.newFixedThreadPool(3);
 
     public Email(String titulo, String mensagem, String emailDestinatario, Anexo anexo) {
+        init();
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.emailDestinatario = emailDestinatario;
@@ -35,9 +36,16 @@ public abstract class Email implements Callable {
     }
 
     public Email(String titulo, String mensagem, String emailDestinatario) {
+        init();
         this.titulo = titulo;
         this.mensagem = mensagem;
         this.emailDestinatario = emailDestinatario;
+    }
+
+    private void init(){
+        Unit unit = new Unit();
+        emailRemetente = unit.getEmailRemetente();
+        emailSenha = unit.getEmailSenha();
     }
 
     protected abstract void enviarEmail() throws EmailException;

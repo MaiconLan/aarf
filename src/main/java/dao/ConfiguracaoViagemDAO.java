@@ -32,4 +32,30 @@ public class ConfiguracaoViagemDAO extends GenericDAO<ConfiguracaoViagem> {
             return null;
         }
     }
+
+    public Boolean isEditalFinalizadoByMatricula(Long idMatricula) {
+        String query = "SELECT CAST(e.finalizado AS boolean)" +
+                "FROM Edital e " +
+                "JOIN e.matriculas m " +
+                "WHERE m.idMatricula = :idMatricula";
+
+        return (Boolean) em.createQuery(query)
+                .setParameter("idMatricula", idMatricula)
+                .setMaxResults(1)
+                .getSingleResult();
+    }
+
+    public boolean isMatriculaCancelada(Long idMatricula) {
+        String query = "SELECT COUNT (c.idCancelamento) > 0 " +
+                "FROM Cancelamento c " +
+                "WHERE c.matricula.idMatricula = :idMatricula";
+        try {
+            return (boolean) em.createQuery(query)
+                    .setParameter("idMatricula", idMatricula)
+                    .setMaxResults(1)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
 }

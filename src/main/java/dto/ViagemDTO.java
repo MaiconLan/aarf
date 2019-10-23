@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class ViagemDTO implements Serializable {
 
@@ -10,9 +11,9 @@ public class ViagemDTO implements Serializable {
     private Long idInstituciao;
     private String nomeEstudante;
     private Long totalViagens;
-    private Double valor;
+    private BigDecimal valor;
 
-    public ViagemDTO(Long idMatricula, Long idInstituciao, String nomeEstudante, Double valor, Long totalViagens) {
+    public ViagemDTO(Long idMatricula, Long idInstituciao, String nomeEstudante, BigDecimal valor, Long totalViagens) {
         this.idMatricula = idMatricula;
         this.idInstituciao = idInstituciao;
         this.nomeEstudante = nomeEstudante;
@@ -36,11 +37,11 @@ public class ViagemDTO implements Serializable {
         this.idInstituciao = idInstituciao;
     }
 
-    public Double getValor() {
-        return valor;
+    public BigDecimal getValor() {
+        return valor != null ? valor : BigDecimal.ZERO;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

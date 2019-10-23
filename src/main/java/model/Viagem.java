@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
@@ -24,7 +25,7 @@ public class Viagem implements Serializable {
     private String sentido;
 
     @Column(name = "valor")
-    private Double valor;
+    private BigDecimal valor;
 
     @ManyToOne
     @JoinColumn(name = "id_instituicao")
@@ -92,11 +93,11 @@ public class Viagem implements Serializable {
         this.configuracaoViagem = configuracaoViagem;
     }
 
-	public Double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
