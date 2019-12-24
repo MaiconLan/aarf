@@ -114,9 +114,10 @@
 	                        Faça seu cadastro e verifique os Editais com os ônibus disponíveis, para que você possa ir para a sua faculdade. <br/>
 	                        Tudo pelo nosso portal na internet, sem complicação, sem perda de tempo.<br/>
 	                    </p>
-	                    <p:button outcome="/public/cadastro-usuario" id="buttonCadastreSe" value="CADASTRE-SE" />
+	                    <p:button outcome="/public/cadastro-usuario" id="buttonCadastreSe" value="CADASTRE-SE" rendered="#{!identity.logado}" />
 	                    <p:spacer width="2%"/>
-	                    <p:button outcome="/login" id="buttonFacaLogin" value="JÁ POSSUI CADASTRO?" />
+	                    <p:button outcome="/login" id="buttonFacaLogin" value="JÁ POSSUI CADASTRO?" rendered="#{!identity.logado}"/>
+	                    <p:button outcome="/security/dashboard" id="buttonRedirect" value="ACESSAR SISTEMA" rendered="#{identity.logado}"/>
 	                </div>
 	            </div>
 	            <div id="landing-feature">

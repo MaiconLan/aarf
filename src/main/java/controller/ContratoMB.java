@@ -39,7 +39,7 @@ public class ContratoMB implements Serializable {
     public void salvar() {
         try {
             contratoBusiness.salvar(contrato);
-            Messages.addInfo(null, "Contrato adicionado com sucesso!");
+            Messages.addInfo(null, "Contrato salvo com sucesso!");
         } catch (ContratoBusinessException e) {
             e.printStackTrace();
             Messages.addError(null, e.getMessage());
