@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+        <div class="ui-fluid">
+            <div class="ui-g">
+                <div class="card">
+                    <h1 class="lightBlack centerText">Cadastro de Contrato</h1>
+
+                    <h3 class="lightBlack">Dados para cadastro</h3>
+
+                    <h:form id="formContrato">
+                        <div class="ui-g">
+                            <div class="ui-g-4 ui-md-3  ui-lg-1">
+                                <p:commandButton id="pesquisar"
+                                                 icon="fa fa-search"
+                                                 update="@none"
+                                                 process="@this"
+                                                 title="Pesquisa"
+                                                 action="#{contratoMB.modalContrato()}"
+                                />
+                            </div>
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:calendar id="inicio"
+                                            value="#{contratoMB.contrato.inicio}"
+                                            mask="true"
+                                            showOn="button"
+                                            required="true"
+                                            pattern="dd/MM/yyyy"
+                                            placeholder="Inicio"
+                                            requiredMessage="Campo início obrigatório"
+                                            converter="localDateConverter">
+                                    <p:ajax event="dateSelect" update="termino"/>
+                                    <p:ajax event="change" update="termino"/>
+                                </p:calendar>
+                            </div>
+
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:calendar id="termino"
+                                            value="#{contratoMB.contrato.termino}"
+                                            mindate="#{contratoMB.contrato.inicio}"
+                                            mask="true"
+                                            showOn="button"
+                                            required="true"
+                                            pattern="dd/MM/yyyy"
+                                            placeholder="Termino"
+                                            requiredMessage="Campo término obrigatório"
+                                            converter="localDateConverter"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <p:textEditor value="#{contratoMB.contrato.clausula}" height="250" />
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+
+                                <p:commandButton id="salvarContrato"
+                                                 icon="fa fa-check"
+                                                 value="Salvar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{contratoMB.salvar()}"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <ui:include src="modal-busca-contrato.xhtml"/>
+        <ui:include src="/template/confirm.xhtml"/>
+    </ui:define>
+
+</ui:composition>

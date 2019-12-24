@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalBuscaContrato"
+              header="Consulta de Contrato"
+              widgetVar="modalBuscaContrato"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              width="85%"
+              height="85%"
+              minHeight="500"
+              closeOnEscape="true">
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                <p:commandButton id="buscarContrato"
+                                                 icon="fa fa-search"
+                                                 value="Buscar"
+                                                 process="@form"
+                                                 update="@form"
+                                                 action="#{contratoMB.consultarContrato()}"/>
+                            </div>
+                        </div>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                <p:dataTable var="contrato" value="#{contratoMB.contratos}" rows="10" paginator="true"
+                                             reflow="true">
+                                    <f:facet name="header">Contratos</f:facet>
+
+                                    <p:column headerText="Ações" width="6%">
+                                        <p:commandButton icon="ui-icon-check" id="selecionarContrato"
+                                                         process="@this" update="@none"
+                                                         action="#{contratoMB.selecionarContrato(contrato)}"
+                                                         title="Selecionar">
+                                        </p:commandButton>
+                                    </p:column>
+
+                                    <p:column headerText="Código" width="6%">
+                                        <h:outputText value="#{contrato.idContrato}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Início vigência" width="30%">
+                                        <h:outputText value="#{contrato.inicio}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Término vigência" width="30%">
+                                        <h:outputText value="#{contrato.termino}"/>
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        Foram encontrados #{contratoMB.contratos.size()} registro(s).
+                                    </f:facet>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>

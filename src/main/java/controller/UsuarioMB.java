@@ -1,16 +1,19 @@
 package controller;
 
+import business.ContratoBusiness;
 import business.EstudanteBusiness;
 import business.InstituicaoBusiness;
 import exception.CepBussinesException;
 import exception.EstudanteBusinessException;
 import exception.LoginException;
+import model.Contrato;
 import model.Endereco;
 import model.Estudante;
 import model.Instituicao;
 import org.apache.commons.io.IOUtils;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
+import org.primefaces.context.RequestContext;
 import service.CepService;
 import utils.email.EmailHtml;
 
@@ -28,10 +31,6 @@ public class UsuarioMB implements Serializable {
 
     private static final long serialVersionUID = 8382542571692876048L;
 
-    private Estudante estudante;
-
-    private List<Instituicao> instituicoes;
-
     @Inject
     private EstudanteBusiness estudanteBusiness;
 
@@ -41,14 +40,42 @@ public class UsuarioMB implements Serializable {
     @Inject
     private InstituicaoBusiness instituicaoBusiness;
 
+    @Inject
+    private ContratoBusiness contratoBusiness;
+
+    private Estudante estudante;
+
+    private Contrato contratoVigente;
+
+    private List<Instituicao> instituicoes;
+
     @PostConstruct
     public void init() {
         novoEstudante();
         carregarInstituicoes();
+        carregarContratoVigente();
     }
 
-    private void carregarInstituicoes(){
+    private void carregarContratoVigente() {
+        contratoVigente = contratoBusiness.obterContratoVigente();
+    }
+
+    private void carregarInstituicoes() {
         instituicoes = instituicaoBusiness.obterInstituicoesEnsino();
+    }
+
+    public void abrirModalContrato() {
+        if(contratoVigente != null) {
+            RequestContext.getCurrentInstance().execute("PF('modalAceiteContrato').show();");
+        } else {
+            salvarEstudante();
+        }
+    }
+
+    public void vincularContratoEstudante() {
+        estudante.setContrato(contratoVigente);
+        RequestContext.getCurrentInstance().execute("PF('modalAceiteContrato').hide();");
+        salvarEstudante();
     }
 
     public void salvarEstudante() {
@@ -87,16 +114,17 @@ public class UsuarioMB implements Serializable {
         estudante.getUsuario().setAlterarLogin(true);
     }
 
-    private void direcionaLogin(){
+    private void direcionaLogin() {
         try {
             String redirect = "public/home";
             Faces.redirect(redirect);
-        }catch (Exception e){
+        } catch (Exception e) {
 
-        };
+        }
+        ;
     }
 
-    private void enviarEmail(){
+    private void enviarEmail() {
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             String mensagem = IOUtils.toString(classLoader.getResource("template_email/email_cadastro_usuario.html"), "UTF-8");
@@ -135,4 +163,11 @@ public class UsuarioMB implements Serializable {
         this.instituicoes = instituicoes;
     }
 
+    public Contrato getContratoVigente() {
+        return contratoVigente;
+    }
+
+    public void setContratoVigente(Contrato contratoVigente) {
+        this.contratoVigente = contratoVigente;
+    }
 }
