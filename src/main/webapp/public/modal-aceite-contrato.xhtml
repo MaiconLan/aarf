@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <p:dialog id="modalAceiteContrato"
+              header="Aceite de Contrato"
+              widgetVar="modalAceiteContrato"
+              modal="true"
+              showEffect="fade"
+              hideEffect="fade"
+              resizable="false"
+              responsive="true"
+              style="width: 80%; height: 80%;"
+              fitViewport="true"
+              closeOnEscape="true">
+        <h:form id="formBusca" style="text-align:center;">
+
+            <div class="ui-fluid">
+                <div class="ui-g">
+                    <div class="card">
+                        <div class="ui-g">
+                            <h:form id="formAceite">
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <p:textEditor id="editor" readonly="true" value="#{usuarioMB.contratoVigente.clausula}" />
+                                </div>
+
+                                
+                                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                                    <p:commandButton id="aceite"
+                                                     icon="fa fa-check"
+                                                     value="Aceito"
+                                                     process="@form"
+                                                     action="#{usuarioMB.vincularContratoEstudante()}"/>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+</ui:composition>

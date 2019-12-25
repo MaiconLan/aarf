@@ -107,13 +107,13 @@
 
         <div id="landing-feature">
             <div class="landing-container">
-                <h:form id="cadastroUsuario">
-                    <div class="ui-fluid">
-                        <div class="ui-g">
-                            <div class="card">
-                                <h1 class="lightBlack centerText">Cadastro de Estudante</h1>
+                <div class="ui-fluid">
+                    <div class="ui-g">
+                        <div class="card">
+                            <h1 class="lightBlack centerText">Cadastro de Estudante</h1>
 
-                                <h3 class="lightBlack">Dados Cadastrais</h3>
+                            <h3 class="lightBlack">Dados Cadastrais</h3>
+                            <h:form id="cadastroUsuario">
 
                                 <p:growl id="messages" autoUpdate="true"/>
                                 <ui:include src="/template/loading.xhtml"/>
@@ -126,7 +126,7 @@
                                                      value="#{usuarioMB.estudante.pessoa.nome}"/>
                                     </div>
 
-                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-4">
                                         <p:calendar id="nascimento"
                                                     value="#{usuarioMB.estudante.pessoa.nascimento}"
                                                     mask="true"
@@ -185,7 +185,7 @@
                                 </div>
 
                                 <div class="ui-g">
-                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-4">
                                         <p:inputText id="email"
                                                      required="true"
                                                      placeholder="E-mail"
@@ -274,20 +274,22 @@
                                 </p:outputPanel>
 
                                 <div class="ui-g">
-                                    <div class="ui-g-12 ui-md-6 ui-lg-2">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-4">
                                         <p:commandButton id="salvarEstudante"
                                                          icon="fa fa-check"
                                                          value="Salvar"
                                                          process="cadastroUsuario"
                                                          update="cadastroUsuario"
-                                                         action="#{usuarioMB.salvarEstudante()}"/>
+                                                         action="#{usuarioMB.abrirModalContrato()}"/>
                                     </div>
                                 </div>
-                            </div>
+                            </h:form>
                         </div>
                     </div>
-                </h:form>
+                </div>
             </div>
+
+            <ui:include src="modal-aceite-contrato.xhtml"/>
         </div>
 
         <div id="landing-footer">
