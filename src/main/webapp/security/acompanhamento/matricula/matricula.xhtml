@@ -161,6 +161,7 @@
                         <h1 class="lightBlack">Comprovantes</h1>
                         <h3 class="lightBlack">Arquivos permitidos: </h3>
                         <ul>
+                            <li><p:outputLabel value="-RG ou CNH"/></li>
                             <li><p:outputLabel value="-Extrato de Matrícula"/></li>
                             <li><p:outputLabel value="-Comprovante de Residência"/></li>
                             <li><p:outputLabel value="-Boleto"/></li>
@@ -196,7 +197,7 @@
                                                 value="#{anexo.nome}"/>
                                     </div>
 
-                                    <div class="ui-g-6 ui-md-2 ui-lg-1">
+                                    <div class="ui-g-6 ui-md-4 ui-lg-2">
                                         <p:commandButton value="Download" ajax="false"
                                                          onclick="PrimeFaces.monitorDownload(start, stop);"
                                                          icon="fa fa-long-arrow-down">
@@ -205,7 +206,7 @@
                                     </div>
 
                                     <p:spacer width="10%"/>
-                                    <div class="ui-g-6 ui-md-2 ui-lg-1">
+                                    <div class="ui-g-6 ui-md-4 ui-lg-2">
                                         <p:commandButton value="Remover"
                                                          ajax="false"
                                                          action="#{matriculaAnexoMB.remover(anexo)}"

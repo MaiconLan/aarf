@@ -831,7 +831,7 @@ body {
           border-radius: 2px; }
   #landing-page-wrapper #landing-slogan {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
-    background-image: url("#{resource['icarus-layout/images/slogan.png']}");
+    background-image: url("#{resource['icarus-layout/images/rio-fortuna.jpg']}");
     background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;

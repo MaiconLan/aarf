@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -31,6 +32,10 @@ public class Estudante implements Serializable {
     private Usuario usuario;
 
     private Boolean inativo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_contrato")
+    private Contrato contrato;
 
     public Estudante() {
         this.pessoa = new Pessoa();
@@ -76,6 +81,14 @@ public class Estudante implements Serializable {
 
     public void setInativo(Boolean inativo) {
         this.inativo = inativo;
+    }
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
     }
 
     @Override

@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/MaiconLan/aarf.svg?token=gdz9sSVsYVgv1QjHXxkD&branch=feature/travis-ci)](https://travis-ci.com/MaiconLan/aarf.svg?token=gdz9sSVsYVgv1QjHXxkD&branch=feature/travis-ci)
-[![Build Status](https://img.shields.io/badge/vers%C3%A3o-1.7.5-blue)](https://img.shields.io/badge/vers%C3%A3o-1.7.5-blue?style=for-the-badge&logo=appveyor)
+[![Build Status](https://travis-ci.com/MaiconLan/aarf.svg?token=gdz9sSVsYVgv1QjHXxkD&branch=master)](https://travis-ci.com/MaiconLan/aarf.svg?token=gdz9sSVsYVgv1QjHXxkD&branch=master)
+[![Build Status](https://img.shields.io/badge/vers%C3%A3o-1.8.1-blue)](https://img.shields.io/badge/vers%C3%A3o-1.8.1-blue?style=for-the-badge&logo=appveyor)
 
 
 
