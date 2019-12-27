@@ -173,7 +173,7 @@ public class MatriculaMB implements Serializable {
             salvar();
             matriculaBusiness.enviarParaAprovacao(matricula);
             Messages.addInfo(null, "Matrícula enviada para aprovação com sucesso!");
-            Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
+            Faces.redirect("/security/acompanhamento/matricula/matricula");
 
         } catch (MatriculaBusinessException e) {
             e.getMessages().forEach(error -> Messages.addError(null, error));
@@ -188,7 +188,7 @@ public class MatriculaMB implements Serializable {
         try {
             matriculaBusiness.cancelarMatricula(matricula, "Cancelado pelo estudante!");
             Messages.addInfo(null, "Matrícula cancelada com sucesso!");
-            Faces.redirect("/aarf/security/acompanhamento/matricula/matricula");
+            Faces.redirect("/security/acompanhamento/matricula/matricula");
 
         } catch (IOException e) {
             e.printStackTrace();
