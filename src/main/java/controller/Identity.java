@@ -79,7 +79,7 @@ public class Identity implements Serializable {
 
 		try {
 			Faces.invalidateSession();
-			Faces.redirect("/aarf");
+			Faces.redirect("/");
 
 		} catch (IOException e) {
 			e.printStackTrace();

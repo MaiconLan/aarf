@@ -41,8 +41,10 @@ public class ContratoMB implements Serializable {
             contratoBusiness.salvar(contrato);
             Messages.addInfo(null, "Contrato salvo com sucesso!");
         } catch (ContratoBusinessException e) {
+            e.getMessages().forEach(error -> Messages.addError(null, error));
+        } catch (Exception e) {
             e.printStackTrace();
-            Messages.addError(null, e.getMessage());
+            Messages.addError(null, "Erro ao salvar o Contrato!");
         }
     }
 
