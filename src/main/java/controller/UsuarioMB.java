@@ -83,7 +83,7 @@ public class UsuarioMB implements Serializable {
             estudanteBusiness.salvarEstudante(estudante);
             enviarEmail();
 
-            Faces.redirect("/aarf/public/bem-vindo");
+            Faces.redirect("/public/bem-vindo");
 
         } catch (EstudanteBusinessException | LoginException e) {
             e.getMessages().forEach(m -> Messages.addError(null, m));

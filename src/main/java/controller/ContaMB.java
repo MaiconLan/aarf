@@ -58,7 +58,7 @@ public class ContaMB implements Serializable {
             contaBusiness.inativarConta(conta);
             Messages.addWarn(null, "Conta inativada com sucesso");
         } catch (ContaBusinessException e) {
-            Messages.addWarn(null, e.getMessage());
+            e.getMessages().forEach(error -> Messages.addError(null, error));
         }
 
     }
