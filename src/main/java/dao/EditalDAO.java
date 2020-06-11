@@ -2,15 +2,16 @@ package dao;
 
 import dto.EditalDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Edital;
 
 import javax.persistence.Query;
 import java.util.List;
 
-public class EditalDAO extends GenericDAO<Edital> {
+public class EditalDAO extends GenericDAOV2<Edital, Long> {
 	
 	public Edital listarEdital(Long idEdital) {
-		return em.find(Edital.class, idEdital);
+		return getEntityManager().find(Edital.class, idEdital);
 	}
 
     public List consultarEdital(EditalDTO editalDTO) {
@@ -27,7 +28,7 @@ public class EditalDAO extends GenericDAO<Edital> {
         if(!editalDTO.isOrder())
             sql.append("DESC ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if (editalDTO.getTitulo() != null && !editalDTO.getTitulo().isEmpty()) {
             query.setParameter("titulo", editalDTO.getTitulo());

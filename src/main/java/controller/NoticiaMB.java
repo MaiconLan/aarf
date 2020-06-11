@@ -63,7 +63,7 @@ public class NoticiaMB implements Serializable {
         }
     }
 
-    public void removerNoticia(){
+    public void removerNoticia() {
         noticiaBusiness.removerNoticia(noticia);
         Messages.addInfo(null, "Noticia removido com sucesso");
         novaNoticia();

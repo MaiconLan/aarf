@@ -28,15 +28,11 @@ public class NoticiaBusiness implements Serializable {
     public void salvarNoticia(Noticia n) throws NoticiaBusinessException, LoginException {
 
     	n.setAssociado(identity.getUsuario().getAssociado());
-    	
-        if(n.getIdNoticia() == null)
-        	dao.save(n);
-        else
-        	dao.update(n);
+        dao.save(n);
     }
 
     public void removerNoticia(Noticia n) {
-        dao.update(n);
+        dao.remove(n.getIdNoticia());
     }
     
     public List<Noticia> listarNoticias(Noticia noticia) {

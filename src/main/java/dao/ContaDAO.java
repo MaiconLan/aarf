@@ -2,12 +2,13 @@ package dao;
 
 import dto.ContaDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Conta;
 
 import javax.persistence.Query;
 import java.util.List;
 
-public class ContaDAO extends GenericDAO<Conta> {
+public class ContaDAO extends GenericDAOV2<Conta, Long> {
 
     public List<Conta> consultarConta(ContaDTO contaDTO) {
         StringBuilder sql = new StringBuilder();
@@ -27,7 +28,7 @@ public class ContaDAO extends GenericDAO<Conta> {
         if(contaDTO.getNumeroConta() != null)
             sql.append("AND c.numeroConta = :numeroConta ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if(contaDTO.getIdConta() != null)
             query.setParameter("idConta", contaDTO.getIdConta());

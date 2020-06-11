@@ -15,10 +15,7 @@ public class PrestacaoContaBusiness implements Serializable {
     private PrestacaoContaDAO prestacaoContaDAO;
 
     public void salvarPrestacao(PrestacaoConta prestacaoConta) {
-        if (prestacaoConta.getIdPrestacaoConta() == null)
-            prestacaoContaDAO.save(prestacaoConta);
-        else
-            prestacaoContaDAO.update(prestacaoConta);
+        prestacaoContaDAO.save(prestacaoConta);
     }
 
     public PrestacaoConta obterPrestacao(Long idPrestacao){

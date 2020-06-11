@@ -2,13 +2,14 @@ package dao;
 
 import dto.AssociadoDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Associado;
 import utils.StringUtils;
 
 import javax.persistence.Query;
 import java.util.List;
 
-public class AssociadoDAO extends GenericDAO<Associado> {
+public class AssociadoDAO extends GenericDAOV2<Associado, Long> {
 
 	public List<Associado> consultarAssociados(AssociadoDTO associadoDTO) {
         StringBuilder sql = new StringBuilder();
@@ -44,7 +45,7 @@ public class AssociadoDAO extends GenericDAO<Associado> {
         if(associadoDTO.getTelefone() != null && !associadoDTO.getTelefone().isEmpty())
             sql.append("AND pessoa.telefone = :telefone ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if(associadoDTO.getIdAssociado() != null)
            query.setParameter("idAssociado", associadoDTO.getIdAssociado());
@@ -89,7 +90,7 @@ public class AssociadoDAO extends GenericDAO<Associado> {
         sql += "AND (a.inativo IS NULL ";
         sql += "OR a.inativo <> 't')) ";
 
-        Query query = em.createNativeQuery(sql);
+        Query query = getEntityManager().createNativeQuery(sql);
         query.setParameter("cpf", cpf);
 
         if(idAssociado != null)
@@ -113,7 +114,7 @@ public class AssociadoDAO extends GenericDAO<Associado> {
         sql += "AND (a.inativo IS NULL ";
         sql += "OR a.inativo <> 't')) ";
 
-        Query query = em.createNativeQuery(sql);
+        Query query = getEntityManager().createNativeQuery(sql);
         query.setParameter("rg", rg);
 
         if(idAssociado != null)

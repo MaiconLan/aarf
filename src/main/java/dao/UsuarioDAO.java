@@ -2,6 +2,7 @@ package dao;
 
 import dto.UsuarioDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Perfil;
 import model.Regra;
 import model.Usuario;
@@ -14,34 +15,33 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UsuarioDAO extends GenericDAO<Usuario> {
+public class UsuarioDAO extends GenericDAOV2<Usuario, Long> {
 
     public void save(Usuario usuario) {
         try {
             usuario.setSenha(Criptografia.criptofragar(usuario.getSenha()));
 
-            em.getTransaction().begin();
-            em.persist(usuario);
-            em.getTransaction().commit();
+            getEntityManager().getTransaction().begin();
+            getEntityManager().persist(usuario);
+            getEntityManager().getTransaction().commit();
 
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            getEntityManager().getTransaction().rollback();
             e.printStackTrace();
 
         }
     }
 
-    @Override
     public Usuario update(Usuario usuario) {
         try {
             usuario.setSenha(Criptografia.criptofragar(usuario.getSenha()));
 
-            em.getTransaction().begin();
-            usuario = em.merge(usuario);
-            em.getTransaction().commit();
+            getEntityManager().getTransaction().begin();
+            usuario = getEntityManager().merge(usuario);
+            getEntityManager().getTransaction().commit();
 
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            getEntityManager().getTransaction().rollback();
             e.printStackTrace();
 
         }
@@ -78,7 +78,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
                         "WHERE u.login = :login " +
                         "AND u.senha = :senha ";
 
-        Query query = em.createQuery(hql);
+        Query query = getEntityManager().createQuery(hql);
         query.setParameter("login", usuario.getLogin());
         query.setParameter("senha", Criptografia.criptofragar(usuario.getSenha()));
 
@@ -95,7 +95,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 
         hql.append(" ORDER BY l.idLogin");
 
-        Query query = em.createQuery(hql.toString()).setMaxResults(100);
+        Query query = getEntityManager().createQuery(hql.toString()).setMaxResults(100);
         return query.getResultList();
     }
 
@@ -119,7 +119,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
     public boolean possuiUsuario(Usuario usuario){
         boolean possuiIdUsuario = usuario.getIdUsuario() != null;
 
-        Query query = em.createNativeQuery(sqlVerificarUsuarioJaCadastrado(possuiIdUsuario));
+        Query query = getEntityManager().createNativeQuery(sqlVerificarUsuarioJaCadastrado(possuiIdUsuario));
         query.setParameter("login", usuario.getLogin());
 
         if(possuiIdUsuario)
@@ -154,7 +154,7 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
         if(cpf != null && !cpf.isEmpty())
             sql.append("AND p.cpf = :cpf ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if(email != null && !email.isEmpty())
             query.setParameter("email", email);

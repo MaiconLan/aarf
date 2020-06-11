@@ -6,10 +6,11 @@ import javax.persistence.Query;
 
 import dto.InstituicaoDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Instituicao;
 import model.TipoInstituicao;
 
-public class InstituicaoDAO extends GenericDAO<Instituicao>{
+public class InstituicaoDAO extends GenericDAOV2<Instituicao, Long> {
 
 	public List<Instituicao> consultarInstituicoes(InstituicaoDTO instituicaoDTO) {
         StringBuilder sql = new StringBuilder();
@@ -29,7 +30,7 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
         if(instituicaoDTO.getTipo() != null && !instituicaoDTO.getTipo().isEmpty())
             sql.append("AND i.tipo = :tipo ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if(instituicaoDTO.getIdInstituicao() != null)
            query.setParameter("idInstituicao", instituicaoDTO.getIdInstituicao());
@@ -61,7 +62,7 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
         sql.append("SELECT i FROM Instituicao i ");
         sql.append("WHERE i.tipo = :tipo ");
 
-        return em.createQuery(sql.toString())
+        return getEntityManager().createQuery(sql.toString())
                 .setParameter("tipo", TipoInstituicao.ENSINO.getDescricao())
                 .getResultList();
     }
@@ -71,7 +72,7 @@ public class InstituicaoDAO extends GenericDAO<Instituicao>{
 	    sql.append("SELECT i FROM Instituicao i ");
 	    sql.append("WHERE i.tipo = :tipo");
 
-	    return em.createQuery(sql.toString())
+	    return getEntityManager().createQuery(sql.toString())
                 .setParameter("tipo", TipoInstituicao.FINANCEIRA.getDescricao())
                 .getResultList();
     }

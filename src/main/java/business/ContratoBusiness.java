@@ -27,10 +27,7 @@ public class ContratoBusiness implements Serializable {
     public void salvar(Contrato contrato) throws ContratoBusinessException {
         validarContrato(contrato);
 
-        if (contrato.getIdContrato() == null)
-            contratoDAO.save(contrato);
-        else
-            contratoDAO.update(contrato);
+        contratoDAO.save(contrato);
     }
 
     private void validarContrato(Contrato contrato) throws ContratoBusinessException {

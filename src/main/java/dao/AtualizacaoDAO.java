@@ -1,18 +1,18 @@
 package dao;
 
-import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Atualizacao;
 
-public class AtualizacaoDAO extends GenericDAO<Atualizacao> {
+public class AtualizacaoDAO extends GenericDAOV2<Atualizacao, Long> {
 
     public boolean possuiAtualizacaoPendente(){
         String sql = getSqlPossuiAtualizacaoPendente();
-        return (boolean) em.createNativeQuery(sql).getSingleResult();
+        return (boolean) getEntityManager().createNativeQuery(sql).getSingleResult();
     }
 
     public Atualizacao obterAtualizacaoPendente() {
         String sql = getSqlAtualizacaoPendente();
-        return (Atualizacao) em.createQuery(sql).setMaxResults(1).getSingleResult();
+        return (Atualizacao) getEntityManager().createQuery(sql).setMaxResults(1).getSingleResult();
     }
 
     private String getSqlPossuiAtualizacaoPendente(){

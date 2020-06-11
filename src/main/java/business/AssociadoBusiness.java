@@ -35,10 +35,7 @@ public class AssociadoBusiness implements Serializable {
         Endereco endereco = a.getPessoa().getEndereco();
         endereco.setPessoa(a.getPessoa());
 
-        if(a.getIdAssociado() == null)
-        	associadoDAO.save(a);
-        else
-        	associadoDAO.update(a);
+        associadoDAO.save(a);
     }
 
     private void validarSalvarAssociado(Associado a) throws AssociadoBusinessException {
@@ -97,7 +94,7 @@ public class AssociadoBusiness implements Serializable {
     public void removerAssociado(Associado a) {
         a.setInativo(Boolean.TRUE);
         StringUtils.removerCaracteres(a.getPessoa());
-        associadoDAO.update(a);
+        associadoDAO.save(a);
     }
 
     public Associado obterAssociado(Long idAssociado) {

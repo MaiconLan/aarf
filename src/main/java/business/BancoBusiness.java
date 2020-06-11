@@ -16,10 +16,7 @@ public class BancoBusiness implements Serializable {
     private BancoDAO bancoDAO;
 
     public void salvar(Banco banco) {
-        if (banco.getIdBanco() == null)
-            bancoDAO.save(banco);
-        else
-            bancoDAO.update(banco);
+        bancoDAO.save(banco);
     }
 
     public List<Banco> consultaBanco(BancoDTO bancoDTO) {

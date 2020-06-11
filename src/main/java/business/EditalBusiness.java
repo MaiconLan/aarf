@@ -24,10 +24,7 @@ public class EditalBusiness implements Serializable {
     }
 
     public void salvarEdital(Edital edital) {
-        if(edital.getIdEdital() == null)
-            editalDAO.save(edital);
-        else
-            editalDAO.update(edital);
+        editalDAO.save(edital);
     }
     
     public Edital listarEdital(Long idEdital) {

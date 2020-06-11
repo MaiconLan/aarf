@@ -24,10 +24,7 @@ public class ContaBusiness implements Serializable {
     public void salvarConta(Conta conta) throws ContaBusinessException {
         // validarConta(conta);
 
-        if(conta.getIdConta() == null)
-            contaDAO.save(conta);
-        else
-            contaDAO.update(conta);
+        contaDAO.save(conta);
     }
 
     private void validarConta(Conta conta) throws ContaBusinessException {

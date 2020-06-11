@@ -1,12 +1,13 @@
 package dao;
 
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Contrato;
 
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-public class ContratoDAO extends GenericDAO<Contrato> {
+public class ContratoDAO extends GenericDAOV2<Contrato, Long> {
 
     public boolean possuiContratoVigente(Contrato contrato) {
         String sql = "SELECT EXISTS( " +
@@ -19,7 +20,7 @@ public class ContratoDAO extends GenericDAO<Contrato> {
 
         sql += ")";
 
-        Query query = em.createNativeQuery(sql);
+        Query query = getEntityManager().createNativeQuery(sql);
 
         if (contrato.getIdContrato() != null)
             query.setParameter("idContrato", contrato.getIdContrato());
@@ -34,7 +35,7 @@ public class ContratoDAO extends GenericDAO<Contrato> {
         String query = "SELECT c FROM Contrato c WHERE current_date BETWEEN c.inicio AND c.termino";
 
         try {
-            return (Contrato) em.createQuery(query)
+            return (Contrato) getEntityManager().createQuery(query)
                     .setMaxResults(1)
                     .getSingleResult();
 

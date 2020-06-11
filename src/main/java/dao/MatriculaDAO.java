@@ -9,9 +9,10 @@ import dto.MatriculaDTO;
 import enumered.MatriculaSituacao;
 import freemarker.relatorio.matricula.EstudanteFM;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Matricula;
 
-public class MatriculaDAO extends GenericDAO<Matricula> {
+public class MatriculaDAO extends GenericDAOV2<Matricula, Long> {
 
     public List<Matricula> buscarMatriculas(Matricula filtro) {
         StringBuilder sql = new StringBuilder();
@@ -21,7 +22,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         sql.append("JOIN m.edital ed ");
 
         sql.append("WHERE m.cancelamento.idCancelamento IS NULL ");
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         return query.getResultList();
     }
@@ -37,7 +38,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         sql.append("WHERE e.idEstudante = :idEstudante ");
         sql.append("AND c.idCancelamento IS NULL ");
         sql.append("AND (edital.finalizado IS NULL OR edital.finalizado = FALSE) ");
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         try {
             return (Matricula) query.setMaxResults(1)
@@ -56,7 +57,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         if (matriculaDTO.getIdInstituicao() != null)
             sql.append("AND instituicao.idInstituicao = :idInstituicao ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         query.setParameter("situacao", MatriculaSituacao.EM_APROVACAO.getDescricao());
 
@@ -71,7 +72,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
         StringBuilder sql = getSqlObterMatricula();
         sql.append("WHERE estudante.idEstudante = :idEstudante ");
 
-        return em.createQuery(sql.toString())
+        return getEntityManager().createQuery(sql.toString())
                 .setParameter("idEstudante", idEstudante)
                 .getResultList();
     }
@@ -97,7 +98,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
                 "AND e.idEdital = :idEdital " +
                 "AND i.idInstituicao = :idInstituicao GROUP BY m.idMatricula, m.estudante.pessoa.nome";
 
-        return em.createQuery(query)
+        return getEntityManager().createQuery(query)
                 .setParameter("idEdital", idEdital)
                 .setParameter("idInstituicao", idInstituicao)
                 .getResultList();
@@ -110,7 +111,7 @@ public class MatriculaDAO extends GenericDAO<Matricula> {
                 "WHERE m.idMatricula = :idMatricula " +
                 "AND i.idInstituicao = :idInstituicao";
 
-        return em.createQuery(query)
+        return getEntityManager().createQuery(query)
                 .setParameter("idMatricula", idMatricula)
                 .setParameter("idInstituicao", idInstituicao)
                 .getResultList();

@@ -3,13 +3,14 @@ package dao;
 import dto.FiltroViagemDTO;
 import dto.ViagemDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Viagem;
 
 import javax.persistence.Query;
 import java.util.Arrays;
 import java.util.List;
 
-public class ViagemDAO extends GenericDAO<Viagem> {
+public class ViagemDAO extends GenericDAOV2<Viagem, Long> {
 
     public List<Viagem> buscarViagens(FiltroViagemDTO filtro) {
         StringBuilder sql = new StringBuilder();
@@ -31,7 +32,7 @@ public class ViagemDAO extends GenericDAO<Viagem> {
         if (filtro.getIdEdital() != null)
             sql.append("AND m.edital.idEdital = :idEdital ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if (filtro.getDiaSemana() != null && filtro.getDiaSemana().length > 0)
             query.setParameter("diaSemana", Arrays.asList(filtro.getDiaSemana()));
@@ -58,7 +59,7 @@ public class ViagemDAO extends GenericDAO<Viagem> {
                 + "AND v.instituicao.idInstituicao = :idInstituicao" +
                 " GROUP BY v.matricula.idMatricula, v.instituicao.idInstituicao, v.matricula.estudante.pessoa.nome";
 
-        return em.createQuery(sql)
+        return getEntityManager().createQuery(sql)
                 .setParameter("idEdital", idEdital)
                 .setParameter("idInstituicao", idInstituicao)
                 .getResultList();
@@ -73,7 +74,7 @@ public class ViagemDAO extends GenericDAO<Viagem> {
                 + "AND v.matricula.edital.idEdital = :idEdital "
                 + "AND v.instituicao.idInstituicao = :idInstituicao";
 
-        return em.createQuery(sql)
+        return getEntityManager().createQuery(sql)
                 .setParameter("idEdital", idEdital)
                 .setParameter("idInstituicao", idInstituicao)
                 .getResultList();
@@ -88,7 +89,7 @@ public class ViagemDAO extends GenericDAO<Viagem> {
                 + "AND v.matricula.idMatricula = :idMatricula "
                 + "AND v.instituicao.idInstituicao = :idInstituicao";
 
-        return em.createQuery(sql)
+        return getEntityManager().createQuery(sql)
                 .setParameter("idMatricula", idMatricula)
                 .setParameter("idInstituicao", idInstituicao)
                 .getResultList();

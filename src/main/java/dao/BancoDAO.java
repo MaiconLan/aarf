@@ -3,13 +3,14 @@ package dao;
 
 import dto.BancoDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Banco;
 
 import javax.persistence.Query;
 import java.util.List;
 
 
-public class BancoDAO extends GenericDAO<Banco> {
+public class BancoDAO extends GenericDAOV2<Banco, Long> {
 
     public List<Banco> consultaBanco(BancoDTO bancoDTO) {
         StringBuilder sql = new StringBuilder();
@@ -22,7 +23,7 @@ public class BancoDAO extends GenericDAO<Banco> {
         if(bancoDTO.getNome() != null && !bancoDTO.getNome().isEmpty())
             sql.append("AND b.nome = :nome ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if(bancoDTO.getIdBanco() != null)
             query.setParameter("idBanco", bancoDTO.getIdBanco());

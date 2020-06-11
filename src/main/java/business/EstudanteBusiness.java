@@ -34,10 +34,7 @@ public class EstudanteBusiness implements Serializable {
         Endereco endereco = estudante.getPessoa().getEndereco();
         endereco.setPessoa(estudante.getPessoa());
 
-        if(estudante.getIdEstudante() == null)
-            estudanteDAO.save(estudante);
-        else
-            estudanteDAO.update(estudante);
+        estudanteDAO.save(estudante);
     }
 
     private void validarSalvarEstudante(Estudante estudante) throws EstudanteBusinessException {
@@ -111,7 +108,7 @@ public class EstudanteBusiness implements Serializable {
     public void removerEstudante(Estudante estudante) {
         estudante.setInativo(Boolean.TRUE);
         removerCaracteres(estudante.getPessoa());
-        estudanteDAO.update(estudante);
+        estudanteDAO.save(estudante);
     }
 
     public Estudante obterEstudante(Long idEstudante) {

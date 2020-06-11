@@ -25,10 +25,7 @@ public class InstituicaoBusiness implements Serializable {
 	public void salvar(Instituicao instituicao) throws InstituicaoBusinessException {
 		validarInstituicao(instituicao);
 
-		if(instituicao.getIdInstituicao() == null)
-			instituicaoDAO.save(instituicao);
-		else
-			instituicaoDAO.update(instituicao);
+		instituicaoDAO.save(instituicao);
 	}
 
 	private void validarInstituicao(Instituicao instituicao) throws InstituicaoBusinessException {

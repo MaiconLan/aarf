@@ -2,6 +2,7 @@ package dao;
 
 import dto.EstudanteDTO;
 import generics.GenericDAO;
+import generics.GenericDAOV2;
 import model.Associado;
 import model.Estudante;
 import utils.StringUtils;
@@ -9,7 +10,7 @@ import utils.StringUtils;
 import javax.persistence.Query;
 import java.util.List;
 
-public class EstudanteDAO extends GenericDAO<Estudante> {
+public class EstudanteDAO extends GenericDAOV2<Estudante, Long> {
 
 
     public List<Estudante> consultarEstudantes(EstudanteDTO estudanteDTO) {
@@ -42,7 +43,7 @@ public class EstudanteDAO extends GenericDAO<Estudante> {
         if(estudanteDTO.getTelefone() != null && !estudanteDTO.getTelefone().isEmpty())
             sql.append("AND pessoa.telefone = :telefone ");
 
-        Query query = em.createQuery(sql.toString());
+        Query query = getEntityManager().createQuery(sql.toString());
 
         if(estudanteDTO.getIdEstudante() != null)
            query.setParameter("idEstudante", estudanteDTO.getIdEstudante());
@@ -83,7 +84,7 @@ public class EstudanteDAO extends GenericDAO<Estudante> {
         sql += "AND (e.inativo IS NULL ";
         sql += "OR e.inativo <> 't'))";
 
-        Query query = em.createNativeQuery(sql);
+        Query query = getEntityManager().createNativeQuery(sql);
         query.setParameter("cpf", cpf);
 
         if(idEstudante != null)
@@ -107,7 +108,7 @@ public class EstudanteDAO extends GenericDAO<Estudante> {
         sql += "AND (e.inativo IS NULL ";
         sql += "OR e.inativo <> 't')) ";
 
-        Query query = em.createNativeQuery(sql);
+        Query query = getEntityManager().createNativeQuery(sql);
         query.setParameter("rg", rg);
 
         if(idEstudante != null)

@@ -30,10 +30,7 @@ public class MatriculaBusiness implements Serializable {
         matricula.setInscricao(LocalDateTime.now());
         matricula.setDataSituacao(LocalDateTime.now());
         matricula.setSituacao(MatriculaSituacao.INSCRICAO.getDescricao());
-        if(matricula.getIdMatricula() == null)
-            matriculaDAO.save(matricula);
-        else
-            matriculaDAO.update(matricula);
+        matriculaDAO.save(matricula);
     }
 
     public void salvarViagem(Viagem viagem) {
@@ -43,7 +40,7 @@ public class MatriculaBusiness implements Serializable {
     public void aprovarMatricula(Matricula m) {
     	m.setSituacao(MatriculaSituacao.MATRICULADO.getDescricao());
     	m.setDataSituacao(LocalDateTime.now());
-    	matriculaDAO.update(m);
+    	matriculaDAO.save(m);
     }
     
     public void cancelarMatricula(Matricula m, String motivo) {
@@ -54,7 +51,7 @@ public class MatriculaBusiness implements Serializable {
         m.setDataSituacao(LocalDateTime.now());
         m.setCancelamento(cancelamento);
         cancelamento.setMatricula(m);
-    	matriculaDAO.update(m);
+    	matriculaDAO.save(m);
     }
  
     public List<Matricula> listarMatricula(Matricula m) {
@@ -70,7 +67,7 @@ public class MatriculaBusiness implements Serializable {
 
         matricula.setSituacao(MatriculaSituacao.EM_APROVACAO.getDescricao());
         matricula.setDataSituacao(LocalDateTime.now());
-        matriculaDAO.update(matricula);
+        matriculaDAO.save(matricula);
     }
 
     private void validarEnviarParaAprovacao(Matricula matricula) throws MatriculaBusinessException {
